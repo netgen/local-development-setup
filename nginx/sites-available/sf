@@ -1,0 +1,27 @@
+server {
+    listen 127.0.0.1:80;
+    listen 127.0.0.1:443 ssl;
+
+    server_name .sf;
+
+    include conf.d/symfony/host_resolver;
+
+    root $_root;
+
+    access_log /usr/local/etc/nginx/logs/access.sf.$_install_dir.log main;
+    error_log /usr/local/etc/nginx/logs/error.sf.log error;
+
+    rewrite "^/bundles/(.*)" "/bundles/$1" break;
+    rewrite "^(.*)$" "/$_front_controller$1" last;
+
+    location ~ ^/(app|index)\.php(/|$) {
+        include conf.d/symfony/fastcgi;
+
+        fastcgi_pass $_php_socket;
+
+        # SF <4
+        fastcgi_param SYMFONY_ENV $_symfony_environment;
+        # SF >=4
+        fastcgi_param APP_ENV $_symfony_environment;
+    }
+}
