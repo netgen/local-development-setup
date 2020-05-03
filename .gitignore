@@ -1,0 +1,8 @@
+nginx/ssl/password.txt
+nginx/ssl/root.crt
+nginx/ssl/root.key
+nginx/ssl/server.crt
+nginx/ssl/server.key
+nginx/ssl/server.csr
+var/www/home/index.php
+var/www/home/style.css
