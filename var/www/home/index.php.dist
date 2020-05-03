@@ -1,0 +1,41 @@
+<?php
+
+$time = gmdate("D, d M Y H:i:s") . " GMT";
+
+header("Expires: " . $time);
+header("Last-Modified: " . $time);
+header("Pragma: no-cache");
+header("Cache-Control: no-cache, must-revalidate");
+
+?><!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title><?php echo get_current_user() . '@' . gethostname(); ?></title>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <h1><?php echo get_current_user() . '@' . gethostname(); ?></h1>
+    <h2>websites</h2>
+    <hr>
+    <ol>
+        <li>Media Site <a href="https://mediasite.dev.php73.ez">Frontend</a> | <a href="https://mediasite.prod.php73.ez/ngadminui">Admin</a></li>
+    </ol>
+    <h2>services</h2>
+    <hr>
+    <ol>
+        <li>PHP 7.4 <a href="https://phpinfo.php74">info</a> | <a href="https://home.php74/status?full&html">status</a></li>
+        <li>PHP 7.3 <a href="https://phpinfo.php73">info</a> | <a href="https://home.php73/status?full&html">status</a></li>
+        <li>PHP 7.2 <a href="https://phpinfo.php72">info</a> | <a href="https://home.php72/status?full&html">status</a></li>
+        <li>PHP 7.1 <a href="https://phpinfo.php71">info</a> | <a href="https://home.php71/status?full&html">status</a></li>
+        <li>PHP 5.6 <a href="https://phpinfo.php56">info</a> | <a href="https://home.php56/status?full&html">status</a></li>
+    </ol>
+    <h2>extras</h2>
+    <hr>
+    <ol>
+        <li><a href="https://docs.netgen.io/">Netgen Docs</a></li>
+    </ol>
+    <p style="text-align:right;">PHP <?php echo PHP_VERSION;?></p>
+</body>
+</html>
