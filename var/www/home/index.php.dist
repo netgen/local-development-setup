@@ -20,7 +20,7 @@ header("Cache-Control: no-cache, must-revalidate");
     <h2>websites</h2>
     <hr>
     <ol>
-        <li>Media Site <a href="https://mediasite.dev.php73.ez">Frontend</a> | <a href="https://mediasite.prod.php73.ez/ngadminui">Admin</a></li>
+        <li>Media Site <a href="https://media-site.dev.php73.ez">Frontend</a> | <a href="https://media-site.prod.php73.ez/ngadminui">Admin</a></li>
     </ol>
     <h2>services</h2>
     <hr>
