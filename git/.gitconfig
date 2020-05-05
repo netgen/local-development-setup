@@ -9,3 +9,5 @@
     indentheuristic = true
 [pull]
     rebase = true
+[log]
+    follow = true
