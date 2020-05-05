@@ -1,6 +1,7 @@
 nginx/ssl/password.txt
 nginx/ssl/root.crt
 nginx/ssl/root.key
+nginx/ssl/root.srl
 nginx/ssl/server.crt
 nginx/ssl/server.key
 nginx/ssl/server.csr
