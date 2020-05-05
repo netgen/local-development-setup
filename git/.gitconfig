@@ -1,0 +1,9 @@
+[user]
+    email = brale@netgen.io
+    name = Brale Rodijak
+[core]
+    excludesfile = /Users/brale/.gitignore
+[alias]
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit
+[diff]
+    indentheuristic = true
