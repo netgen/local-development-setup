@@ -7,3 +7,5 @@
     tree = log --graph --decorate --pretty=oneline --abbrev-commit
 [diff]
     indentheuristic = true
+[pull]
+    rebase = true
