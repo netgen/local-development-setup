@@ -1,25 +1,25 @@
 First write down your chosen password in `password.txt` in case you need to
 regenerate server certificate later on.
 
-Step 1: Create Root Certificate Authority certificate and its private key:
+**Step 1**: Create Root Certificate Authority certificate and its private key:
 
 ```bash
 openssl req -x509 -new -keyout root.key -out root.crt -config root.conf
 ```
 
-Step 2: Create server certificate signing request:
+**Step 2**: Create server certificate signing request:
 
 ```bash
 openssl req -nodes -new -keyout server.key -out server.csr -config server.conf
 ```
 
-Step 3: Create server certificate (valid for 10 years) and its private key:
+**Step 3**: Create server certificate (valid for 10 years) and its private key:
 
 ```bash
 openssl x509 -sha256 -days 3650 -req -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext
 ```
 
-Step 4: Register Root Certificate Authority certificate with MacOS System Keychain:
+**Step 4**: Register Root Certificate Authority certificate with MacOS System Keychain:
 
 ```bash
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain root.crt
