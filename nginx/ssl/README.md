@@ -53,12 +53,12 @@ configuration and output files.
 ### Firefox
 
 1. Firefox maintains its own RCS and by default it won't use operating system's
-RCS to validating a server certificate. In order to enable operating system's
-own RCS in Firefox, open `about:config` and set `security.enterprise_roots.enabled`
+RCS to validate a server certificate. In order to enable operating system's own
+RCS in Firefox, open `about:config` and set `security.enterprise_roots.enabled`
 configuration option to `true`.
 
 2. If you regenerate RCA certificate, Firefox will refuse the new certificate
 with `SEC_ERROR_BAD_SIGNATURE` error. In that case you will need to delete its
 certificate database file named `cert9.db`. This file is located in the Firefox
-profile directory, which you can find on `about:profiles` page. Make sure that
-you restart Firefox after deleting it.
+profile directory, which you can find on `about:profiles` page. Make sure you
+restart Firefox after deleting it.
