@@ -43,10 +43,10 @@ need to register it with the RCS, as the RCA certificate stays the same and is
 already registered there.  Just make sure to restart NGINX so that it becomes
 aware of the new server certificate.
 
-You can also generate a new certificate, using your own server certificate
-configuration file. In this case you can optionally reuse the existing RCA
-certificate and execute only steps 2 and 3, adapting the commands to provide
-your own configuration and output files.
+You can also generate a new server certificate, using your own  configuration
+file. In this case you can optionally reuse the existing RCA certificate and
+execute only steps 2 and 3, adapting the commands to provide your own
+configuration and output files.
 
 ## Browser specifics
 
