@@ -5,7 +5,7 @@ generating a self-signed certificate - you will generate both Root Certificate
 Authority (RCA) and server certificates. RCA certificate will be registered in
 the operating system's Root Certificate Store (RCS), so that any additionally
 generated server certificates get automatically validated by the browser without
-defining exceptions or importing it into operating system's certificate store.
+defining exceptions or importing them into operating system's certificate store.
 
 Start with writing down your chosen password in `password.txt` in case you need
 to generate new server certificate using the same RCA later on.
