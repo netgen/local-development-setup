@@ -1,14 +1,16 @@
-# Generate server SSL certificate
+# Generate SSL certificates
 
-Here you will generate SLL certificate for your server, together with Root
-Certificate Authority certificate. You will register Root Certificate Authority
-certificate in the operating system Root Certificate Store, so that any newly
-generated server certificate gets automatically validated by the browser.
+Here you will generate SLL certificates for your NGINX server. This is not about
+generating a self-signed certificate - you will generate both Root Certificate
+Authority (RCA) and server certificates. RCA certificate will be registered in
+the operating system's Root Certificate Store (RCS), so that any additionally
+generated server certificates get automatically validated by the browser without
+defining exceptions or using extra configuration.
 
-First write down your chosen password in `password.txt` in case you need to
-regenerate server certificate later on.
+Start with writing down your chosen password in `password.txt` in case you need
+to generate new server certificate using the same RCA later on.
 
-**Step 1**: Create Root Certificate Authority certificate and its private key with your chosen password:
+**Step 1**: Create RCA certificate and private key with your chosen password:
 
 ```bash
 openssl req -x509 -new -keyout root.key -out root.crt -config root.conf
@@ -20,13 +22,13 @@ openssl req -x509 -new -keyout root.key -out root.crt -config root.conf
 openssl req -nodes -new -keyout server.key -out server.csr -config server.conf
 ```
 
-**Step 3**: Create server certificate (valid for 10 years) and its private key, providing your chosen password:
+**Step 3**: Create server certificate (3560 days means it will be valid for 10 years) and its private key, providing your chosen password:
 
 ```bash
 openssl x509 -sha256 -days 3650 -req -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext
 ```
 
-**Step 4**: Register Root Certificate Authority certificate with MacOS System Keychain:
+**Step 4**: Register RCA certificate with MacOS RCS (System Keychain):
 
 ```bash
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain root.crt
@@ -34,25 +36,29 @@ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keyc
 
 ## Adding new domains
 
-If you need a certificate for a new domain not supported by the default
-configuration, edit `server.conf` file and add your domain to the bottom of it.
-Then repeat steps 2 and 3 to generate a new server certificate. You won't need
-to register it with the certificate store, as the Root CA certificate stays the
-same and is already registered there.  Just make sure to restart NGINX so that
-it becomes aware of the server certificate change.
+If you need a certificate for an additional domain that's not supported by the
+default configuration, edit `server.conf` file and add your domain to the bottom
+of it. Then repeat steps 2 and 3 to generate a new server certificate. You won't
+need to register it with the RCS, as the RCA certificate stays the same and is
+already registered there.  Just make sure to restart NGINX so that it becomes
+aware of the new server certificate.
+
+You an also generate a new certificate, using your own server certificate
+configuration file. In this case you can optionally reuse the existing Root CA
+certificate and execute only steps 2 and 3, adapting the commands to provide
+your own configuration and output files.
 
 ## Browser specifics
 
 ### Firefox
 
-Firefox maintains its own Root Certificate Store and by default it will not
-consider operating system Root Certificate Store when validating a server
-certificate. In order to enable using operating system own Root Certificate
-Store, open `about:config` and set `security.enterprise_roots.enabled`
+1. Firefox maintains its own RCS and by default it won't use operating system's
+RCS to validating a server certificate. In order to enable operating system's
+own RCS in Firefox, open `about:config` and set `security.enterprise_roots.enabled`
 configuration option to `true`.
 
-If you regenerate Root Certificate Authority certificate, Firefox will refuse
-the new certificate with `SEC_ERROR_BAD_SIGNATURE` error. In that case you will
-need to delete its certificate database file named `cert9.db`. This file is
-located in the Firefox profile directory, which you can find on `about:profiles`
-page. Make sure you restart Firefox after deleting it.
+2. If you regenerate RCA certificate, Firefox will refuse the new certificate
+with `SEC_ERROR_BAD_SIGNATURE` error. In that case you will need to delete its
+certificate database file named `cert9.db`. This file is located in the Firefox
+profile directory, which you can find on `about:profiles` page. Make sure that
+you restart Firefox after deleting it.
