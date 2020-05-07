@@ -1,3 +1,5 @@
+# Set up DNS forwarding with `dnsmasq`
+
 Here you will install and configure `dnsmasq` as a DNS forwarder, used to
 resolve all your custom top-level domains to `127.0.0.1`. With it, you won’t
 need to update `/etc/hosts` file to add new host names as they will be
@@ -35,7 +37,7 @@ address=/php84/127.0.0.1
 address=/sf/127.0.0.1
 ```
 
-**Step 3**: Add DNS resolver configuration for our custom top-level domains
+**Step 3**: Add DNS resolver configuration for your custom top-level domains
 
 ```bash
 sudo mkdir -v /etc/resolver
@@ -50,8 +52,14 @@ echo "nameserver 127.0.0.1" | sudo tee -a /etc/resolver/* > /dev/null
 sudo brew services start dnsmasq
 ```
 
-**Step 5**: Test resolving by pinging a bogus domain on our custom top-level
-domains:
+**Step 5**: Test resolving by pinging a bogus domain on your custom top-level
+domain:
+
+```bash
+ping asdfghjkl.sf
+```
+
+You should get a response from 127.0.0.1:
 
 ```bash
 PING asdfghjkl.sf (127.0.0.1): 56 data bytes
@@ -65,4 +73,5 @@ round-trip min/avg/max/stddev = 0.028/0.068/0.130/0.045 ms
 ```
 
 If you received output similar to the above, it means `dnsmasq` is correctly
-configured, and you're finished with this part of the setup.
+configured for the given domain. Successfully test all configured top-level
+domains, and you're finished with this part of the setup.
