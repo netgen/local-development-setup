@@ -22,6 +22,46 @@ header("Cache-Control: no-cache, must-revalidate");
     <ol>
         <li>Media Site <a href="https://media-site.dev.php73.ez">Frontend</a> | <a href="https://media-site.prod.php73.ez/ngadminui">Admin</a></li>
     </ol>
+    <details>
+        <summary>About host format</summary>
+        <blockquote>
+            <p>Host must conform to format <code>installation_dir.symfony_environment.php_version.(ez|sf)</code></p>
+            <p>For example, host <code>media-site.dev.php73.ez</code> is resolved to</p>
+            <ul>
+                <li>installation directory <code>/var/www/media-site</code></li>
+                <li>public directory <code>/var/www/media-site/web</code></li>
+                <li>Syfmony environment <code>dev</code></li>
+                <li>PHP version 7.3</li>
+                <li>Nginx configuration for eZ Platform</li>
+            </ul>
+            <h3>When using custom app/public directory setup</h3>
+            <hr>
+            <p>If installation directory part of the host contains a double dash, installation uses custom public directories and</p>
+            <ul>
+                <li>part before the double dash is the actual installation directory</li>
+                <li>part after the double dash is the public directory</li>
+            </ul>
+
+            <p>Then in case of host <code>media-site--public.dev.php73.ez</code> you have</p>
+            <ul>
+                <li>installation directory <code>/var/www/media-site</code></li>
+                <li>public directory <code>/var/www/media-site/public</code></li>
+            </ul>
+            <h3>When using host siteaccess matching</h3>
+            <hr>
+            <p>If your installation uses host siteaccess matching, symlink it into the <code>/var/www</code> separately for each subdomain</p>
+            <ul>
+                <li><code>ln -s /Users/<?php echo get_current_user(); ?>/projects/media-site one.media-site</code></li>
+                <li><code>ln -s /Users/<?php echo get_current_user(); ?>/projects/media-site two.media-site</code></li>
+            </ul>
+            <p>Then access it with</p>
+            <ul>
+                <li><code>one.media-site.dev.php73.ez</code></li>
+                <li><code>two.media-site.dev.php73.ez</code></li>
+            </ul>
+            <p>You can use this approach together with custom app/public directory setup described above</p>
+        </blockquote>
+    </details>
     <h2>services</h2>
     <hr>
     <ol>
