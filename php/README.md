@@ -8,9 +8,8 @@ Out of the box `brew` provides current PHP version in a package named `php`
 versions in packages namespaced with version number, for example `php@7.3`.
 
 Officially unsupported PHP packages are not available in official formula
-repository ("tap" in `brew` lingo) for reasons unbeknown. However, they are
-still provided in some 3rd party *taps*, and it's possible to install them from
-there.
+repository ("tap" in `brew` lingo). However, they are still provided in some 3rd
+party *taps*, and it's possible to install them from there.
 
 **Note**: You don't have to install all following PHP versions. Install only
 those you really need, and in case you need another one, return to this page
@@ -69,6 +68,17 @@ listen.group = staff
 Make sure to use your own username instead of `brale`, and name the socket file
 corresponding to the PHP version. Use configuration already existing in the
 file and do not create duplicate entries.
+
+#### Optionally optimize PHP-FPM resource consumption
+
+Main PHP-FPM manager process takes up a small amount of memory, but spawned
+workers can take up to few hundred megabytes, depending on the application
+executed. If you don't have enough hardware resources, configure `pm` setting to
+`ondemand` and corresponding `pm.process_idle_timeout` to something like `15m`.
+That will ensure that worker processes get killed after idling for 15 minutes,
+and started again automatically when needed. When that happens, first request
+will be few hundred milliseconds slower, but subsequent requests will reuse
+existing workers without process initialization penalty.
 
 ## Symlink PHP binaries
 
