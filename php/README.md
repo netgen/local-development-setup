@@ -104,7 +104,7 @@ Find PHP configuration for your PHP versions in following files:
 /usr/local/etc/php/5.6/php.ini
 ```
 
-Edit each of them nd update it with the following configuration options:
+Edit each of them and update it with the following configuration options:
 
 ```
 date.timezone = Europe/Zagreb
