@@ -44,7 +44,7 @@ brew install exolnet/deprecated/php@5.6
 
 ## Configure PHP-FPM pool definitions
 
-Find PHP-FPM pool definitions for these PHP versions in following files:
+Find PHP-FPM pool definitions for your PHP versions in following files:
 
 ```
 /usr/local/etc/php/7.4/php-fpm.d/www.conf
@@ -72,6 +72,9 @@ Make sure to use your own username instead of `brale`, and name the socket file
 corresponding to the PHP version. Use configuration already existing in the
 file and do not create duplicate entries.
 
+Note: Configuration files use `;` character as a comment, so make sure you
+remove it as needed.
+
 ### Optionally optimize PHP-FPM to limit resource consumption
 
 Main PHP-FPM manager process takes up a small amount of memory, but spawned
@@ -87,6 +90,29 @@ That will ensure that worker processes get killed after idling for 15 minutes,
 and started again automatically when needed. When that happens, first request
 will be few hundred milliseconds slower, but subsequent requests will reuse
 existing workers without process initialization penalty.
+
+## Configure PHP
+
+Find PHP configuration for your PHP versions in following files:
+
+```
+/usr/local/etc/php/7.4/php.ini
+/usr/local/etc/php/7.3/php.ini
+/usr/local/etc/php/7.2/php.ini
+/usr/local/etc/php/7.1/php.ini
+/usr/local/etc/php/7.0/php.ini
+/usr/local/etc/php/5.6/php.ini
+```
+
+Edit each of them nd update it with the following configuration options:
+
+```
+date.timezone = Europe/Zagreb
+session.gc_maxlifetime = 86400
+```
+
+Note: Configuration files use `;` character as a comment, so make sure you
+remove it as needed.
 
 ## Symlink PHP binaries
 
@@ -107,6 +133,10 @@ upgrading a PHP version, so you will need to maintain your symlinks through
 upgrades.
 
 ## Start PHP-FPM services
+
+You can now start PHP services.
+
+Also, remember to restart them after changing PHP's configuration in the future.
 
 ```bash
 sudo brew services restart php@7.4
