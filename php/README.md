@@ -63,17 +63,25 @@ group = staff
 listen = /var/run/php74-fpm.sock
 listen.owner = brale
 listen.group = staff
+pm.status_path = /status
+ping.path = /ping
+ping.response = "pong"
 ```
 
 Make sure to use your own username instead of `brale`, and name the socket file
 corresponding to the PHP version. Use configuration already existing in the
 file and do not create duplicate entries.
 
-#### Optionally optimize PHP-FPM resource consumption
+### Optionally optimize PHP-FPM to limit resource consumption
 
 Main PHP-FPM manager process takes up a small amount of memory, but spawned
-workers can take up to few hundred megabytes, depending on the application
-executed. If you don't have enough hardware resources, configure `pm` setting to
+workers can take up to few hundred megabytes, depending on the application that
+was executed. To see how many worker processes are active and how much memory
+they use you can check the list of processes (`ps` or `pstree` on the command
+line), or open the PHP-FPM status page for the specific PHP version, for example
+https://home.php73/status?full&html.
+
+If you don't have enough hardware resources, configure `pm` setting to
 `ondemand` and corresponding `pm.process_idle_timeout` to something like `15m`.
 That will ensure that worker processes get killed after idling for 15 minutes,
 and started again automatically when needed. When that happens, first request
@@ -109,6 +117,6 @@ sudo brew services restart php@7.0
 sudo brew services restart php@5.6
 ```
 
-## Compiling specific PHP extensions
+## Compile specific PHP extensions
 
 todo
