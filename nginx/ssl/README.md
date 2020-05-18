@@ -1,36 +1,36 @@
-# Generate SSL certificates
+# Generate SSL certificates with openssl
 
 Here you will generate SLL certificates for your NGINX server. This is not about
 generating a self-signed certificate - you will generate both Root Certificate
 Authority (RCA) and server certificates. RCA certificate will be registered in
 the operating system's Root Certificate Store (RCS), so that any additionally
 generated server certificates get automatically validated by the browser without
-defining exceptions or importing them into operating system's certificate store.
+defining exceptions or importing them into operating system's RCS.
 
-Start with writing down your chosen password in `password.txt` in case you need
-to generate new server certificate using the same RCA later on.
+Start with writing down your chosen password in `password.txt` file in case you
+need to generate new server certificate using the same RCA later on.
 
 **Step 1**: Create RCA certificate and private key with your chosen password:
 
-```bash
+```shell
 openssl req -x509 -new -keyout root.key -out root.crt -config root.conf
 ```
 
 **Step 2**: Create server certificate signing request:
 
-```bash
+```shell
 openssl req -nodes -new -keyout server.key -out server.csr -config server.conf
 ```
 
 **Step 3**: Create server certificate (3560 days means it will be valid for 10 years) and its private key, providing your chosen password:
 
-```bash
+```shell
 openssl x509 -sha256 -days 3650 -req -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext
 ```
 
 **Step 4**: Register RCA certificate with MacOS RCS (System Keychain):
 
-```bash
+```shell
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain root.crt
 ```
 
