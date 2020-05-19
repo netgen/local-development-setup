@@ -10,27 +10,27 @@ defining exceptions or importing them into operating system's RCS.
 Start with writing down your chosen password in `password.txt` file in case you
 need to generate new server certificate using the same RCA later on.
 
-**Step 1**: Create RCA certificate and private key with your chosen password:
+**Step 1**: Create RCA certificate (825 days is maximum allowed certificate validity) and private key with your chosen password:
 
-```shell
-openssl req -x509 -new -keyout root.key -out root.crt -config root.conf
+```console
+openssl req -x509 -new -days 825 -keyout root.key -out root.crt -config root.conf
 ```
 
 **Step 2**: Create server certificate signing request:
 
-```shell
+```console
 openssl req -nodes -new -keyout server.key -out server.csr -config server.conf
 ```
 
-**Step 3**: Create server certificate (3560 days means it will be valid for 10 years) and its private key, providing your chosen password:
+**Step 3**: Create server certificate and its private key, providing your chosen password:
 
-```shell
-openssl x509 -sha256 -days 3650 -req -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext
+```console
+openssl x509 -sha256 -req -days 825 -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext
 ```
 
 **Step 4**: Register RCA certificate with MacOS RCS (System Keychain):
 
-```shell
+```console
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain root.crt
 ```
 
