@@ -51,6 +51,15 @@ configuration and output files.
 
 ## Browser specifics
 
+### Chrome
+
+If you generate a server certificate as valid for more than the agreed
+limitation of 825 days, Chrome will complain with
+`NET::ERR_CERT_VALIDITY_TOO_LONG` error. The solution is to generate a new
+server certificate that respects agreed maximum validity time.
+
+This rule is valid in general, but so far only Chrome has chosen to enforce it.
+
 ### Firefox
 
 1. Firefox maintains its own RCS and by default it won't use operating system's
@@ -58,8 +67,9 @@ RCS to validate a server certificate. In order to enable operating system's own
 RCS in Firefox, open `about:config` and set `security.enterprise_roots.enabled`
 configuration option to `true`.
 
-2. If you regenerate RCA certificate, Firefox will refuse the new certificate
-with `SEC_ERROR_BAD_SIGNATURE` error. In that case you will need to delete its
-certificate database file named `cert9.db`. This file is located in the Firefox
-profile directory, which you can find on `about:profiles` page. Make sure you
-restart Firefox after deleting it.
+2. If you regenerate RCA certificate with the same configuration, Firefox will
+refuse the new certificate with `SEC_ERROR_BAD_SIGNATURE` error. This seems to
+be a caching issue that can be solved by deleting its certificate database file
+named `cert9.db`. The file is located in the Firefox profile directory, which
+you can find on `about:profiles` page. Make sure you restart Firefox after
+deleting it.
