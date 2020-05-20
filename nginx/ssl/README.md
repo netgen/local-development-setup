@@ -2,18 +2,19 @@
 
 Here you will generate SLL certificates for your NGINX server. This is not about
 generating a self-signed certificate - you will generate both Root Certificate
-Authority (RCA) and server certificates. RCA certificate will be registered in
-the operating system's Root Certificate Store (RCS), so that any additionally
-generated server certificates get automatically validated by the browser without
-defining exceptions or importing them into operating system's RCS.
+Authority (RCA) and end-entity (server) certificates. RCA certificate will be
+registered in the operating system's Root Certificate Store (RCS), so that any
+additionally generated server certificates get automatically validated by the
+browser without defining exceptions or importing them into operating system's
+RCS.
 
 Start with writing down your chosen password in `password.txt` file in case you
 need to generate new server certificate using the same RCA later on.
 
-**Step 1**: Create RCA certificate (825 days is maximum allowed certificate validity) and private key with your chosen password:
+**Step 1**: Create RCA certificate (3650 days means it will be valid for 10 years) and private key with your chosen password:
 
 ```console
-openssl req -x509 -new -days 825 -keyout root.key -out root.crt -config root.conf
+openssl req -x509 -new -days 3650 -keyout root.key -out root.crt -config root.conf
 ```
 
 **Step 2**: Create server certificate signing request:
@@ -22,7 +23,7 @@ openssl req -x509 -new -days 825 -keyout root.key -out root.crt -config root.con
 openssl req -nodes -new -keyout server.key -out server.csr -config server.conf
 ```
 
-**Step 3**: Create server certificate and its private key, providing your chosen password:
+**Step 3**: Create server certificate and its private key (825 days is maximum allowed end-entity certificate validity), providing your chosen password:
 
 ```console
 openssl x509 -sha256 -req -days 825 -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext
