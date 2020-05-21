@@ -26,5 +26,5 @@ brew services start rabbitmq
 Test that the server works by opening web management UI at
 http://localhost:15672. Login into the UI with user `guest` and password `guest`.
 
-IF you need to configure it for the project, API will be available at
+If you need to configure it for the project, API will be available at
 `http://localhost:5672` with the same credentials as mentioned above.
