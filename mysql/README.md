@@ -64,6 +64,7 @@ On the `mysql` prompt, execute the following to set binary log expiry to 1 day:
 
 ```console
 SET GLOBAL binlog_expire_logs_seconds=86400;
+SET PERSIST binlog_expire_logs_seconds=86400;
 ```
 
 You can now type `exit` to exit the MySQL command-line client.
