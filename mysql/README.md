@@ -2,21 +2,27 @@
 
 Here you will install and configure MySQL database server.
 
-**Step 1**: Install MySQL server using `brew`:
+**Step 1**: Install MySQL server using `brew`
+
+Execute the following on the command line:
 
 ```console
 brew install mysql
 ```
 
-**Step 2**: Start MySQL server:
+**Step 2**: Start MySQL server usign `brew`
+
+Execute the following on the command line:
 
 ```console
 brew services start mysql
 ```
 
-This will also ensure that MySQL server is automatically started after boot.
+This will also ensure that MySQL server starts automatically after a reboot.
 
-**Step 3**: Set up `root` user password and disallow the remote login:
+**Step 3**: Set up `root` user password and disallow the remote login
+
+Execute the following on the command line:
 
 ```console
 mysql_secure_installation
@@ -25,15 +31,16 @@ mysql_secure_installation
 Follow the instructions to configure `root` as password for the `root` user and
 disallow the remote login. That will be sufficient for local development needs.
 
-**Step 4**: Test that server is up and running by logging into it from the
-command line:
+**Step 4**: Test that server is up and running
+
+Log into the server by executing the following on the command line:
 
 ```console
 mysql -uroot -p
 ```
 
-If everything is set up correctly, you should arrive at the MySQL command
-prompt:
+Enter the password when asked. If you set up everything correctly, you should
+arrive at the MySQL command-line client:
 
 ```text
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -58,6 +65,8 @@ On the `mysql` prompt, execute the following to set binary log expiry to 1 day:
 ```console
 SET GLOBAL binlog_expire_logs_seconds=86400;
 ```
+
+You can now type `exit` to exit the MySQL command-line client.
 
 With that you've finished installing and configuring your MySQL server.
 
