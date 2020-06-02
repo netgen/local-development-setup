@@ -1,5 +1,7 @@
 server {
-    listen 127.0.0.1:443 ssl;
+    listen 127.0.0.1:8082;
+    listen 127.0.0.1:443 default ssl;
+
     server_name .php82;
 
     set $_install_dir $host;

@@ -23,10 +23,18 @@ header("Cache-Control: no-cache, must-revalidate");
         <li>Media Site <a href="https://media-site.dev.php73.ez">Frontend</a> | <a href="https://media-site.prod.php73.ez/ngadminui">Admin</a></li>
     </ol>
     <details>
-        <summary>About host format</summary>
+        <summary>SSL and Varnish</summary>
+        <blockquote>
+            <p>All hosts are configured to automatically redirect from HTTP to HTTPS.</p>
+            <p>Varnish is configured on port 8080, for example <code>https://media-site.dev.php73.ez:8080</code></p>
+            <p>HTTP access to host is possible through port 8082, for example <code>http://media-site.dev.php73.ez:8082</code></p>
+        </blockquote>
+    </details>
+    <details>
+        <summary>Host format</summary>
         <blockquote>
             <p>Host must conform to format <code>installation_dir.symfony_environment.php_version.(ez|sf)</code></p>
-            <p>For example, host <code>media-site.dev.php73.ez</code> is resolved to</p>
+            <p>For example, host <code>https://media-site.dev.php73.ez</code> is resolved to</p>
             <ul>
                 <li>installation directory <code>/var/www/media-site</code></li>
                 <li>public directory <code>/var/www/media-site/web</code></li>
@@ -34,7 +42,7 @@ header("Cache-Control: no-cache, must-revalidate");
                 <li>PHP version 7.3</li>
                 <li>Nginx configuration for eZ Platform</li>
             </ul>
-            <h3>When using custom app/public directory setup</h3>
+            <h3>when using custom app/public directory setup</h3>
             <hr>
             <p>If installation directory part of the host contains a double dash, installation uses custom public directories and</p>
             <ul>
@@ -42,12 +50,12 @@ header("Cache-Control: no-cache, must-revalidate");
                 <li>part after the double dash is the public directory</li>
             </ul>
 
-            <p>Then in case of host <code>media-site--public.dev.php73.ez</code> you have</p>
+            <p>Then in case of host <code>https://media-site--public.dev.php73.ez</code> you have</p>
             <ul>
                 <li>installation directory <code>/var/www/media-site</code></li>
                 <li>public directory <code>/var/www/media-site/public</code></li>
             </ul>
-            <h3>When using host siteaccess matching</h3>
+            <h3>when using host siteaccess matching</h3>
             <hr>
             <p>If your installation uses host siteaccess matching, symlink it into the <code>/var/www</code> separately for each subdomain</p>
             <ul>
@@ -56,8 +64,8 @@ header("Cache-Control: no-cache, must-revalidate");
             </ul>
             <p>Then access it with</p>
             <ul>
-                <li><code>one.media-site.dev.php73.ez</code></li>
-                <li><code>two.media-site.dev.php73.ez</code></li>
+                <li><code>https://one.media-site.dev.php73.ez</code></li>
+                <li><code>https://two.media-site.dev.php73.ez</code></li>
             </ul>
             <p>You can use this approach together with custom app/public directory setup described above</p>
         </blockquote>
@@ -70,12 +78,15 @@ header("Cache-Control: no-cache, must-revalidate");
         <li>PHP 7.2 <a href="https://phpinfo.php72">info</a> | <a href="https://home.php72/status?full&html">status</a></li>
         <li>PHP 7.1 <a href="https://phpinfo.php71">info</a> | <a href="https://home.php71/status?full&html">status</a></li>
         <li>PHP 5.6 <a href="https://phpinfo.php56">info</a> | <a href="https://home.php56/status?full&html">status</a></li>
+        <li><a href="http://0.0.0.0:8025">MailHog</a> <span class="hint">start it when needed with <code>mailhog</code></span></li>
+        <li><a href="http://localhost:15672">RabbitMQ</a> <span class="hint">start it when needed with <code>rabbitmq-server</code></span></li>
+        <li><a href="http://localhost:8983/solr">Solr</a> <span class="hint">start it when needed from its installation dir with <code>./bin/solr start -f</code></span></li>
     </ol>
     <h2>extras</h2>
     <hr>
     <ol>
         <li><a href="https://docs.netgen.io/">Netgen Docs</a></li>
     </ol>
-    <p style="text-align:right;">PHP <?php echo PHP_VERSION;?></p>
+    <p class="text-right">PHP <?php echo PHP_VERSION;?></p>
 </body>
 </html>
