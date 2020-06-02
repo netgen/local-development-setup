@@ -5,6 +5,13 @@
     excludesfile = /Users/brale/.gitignore
 [alias]
     tree = log --graph --decorate --pretty=oneline --abbrev-commit
+    l = log --decorate --graph --date=short --pretty=\"format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C()%s %C(black) [%an]%Creset\"
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    lg = log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset'
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
+    update = "!f() { git fetch origin --prune; git merge --ff-only origin/$(git branch-name) || git rebase --preserve-merges origin/$(git branch-name); }; f"
+    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
 [diff]
     indentheuristic = true
 [pull]
