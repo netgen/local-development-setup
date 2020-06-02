@@ -1,6 +1,6 @@
 # Install and configure PHP
 
-Here you will install multiple PHP versions and configure them to run in FPM
+Here you will install multiple versions of PHP and configure them to run in FPM
 mode.
 
 Out of the box `brew` provides current PHP version in a package named `php`
@@ -19,7 +19,7 @@ and follow the instructions to install that one as well.
 
 Install PHP 7.4, 7.3 and 7.2 using `brew` from the official *tap*:
 
-```bash
+```console
 brew install php
 brew install php@7.3
 brew install php@7.2
@@ -30,13 +30,13 @@ brew install php@7.2
 PHP versions 7.1, 7.0 and 5.6 are available in `exolnet/homebrew-deprecated`
 *tap*. First register this *tap* with your local `brew` installation with:
 
-```bash
+```console
 brew tap exolnet/homebrew-deprecated
 ```
 
 Now you can install PHP 7.1, 7.0 and 5.6 with:
 
-```bash
+```console
 brew install exolnet/deprecated/php@7.1
 brew install exolnet/deprecated/php@7.0
 brew install exolnet/deprecated/php@5.6
@@ -46,7 +46,7 @@ brew install exolnet/deprecated/php@5.6
 
 Find PHP-FPM pool definitions for your PHP versions in following files:
 
-```
+```text
 /usr/local/etc/php/7.4/php-fpm.d/www.conf
 /usr/local/etc/php/7.3/php-fpm.d/www.conf
 /usr/local/etc/php/7.2/php-fpm.d/www.conf
@@ -57,7 +57,7 @@ Find PHP-FPM pool definitions for your PHP versions in following files:
 
 Edit each of them and update it with the following configuration options:
 
-```
+```ini
 user = brale
 group = staff
 listen = /var/run/php74-fpm.sock
@@ -95,7 +95,7 @@ existing workers without process initialization penalty.
 
 Find PHP configuration for your PHP versions in following files:
 
-```
+```text
 /usr/local/etc/php/7.4/php.ini
 /usr/local/etc/php/7.3/php.ini
 /usr/local/etc/php/7.2/php.ini
@@ -106,7 +106,7 @@ Find PHP configuration for your PHP versions in following files:
 
 Edit each of them and update it with the following configuration options:
 
-```
+```ini
 date.timezone = Europe/Zagreb
 session.gc_maxlifetime = 86400
 ```
@@ -119,7 +119,7 @@ remove it as needed.
 You will need access to a specific PHP version from the command line. Symlink
 each PHP binary to an easily accessible alias:
 
-```bash
+```console
 ln -s /usr/local/Cellar/php@7.4/7.4.xx/bin/php php74
 ln -s /usr/local/Cellar/php@7.3/7.3.xx/bin/php php73
 ln -s /usr/local/Cellar/php@7.2/7.2.xx/bin/php php72
@@ -136,9 +136,9 @@ upgrades.
 
 You can now start PHP services.
 
-Also, remember to restart them after changing PHP's configuration in the future.
+Remember to restart them after changing PHP's configuration in the future.
 
-```bash
+```console
 sudo brew services restart php@7.4
 sudo brew services restart php@7.3
 sudo brew services restart php@7.2
