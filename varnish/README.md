@@ -35,7 +35,7 @@ make
 Once the binaries are built, start the `Varnish` with:
 
 ```console
-./bin/varnishd/varnishd -f /Users/brale/varnish-cache-varnish-6.0.6/etc/example.vcl -a :8081 -s file,/Users/brale/varnishcache,500M -d
+./bin/varnishd/varnishd -f /Users/brale/varnish-cache-varnish-6.0.6/etc/example.vcl -a :8081 -s malloc,256M -d
 ```
 
 In the `Varnish` console, type start to start the child process (todo automatic):
