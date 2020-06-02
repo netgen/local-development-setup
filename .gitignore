@@ -5,5 +5,5 @@ nginx/ssl/root.srl
 nginx/ssl/server.crt
 nginx/ssl/server.key
 nginx/ssl/server.csr
-var/www/home/index.php
-var/www/home/style.css
+websites/home/index.php
+websites/home/style.css
