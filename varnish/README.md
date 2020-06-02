@@ -3,7 +3,7 @@
 Since `Varnish` is not widely available in all necessary versions, here you will
 compile it from downloaded source.
 
-Download the required `Varnish` source from GitHub to you home directory:
+Download the required `Varnish` source from GitHub to your home directory:
 
 ```console
 cd ~
@@ -17,7 +17,7 @@ tar xzf varnish-6.0.6.tar.gz
 cd varnish-cache-varnish-6.0.6
 ```
 
-heck that you have `automake` installed and install it if it's missing:
+Install `automake` using `brew` you don't already have it:
 
 ```console
 brew info automake
