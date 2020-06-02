@@ -8,6 +8,6 @@
 [diff]
     indentheuristic = true
 [pull]
-    rebase = true
+    ff = only
 [log]
     follow = true
