@@ -17,8 +17,7 @@ position into the extracted directory:
 
 ```console
 wget https://downloads.apache.org/lucene/solr/7.7.3/solr-7.7.3.tgz
-tar xzf solr-7.7.3.tgz
-rm solr-7.7.3.tgz
+tar xzf solr-7.7.3.tgz && rm solr-7.7.3.tgz
 cd solr-7.7.3
 ```
 
