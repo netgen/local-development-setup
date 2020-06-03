@@ -11,14 +11,13 @@ dynamically resolved.
 brew install dnsmasq
 ```
 
-**Step 2**: Create configuration file:
+**Step 2**: Update configuration file:
 
 ```bash
-touch /usr/local/etc/dnsmasq.conf
 subl /usr/local/etc/dnsmasq.conf
 ```
 
-Paste into the editor the following content and save:
+Replace the existing configuration with the following content and save:
 
 ```bash
 no-resolv
@@ -37,13 +36,15 @@ address=/php84/127.0.0.1
 address=/sf/127.0.0.1
 ```
 
+Default configuration will still be available for reference in
+`/usr/local/etc/dnsmasq.conf.default`.
+
 **Step 3**: Add DNS resolver configuration for your custom top-level domains
 
 ```bash
 sudo mkdir -v /etc/resolver
 cd /etc/resolver
-sudo touch ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 sf
-echo "nameserver 127.0.0.1" | sudo tee -a /etc/resolver/* > /dev/null
+echo "nameserver 127.0.0.1" | sudo tee ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 sf > /dev/null
 ```
 
 **Step 4**: Start `dnsmasq` service as root
@@ -52,14 +53,22 @@ echo "nameserver 127.0.0.1" | sudo tee -a /etc/resolver/* > /dev/null
 sudo brew services start dnsmasq
 ```
 
-**Step 5**: Test resolving by pinging a bogus domain on your custom top-level
+**Step 5**: Add `127.0.0.1` as a DNS server to your network connections
+
+Open Network configuration in System Preferences, click Advanced on your network
+connection, select DNS tab and add `127.0.0.1` as a DNS server.
+
+Repeat this with all network connections you are using to connect to the
+Internet, skipping VPN connections.
+
+**Step 6**: Test resolving by pinging a bogus domain on your custom top-level
 domain:
 
 ```bash
 ping asdfghjkl.sf
 ```
 
-You should get a response from 127.0.0.1:
+You should get a response from `127.0.0.1`:
 
 ```bash
 PING asdfghjkl.sf (127.0.0.1): 56 data bytes
