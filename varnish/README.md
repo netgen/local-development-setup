@@ -33,8 +33,12 @@ make
 sudo make install
 ```
 
-Once the process has finished, start the `Varnish` in the foreground with:
+Once the process has finished, start the `Varnish` in the foreground and on the
+port 8081, replacing the example path to VCL with correct one for the project:
 
 ```console
-varnishd -f /Users/brale/varnish-cache-varnish-6.0.6/etc/example.vcl -a :8081 -s malloc,256M -F
+varnishd -f /path/to/configuration.vcl -a :8081 -s malloc,256M -F
 ```
+
+If needed you can adjust the amount of memory given to the `Varnish` server
+(256M in the above example).
