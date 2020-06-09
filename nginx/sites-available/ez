@@ -57,7 +57,7 @@ server {
         # Optional: Whether to use Symfony's builtin HTTP Caching Proxy.
         # Disable it if you are using an external reverse proxy (e.g. Varnish)
         # Possible values: 0 or 1
-        # Defaults to 1 if omitted, unless SYMFONY_ENV is set to: "dev"
+        # Defaults to turned off for all environments
         # Symfony <4
         fastcgi_param SYMFONY_HTTP_CACHE "0";
         # Symfony >=4
