@@ -12,13 +12,14 @@ RCS.
 
 Create `ssl` directory if needed.
 
-**Step 2**: Write down you chosen password
+**Step 2**: Write down your chosen password
 
-Write down your chosen password in `password.txt` file in case you need to
-generate new server certificate using the same RCA later on.
+Write down your chosen password in `/usr/local/etc/nginx/ssl/password.txt` file
+in case you need to generate new server certificate using the same RCA later on.
 
-**Step 3**: Create RCA configuration file named `root.conf` with the following
-content:
+**Step 3**: Create RCA configuration
+
+Create `/usr/local/etc/nginx/ssl/root.conf` file with the following content:
 
 ```dosini
 [req]
@@ -38,8 +39,9 @@ basicConstraints=critical,CA:true,pathlen:0
 keyUsage=critical,keyCertSign,cRLSign
 ```
 
-**Step 4**: Create server certificate configuration file named `server.conf`
-with the following content:
+**Step 4**: Create server certificate configuration
+
+Create `/usr/local/etc/nginx/ssl/server.conf` file with the following content:
 
 ```dosini
 [req]
