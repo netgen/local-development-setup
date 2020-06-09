@@ -2,7 +2,7 @@
 set $_install_dir _invalid_host_format;
 set $_base_path /var/www;
 set $_php_socket unix:/var/run/php74-fpm.sock;
-set $_symfony_environment dev;
+set $_environment dev;
 
 # Symfony <4
 set $_public_dir web;
@@ -11,7 +11,7 @@ set $_front_controller app.php;
 # Map values from host
 if ($host ~ "^(.*)\.(.*)\.php([0-9]*)\..*$") {
     set $_install_dir $1;
-    set $_symfony_environment $2;
+    set $_environment $2;
     set $_php_socket unix:/var/run/php$3-fpm.sock;
 }
 

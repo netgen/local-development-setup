@@ -4,7 +4,7 @@ server {
 
     server_name .sf;
 
-    include conf.d/symfony/host_resolver;
+    include conf.d/host_resolver;
 
     root $_root;
 
@@ -15,13 +15,13 @@ server {
     rewrite "^(.*)$" "/$_front_controller$1" last;
 
     location ~ ^/(app|index)\.php(/|$) {
-        include conf.d/symfony/fastcgi;
+        include conf.d/fastcgi;
 
         fastcgi_pass $_php_socket;
 
         # SF <4
-        fastcgi_param SYMFONY_ENV $_symfony_environment;
+        fastcgi_param SYMFONY_ENV $_environment;
         # SF >=4
-        fastcgi_param APP_ENV $_symfony_environment;
+        fastcgi_param APP_ENV $_environment;
     }
 }
