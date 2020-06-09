@@ -59,9 +59,9 @@ server {
         # Possible values: 0 or 1
         # Defaults to 1 if omitted, unless SYMFONY_ENV is set to: "dev"
         # Symfony <4
-        #fastcgi_param SYMFONY_HTTP_CACHE "";
+        fastcgi_param SYMFONY_HTTP_CACHE "0";
         # Symfony >=4
-        #fastcgi_param APP_HTTP_CACHE "";
+        fastcgi_param APP_HTTP_CACHE "0";
 
         # Optional: Whether to use custom HTTP Cache class if SYMFONY_HTTP_CACHE is enabled
         # Value must be na autoloadable cache class
@@ -73,9 +73,9 @@ server {
         # Separate entries by a comma, example: "proxy1.example.com,proxy2.example.org"
         # Defaults to not be set if env value is omitted or empty
         # Symfony <4
-        #fastcgi_param SYMFONY_TRUSTED_PROXIES "";
+        fastcgi_param SYMFONY_TRUSTED_PROXIES "127.0.0.1";
         # Symfony >=4
-        #fastcgi_param TRUSTED_PROXIES "";
+        fastcgi_param TRUSTED_PROXIES "127.0.0.1";
     }
 
     # Disable .php(3) and other executable extensions in the var directory
