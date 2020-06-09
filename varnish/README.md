@@ -30,16 +30,11 @@ Now you can execute the following to compile `Varnish` binaries:
 ./autogen.sh
 ./configure
 make
+sudo make install
 ```
 
-Once the binaries are built, start the `Varnish` with:
+Once the process has finished, start the `Varnish` in the foreground with:
 
 ```console
-./bin/varnishd/varnishd -f /Users/brale/varnish-cache-varnish-6.0.6/etc/example.vcl -a :8081 -s malloc,256M -d
-```
-
-In the `Varnish` console, type start to start the child process (todo automatic):
-
-```shell script
-start
+varnishd -f /Users/brale/varnish-cache-varnish-6.0.6/etc/example.vcl -a :8081 -s malloc,256M -F
 ```
