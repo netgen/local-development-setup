@@ -15,3 +15,4 @@ Follow the steps in this order:
 1. [rabbitmq](rabbitmq)
 1. [mailhog](mailhog)
 1. [varnish](varnish)
+1. [node](node)
