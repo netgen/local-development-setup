@@ -24,7 +24,7 @@ brew info automake
 brew install automake
 ```
 
-Now you can execute the following to compile `Varnish` binaries:
+Execute the following to compile and install `Varnish` binaries:
 
 ```console
 ./autogen.sh
@@ -33,12 +33,34 @@ make
 sudo make install
 ```
 
-Once the process has finished, start the `Varnish` in the foreground and on the
-port 8081, replacing the example path to VCL with correct one for the project:
+Aside from standard `Varnish` installation, you'll need `xkey` module as well.
+Clone modules repository into your home directory, position into it and checkout
+branch `6.0-lts`:
+
+```console
+git clone https://github.com/varnish/varnish-modules.git
+cd varnish-modules
+git checkout 6.0-lts
+```
+
+Execute the following to compile and install module binaries:
+
+```console
+./configure
+make
+sudo make install
+```
+
+Once the process has finished, start the `Varnish` in the foreground on the port
+8081, replacing the example path to VCL with correct one for the project:
 
 ```console
 varnishd -f /path/to/configuration.vcl -a :8081 -s malloc,256M -F
 ```
 
+With these options, configure `purge_server` in your eZ Platform installation to
+`http://localhost:8081`.
+
 If needed you can adjust the amount of memory given to the `Varnish` server
-(256M in the above example).
+(256M in the above example). Stop the `Varnish` server when needed with
+`Control-C`.
