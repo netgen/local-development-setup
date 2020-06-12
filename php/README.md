@@ -63,6 +63,10 @@ group = staff
 listen = /var/run/php74-fpm.sock
 listen.owner = brale
 listen.group = staff
+pm = ondemand
+pm.max_children = 2
+pm.process_idle_timeout = 15m
+pm.max_requests = 128
 pm.status_path = /status
 ping.path = /ping
 ping.response = "pong"
@@ -75,7 +79,7 @@ file and do not create duplicate entries.
 Note: Configuration files use `;` character as a comment, so make sure you
 remove it as needed.
 
-### Optionally optimize PHP-FPM to limit resource consumption
+### PHP-FPM resource consumption
 
 Main PHP-FPM manager process takes up a small amount of memory, but spawned
 workers can take up to few hundred megabytes, depending on the application that
@@ -83,13 +87,6 @@ was executed. To see how many worker processes are active and how much memory
 they use you can check the list of processes (`ps` or `pstree` on the command
 line), or open the PHP-FPM status page for the specific PHP version, for example
 https://home.php73/status?full&html.
-
-If you don't have enough hardware resources, configure `pm` setting to
-`ondemand` and corresponding `pm.process_idle_timeout` to something like `15m`.
-That will ensure that worker processes get killed after idling for 15 minutes,
-and started again automatically when needed. When that happens, first request
-will be few hundred milliseconds slower, but subsequent requests will reuse
-existing workers without process initialization penalty.
 
 ## Configure PHP
 
@@ -136,7 +133,7 @@ upgrades.
 
 You can now start PHP services.
 
-Remember to restart them after changing PHP's configuration in the future.
+Remember to restart them after changing PHP configuration in the future.
 
 ```console
 sudo brew services restart php@7.4
