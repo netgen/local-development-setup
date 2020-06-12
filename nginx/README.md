@@ -12,7 +12,7 @@ installation.
 First, copy the files to `/usr/local/etc/nginx`. Create a new directory
 `sites-enabled` and symlink to it all files from `site-available` directory.
 
-Now open [SSL](nginx/ssl) and complete the instructions there, then return here
+Now open [SSL](ssl) and complete the instructions there, then return here
 and continue with instructions below.
 
 Once you finished configuring SSL, start `NGINX` server with:
