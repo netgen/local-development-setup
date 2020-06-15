@@ -5,19 +5,25 @@ resolve all your custom top-level domains to `127.0.0.1`. With it, you won’t
 need to update `/etc/hosts` file to add new host names as they will be
 dynamically resolved.
 
-**Step 1**: Install `dnsmasq` through `brew`:
+## 1. Install `dnsmasq`
+
+## 1.1 Install on `MacOS` using `Homebrew`
 
 ```bash
 brew install dnsmasq
 ```
 
-**Step 2**: Update configuration file:
+## 1.2 Install on `MacOS` using `MacPorts`
 
 ```bash
-subl /usr/local/etc/dnsmasq.conf
+sudo port install dnsmasq
 ```
 
-Replace the existing configuration with the following content and save:
+## 2. Update configuration file
+
+Edit configuration file `/opt/local/etc/dnsmasq.conf` (`MacPorts`) or
+`/usr/local/etc/dnsmasq.conf` (`Homebrew`) and replace the existing
+configuration with the following content:
 
 ```bash
 no-resolv
@@ -37,9 +43,10 @@ address=/sf/127.0.0.1
 ```
 
 Default configuration will still be available for reference in
-`/usr/local/etc/dnsmasq.conf.default`.
+`/opt/local/etc/dnsmasq.conf.example` (`MacPorts`) or
+`/usr/local/etc/dnsmasq.conf.default` (`Homebrew`).
 
-**Step 3**: Add DNS resolver configuration for your custom top-level domains
+## 3. Add DNS resolver configuration for your custom top-level domains
 
 ```bash
 sudo mkdir -v /etc/resolver
@@ -47,22 +54,29 @@ cd /etc/resolver
 echo "nameserver 127.0.0.1" | sudo tee ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 sf > /dev/null
 ```
 
-**Step 4**: Start `dnsmasq` service as root
+## 4. Start `dnsmasq` service
+
+### 4.1 If installed using `MacPorts`
+
+```bash
+sudo port load dnsmasq
+```
+
+### 4.1 If installed using `Homebrew`
 
 ```bash
 sudo brew services start dnsmasq
 ```
 
-**Step 5**: Add `127.0.0.1` as a DNS server to your network connections
+## 5. Add `127.0.0.1` as a DNS server to your network connections
 
 Open Network configuration in System Preferences, click Advanced on your network
 connection, select DNS tab and add `127.0.0.1` as a DNS server.
 
 Repeat this with all network connections you are using to connect to the
-Internet, skipping VPN connections.
+Internet, excluding VPN connections.
 
-**Step 6**: Test resolving by pinging a bogus domain on your custom top-level
-domain:
+## 6. Test resolving by pinging a bogus domain on your custom top-level domain
 
 ```bash
 ping asdfghjkl.sf
