@@ -29,6 +29,8 @@ Select wanted PHP version as default with:
 sudo port select php php73
 ```
 
+This PHP version will be available from the command line as `php`.
+
 ### 1.2 Install multiple PHP versions using `Homebrew`
 
 Install PHP 7.4, 7.3 and 7.2 using `brew` from the official *tap*:
@@ -211,8 +213,6 @@ php56 -v
 
 You can now start PHP services.
 
-Remember to restart them after changing PHP configuration in the future.
-
 ### 5.1 Start PHP-FPM services if installed using `Homebrew`
 
 ```console
@@ -226,6 +226,12 @@ sudo brew services start php@5.6
 
 This will also ensure that `PHP-FPM` server starts automatically after a reboot.
 
+Remember to restart them after changing PHP configuration in the future with:
+
+```console
+sudo brew services restart php@x.x
+```
+
 ### 5.2 Start PHP-FPM services if installed using `MacPorts`
 
 ```console
@@ -238,6 +244,12 @@ sudo port load php56-fpm
 ```
 
 This will also ensure that `PHP-FPM` server starts automatically after a reboot.
+
+Remember to restart them after changing PHP configuration in the future with:
+
+```console
+sudo port reload phpxx-fpm
+```
 
 ## 6. Install specific PHP extensions
 
