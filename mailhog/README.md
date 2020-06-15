@@ -9,7 +9,7 @@ containing `darwin` in its name). If you go that way, put the downloaded binary
 as `mailhog` to the appropriate place that is configured in your `PATH`
 environment variable, usually `bin` directory in your home directory.
 
-You can also install it using `brew`:
+You can also install it using `Homebrew`:
 
 ```console
 brew install mailhog
