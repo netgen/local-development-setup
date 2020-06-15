@@ -7,13 +7,13 @@ dynamically resolved.
 
 ## 1. Install `dnsmasq`
 
-## 1.1 Install on `MacOS` using `Homebrew`
+### 1.1 Install on `MacOS` using `Homebrew`
 
 ```bash
 brew install dnsmasq
 ```
 
-## 1.2 Install on `MacOS` using `MacPorts`
+### 1.2 Install on `MacOS` using `MacPorts`
 
 ```bash
 sudo port install dnsmasq
