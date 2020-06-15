@@ -29,15 +29,13 @@ Select wanted PHP version as default with:
 sudo port select php php73
 ```
 
-### 1.2 Install PHP versions 7.4, 7.3 and 7.2 using `Homebrew`
+### 1.2 Install multiple PHP versions using `Homebrew`
 
 Install PHP 7.4, 7.3 and 7.2 using `brew` from the official *tap*:
 
 ```console
 brew install php php@7.3 php@7.2
 ```
-
-### 1.3 Install PHP versions and 7.1, 7.0 and 5.6 using `Homebrew`
 
 PHP versions 7.1, 7.0 and 5.6 are available in `exolnet/homebrew-deprecated`
 *tap*. First register this *tap* with your local `brew` installation with:
