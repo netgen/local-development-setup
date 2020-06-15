@@ -2,25 +2,57 @@
 
 Here you will install and configure MySQL database server.
 
-**Step 1**: Install MySQL server using `brew`
+## 1. Install and start `MySQL` server
 
-Execute the following on the command line:
+### 1.1 Install on Mac using `Homebrew`
+
+To install `MySQL` server using `Homebrew` execute the following on the command
+line:
 
 ```console
 brew install mysql
 ```
 
-**Step 2**: Start MySQL server usign `brew`
-
-Execute the following on the command line:
+Now start `MySQL` server by executing:
 
 ```console
 brew services start mysql
 ```
 
-This will also ensure that MySQL server starts automatically after a reboot.
+This will also ensure that `MySQL` server starts automatically after a reboot.
 
-**Step 3**: Set up `root` user password and disallow the remote login
+### 1.2 Install on Mac using `MacPorts`
+
+To install `MySQL` server using `MacPorts` execute the following on the command
+line:
+
+```console
+sudo port install mysql8-server
+```
+
+Select `mysql8` as your preferred version of `MySQL` with:
+
+```console
+sudo port select mysql mysql8
+```
+
+Now initialize the server with:
+
+```console
+sudo /opt/local/lib/mysql8/bin/mysqld --initialize --user=_mysql
+```
+
+Take note of the generated `root` password.
+
+Now you can start the server with:
+
+```console
+sudo port load mysql8-server
+```
+
+This will also ensure that `MySQL` server starts automatically after a reboot.
+
+## 2. Secure the installation
 
 Execute the following on the command line:
 
@@ -28,10 +60,35 @@ Execute the following on the command line:
 mysql_secure_installation
 ```
 
-Follow the instructions to configure `root` as password for the `root` user and
-disallow the remote login. That will be sufficient for local development needs.
+Follow the instructions to configure `root` as password for the `root` user. If
+`MySQL` was installed using `MacPorts`, enter the password generated at the
+initialization.
 
-**Step 4**: Test that server is up and running
+Additionally, follow the instructions to skip setting up VALIDATE PASSWORD
+component, remove anonymous users and test databases and disallow the remote
+login for `root`. That will be sufficient for local development needs.
+
+## 3. Configure the server
+
+Note: this step is necessary only if `MacPorts` was used to install the `MySQL`
+server.
+
+Edit file `/opt/local/etc/mysql8/my.cnf`, remove the line including the default
+MacPorts settings and add the following configuration.
+
+```dosini
+[mysqld]
+basedir="/opt/local"
+bind-address=127.0.0.1
+```
+
+Now reload the server with:
+
+```console
+sudo port reload mysql8-server
+```
+
+## 4. Test that server is up and running
 
 Log into the server by executing the following on the command line:
 
@@ -45,7 +102,6 @@ arrive at the MySQL command-line client:
 ```text
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 49
-Server version: 8.0.19 Homebrew
 
 Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
 
@@ -58,7 +114,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql>
 ```
 
-**Step 5**: Limit the size of binary logs
+## 5. Limit the size of binary logs
 
 On the `mysql` prompt, execute the following to set binary log expiry to 1 day:
 
@@ -69,10 +125,13 @@ SET PERSIST binlog_expire_logs_seconds=86400;
 
 You can now type `exit` to exit the MySQL command-line client.
 
-With that you've finished installing and configuring your MySQL server.
-
-## Tips
+## 6. Install a GUI client for `MySQL`
 
 You will probably want a graphical UI client to work with the database server.
 For MacOS, [TablePlus](https://tableplus.com/) is a good choice, offering
 unlimited free trial with reasonable limitations for light use.
+
+Install the client and configure the connection to your `MySQL` server.
+
+If the connection works, you've finished installing and configuring your MySQL
+server.
