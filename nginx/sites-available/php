@@ -1,0 +1,37 @@
+server {
+    listen 127.0.0.1:443 ssl;
+    listen 127.0.0.1:8082;
+
+    server_name .php84 .php83 .php82 .php81 .php80 .php74 .php73 .php72 .php71 .php70 .php56;
+
+    set $_install_dir $host;
+    set $_php_socket unix:/var/run/php74-fpm.sock;
+    set $_php_version 74;
+
+    if ($host ~ "^(.*)\.php(84|83|82|81|80|74|73|72|71|70|56)$") {
+        set $_install_dir $1;
+        set $_php_version $2;
+    }
+
+    root /var/www/$_install_dir;
+    access_log /opt/local/var/log/nginx/access.php$_php_version.$_install_dir.log main;
+    error_log /opt/local/var/log/nginx/error.php.log error;
+
+    location ~ \.php$ {
+        try_files $uri = 404;
+        fastcgi_pass unix:/var/run/php$_php_version-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_read_timeout 300;
+        include fastcgi.conf;
+    }
+
+    location ~ ^/(status|ping)$ {
+        access_log off;
+        allow 127.0.0.1;
+        deny all;
+        include fastcgi.conf;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_pass unix:/var/run/php$_php_version-fpm.sock;
+    }
+}
