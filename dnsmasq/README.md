@@ -62,11 +62,15 @@ echo "nameserver 127.0.0.1" | sudo tee ez php56 php70 php71 php72 php73 php74 ph
 sudo port load dnsmasq
 ```
 
+This will also ensure that `dnsmasq` server starts automatically after a reboot.
+
 ### 4.1 If installed using `Homebrew`
 
 ```bash
 sudo brew services start dnsmasq
 ```
+
+This will also ensure that `dnsmasq` server starts automatically after a reboot.
 
 ## 5. Add `127.0.0.1` as a DNS server to your network connections
 
