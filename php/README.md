@@ -251,9 +251,12 @@ Remember to restart them after changing PHP configuration in the future with:
 sudo port reload phpxx-fpm
 ```
 
-## 6. Install specific PHP extensions
+## 6. Install PHP extensions
 
-### 6.1 Install specific PHP extensions using `MacPorts`
+Installed PHP will come with built-in extension, but if your project requires
+additional extensions, these have to be installed separately.
+
+### 6.1 Install PHP extensions using `MacPorts`
 
 `MacPorts` already provides installable PHP extensions, find them for a
 particular PHP version by executing:
