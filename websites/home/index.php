@@ -77,6 +77,7 @@ header("Cache-Control: no-cache, must-revalidate");
         <li>PHP 7.3 <a href="https://phpinfo.php73">info</a> | <a href="https://home.php73/status?full&html">status</a></li>
         <li>PHP 7.2 <a href="https://phpinfo.php72">info</a> | <a href="https://home.php72/status?full&html">status</a></li>
         <li>PHP 7.1 <a href="https://phpinfo.php71">info</a> | <a href="https://home.php71/status?full&html">status</a></li>
+        <li>PHP 7.0 <a href="https://phpinfo.php71">info</a> | <a href="https://home.php70/status?full&html">status</a></li>
         <li>PHP 5.6 <a href="https://phpinfo.php56">info</a> | <a href="https://home.php56/status?full&html">status</a></li>
         <li><a href="http://0.0.0.0:8025">MailHog</a> <span class="hint">start it when needed with <code>mailhog</code></span></li>
         <li><a href="http://localhost:15672">RabbitMQ</a> <span class="hint">start it when needed with <code>rabbitmq-server</code></span></li>
