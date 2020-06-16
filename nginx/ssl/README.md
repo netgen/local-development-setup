@@ -8,18 +8,18 @@ additionally generated server certificates get automatically validated by the
 browser without defining exceptions or importing them into operating system's
 RCS.
 
-**Step 1**: Position into `/usr/local/etc/nginx/ssl` directory
+**Step 1**: Position into `/opt/local/etc/nginx/ssl` directory
 
 Create `ssl` directory if needed.
 
 **Step 2**: Write down your chosen password
 
-Write down your chosen password in `/usr/local/etc/nginx/ssl/password.txt` file
+Write down your chosen password in `/opt/local/etc/nginx/ssl/password.txt` file
 in case you need to generate new server certificate using the same RCA later on.
 
 **Step 3**: Create RCA configuration
 
-Create `/usr/local/etc/nginx/ssl/root.conf` file with the following content:
+Create `/opt/local/etc/nginx/ssl/root.conf` file with the following content:
 
 ```dosini
 [req]
@@ -41,7 +41,7 @@ keyUsage=critical,keyCertSign,cRLSign
 
 **Step 4**: Create server certificate configuration
 
-Create `/usr/local/etc/nginx/ssl/server.conf` file with the following content:
+Create `/opt/local/etc/nginx/ssl/server.conf` file with the following content:
 
 ```dosini
 [req]
@@ -132,19 +132,19 @@ DNS.66=*.prod.php56.sf
 **Step 5**: Create RCA certificate (3650 days means it will be valid for 10 years) and private key with your chosen password:
 
 ```console
-openssl req -x509 -new -days 3650 -keyout root.key -out root.crt -config root.conf
+sudo openssl req -x509 -new -days 3650 -keyout root.key -out root.crt -config root.conf
 ```
 
 **Step 6**: Create server certificate signing request:
 
 ```console
-openssl req -nodes -new -keyout server.key -out server.csr -config server.conf
+sudo openssl req -nodes -new -keyout server.key -out server.csr -config server.conf
 ```
 
 **Step 7**: Create server certificate and its private key (825 days is maximum allowed end-entity certificate validity), providing your chosen password:
 
 ```console
-openssl x509 -sha256 -req -days 825 -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext
+sudo openssl x509 -sha256 -req -days 825 -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext
 ```
 
 **Step 8**: Register RCA certificate with MacOS RCS (System Keychain):

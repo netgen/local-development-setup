@@ -9,7 +9,7 @@ brew install nginx
 Once `NGINX` is installed, use files given in this directory to configure the
 installation.
 
-First, copy the files to `/usr/local/etc/nginx`. Create a new directory
+First, copy the files to `/opt/local/etc/nginx`. Create a new directory
 `sites-enabled` and symlink to it all files from `site-available` directory.
 
 Now open [SSL](ssl) and complete the instructions there, then return here

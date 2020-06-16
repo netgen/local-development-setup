@@ -8,8 +8,8 @@ server {
 
     root $_root;
 
-    access_log /usr/local/etc/nginx/logs/access.sf.$_install_dir.log main;
-    error_log /usr/local/etc/nginx/logs/error.sf.log error;
+    access_log /opt/local/var/log/nginx/access.sf.$_install_dir.log main;
+    error_log /opt/local/var/log/nginx/error.sf.log error;
 
     rewrite "^/bundles/(.*)" "/bundles/$1" break;
     rewrite "^(.*)$" "/$_front_controller$1" last;
