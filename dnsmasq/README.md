@@ -5,21 +5,21 @@ resolve all your custom top-level domains to `127.0.0.1`. With it, you won’t
 need to update `/etc/hosts` file to add new host names as they will be
 dynamically resolved.
 
-## 1. Install `dnsmasq`
+## 1 Install `dnsmasq`
 
-### 1.1 Install on `MacOS` using `Homebrew`
+### 1.1 If using `MacOS` with `Homebrew`
 
 ```bash
 brew install dnsmasq
 ```
 
-### 1.2 Install on `MacOS` using `MacPorts`
+### 1.2 If using `MacOS` with `MacPorts`
 
 ```bash
 sudo port install dnsmasq
 ```
 
-## 2. Update configuration file
+## 2 Update configuration file
 
 Edit configuration file `/opt/local/etc/dnsmasq.conf` (`MacPorts`) or
 `/usr/local/etc/dnsmasq.conf` (`Homebrew`) and replace the existing
@@ -46,7 +46,7 @@ Default configuration will still be available for reference in
 `/opt/local/etc/dnsmasq.conf.example` (`MacPorts`) or
 `/usr/local/etc/dnsmasq.conf.default` (`Homebrew`).
 
-## 3. Add DNS resolver configuration for your custom top-level domains
+## 3 Add DNS resolver configuration for your custom top-level domains
 
 ```bash
 sudo mkdir -v /etc/resolver
@@ -54,25 +54,25 @@ cd /etc/resolver
 echo "nameserver 127.0.0.1" | sudo tee ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 sf > /dev/null
 ```
 
-## 4. Start `dnsmasq` service
+## 4 Start `dnsmasq` service
 
-### 4.1 If installed using `MacPorts`
+### 4.1 If using `MacOS` with `MacPorts`
 
 ```bash
 sudo port load dnsmasq
 ```
 
-This will also ensure that `dnsmasq` server starts automatically after a reboot.
+This will also start the server automatically after a reboot.
 
-### 4.1 If installed using `Homebrew`
+### 4.1 If using `MacOS` with `Homebrew`
 
 ```bash
 sudo brew services start dnsmasq
 ```
 
-This will also ensure that `dnsmasq` server starts automatically after a reboot.
+This will also start the server automatically after a reboot.
 
-## 5. Add `127.0.0.1` as a DNS server to your network connections
+## 5 Add `127.0.0.1` as a DNS server to your network connections
 
 Open Network configuration in System Preferences, click Advanced on your network
 connection, select DNS tab and add `127.0.0.1` as a DNS server.
@@ -80,7 +80,7 @@ connection, select DNS tab and add `127.0.0.1` as a DNS server.
 Repeat this with all network connections you are using to connect to the
 Internet, excluding VPN connections.
 
-## 6. Test resolving by pinging a bogus domain on your custom top-level domain
+## 6 Test resolving by pinging a bogus domain on your custom top-level domain
 
 ```bash
 ping asdfghjkl.sf
