@@ -7,5 +7,3 @@ nginx/ssl/server.conf
 nginx/ssl/server.crt
 nginx/ssl/server.key
 nginx/ssl/server.csr
-websites/home/index.php
-websites/home/style.css
