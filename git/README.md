@@ -1,5 +1,7 @@
 # Install and configure `Git` version control system
 
+## 1 Create `git` configuration
+
 Create `.gitconfig` file in your home directory with the following content:
 
 ```dosini
@@ -37,13 +39,23 @@ Create `.gitignore` file in your home directory with the following content:
 .idea
 ```
 
-Now install newer version of `git` using `brew`:
+## 2 Install newer version of `git`
+
+### 2.1 If using `MacOS` with `MacPorts`
+
+```console
+sudo port install git
+```
+
+### 2.2 If using `MacOS` with `Homebrew`
 
 ```console
 brew install git
 ```
 
-Once `git` is installed, check your configuration is active by executing:
+## 3 Verify configuration
+
+Check your configuration is active by executing:
 
 ```console
 git config --list
@@ -51,7 +63,7 @@ git config --list
 
 In the command output you should see your configuration data.
 
-## Tips
+# Tips
 
 * You can maintain your own private ignore file through `.git/info/exclude` file
 found in your project directory.
