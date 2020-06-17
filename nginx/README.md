@@ -1,4 +1,4 @@
-# Install and configure `NGINX` web server
+# Set up `NGINX` web server
 
 ## 1 Install
 

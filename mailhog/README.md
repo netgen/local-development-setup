@@ -1,4 +1,4 @@
-# Install `MailHog` development SMTP server
+# Set up `MailHog` development SMTP server
 
 `MailHog` is a simple development SMPT server that can be used to test sending
 of emails.

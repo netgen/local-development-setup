@@ -1,4 +1,4 @@
-# Install and configure `Varnish` reverse HTTP proxy
+# Set up `Varnish` reverse HTTP proxy
 
 Since `Varnish` is not widely available in all necessary versions, here you will
 compile it from downloaded source.

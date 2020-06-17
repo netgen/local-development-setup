@@ -1,4 +1,4 @@
-# Install and configure PHP
+# Set up PHP
 
 Here you will install multiple versions of PHP and configure them to run in FPM
 mode.
