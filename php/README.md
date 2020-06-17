@@ -151,6 +151,7 @@ following configuration options:
 ```ini
 date.timezone = Europe/Zagreb
 session.gc_maxlifetime = 86400
+memory_limit = 256M
 ```
 
 **Note**: Configuration files use `;` character as a comment, so make sure you
