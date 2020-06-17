@@ -16,13 +16,20 @@ and follow the instructions to install that one as well.
 
 ## 1 Install
 
-### 1.1 Install multiple PHP versions using MacPorts
+### 1.1 If using MacOS with MacPorts
+
+Execute on the command line:
 
 ```console
-sudo port install php74-fpm php73-fpm php72-fpm php71-fpm php70-fpm php56-fpm
+sudo port install php74-fpm php74-imagick php74-curl php74-opcache
+sudo port install php73-fpm php73-imagick php73-curl php73-opcache
+sudo port install php72-fpm php72-imagick php72-curl php72-opcache
+sudo port install php71-fpm php71-imagick php71-curl php71-opcache
+sudo port install php70-fpm php70-imagick php70-curl php70-opcache
+sudo port install php56-fpm php56-imagick php56-curl php56-opcache
 ```
 
-Select wanted PHP version as default with:
+Select desired default PHP version:
 
 ```console
 sudo port select php php73
@@ -30,7 +37,7 @@ sudo port select php php73
 
 This PHP version will be available from the command line as `php`.
 
-### 1.2 Install multiple PHP versions using Homebrew
+### 1.2 If using MacOS with Homebrew
 
 Install PHP 7.4, 7.3 and 7.2 using Homebrew from the official *tap*:
 
@@ -233,6 +240,12 @@ Remember to restart them after changing PHP configuration in the future with:
 sudo brew services restart php@x.x
 ```
 
+To stop the server and prevent it from running after a reboot, execute:
+
+```console
+sudo brew services stop phpxx-fpm
+```
+
 ### 5.2 Start PHP-FPM services if installed using MacPorts
 
 ```console
@@ -250,6 +263,12 @@ Remember to restart them after changing PHP configuration in the future with:
 
 ```console
 sudo port reload phpxx-fpm
+```
+
+To stop the server and prevent it from running after a reboot, execute:
+
+```console
+sudo port unload phpxx-fpm
 ```
 
 ## 6. Install PHP extensions
