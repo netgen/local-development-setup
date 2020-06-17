@@ -6,13 +6,15 @@ compile it from downloaded source.
 Download the required `Varnish` source from GitHub to your home directory:
 
 ```console
-cd ~
+mkdir ~/varnish
+cd ~/varnish
 wget https://github.com/varnishcache/varnish-cache/archive/varnish-6.0.6.tar.gz
 ```
 
 Extract the downloaded archive and position into it:
 
 ```console
+cd ~/varnish
 tar xzf varnish-6.0.6.tar.gz
 cd varnish-cache-varnish-6.0.6
 ```
@@ -27,6 +29,7 @@ brew install automake
 Execute the following to compile and install `Varnish` binaries:
 
 ```console
+cd ~/varnish/varnish-cache-varnish-6.0.6
 ./autogen.sh
 ./configure
 make
@@ -38,6 +41,7 @@ Clone modules repository into your home directory, position into it and checkout
 branch `6.0-lts`:
 
 ```console
+cd ~/varnish
 git clone https://github.com/varnish/varnish-modules.git
 cd varnish-modules
 git checkout 6.0-lts
@@ -46,12 +50,13 @@ git checkout 6.0-lts
 Execute the following to compile and install module binaries:
 
 ```console
+cd ~/varnish/varnish-modules
 ./configure
 make
 sudo make install
 ```
 
-Once the process has finished, start the `Varnish` in the foreground on the port
+Once the process has finished, start the server in the foreground on the port
 8081, replacing the example path to VCL with correct one for the project:
 
 ```console
@@ -62,5 +67,4 @@ With these options, configure `purge_server` in your eZ Platform installation to
 `http://localhost:8081`.
 
 If needed you can adjust the amount of memory given to the `Varnish` server
-(256M in the above example). Stop the `Varnish` server when needed with
-`Control-C`.
+(256M in the above example). Stop the server when needed with `Control-C`.
