@@ -21,12 +21,12 @@ and follow the instructions to install that one as well.
 Execute on the command line:
 
 ```console
-sudo port install php74-fpm php74-imagick php74-curl php74-opcache
-sudo port install php73-fpm php73-imagick php73-curl php73-opcache
-sudo port install php72-fpm php72-imagick php72-curl php72-opcache
-sudo port install php71-fpm php71-imagick php71-curl php71-opcache
-sudo port install php70-fpm php70-imagick php70-curl php70-opcache
-sudo port install php56-fpm php56-imagick php56-curl php56-opcache
+sudo port install php74-fpm php74-imagick php74-curl php74-opcache php74-mbstring php74-xsl php74-intl
+sudo port install php73-fpm php73-imagick php73-curl php73-opcache php73-mbstring php73-xsl php73-intl
+sudo port install php72-fpm php72-imagick php72-curl php72-opcache php72-mbstring php72-xsl php72-intl
+sudo port install php71-fpm php71-imagick php71-curl php71-opcache php71-mbstring php71-xsl php71-intl
+sudo port install php70-fpm php70-imagick php70-curl php70-opcache php70-mbstring php70-xsl php70-intl
+sudo port install php56-fpm php56-imagick php56-curl php56-opcache php56-mbstring php56-xsl php56-intl
 ```
 
 Select desired default PHP version:
