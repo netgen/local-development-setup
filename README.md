@@ -9,6 +9,7 @@ Follow the steps in this order:
 1. [Git](git)
 1. [PHP](php)
 1. [dnsmasq](dnsmasq)
+1. [SSL](ssl)
 1. [NGINX](nginx)
 1. [MySQL](mysql)
 1. [Redis](redis)
