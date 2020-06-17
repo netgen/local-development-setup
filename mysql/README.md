@@ -91,7 +91,7 @@ login for `root`. That will be sufficient for local development needs.
 
 ## 4 Configure
 
-**Note**: this step is necessary only you are using MacOS with MacPorts.
+### 4.1 If using MacOS with MacPorts
 
 Edit file `/opt/local/etc/mysql8/my.cnf`, remove or comment out the line
 including the default MacPorts settings and add the following configuration.
@@ -100,9 +100,25 @@ including the default MacPorts settings and add the following configuration.
 [mysqld]
 basedir="/opt/local"
 bind-address=127.0.0.1
+binlog_expire_logs_seconds=86400
 ```
 
 Now reload the server with:
+
+```console
+sudo port reload mysql8-server
+```
+
+### 4.2 If using MacOS with Homebrew
+
+Edit file `/usr/local/etc/my.cnf` and add the following line in the `[mysqld]`
+section:
+
+```dosini
+binlog_expire_logs_seconds=86400
+```
+
+Now reload the server by executing on the command line:
 
 ```console
 sudo port reload mysql8-server
@@ -136,18 +152,19 @@ mysql>
 
 Do not exit the client as you will need it in the next step.
 
-## 5 Configure again
+## 5 Create admin user
 
-MySQL will create binary log files that take up valuable disk space, but are
-not really needed for local development. Set binary logs to expire after one day
-by executing on the `mysql>` prompt:
+To avoid MySQL resetting the password authentication method after an upgrade,
+create a new user `admin` with password `admin` that will be used to access the
+server.
+
+Execute on the `mysql>` command line:
 
 ```console
-SET GLOBAL binlog_expire_logs_seconds=86400;
-SET PERSIST binlog_expire_logs_seconds=86400;
+CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY 'admin';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
 ```
-
-You can now type `exit` to exit the MySQL command-line client.
 
 ## 6 Install a GUI client
 
@@ -155,6 +172,6 @@ You will probably want a graphical UI client to work with the database server.
 For MacOS, [TablePlus](https://tableplus.com/) is a good choice, offering
 unlimited free trial with reasonable limitations for light use.
 
-Install your preferred GUI client and configure the connection to the server. If
-the connection works, you've finished installing and configuring your MySQL
-server.
+Install your preferred GUI client and configure the connection to the server
+with the `admin` user. If the connection works, you've finished installing and
+configuring your MySQL server.
