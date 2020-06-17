@@ -13,7 +13,8 @@ one containing `darwin` in its name). If you go that way, put the downloaded
 binary as `mailhog` to the appropriate place that is configured in your `PATH`
 environment variable, usually `bin` directory in your home directory.
 
-Execute on the command line:
+Execute the following on the command line, replacing the path with the correct
+one for your OS:
 
 ```console
 cd ~/bin
