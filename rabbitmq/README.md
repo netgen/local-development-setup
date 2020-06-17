@@ -23,11 +23,12 @@ sudo port install rabbitmq-server
 
 ## 2 Start
 
+Since it's not needed every project, and it takes up valuable system resources,
+it's preferred to start `RabbitMQ` manually when needed.
+
 ### 2.1 Start manually
 
-Since it's not needed every project, and it takes up valuable system resources,
-it's preferred to start `RabbitMQ` manually when needed. You can do that by
-executing on the command line:
+Execute on the command line:
 
 ```console
 rabbitmq-server
