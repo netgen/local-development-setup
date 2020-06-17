@@ -73,7 +73,8 @@ Since the configuration files were created for `NGINX` installed on `MacOS` with
 `MacPorts`, you will need to update them with paths that are correct for `MacOS`
 with `Homebrew`.
 
-In case you use GNU sed (you will know if you do), execute the following:
+In case you use GNU sed (you will know if you do), execute the following on the
+command line:
 
 ```console
 cd /usr/local/etc/nginx
@@ -87,10 +88,30 @@ cd /usr/local/etc/nginx
 LC_ALL=C find . -type f -exec sed -i '' 's/\/opt\/local/\/usr\/local/g' {} +
 ```
 
-## 3 Create SSL certificates
+## 3 Link SSL certificates
 
-Open [SSL](ssl) and complete the instructions there, then return here and
-continue with instructions below.
+SSL certificates created in one of the previous steps need to be linked to the
+`NGINX` configuration directory.
+
+### 3.1 If using `MacOS` with `MacPorts`
+
+Execute on the command line:
+
+```console
+cd /opt/local/etc/nginx
+sudo ln -s ~/ssl/server.crt
+sudo ln -s ~/ssl/server.key
+```
+
+### 3.2 If using `MacOS` with `Homebrew`
+
+Execute on the command line:
+
+```console
+cd /usr/local/etc/nginx
+sudo ln -s ~/ssl/server.crt
+sudo ln -s ~/ssl/server.key
+```
 
 ## 4 Start the server
 

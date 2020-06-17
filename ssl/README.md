@@ -1,4 +1,4 @@
-# Generate SSL certificates with `openssl`
+# Set up SSL certificates with `openssl`
 
 Here you will generate SLL certificates for your NGINX server. This is not about
 generating a self-signed certificate - you will generate both Root Certificate
@@ -8,16 +8,22 @@ additionally generated server certificates get automatically validated by the
 browser without defining exceptions or importing them into Operating System's
 RCS.
 
-**Note**: This will assume you already configured you `NGINX` server.
+## 1 Create installation directory
 
-## 1 Write down your chosen password
+Execute on the command line:
 
-Write down your chosen password in `/opt/local/etc/nginx/ssl/password.txt` file
-in case you need to generate new server certificate using the same RCA later on.
+```console
+mkdir ~/ssl
+```
 
-## 2 Create RCA configuration
+## 2 Write down your chosen password
 
-Create `/opt/local/etc/nginx/ssl/root.conf` file with the following content:
+Write down your chosen password in `~/ssl/password.txt` file in case you need to
+generate new server certificate using the same RCA later on.
+
+## 3 Create RCA configuration
+
+Create `~/ssl/root.conf` file with the following content:
 
 ```dosini
 [req]
@@ -37,9 +43,9 @@ basicConstraints=critical,CA:true,pathlen:0
 keyUsage=critical,keyCertSign,cRLSign
 ```
 
-## 3 Create server certificate configuration
+## 4 Create server certificate configuration
 
-Create `/opt/local/etc/nginx/ssl/server.conf` file with the following content:
+Create `~/ssl/server.conf` file with the following content:
 
 ```dosini
 [req]
@@ -127,43 +133,54 @@ DNS.65=*.prod.php70.sf
 DNS.66=*.prod.php56.sf
 ```
 
-## 4 Create RCA certificate and private key
+## 5 Create RCA certificate and private key
 
 **Note**: 3650 days means the certificate will be valid for 10 years.
 
 When prompted, use the password you chose previously.
 
+Execute on the command line:
+
 ```console
+cd ~/ssl
 sudo openssl req -x509 -new -days 3650 -keyout root.key -out root.crt -config root.conf
 ```
 
-## 5 Create server certificate signing request
+## 6 Create server certificate signing request
+
+Execute on the command line:
 
 ```console
+cd ~/ssl
 sudo openssl req -nodes -new -keyout server.key -out server.csr -config server.conf
 ```
 
-## 6 Create server certificate and its private key
+## 7 Create server certificate and its private key
 
 **Note**: 825 days is maximum allowed end-entity certificate validity.
 
 When prompted, use the password you chose previously.
 
+Execute on the command line:
+
 ```console
+cd ~/ssl
 sudo openssl x509 -sha256 -req -days 825 -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext
 ```
 
-## 7 Register RCA certificate with the OS
+## 8 Register RCA certificate with the OS
 
-### 7.1 If using `MacOS`
+### 8.1 If using `MacOS`
 
-This will register the created RCA with `MacOS` RCS (System Keychain):
+Register the created RCA with `MacOS` RCS (System Keychain), by executing on the
+command line:
 
 ```console
+cd ~/ssl
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain root.crt
 ```
 
-## 8 Configure Firefox to use OS RCS
+## 9 Configure Firefox to use OS RCS
 
 If you are using Firefox, open `about:config` and set
 `security.enterprise_roots.enabled` configuration option to `true`. This will
