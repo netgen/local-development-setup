@@ -3,9 +3,10 @@
 Here you will install multiple versions of PHP and configure them to run in FPM
 mode.
 
-If using `Homebrew`, out of the box it provides current PHP version in a package
-named `php` (version 7.4 at the time of writing), and other officially supported
-PHP versions in packages namespaced with version number, for example `php@7.3`.
+If using `MacOS` and `Homebrew`, out of the box it provides current PHP version
+in a package named `php` (version 7.4 at the time of writing), and other
+officially supported PHP versions in packages namespaced with version number,
+for example `php@7.3`.
 
 Officially unsupported PHP packages are not available in official formula
 repository ("tap" in `brew` lingo). However, they are still provided in some 3rd
