@@ -1,37 +1,83 @@
-# Install `Redis` in-memory cache
+# Set up `Redis` in-memory data store
 
-First install `Redis` using `brew`:
+`Redis` is an open source in-memory data structure store and key–value database
+with optional durability. It's used as a backend for persistent cache
+implementation.
+
+## 1 Install
+
+### 1.1 If using `MacOS` with `MacPorts`
+
+Execute on the command line:
+
+```console
+sudo port install redis
+```
+
+### 1.2 If using `MacOS` with `Homebrew`
+
+Execute on the command line:
 
 ```console
 brew install redis
 ```
 
-By default, `brew` adds default Redis configuration to
-`/usr/local/etc/redis.conf`.
+## 2 Start
 
-To start Redis automatically on system startup execute the following:
+Since `Redis` is usually used in our web apps, we want it started automatically
+after a reboot.
 
-```console
-cp /usr/local/opt/redis/homebrew.mxcl.redis.plist ~/Library/LaunchAgents
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
-```
+### 2.1 Start automatically
 
-To disable automatic start:
+#### 2.1.1 If using `MacOS` with `MacPorts`
 
-```console
-launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.redis.plist
-```
-
-Starting Redis manually (on demand):
+Execute on the command line:
 
 ```console
-redis-server /usr/local/etc/redis.conf
+sudo port load redis
 ```
 
-Testing if Redis server is running:
+This will start the server and set it up to start automatically after a reboot.
+
+To stop the server and prevent it from running after a reboot, execute:
+
+```console
+sudo port unload redis
+```
+
+#### 2.1.2 If using `MacOS` with `Homebrew`
+
+Execute on the command line:
+
+```console
+sudo brew services start redis
+```
+
+This will start the server and set it up to start automatically after a reboot.
+
+To stop the server and prevent it from running after a reboot, execute:
+
+```console
+sudo brew services stop redis
+```
+
+### 2.2 Start manually when needed
+
+You can start the server manually by executing on the command line:
+
+```console
+redis-server
+```
+
+The server will run in the foreground, and you can stop it when needed with
+`Control-C`.
+
+## 3 Test
+
+To test if the `Redis` server is running, execute:
 
 ```console
 redis-cli ping
 ```
 
-Redis should respond with “PONG“.
+If correctly started, `Redis` should respond with `PONG`.
