@@ -26,7 +26,7 @@ sudo port install php73-fpm php73-imagick php73-gd php73-curl php73-opcache php7
 sudo port install php72-fpm php72-imagick php72-gd php72-curl php72-opcache php72-mbstring php72-xsl php72-intl php72-sqlite php72-zip php72-openssl php72-iconv
 sudo port install php71-fpm php71-imagick php71-gd php71-curl php71-opcache php71-mbstring php71-xsl php71-intl php71-sqlite php71-zip php71-openssl php71-iconv
 sudo port install php70-fpm php70-imagick php70-gd php70-curl php70-opcache php70-mbstring php70-xsl php70-intl php70-sqlite php70-zip php70-openssl php70-iconv
-sudo port install php56-fpm php56-imagick php56-gd php56-curl php56-opcache php56-mbstring php56-xsl php56-intl php56-sqlite php56-zip php56-openssl php56-iconv
+sudo port install php56-fpm php56-imagick php56-gd php56-curl php56-opcache php56-mbstring php56-xsl php56-intl php56-sqlite php56-zip php56-openssl php56-iconv php56-memcached
 ```
 
 Select desired default PHP version:
