@@ -46,11 +46,15 @@ version using a package manager.
 
 ### 2.1 If using `MacOS` with `MacPorts`
 
+Execute on the command line:
+
 ```console
 sudo port install git
 ```
 
 ### 2.2 If using `MacOS` with `Homebrew`
+
+Execute on the command line:
 
 ```console
 brew install git
@@ -58,7 +62,7 @@ brew install git
 
 ## 3 Verify configuration
 
-Check your configuration is active by executing:
+Check your configuration is active by executing on the command line:
 
 ```console
 git config --list

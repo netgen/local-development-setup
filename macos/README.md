@@ -2,8 +2,8 @@
 
 ## Install Xcode Command Line Tools
 
-To install Xcode Command Line Tools, execute the following and follow the
-instructions:
+To install Xcode Command Line Tools, execute the following on the command line
+and follow the instructions:
 
 ```console
 xcode-select --install
