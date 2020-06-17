@@ -7,9 +7,8 @@ Copy the link to it.
 In the console, create `solr` directory in your home directory:
 
 ```console
-cd ~
-mkdir solr
-cd solr
+mkdir ~/solr
+cd ~/solr
 ```
 
 Now download your chosen Solr package, extract it, delete the archive and
