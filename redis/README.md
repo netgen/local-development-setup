@@ -24,8 +24,8 @@ brew install redis
 
 ## 2 Start
 
-Since `Redis` is usually used in our web apps, we want it started automatically
-after a reboot.
+Since `Redis` is usually used in our web apps, we want it always running and
+started automatically after a reboot.
 
 ### 2.1 Start automatically
 
