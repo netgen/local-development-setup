@@ -1,6 +1,6 @@
 # Install and configure `Git` version control system
 
-## 1 Create `git` configuration
+## 1 Configure
 
 Create `.gitconfig` file in your home directory with the following content:
 
@@ -39,7 +39,10 @@ Create `.gitignore` file in your home directory with the following content:
 .idea
 ```
 
-## 2 Install newer version of `git`
+## 2 Install
+
+Even if you OS already comes with `Git` installed, you should install a newer
+version using a package manager.
 
 ### 2.1 If using `MacOS` with `MacPorts`
 
