@@ -69,7 +69,7 @@ To stop the server and prevent it from running after a reboot, execute:
 sudo brew services stop rabbitmq
 ```
 
-## 3 Access web management UI
+## 3 Test
 
 Test the server works by opening web management UI at http://localhost:15672.
 
