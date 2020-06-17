@@ -51,7 +51,7 @@ You can use `solr` command to create a new core using a specific configuration.
 Prepare your configuration in a separate directory, then execute:
 
 ```console
-./bin/solr create_core -c my_new_core -d /path/to/my/config
+./bin/solr create_core -c my_new_core -d /path/to/my/solr/config
 ```
 
 To find out about other available options, execute the `solr` command without
