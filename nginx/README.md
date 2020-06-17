@@ -2,13 +2,13 @@
 
 ## 1 Install
 
-## 1.1 Install on `MacOS` using `MacPorts`
+## 1.1 Install on MacOS using MacPorts
 
 ```console
 sudo port install nginx
 ```
 
-## 1.2 Install on `MacOS` using `Homebrew`
+## 1.2 Install on MacOS using Homebrew
 
 ```console
 brew install nginx
@@ -22,7 +22,7 @@ and logs, which depends on the OS and package manager.
 
 todo note about repo path
 
-### 2.1 If using `MacOS` with `MacPorts`
+### 2.1 If using MacOS with MacPorts
 
 Copy the configuration files to the configuration directory:
 
@@ -44,10 +44,10 @@ cd /opt/local/etc/nginx/sites-enabled
 sudo ln -s ../sites-available/* ./
 ```
 
-Paths in the copied configuration files are already correct for `MacOS` using
-`MacPorts`, so you are done with this step.
+Paths in the copied configuration files are already correct for MacOS using
+MacPorts, so you are done with this step.
 
-### 2.2 If using `MacOS` with `Homebrew`
+### 2.2 If using MacOS with Homebrew
 
 Copy the configuration files to the configuration directory:
 
@@ -69,9 +69,9 @@ mkdir /usr/local/etc/nginx/sites-enabled
 ln -s ../sites-available/* ./
 ```
 
-Since the configuration files were created for `NGINX` installed on `MacOS` with
-`MacPorts`, you will need to update them with paths that are correct for `MacOS`
-with `Homebrew`.
+Since the configuration files were created for `NGINX` installed on MacOS with
+MacPorts, you will need to update them with paths that are correct for MacOS
+with Homebrew.
 
 In case you use GNU sed (you will know if you do), execute the following on the
 command line:
@@ -93,7 +93,7 @@ LC_ALL=C find . -type f -exec sed -i '' 's/\/opt\/local/\/usr\/local/g' {} +
 SSL certificates created in one of the previous steps need to be linked to the
 `NGINX` configuration directory.
 
-### 3.1 If using `MacOS` with `MacPorts`
+### 3.1 If using MacOS with MacPorts
 
 Execute on the command line:
 
@@ -103,7 +103,7 @@ sudo ln -s ~/ssl/server.crt
 sudo ln -s ~/ssl/server.key
 ```
 
-### 3.2 If using `MacOS` with `Homebrew`
+### 3.2 If using MacOS with Homebrew
 
 Execute on the command line:
 
@@ -115,7 +115,7 @@ sudo ln -s ~/ssl/server.key
 
 ## 4 Start the server
 
-### 4.1 If using `MacOS` with `MacPorts`
+### 4.1 If using MacOS with MacPorts
 
 ```console
 sudo port load nginx
@@ -123,7 +123,7 @@ sudo port load nginx
 
 This will also start the server automatically after a reboot.
 
-### 4.2 If using `MacOS` with `Homebrew`
+### 4.2 If using MacOS with Homebrew
 
 ```console
 sudo brew services start nginx

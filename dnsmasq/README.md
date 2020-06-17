@@ -1,28 +1,30 @@
-# Set up DNS forwarding with `dnsmasq`
+# Set up DNS forwarding with dnsmasq
 
-Here you will install and configure `dnsmasq` as a DNS forwarder, used to
+Here you will install and configure dnsmasq as a DNS forwarder, used to
 resolve all your custom top-level domains to `127.0.0.1`. With it, you won’t
 need to update `/etc/hosts` file to add new host names as they will be
 dynamically resolved.
 
-## 1 Install `dnsmasq`
+## 1 Install
 
-### 1.1 If using `MacOS` with `Homebrew`
+### 1.1 If using MacOS with Homebrew
 
 ```bash
 brew install dnsmasq
 ```
 
-### 1.2 If using `MacOS` with `MacPorts`
+### 1.2 If using MacOS with MacPorts
 
 ```bash
 sudo port install dnsmasq
 ```
 
-## 2 Update configuration file
+## 2 Configure
 
-Edit configuration file `/opt/local/etc/dnsmasq.conf` (`MacPorts`) or
-`/usr/local/etc/dnsmasq.conf` (`Homebrew`) and replace the existing
+### 2.1 Update configuration file
+
+Edit configuration file `/opt/local/etc/dnsmasq.conf` (MacPorts) or
+`/usr/local/etc/dnsmasq.conf` (Homebrew) and replace the existing
 configuration with the following content:
 
 ```bash
@@ -43,10 +45,13 @@ address=/sf/127.0.0.1
 ```
 
 Default configuration will still be available for reference in
-`/opt/local/etc/dnsmasq.conf.example` (`MacPorts`) or
-`/usr/local/etc/dnsmasq.conf.default` (`Homebrew`).
+`/opt/local/etc/dnsmasq.conf.example` (MacPorts) or
+`/usr/local/etc/dnsmasq.conf.default` (Homebrew).
 
-## 3 Add DNS resolver configuration for your custom top-level domains
+### 2.2 Add DNS resolver configuration
+
+Add DNS resolver configuration for your custom top-level domains by executing on
+the command line:
 
 ```bash
 sudo mkdir -v /etc/resolver
@@ -54,9 +59,9 @@ cd /etc/resolver
 echo "nameserver 127.0.0.1" | sudo tee ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 sf > /dev/null
 ```
 
-## 4 Start `dnsmasq` service
+## 3 Start
 
-### 4.1 If using `MacOS` with `MacPorts`
+### 3.1 If using MacOS with MacPorts
 
 ```bash
 sudo port load dnsmasq
@@ -64,7 +69,7 @@ sudo port load dnsmasq
 
 This will also start the server automatically after a reboot.
 
-### 4.1 If using `MacOS` with `Homebrew`
+### 3.1 If using MacOS with Homebrew
 
 ```bash
 sudo brew services start dnsmasq
@@ -72,7 +77,7 @@ sudo brew services start dnsmasq
 
 This will also start the server automatically after a reboot.
 
-## 5 Add `127.0.0.1` as a DNS server to your network connections
+## 4 Update network connections
 
 Open Network configuration in System Preferences, click Advanced on your network
 connection, select DNS tab and add `127.0.0.1` as a DNS server.
@@ -80,7 +85,11 @@ connection, select DNS tab and add `127.0.0.1` as a DNS server.
 Repeat this with all network connections you are using to connect to the
 Internet, excluding VPN connections.
 
-## 6 Test resolving by pinging a bogus domain on your custom top-level domain
+## 5 Test
+
+Test resolving by pinging a bogus domain on your custom top-level domain.
+
+Execute on the command line:
 
 ```bash
 ping asdfghjkl.sf
@@ -99,6 +108,6 @@ PING asdfghjkl.sf (127.0.0.1): 56 data bytes
 round-trip min/avg/max/stddev = 0.028/0.068/0.130/0.045 ms
 ```
 
-If you received output similar to the above, it means `dnsmasq` is correctly
+If you received output similar to the above, it means dnsmasq is correctly
 configured for the given domain. Successfully test all configured top-level
 domains, and you're finished with this part of the setup.

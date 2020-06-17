@@ -170,9 +170,9 @@ sudo openssl x509 -sha256 -req -days 825 -in server.csr -CA root.crt -CAkey root
 
 ## 8 Register RCA certificate with the OS
 
-### 8.1 If using `MacOS`
+### 8.1 If using MacOS
 
-Register the created RCA with `MacOS` RCS (System Keychain), by executing on the
+Register the created RCA with MacOS RCS (System Keychain), by executing on the
 command line:
 
 ```console

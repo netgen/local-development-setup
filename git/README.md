@@ -44,7 +44,7 @@ Create `.gitignore` file in your home directory with the following content:
 Even if you OS already comes with `Git` installed, you should install a newer
 version using a package manager.
 
-### 2.1 If using `MacOS` with `MacPorts`
+### 2.1 If using MacOS with MacPorts
 
 Execute on the command line:
 
@@ -52,7 +52,7 @@ Execute on the command line:
 sudo port install git
 ```
 
-### 2.2 If using `MacOS` with `Homebrew`
+### 2.2 If using MacOS with Homebrew
 
 Execute on the command line:
 

@@ -5,7 +5,7 @@ receiving messages using a queue in order to process them asynchronously.
 
 ## 1 Install
 
-### 1.1 If using `MacOS` with `Homebrew`
+### 1.1 If using MacOS with Homebrew
 
 Execute on the command line:
 
@@ -13,7 +13,7 @@ Execute on the command line:
 brew install rabbitmq
 ```
 
-### 1.2 If using `MacOS` with `MacPorts`
+### 1.2 If using MacOS with MacPorts
 
 Execute on the command line:
 
@@ -41,7 +41,7 @@ The server will run in the foreground, and you can stop it when needed with
 
 If wanted, you can also set it up to start automatically after a reboot.
 
-#### 2.2.1 If using `MacOS` with `MacPorts`
+#### 2.2.1 If using MacOS with MacPorts
 
 Execute on the command line:
 
@@ -55,7 +55,7 @@ To stop the server and prevent it from running after a reboot, execute:
 sudo port unload rabbitmq-server
 ```
 
-#### 2.2.2 If using `MacOS` with `Homebrew`
+#### 2.2.2 If using MacOS with Homebrew
 
 Execute on the command line:
 

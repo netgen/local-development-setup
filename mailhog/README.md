@@ -5,10 +5,10 @@ of emails.
 
 ## 1 Install
 
-### 1.1 If not using `MacOS` with `Homebrew`
+### 1.1 If not using MacOS with Homebrew
 
 You can install it by downloading the appropriate binary from GitHub at
-https://github.com/mailhog/MailHog/releases (in case of `MacOS`, search for the
+https://github.com/mailhog/MailHog/releases (in case of MacOS, search for the
 one containing `darwin` in its name). If you go that way, put the downloaded
 binary as `mailhog` to the appropriate place that is configured in your `PATH`
 environment variable, usually `bin` directory in your home directory.
@@ -22,7 +22,7 @@ wget -O ~/bin/mailhog https://github.com/mailhog/MailHog/releases/download/v1.0.
 chmod a+x ~/bin/mailhog
 ```
 
-### 1.2 If using `MacOS` with `Homebrew`
+### 1.2 If using MacOS with Homebrew
 
 Execute on the command line:
 

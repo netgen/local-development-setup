@@ -3,7 +3,7 @@
 Here you will install multiple versions of PHP and configure them to run in FPM
 mode.
 
-If using `MacOS` and `Homebrew`, out of the box it provides current PHP version
+If using MacOS and Homebrew, out of the box it provides current PHP version
 in a package named `php` (version 7.4 at the time of writing), and other
 officially supported PHP versions in packages namespaced with version number,
 for example `php@7.3`.
@@ -18,7 +18,7 @@ and follow the instructions to install that one as well.
 
 ## 1 Install
 
-### 1.1 Install multiple PHP versions using `MacPorts`
+### 1.1 Install multiple PHP versions using MacPorts
 
 ```console
 sudo port install php74-fpm php73-fpm php72-fpm php71-fpm php70-fpm php56-fpm
@@ -32,7 +32,7 @@ sudo port select php php73
 
 This PHP version will be available from the command line as `php`.
 
-### 1.2 Install multiple PHP versions using `Homebrew`
+### 1.2 Install multiple PHP versions using Homebrew
 
 Install PHP 7.4, 7.3 and 7.2 using `brew` from the official *tap*:
 
@@ -93,7 +93,7 @@ they use you can check the list of processes (`ps` or `pstree` on the command
 line), or open the PHP-FPM status page for the specific PHP version, for example
 https://home.php73/status?full&html.
 
-### 2.1 Configure PHP-FPM pool definitions if installed using `Homebrew`
+### 2.1 Configure PHP-FPM pool definitions if installed using Homebrew
 
 Find PHP-FPM pool definitions for your PHP versions in following files
 
@@ -108,7 +108,7 @@ Find PHP-FPM pool definitions for your PHP versions in following files
 
 Update these pool definition files as described above.
 
-### 2.1 Configure PHP-FPM pool definitions if installed using `MacPorts`
+### 2.1 Configure PHP-FPM pool definitions if installed using MacPorts
 
 First create PHP-FPM configuration files by copying the default ones:
 
@@ -133,7 +133,7 @@ sudo cp /opt/local/etc/php71/php-fpm.d/www.conf.default /opt/local/etc/php71/php
 sudo cp /opt/local/etc/php70/php-fpm.d/www.conf.default /opt/local/etc/php70/php-fpm.d/www.conf
 ```
 
-**Note**: similar as with `Homebrew`, for PHP 5.6 pool definition in the main FPM
+**Note**: similar as with Homebrew, for PHP 5.6 pool definition in the main FPM
 configuration file.
 
 Update the created pool definition files as described above.
@@ -151,7 +151,7 @@ session.gc_maxlifetime = 86400
 **Note**: Configuration files use `;` character as a comment, so make sure you
 remove it as needed.
 
-### 3.1 Configure PHP if installed using `Homebrew`
+### 3.1 Configure PHP if installed using Homebrew
 
 Find the configuration for your PHP versions in the following files:
 
@@ -166,7 +166,7 @@ Find the configuration for your PHP versions in the following files:
 
 Update these configuration files as described above.
 
-### 3.2 Configure PHP if installed using `MacPorts`
+### 3.2 Configure PHP if installed using MacPorts
 
 First create PHP configuration files by copying the default ones:
 
@@ -183,8 +183,8 @@ Update the created configuration files as described above.
 
 ## 4 Symlink PHP binaries
 
-**Note**: as `MacPorts` already provides a PHP binary for each PHP version, this
-step is needed only if you installed using `Homebrew`.
+**Note**: as MacPorts already provides a PHP binary for each PHP version, this
+step is needed only if you installed using Homebrew.
 
 Symlink each PHP binary to an easily accessible alias:
 
@@ -216,7 +216,7 @@ php56 -v
 
 You can now start PHP services.
 
-### 5.1 Start PHP-FPM services if installed using `Homebrew`
+### 5.1 Start PHP-FPM services if installed using Homebrew
 
 ```console
 sudo brew services start php@7.4
@@ -235,7 +235,7 @@ Remember to restart them after changing PHP configuration in the future with:
 sudo brew services restart php@x.x
 ```
 
-### 5.2 Start PHP-FPM services if installed using `MacPorts`
+### 5.2 Start PHP-FPM services if installed using MacPorts
 
 ```console
 sudo port load php74-fpm
@@ -259,21 +259,21 @@ sudo port reload phpxx-fpm
 Installed PHP will come with built-in extension, but if your project requires
 additional extensions, these have to be installed separately.
 
-### 6.1 Install PHP extensions using `MacPorts`
+### 6.1 Install PHP extensions using MacPorts
 
-`MacPorts` already provides installable PHP extensions, find them for a
+MacPorts already provides installable PHP extensions, find them for a
 particular PHP version by executing:
 
 ```console
 port list php56\*
 ```
 
-Simply install the PHP extension you need, using `MacPorts`, for example:
+Simply install the PHP extension you need, using MacPorts, for example:
 
 ```console
 sudo port install php56-memcached
 ```
 
-### 6.2 If using `Homebrew`, compile the required PHP extensions manually
+### 6.2 If using Homebrew, compile the required PHP extensions manually
 
 todo
