@@ -16,7 +16,7 @@ party *taps*, and it's possible to install them from there.
 those you really need, and in case you need another one, return to this page
 and follow the instructions to install that one as well.
 
-## 1. Install multiple PHP versions
+## 1 Install
 
 ### 1.1 Install multiple PHP versions using `MacPorts`
 
@@ -55,7 +55,9 @@ brew install exolnet/deprecated/php@7.0
 brew install exolnet/deprecated/php@5.6
 ```
 
-## 2. Configure PHP-FPM pool definitions
+## 2 Configure
+
+### 2.1 Configure PHP-FPM pool definitions
 
 For each PHP version edit PHP-FPM pool definition filed and update it with the
 following configuration options:
@@ -136,7 +138,7 @@ configuration file.
 
 Update the created pool definition files as described above.
 
-## 3. Configure PHP
+## 3 Configure PHP
 
 For each PHP version find its configuration file and update it with the
 following configuration options:
@@ -179,7 +181,7 @@ sudo cp /opt/local/etc/php56/php.ini-development /opt/local/etc/php56/php.ini
 
 Update the created configuration files as described above.
 
-## 4. Symlink PHP binaries
+## 4 Symlink PHP binaries
 
 **Note**: as `MacPorts` already provides a PHP binary for each PHP version, this
 step is needed only if you installed using `Homebrew`.
@@ -210,7 +212,7 @@ php70 -v
 php56 -v
 ```
 
-## 5. Start PHP-FPM services
+## 5 Start PHP-FPM services
 
 You can now start PHP services.
 
