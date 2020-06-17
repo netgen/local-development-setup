@@ -1,6 +1,6 @@
-# Set up `MailHog` development SMTP server
+# Set up MailHog development SMTP server
 
-`MailHog` is a simple development SMPT server that can be used to test sending
+MailHog is a simple development SMPT server that can be used to test sending
 of emails.
 
 ## 1 Install
@@ -32,7 +32,7 @@ brew install mailhog
 
 ## 2 Start
 
-As we don't always need it in a project, `MailHog` is to be started when needed.
+As we don't always need it in a project, MailHog is to be started when needed.
 
 Execute on the command line:
 

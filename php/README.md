@@ -6,11 +6,9 @@ mode.
 If using MacOS and Homebrew, out of the box it provides current PHP version
 in a package named `php` (version 7.4 at the time of writing), and other
 officially supported PHP versions in packages namespaced with version number,
-for example `php@7.3`.
-
-Officially unsupported PHP packages are not available in official formula
-repository ("tap" in `brew` lingo). However, they are still provided in some 3rd
-party *taps*, and it's possible to install them from there.
+for example `php@7.3`. Officially unsupported PHP packages are not available in
+official formula repository ("tap" in `brew` lingo). However, they are still
+provided in some 3rd party *taps*, and it's possible to install them from there.
 
 **Note**: You don't have to install all following PHP versions. Install only
 those you really need, and in case you need another one, return to this page
@@ -34,14 +32,14 @@ This PHP version will be available from the command line as `php`.
 
 ### 1.2 Install multiple PHP versions using Homebrew
 
-Install PHP 7.4, 7.3 and 7.2 using `brew` from the official *tap*:
+Install PHP 7.4, 7.3 and 7.2 using Homebrew from the official *tap*:
 
 ```console
 brew install php php@7.3 php@7.2
 ```
 
 PHP versions 7.1, 7.0 and 5.6 are available in `exolnet/homebrew-deprecated`
-*tap*. First register this *tap* with your local `brew` installation with:
+*tap*. First register this *tap* with your local Homebrew installation with:
 
 ```console
 brew tap exolnet/homebrew-deprecated
@@ -227,7 +225,7 @@ sudo brew services start php@7.0
 sudo brew services start php@5.6
 ```
 
-This will also ensure that `PHP-FPM` server starts automatically after a reboot.
+This will also ensure that PHP-FPM server starts automatically after a reboot.
 
 Remember to restart them after changing PHP configuration in the future with:
 
@@ -246,7 +244,7 @@ sudo port load php70-fpm
 sudo port load php56-fpm
 ```
 
-This will also ensure that `PHP-FPM` server starts automatically after a reboot.
+This will also ensure that PHP-FPM server starts automatically after a reboot.
 
 Remember to restart them after changing PHP configuration in the future with:
 

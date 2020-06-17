@@ -1,4 +1,4 @@
-# Set up `Git` version control system
+# Set up Git version control system
 
 ## 1 Configure
 

@@ -1,4 +1,4 @@
-# Set up `NGINX` web server
+# Set up NGINX web server
 
 ## 1 Install
 
@@ -16,7 +16,7 @@ brew install nginx
 
 ## 2 Configure
 
-Once `NGINX` is installed, use files given in this directory to configure the
+Once NGINX is installed, use files given in this directory to configure the
 installation. First you will need to find the location of configuration files
 and logs, which depends on the OS and package manager.
 
@@ -69,7 +69,7 @@ mkdir /usr/local/etc/nginx/sites-enabled
 ln -s ../sites-available/* ./
 ```
 
-Since the configuration files were created for `NGINX` installed on MacOS with
+Since the configuration files were created for NGINX installed on MacOS with
 MacPorts, you will need to update them with paths that are correct for MacOS
 with Homebrew.
 
@@ -91,7 +91,7 @@ LC_ALL=C find . -type f -exec sed -i '' 's/\/opt\/local/\/usr\/local/g' {} +
 ## 3 Link SSL certificates
 
 SSL certificates created in one of the previous steps need to be linked to the
-`NGINX` configuration directory.
+NGINX configuration directory.
 
 ### 3.1 If using MacOS with MacPorts
 

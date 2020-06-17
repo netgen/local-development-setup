@@ -1,6 +1,6 @@
-# Set up `MySQL` database server
+# Set up MySQL database server
 
-`MySQL` is an open-source relational database management system.
+MySQL is an open-source relational database management system.
 
 ## 1 Install
 
@@ -12,7 +12,7 @@ Execute on the command line:
 sudo port install mysql8-server
 ```
 
-Select `mysql8` as your preferred version of `MySQL` with:
+Select `mysql8` as your preferred version of MySQL with:
 
 ```console
 sudo port select mysql mysql8
@@ -28,7 +28,7 @@ brew install mysql
 
 ## 2 Start
 
-Since `MySQL` is an essential part of our web apps, so we want it always running
+Since MySQL is an essential part of our web apps, so we want it always running
 and started automatically after a reboot.
 
 ### 2.1 If using MacOS with MacPorts
@@ -82,7 +82,7 @@ mysql_secure_installation
 ```
 
 Follow the instructions to configure `root` as password for the `root` user. If
-`MySQL` was installed using MacPorts, enter the password generated at the
+MySQL was installed using MacPorts, enter the password generated at the
 initialization.
 
 Additionally, follow the instructions to skip setting up VALIDATE PASSWORD
@@ -138,9 +138,9 @@ Do not exit the client as you will need it in the next step.
 
 ## 5 Configure again
 
-`MySQL` will create binary log files that take up valuable disk space, but are
+MySQL will create binary log files that take up valuable disk space, but are
 not really needed for local development. Set binary logs to expire after one day
-by executing on the `mysql` prompt:
+by executing on the `mysql>` prompt:
 
 ```console
 SET GLOBAL binlog_expire_logs_seconds=86400;
@@ -156,5 +156,5 @@ For MacOS, [TablePlus](https://tableplus.com/) is a good choice, offering
 unlimited free trial with reasonable limitations for light use.
 
 Install your preferred GUI client and configure the connection to the server. If
-the connection works, you've finished installing and configuring your `MySQL`
+the connection works, you've finished installing and configuring your MySQL
 server.

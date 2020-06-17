@@ -1,9 +1,9 @@
-# Set up `Varnish` reverse HTTP proxy
+# Set up Varnish reverse HTTP proxy
 
-Since `Varnish` is not widely available in all necessary versions, here you will
+Since Varnish is not widely available in all necessary versions, here you will
 compile it from downloaded source.
 
-Download the required `Varnish` source from GitHub to your home directory:
+Download the required Varnish source from GitHub to your home directory:
 
 ```console
 mkdir ~/varnish
@@ -26,7 +26,7 @@ brew info automake
 brew install automake
 ```
 
-Execute the following to compile and install `Varnish` binaries:
+Execute the following to compile and install Varnish binaries:
 
 ```console
 cd ~/varnish/varnish-cache-varnish-6.0.6
@@ -36,7 +36,7 @@ make
 sudo make install
 ```
 
-Aside from standard `Varnish` installation, you'll need `xkey` module as well.
+Aside from standard Varnish installation, you'll need `xkey` module as well.
 Clone modules repository into your home directory, position into it and checkout
 branch `6.0-lts`:
 
@@ -66,5 +66,5 @@ varnishd -f /path/to/configuration.vcl -a :8081 -s malloc,256M -F
 With these options, configure `purge_server` in your eZ Platform installation to
 `http://localhost:8081`.
 
-If needed you can adjust the amount of memory given to the `Varnish` server
+If needed you can adjust the amount of memory given to the Varnish server
 (256M in the above example). Stop the server when needed with `Control-C`.

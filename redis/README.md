@@ -1,6 +1,6 @@
-# Set up `Redis` in-memory data store
+# Set up Redis in-memory data store
 
-`Redis` is an open source in-memory data structure store and key–value database
+Redis is an open source in-memory data structure store and key–value database
 with optional durability. It's used as a backend for persistent cache
 implementation.
 
@@ -24,7 +24,7 @@ brew install redis
 
 ## 2 Start
 
-Since `Redis` is usually used in our web apps, we want it always running and
+Since Redis is usually used in our web apps, we want it always running and
 started automatically after a reboot.
 
 ### 2.1 Start automatically
@@ -80,4 +80,4 @@ To test if the `Redis` server is running, execute:
 redis-cli ping
 ```
 
-If correctly started, `Redis` should respond with `PONG`.
+If correctly started, Redis should respond with `PONG`.

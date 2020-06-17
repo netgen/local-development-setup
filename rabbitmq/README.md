@@ -1,6 +1,6 @@
-# Set up `RabbitMQ` message-broker
+# Set up RabbitMQ message-broker
 
-`RabbitMQ` is an open-source message-broker software, used for sending and
+RabbitMQ is an open-source message-broker software, used for sending and
 receiving messages using a queue in order to process them asynchronously.
 
 ## 1 Install
@@ -24,7 +24,7 @@ sudo port install rabbitmq-server
 ## 2 Start
 
 Since it's not needed every project, and it takes up valuable system resources,
-it's preferred to start `RabbitMQ` manually when needed.
+it's preferred to start RabbitMQ manually when needed.
 
 ### 2.1 Start manually
 

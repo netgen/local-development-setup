@@ -1,4 +1,4 @@
-# Set up SSL certificates with `openssl`
+# Set up SSL certificates with OpenSSL
 
 Here you will generate SLL certificates for your NGINX server. This is not about
 generating a self-signed certificate - you will generate both Root Certificate
