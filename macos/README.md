@@ -31,4 +31,6 @@ install `MacPorts`.
 
 ### Install Homebrew
 
+**Note**: Do not install `Homebrew` if you already installed `MacPorts`.
+
 Visit https://brew.sh/ and follow the instructions to install `Homebrew`.
