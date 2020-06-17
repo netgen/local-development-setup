@@ -48,12 +48,24 @@ Execute on the command line:
 sudo port load rabbitmq-server
 ```
 
+To stop the server and prevent it from running after a reboot, execute:
+
+```console
+sudo port unload rabbitmq-server
+```
+
 #### 2.2.2 If using `MacOS` with `Homebrew`
 
 Execute on the command line:
 
 ```console
-brew services start rabbitmq
+sudo brew services start rabbitmq
+```
+
+To stop the server and prevent it from running after a reboot, execute:
+
+```console
+sudo brew services stop rabbitmq
 ```
 
 ## 3 Access web management UI
