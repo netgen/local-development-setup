@@ -4,7 +4,10 @@ Here you will install Apache Solr. Open https://downloads.apache.org/lucene/solr
 in your browser and find the Solr package for the version you want to install.
 Copy the link to it.
 
-In the console, create `solr` directory in your home directory:
+## 1 Install
+
+In the console, create `solr` directory in your home directory and position into
+it:
 
 ```console
 mkdir ~/solr
@@ -20,7 +23,10 @@ tar xzf solr-7.7.3.tgz && rm solr-7.7.3.tgz
 cd solr-7.7.3
 ```
 
-From here, you can start the Solr server using the provided `solr` command:
+## 2 Start
+
+From the installation directory you can start the Solr server using the provided
+`solr` command:
 
 ```console
 ./bin/solr start
@@ -45,13 +51,19 @@ foreground with `-f` switch:
 
 In this case, stop the server when needed with `Control-C`.
 
-## Adding a new core to the server
+## Add a new core
 
 You can use `solr` command to create a new core using a specific configuration.
 Prepare your configuration in a separate directory, then execute:
 
 ```console
 ./bin/solr create_core -c my_new_core -d /path/to/my/solr/config
+```
+
+Core can also be removed from the server:
+
+```console
+./bin/solr delete -c my_new_core
 ```
 
 To find out about other available options, execute the `solr` command without
