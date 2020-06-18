@@ -66,5 +66,7 @@ Core can also be removed from the server:
 ./bin/solr delete -c my_new_core
 ```
 
+**Note**: Solr must be running for these commands to work.
+
 To find out about other available options, execute the `solr` command without
 arguments and follow the given instructions.
