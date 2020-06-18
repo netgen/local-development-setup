@@ -51,7 +51,8 @@ Execute the following to compile and install module binaries:
 
 ```console
 cd ~/varnish/varnish-modules
-./configure
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ./bootstrap
+PKG_CONFIG_PATH=/usr/local/lib/pkgconfig ./configure
 make
 sudo make install
 ```
