@@ -15,7 +15,7 @@ Extract the downloaded archive and position into it:
 
 ```console
 cd ~/varnish
-tar xzf varnish-6.0.6.tar.gz
+tar xzf varnish-6.0.6.tar.gz && rm varnish-6.0.6.tar.gz
 cd varnish-cache-varnish-6.0.6
 ```
 
