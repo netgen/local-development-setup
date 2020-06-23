@@ -21,27 +21,38 @@ Execute on the command line:
 sudo port install rabbitmq-server
 ```
 
-## 2 Start
+## 2 Enable plugins
+
+**Note**: This step is needed only if you are using MacOS with MacPorts.
+
+To enable web management UI, enable `rabbitmq_management` plugin by executing on
+the command line:
+
+```console
+rabbitmq-plugins enable rabbitmq_management
+```
+
+## 3 Start
 
 Since it's not needed every project, and it takes up valuable system resources,
 it's preferred to start RabbitMQ manually when needed.
 
-### 2.1 Start manually
+### 3.1 Start manually
 
 Execute on the command line:
 
 ```console
-rabbitmq-server
+sudo rabbitmq-server
 ```
 
 The server will run in the foreground, and you can stop it when needed with
 `Control-C`.
 
-### 2.2 Start automatically
+### 3.2 Start automatically
 
 If wanted, you can also set it up to start automatically after a reboot.
 
-#### 2.2.1 If using MacOS with MacPorts
+#### 3.2.1 If using MacOS with MacPorts
 
 Execute on the command line:
 
@@ -55,7 +66,7 @@ To stop the server and prevent it from running after a reboot, execute:
 sudo port unload rabbitmq-server
 ```
 
-#### 2.2.2 If using MacOS with Homebrew
+#### 3.2.2 If using MacOS with Homebrew
 
 Execute on the command line:
 
@@ -69,13 +80,13 @@ To stop the server and prevent it from running after a reboot, execute:
 sudo brew services stop rabbitmq
 ```
 
-## 3 Test
+## 4 Test
 
 Test the server works by opening web management UI at http://localhost:15672.
 
 Login into the UI with user `guest` and password `guest`.
 
-## 4 Configure in a project
+## 5 Configure in a project
 
 If you need to configure it for a project, API will be available at
 `http://localhost:5672` with the same credentials as mentioned above: user
