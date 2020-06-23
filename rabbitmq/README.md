@@ -39,6 +39,16 @@ it's preferred to start RabbitMQ manually when needed.
 
 ### 3.1 Start manually
 
+#### 3.1.1 If using MacOS with Homebrew
+
+Execute on the command line:
+
+```console
+rabbitmq-server
+```
+
+#### 3.1.2 If using MacOS with MacPorts
+
 Execute on the command line:
 
 ```console
