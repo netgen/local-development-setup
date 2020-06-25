@@ -17,4 +17,4 @@ Follow the steps in this order:
 1. [RabbitMQ](rabbitmq)
 1. [MailHog](mailhog)
 1. [Varnish](varnish)
-1. [Node](node)
+1. [Node.js](nodejs)
