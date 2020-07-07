@@ -9,6 +9,10 @@ and follow the instructions:
 xcode-select --install
 ```
 
+## Install Java Runtime Environment
+
+Open https://www.java.com and follow the instructions to install Java.
+
 ## Install a package manager
 
 You will need to choose between Homebrew and MacPorts for your package
