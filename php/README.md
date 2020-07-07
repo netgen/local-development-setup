@@ -272,7 +272,7 @@ To stop the server and prevent it from running after a reboot, execute:
 sudo port unload phpxx-fpm
 ```
 
-## 6. Install PHP extensions
+## 6 Install PHP extensions
 
 Installed PHP will come with built-in extension, but if your project requires
 additional extensions, these have to be installed separately.
