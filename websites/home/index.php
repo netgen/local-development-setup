@@ -23,22 +23,14 @@ header("Cache-Control: no-cache, must-revalidate");
         <li>Media Site <a href="https://media-site.dev.php73.ez">Frontend</a> | <a href="https://media-site.prod.php73.ez/ngadminui">Admin</a></li>
     </ol>
     <details>
-        <summary>SSL and Varnish</summary>
-        <blockquote>
-            <p>All hosts are configured to automatically redirect from HTTP to HTTPS.</p>
-            <p>Varnish is configured on port 8080, for example <code>https://media-site.dev.php73.ez:8080</code></p>
-            <p>HTTP access to host is possible through port 8082, for example <code>http://media-site.dev.php73.ez:8082</code></p>
-        </blockquote>
-    </details>
-    <details>
         <summary>Host format</summary>
         <blockquote>
-            <p>Host must conform to format <code>installation_dir.symfony_environment.php_version.(ez|sf)</code></p>
+            <p>Host must conform to format <code>installation_dir.environment.php_version.(ez|sf)</code></p>
             <p>For example, host <code>https://media-site.dev.php73.ez</code> is resolved to</p>
             <ul>
                 <li>installation directory <code>/var/www/media-site</code></li>
                 <li>public directory <code>/var/www/media-site/web</code></li>
-                <li>Syfmony environment <code>dev</code></li>
+                <li>Environment <code>dev</code></li>
                 <li>PHP version 7.3</li>
                 <li>Nginx configuration for eZ Platform</li>
             </ul>
@@ -68,6 +60,40 @@ header("Cache-Control: no-cache, must-revalidate");
                 <li><code>https://two.media-site.dev.php73.ez</code></li>
             </ul>
             <p>You can use this approach together with custom app/public directory setup described above</p>
+        </blockquote>
+    </details>
+    <details>
+        <summary>Environments</summary>
+        <blockquote>
+            <p>Wildcard certificates are generated for a set of environments that aim to cover most common use cases.</p>
+            <p>Default environments:</p>
+            <ul>
+                <li><code>dev</code></li>
+                <li><code>prod</code></li>
+                <li><code>test</code></li>
+            </ul>
+            <p>Shared Netgen development setup environments:</p>
+            <ul>
+                <li><code>ng</code></li>
+                <li><code>ng_dev</code></li>
+                <li><code>ng_prod</code></li>
+                <li><code>ng_test</code></li>
+            </ul>
+            <p>Your private/local environments:</p>
+            <ul>
+                <li><code>local</code></li>
+                <li><code>local_dev</code></li>
+                <li><code>local_prod</code></li>
+                <li><code>local_test</code></li>
+            </ul>
+        </blockquote>
+    </details>
+    <details>
+        <summary>SSL and Varnish</summary>
+        <blockquote>
+            <p>All hosts are configured to automatically redirect from HTTP to HTTPS.</p>
+            <p>Varnish is configured on port 8080, for example <code>https://media-site.dev.php73.ez:8080</code></p>
+            <p>HTTP access to host is possible through port 8082, for example <code>http://media-site.dev.php73.ez:8082</code></p>
         </blockquote>
     </details>
     <h2>services</h2>
