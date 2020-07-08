@@ -7,25 +7,30 @@ maintain and switch between multiple versions of Node.js.
 ## 1 Install n
 
 First uninstall Node.js, as it will conflict with the versions installed through
-the version manager. To install `n` these instructions will use `n-install`, 3rd
-party installer that does not require Node.js preinstalled. For more details see
-https://github.com/mklement0/n-install.
+the version manager.
+
+### 1.1 If using MacOS with MacPorts
 
 Execute on the command line:
 
 ```console
-curl -L https://git.io/n-install | bash
+sudo port install n
 ```
 
-This will install `n` in your home directory, together with `lts` version of
-Node.js and `npm` package manager for that version.
+### 1.2 If using MacOS with Homebrew
+
+Execute on the command line:
+
+```console
+brew install n
+```
 
 ## 2 Install a package
 
 To install a package globally, for example `yarn`, execute on the command line:
 
 ```console
-npm install -g yarn
+sudo npm install -g yarn
 ```
 
 All packages installed globally with `npm` will be installed for the version of
