@@ -1,4 +1,4 @@
-# Set up Apache Tika server
+# Set up Apache Tika server (optional)
 
 Apache Tika is a content analysis toolkit used to detect and extract metadata
 and text from different file types. IUt can be used both as a server and a

@@ -1,10 +1,12 @@
-# Install Apache Solr
+# Set up Apache Solr
 
 Here you will install Apache Solr. Open https://downloads.apache.org/lucene/solr
 in your browser and find the Solr package for the version you want to install.
 Copy the link to it.
 
-## 1 Install
+## Set up recent version of Solr
+
+### 1 Install
 
 In the console, create `solr` directory in your home directory and position into
 it:
@@ -14,8 +16,9 @@ mkdir ~/solr
 cd ~/solr
 ```
 
-Now download your chosen Solr package, extract it, delete the archive and
-position into the extracted directory:
+Now download your chosen Solr package from
+https://lucene.apache.org/solr/downloads.html, extract it, delete the archive
+and position into the extracted directory:
 
 ```console
 wget https://downloads.apache.org/lucene/solr/7.7.3/solr-7.7.3.tgz
@@ -23,7 +26,7 @@ tar xzf solr-7.7.3.tgz && rm solr-7.7.3.tgz
 cd solr-7.7.3
 ```
 
-## 2 Start
+### 2 Start
 
 From the installation directory you can start the Solr server using the provided
 `solr` command:
@@ -51,7 +54,7 @@ foreground with `-f` switch:
 
 In this case, stop the server when needed with `Control-C`.
 
-## Add a new core
+### Add a new core
 
 You can use `solr` command to create a new core using a specific configuration.
 Prepare your configuration in a separate directory, then execute:
@@ -70,3 +73,67 @@ Core can also be removed from the server:
 
 To find out about other available options, execute the `solr` command without
 arguments and follow the given instructions.
+
+## Set up Solr version 4.10.4
+
+### 1 Install
+
+In the console, create `solr` directory in your home directory and position into
+it:
+
+```console
+mkdir ~/solr
+cd ~/solr
+```
+
+Now download your chosen Solr package from
+https://archive.apache.org/dist/lucene/solr/, extract it, delete the archive
+and position into the extracted directory:
+
+```console
+wget https://archive.apache.org/dist/lucene/solr/4.10.4/solr-4.10.4.tgz
+tar xzf solr-4.10.4.tgz && rm solr-4.10.4.tgz
+cd solr-4.10.4
+```
+
+To run this version of Solr, you will also Java 7. In the console, create `java`
+directory in your home directory and position into it:
+
+```console
+mkdir ~/java
+cd ~/java
+```
+
+Download your chosen java package in the archive format from
+https://www.oracle.com/java/technologies/javase/javase7-archive-downloads.html.
+Download Java SE Runtime Environment 7u51 and place it in the previously created
+directory `~/java`.
+
+Now you can extract it and delete the archive:
+
+```console
+cd ~/java
+tar xzf jre-7u51-macosx-x64.tar.gz && rm jre-7u51-macosx-x64.tar.gz
+```
+
+You can use Java directly from the extracted directory, for example:
+
+```console
+~/java/jre1.7.0_51.jre/Contents/Home/bin/java -version
+```
+
+If you use MacOS, it will prevent you from executing an unverified binary, so
+make sure you register your terminal application as a Developer Tool in System
+Preferences > Security & Privacy > Privacy.
+
+### 2 Start
+
+To start Solr, prepare your cores in `~/solr/solr-4.10.4/example/multicore` and
+position into `~/solr/solr-4.10.4/example`. Then execute:
+
+```console
+~/java/jre1.7.0_51.jre/Contents/Home/bin/java -Djetty.port=8983 -Dsolr.solr.home=multicore -jar start.jar
+```
+
+The server will run in the foreground, and you can stop it when needed with
+`Control-C`.
