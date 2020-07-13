@@ -23,14 +23,6 @@ header("Cache-Control: no-cache, must-revalidate");
         <li>Media Site <a href="https://media-site.dev.php73.ez">Frontend</a> | <a href="https://media-site.prod.php73.ez/ngadminui">Admin</a></li>
     </ol>
     <details>
-        <summary>SSL and Varnish</summary>
-        <blockquote>
-            <p>All hosts are configured to automatically redirect from HTTP to HTTPS.</p>
-            <p>Varnish is configured on port 8080, for example <code>https://media-site.dev.php73.ez:8080</code></p>
-            <p>HTTP access to host is possible through port 8082, for example <code>http://media-site.dev.php73.ez:8082</code></p>
-        </blockquote>
-    </details>
-    <details>
         <summary>Host format</summary>
         <blockquote>
             <p>Host must conform to format <code>installation_dir.symfony_environment.php_version.(ez|sf)</code></p>
@@ -70,6 +62,14 @@ header("Cache-Control: no-cache, must-revalidate");
             <p>You can use this approach together with custom app/public directory setup described above</p>
         </blockquote>
     </details>
+    <details>
+        <summary>SSL and Varnish</summary>
+        <blockquote>
+            <p>All hosts are configured to automatically redirect from HTTP to HTTPS.</p>
+            <p>Varnish is configured on port 8080, for example <code>https://media-site.dev.php73.ez:8080</code></p>
+            <p>HTTP access to host is possible through port 8082, for example <code>http://media-site.dev.php73.ez:8082</code></p>
+        </blockquote>
+    </details>
     <h2>services</h2>
     <hr>
     <ol>
@@ -79,11 +79,14 @@ header("Cache-Control: no-cache, must-revalidate");
         <li>PHP 7.1 <a href="https://phpinfo.php71">info</a> | <a href="https://home.php71/status?full&html">status</a></li>
         <li>PHP 7.0 <a href="https://phpinfo.php71">info</a> | <a href="https://home.php70/status?full&html">status</a></li>
         <li>PHP 5.6 <a href="https://phpinfo.php56">info</a> | <a href="https://home.php56/status?full&html">status</a></li>
+        <li>Memcached <span class="hint">start it when needed with <code>memcached</code></span></li>
+        <li>Varnish <span class="hint">start it when needed with <code>varnishd -f /path/to/configuration.vcl -a :8081 -s malloc,256M -F</code></span></li>
         <li><a href="http://0.0.0.0:8025">MailHog</a> <span class="hint">start it when needed with <code>mailhog</code></span></li>
-        <li><a href="http://localhost:15672">RabbitMQ</a> <span class="hint">start it when needed with <code>rabbitmq-server</code></span></li>
-        <li><a href="http://localhost:8983/solr">Solr</a> <span class="hint">start it when needed from its installation dir with <code>./bin/solr start -f</code></span></li>
+        <li><a href="http://localhost:15672">RabbitMQ</a> <span class="hint">start it when needed with <code>sudo rabbitmq-server</code></span></li>
+        <li><a href="http://localhost:8983/solr">Solr</a> <span class="hint">start it when needed from its installation dir with <code>~/solr/solr-x/bin/solr start -f</code></span></li>
+        <li><a href="http://localhost:9998/">Tika</a> <span class="hint">start it when needed with <code>java -jar ~/jars/tika-server-x.jar</code></span></li>
     </ol>
-    <h2>extras</h2>
+    <h2>resources</h2>
     <hr>
     <ol>
         <li><a href="https://docs.netgen.io/">Netgen Docs</a></li>
