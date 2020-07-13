@@ -11,7 +11,8 @@ xcode-select --install
 
 ## Install Java Runtime Environment
 
-Open https://www.java.com and follow the instructions to install Java.
+Open https://www.oracle.com/java/technologies/javase-downloads.html and follow
+the instructions to install the latest Java JDK.
 
 ## Install a package manager
 
