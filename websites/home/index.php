@@ -12,7 +12,7 @@ header("Cache-Control: no-cache, must-revalidate");
 <head>
     <title><?php echo get_current_user() . '@' . gethostname(); ?></title>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
