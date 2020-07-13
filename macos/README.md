@@ -9,10 +9,10 @@ and follow the instructions:
 xcode-select --install
 ```
 
-## Install Java Runtime Environment
+## Install Java Development Kit
 
 Open https://www.oracle.com/java/technologies/javase-downloads.html and follow
-the instructions to install the latest Java JDK.
+the instructions to install the latest JDK.
 
 ## Install a package manager
 
