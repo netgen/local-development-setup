@@ -33,9 +33,8 @@ To install a package globally, for example `yarn`, execute on the command line:
 sudo npm install -g yarn
 ```
 
-All packages installed globally with `npm` will be installed for the version of
-Node.js that is currently active, and switching to different version of Node.js
-will also switch the packages installed for the selected version.
+Packages installed globally with `npm` will be installed independently of the
+version of Node.js that is currently active.
 
 ## 3 Install another version of Node.js
 
@@ -43,7 +42,7 @@ To install another version of Node.js, for example `10.16.0`, execute on the
 command line:
 
 ```console
-n 10.16.0
+sudo n 10.16.0
 ```
 
 ## 4 Switch between different versions of Node.js
@@ -51,7 +50,7 @@ n 10.16.0
 To switch between different versions of Node.js, execute on the command line:
 
 ```console
-n
+sudo n
 ```
 
 Then select between available versions of Node.js.
