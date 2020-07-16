@@ -11,7 +11,9 @@ server {
     access_log /opt/local/var/log/nginx/access.sf.$_install_dir.log main;
     error_log /opt/local/var/log/nginx/error.sf.log error;
 
+    rewrite "^/build(_dev)?/(.*)" "/build$1/$2" break;
     rewrite "^/bundles/(.*)" "/bundles/$1" break;
+    rewrite "^/assets/(.*)" "/assets/$1" break;
     rewrite "^(.*)$" "/$_front_controller$1" last;
 
     location ~ ^/(app|index)\.php(/|$) {
