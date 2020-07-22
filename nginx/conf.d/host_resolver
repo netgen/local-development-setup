@@ -9,10 +9,10 @@ set $_public_dir web;
 set $_front_controller app.php;
 
 # Map values from host
-if ($host ~ "^(.*)\.(.*)\.php([0-9]*)\..*$") {
-    set $_install_dir $1;
-    set $_environment $2;
-    set $_php_socket unix:/var/run/php$3-fpm.sock;
+if ($host ~ "^(.*\.)?(.*)\.(.*)\.php([0-9]*)\..*$") {
+    set $_install_dir $2;
+    set $_environment $3;
+    set $_php_socket unix:/var/run/php$4-fpm.sock;
 }
 
 # Symfony >=4
