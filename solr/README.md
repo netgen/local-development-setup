@@ -6,6 +6,14 @@ Copy the link to it.
 
 ## Set up recent version of Solr
 
+If you want to use multiple versions of Solr, this is the recommended way to
+install it and the procedure is the same for both MacOS and Ubuntu. This type
+of setup allows you to easily have multiple Solr versions and start/stop them
+when needed. The only drawback is that you have to manually start it each time
+you need it.
+
+If you want to install it as a service instead, follow the instructions below.
+
 ### 1 Install
 
 In the console, create `solr` directory in your home directory and position into
@@ -137,3 +145,86 @@ position into `~/solr/solr-4.10.4/example`. Then execute:
 
 The server will run in the foreground, and you can stop it when needed with
 `Control-C`.
+
+## Set up recent version of Solr as a service on Ubuntu (optional)
+
+If you will be using only one version of Solr, then it makes sense to install
+it as a service. This setup is similar to the one on production servers and it
+makes it easier to start/stop Solr and it makes it possible to start Solr
+automatically after reboot.
+
+**Note:** this kind of setup will create `solr` user as well as `solr` user group,
+and you will have to use this user to manage cores and data.
+
+### 1 Install
+
+In order to install Solr as a service, execute the following commands:
+
+```console
+cd /opt
+sudo wget https://downloads.apache.org/lucene/solr/7.7.3/solr-7.7.3.tgz
+sudo tar -xvzf solr-7.7.3.tgz solr-7.7.3/bin/install_solr_service.sh --strip-components 2
+sudo ./install_solr_service.sh solr-7.7.3.tgz
+sudo rm -rf install_solr_service.sh solr-6.6.6.tgz
+```
+
+### 2 Start
+
+You can control the Solr service with following commands:
+
+```console
+sudo service solr start
+sudo service solr stop
+sudo service solr restart
+sudo service solr status
+```
+
+### 3 Start automatically after reboot
+
+To check if Solr service is set to automatically start after reboot, to enable
+or disable it, use the following commands:
+
+```console
+sudo systemctl is-enabled solr
+sudo systemctl enable solr
+sudo systemctl disable solr
+```
+
+### 4 Add a new core
+
+When using Solr as a service, cores are located in the `/var/solr/data`
+directory.
+
+You can use `solr` command to create a new core using a specific configuration.
+Prepare your configuration in a separate directory, then execute:
+
+```console
+solr create_core -c my_new_core -d /var/solr/data
+```
+
+If you want to manually create cores (eg. if you have them in your project
+repository), you need to use the `solr` user:
+
+```console
+sudo su solr
+```
+
+### 5 Uninstall Solr as a service
+
+If you want to uninstall Solr as a service (eg. if you decided to have multiple
+versions of Solr at the same time), you can do that by executing the following
+commands:
+
+**Warning:** This will delete all your cores and data in them!
+
+```console
+sudo service solr stop
+sudo rm -r /var/solr
+sudo rm -r /opt/solr-7.7.3
+sudo rm -r /opt/solr 
+sudo rm /etc/init.d/solr
+sudo deluser --remove-home solr
+sudo deluser --group solr
+sudo update-rc.d -f solr remove
+sudo rm -rf /etc/default/solr.in.sh
+```
