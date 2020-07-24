@@ -30,6 +30,16 @@ Execute on the command line:
 brew install mailhog
 ```
 
+### 1.3 If using Ubuntu
+
+Execute on the command line:
+
+```console
+cd /usr/local/bin
+sudo wget -O /usr/local/bin/mailhog https://github.com/mailhog/MailHog/releases/download/v1.0.0/MailHog_linux_amd64
+sudo chmod a+x /usr/local/bin/mailhog
+```
+
 ## 2 Start
 
 As we don't always need it in a project, MailHog is to be started when needed.
