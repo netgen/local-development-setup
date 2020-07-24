@@ -19,13 +19,71 @@ brew install dnsmasq
 sudo port install dnsmasq
 ```
 
+### 1.3 Install on Ubuntu
+
+Installation on Ubuntu is a little bit tricky, since `systemd-resolved` does not
+play very well with `NetworkManager` when configured with `dnsmasq`. The following
+steps will enable proper configuration so that `dnsmasq` gets started from 
+`NetworkManager` and that network connectivity changes are handled transparently.
+
+First we need to install `dnsmasq`:
+
+```bash
+sudo apt-get install dnsmasq
+```
+
+After installation, you will get an error message that the process
+cannot start, like this:
+
+```text
+Job for dnsmasq.service failed because the control process exited with error code.
+See "systemctl status dnsmasq.service" and "journalctl -xe" for details.
+```
+
+This is happening because `systemd-resolved` is already listening on that port.
+Ignore this for now. Next, enable `dnsmasq` in `NetworkManager`:
+
+```bash
+sudo vi /etc/NetworkManager/NetworkManager.conf
+```
+
+Change `dns` to `dnsmasq` in the `[main]` section so that it looks like this:
+
+```text
+[main]
+plugins=ifupdown,keyfile
+dns=dnsmasq
+
+[ifupdown]
+managed=false
+
+[device]
+wifi.scan-rand-mac-address=no
+```
+
+And then execute the following command to let `NetworkManager` manage `/etc/resolv.conf`:
+
+```bash
+sudo rm /etc/resolv.conf ; sudo ln -s /var/run/NetworkManager/resolv.conf /etc/resolv.conf
+```
+
+Finally, restart the NetworkManager:
+
+```bash
+sudo systemctl reload NetworkManager
+```
+
+**Note:** if you want to revert back to `systemd-resolved`,
+`/etc/resolv.conf` points to `/run/systemd/resolve/stub-resolv.conf` by default. 
+
 ## 2 Configure
 
 ### 2.1 Update configuration file
 
 Edit configuration file `/opt/local/etc/dnsmasq.conf` (MacPorts) or
-`/usr/local/etc/dnsmasq.conf` (Homebrew) and replace the existing
-configuration with the following content:
+`/usr/local/etc/dnsmasq.conf` (Homebrew) or
+`/etc/NetworkManager/dnsmasq.d/dnmasq.conf` (Ubuntu) and replace the
+existing configuration with the following content:
 
 ```bash
 no-resolv
@@ -48,7 +106,7 @@ Default configuration will still be available for reference in
 `/opt/local/etc/dnsmasq.conf.example` (MacPorts) or
 `/usr/local/etc/dnsmasq.conf.default` (Homebrew).
 
-### 2.2 Add DNS resolver configuration
+### 2.2 Add DNS resolver configuration (MacOS only)
 
 Add DNS resolver configuration for your custom top-level domains by executing on
 the command line:
@@ -69,7 +127,7 @@ sudo port load dnsmasq
 
 This will also start the server automatically after a reboot.
 
-### 3.1 If using MacOS with Homebrew
+### 3.2 If using MacOS with Homebrew
 
 ```bash
 sudo brew services start dnsmasq
@@ -77,7 +135,22 @@ sudo brew services start dnsmasq
 
 This will also start the server automatically after a reboot.
 
-## 4 Update network connections
+### 3.3 If using Ubuntu
+
+On Ubuntu this process will be started automatically and it's enabled
+to start after a reboot by default.
+
+If you need to start/stop or enable/disable it, use `systemctl`:
+
+```bash
+sudo systemctl start NetworkManager
+sudo systemctl stop NetworkManager
+sudo systemctl is-enabled NetworkManager
+sudo systemctl enable NetworkManager
+sudo systemctl disable NetworkManager
+```
+
+## 4 Update network connections (MacOS only)
 
 Open Network configuration in System Preferences, click Advanced on your network
 connection, select DNS tab and add `127.0.0.1` as a DNS server.
