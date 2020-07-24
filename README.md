@@ -19,3 +19,4 @@ Follow the steps in this order:
 1. [Varnish](varnish)
 1. [Node.js](nodejs)
 1. [Tika](tika)
+1. [Memcached](memcached)
