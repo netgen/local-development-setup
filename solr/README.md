@@ -12,7 +12,8 @@ of setup allows you to easily have multiple Solr versions and start/stop them
 when needed. The only drawback is that you have to manually start it each time
 you need it.
 
-If you want to install it as a service instead, follow the instructions below.
+If you want to install it as a service instead, there are instructions at the
+end of this document.
 
 ### 1 Install
 
