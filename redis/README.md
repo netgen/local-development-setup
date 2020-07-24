@@ -22,6 +22,14 @@ Execute on the command line:
 brew install redis
 ```
 
+### 1.3 If using Ubuntu
+
+Execute on the command line:
+
+```console
+sudo apt-get install redis
+```
+
 ## 2 Start
 
 Since Redis is usually used in our web apps, we want it always running and
@@ -59,6 +67,22 @@ To stop the server and prevent it from running after a reboot, execute:
 
 ```console
 sudo brew services stop redis
+```
+
+#### 2.1.3 If using Ubuntu
+
+Execute on the command line:
+
+```console
+sudo systemctl enable redis
+```
+
+This will start the server and set it up to start automatically after a reboot.
+
+To stop the server and prevent it from running after a reboot, execute:
+
+```console
+sudo systemctl disable redis
 ```
 
 ### 2.2 Start manually when needed
