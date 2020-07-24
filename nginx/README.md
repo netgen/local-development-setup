@@ -14,6 +14,33 @@ sudo port install nginx
 brew install nginx
 ```
 
+## 1.3 Install on Ubuntu
+
+Ubuntu comes with Apache preinstalled. Since we'll be using Nginx, the best
+is to remove Apache to prevent possible issues and save some space. To do that,
+execute the following commands:
+
+```console
+sudo service apache2 stop
+sudo apt-get purge apache2 apache2-utils apache2.2-bin
+sudo apt-get autoremove
+sudo rm -rf /etc/apache2
+```
+
+If you rather want to leave it, you need to stop id and disable to start after
+reboot because you won't be able to start Nginx while Apache is running:
+
+```console
+sudo service apache2 stop
+sudo systemctl disable apache2
+```
+
+Then you can proceed to install Nginx:
+
+```console
+sudo apt-get install nginx
+```
+
 ## 2 Configure
 
 Once NGINX is installed, use files given in this directory to configure the
@@ -29,6 +56,8 @@ Copy the configuration files to the configuration directory:
 ```console
 sudo cp -r /part/to/repository/nginx/* /opt/local/etc/nginx
 ```
+
+Don't forget to edit file `/etc/nginx/nginx.conf` and change user and user group.
 
 Create a directory where configuration for the enabled sites will be located:
 
@@ -54,6 +83,8 @@ Copy the configuration files to the configuration directory:
 ```console
 cp -r /path/to/repository/nginx/* /usr/local/etc/nginx
 ```
+
+Don't forget to edit file `/etc/nginx/nginx.conf` and change user and user group.
 
 Create a directory where configuration for the enabled sites will be located:
 
@@ -88,6 +119,38 @@ cd /usr/local/etc/nginx
 LC_ALL=C find . -type f -exec sed -i '' 's/\/opt\/local/\/usr\/local/g' {} +
 ```
 
+### 2.3 If using Ubuntu
+
+Copy the configuration files to the configuration directory:
+
+```console
+sudo cp -r /path/to/repository/nginx/* /etc/nginx
+```
+
+Don't forget to edit file `/etc/nginx/nginx.conf` and change user and user group.
+
+Now position into the directory for enabled sites and symlink
+all available site configurations:
+
+```console
+cd /etc/nginx/sites-enabled
+sudo ln -s ../sites-available/* ./
+```
+
+Ubuntu uses different directory for log files so we need to update these:
+
+```console
+cd /etc/nginx
+find . -type f -exec sed -i 's/\/opt\/local\/var\/log/\/var\/log/g' {} +
+```
+
+Then we need to set permissions for this repository:
+
+```console
+sudo chown -R brale:staff /var/log/nginx
+sudo chmod -R u+X /var/log/nginx
+```
+
 ## 3 Link SSL certificates
 
 SSL certificates created in one of the previous steps need to be linked to the
@@ -113,6 +176,16 @@ sudo ln -s ~/ssl/server.crt
 sudo ln -s ~/ssl/server.key
 ```
 
+### 3.3 If using Ubuntu
+
+Execute on the command line:
+
+```console
+cd /etc/nginx
+sudo ln -s ~/ssl/server.crt
+sudo ln -s ~/ssl/server.key
+```
+
 ## 4 Start the server
 
 ### 4.1 If using MacOS with MacPorts
@@ -131,14 +204,42 @@ sudo brew services start nginx
 
 This will also start the server automatically after a reboot.
 
+### 4.3 If using Ubuntu
+
+```console
+sudo service nginx start
+```
+
+Except `start`, you can also use commands such as:
+* `status` - to see if Nginx service is running
+* `stop` - to stop the Nginx service
+* `restart` - to restart the Nginx service (does stop then start)
+
+To check if Nginx service is enabled to start after reboot, try:
+
+```console
+sudo systemctl is-enabled nginx
+```
+
+To enable it to automatically start after reboot:
+
+```console
+sudo systemctl enable nginx
+```
+
 ## 5 Install websites
 
 Now you can install websites provided in `websites` directory in the root of the
-repository. Websites will be located in `/var/www` directory , which needs to be
-created first:
+repository. Websites will be located in `/var/www` directory While Ubuntu has the
+it already, on MacOS you need to generate it first:
 
 ```console
 sudo mkdir /var/www
+```
+
+Then we need to set the permissions on this directory:
+
+```console
 sudo chown brale:staff /var/www
 ```
 
