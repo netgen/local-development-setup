@@ -202,6 +202,17 @@ cd ~/ssl
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain root.crt
 ```
 
+### 8.2 If using Ubuntu
+
+Register the created RCA with Ubuntu RCS (System Keychain), by executing on the
+command line:
+
+```console
+cd ~/ssl
+sudo cp root.crt /usr/local/share/ca-certificates
+sudo update-ca-certificates
+```
+
 ## 9 Configure Firefox to use OS RCS
 
 If you are using Firefox, open `about:config` and set
