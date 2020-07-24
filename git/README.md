@@ -60,6 +60,14 @@ Execute on the command line:
 brew install git
 ```
 
+### 2.3 If using Ubuntu
+
+Execute on the command line:
+
+```console
+sudo apt-get install git
+```
+
 ## 3 Verify configuration
 
 Check your configuration is active by executing on the command line:
