@@ -41,9 +41,9 @@ subl bin/varnishd/cache/cache_lck.c
 
 Then manually apply the following commit: https://github.com/varnishcache/varnish-cache/commit/e5e545f9fe14b4bfd4003c26403d80645c73385a
 
-## 2 Install tools needed to compile Varnish
+## 3 Install tools needed to compile Varnish
 
-### 2.1 If using MacOS
+### 3.1 If using MacOS
 
 Install `automake` using `brew` if you don't already have it:
 
@@ -52,7 +52,7 @@ brew info automake
 brew install automake
 ```
 
-### 2.2 If using Ubuntu
+### 3.2 If using Ubuntu
 
 Execute the following:
 
@@ -60,7 +60,7 @@ Execute the following:
 sudo apt-get install automake libtool python-docutils python3-sphinx libpcre3-dev libedit-dev
 ```
 
-## 3 Compile and install Varnish
+## 4 Compile and install Varnish
 
 Execute the following to compile and install Varnish binaries:
 
@@ -89,7 +89,7 @@ ln -s /usr/local/bin/varnishtop
 ln -s /usr/local/sbin/varnishd
 ```
 
-## 4 Download Varnish modules
+## 5 Download Varnish modules
 
 Aside from standard Varnish installation, you'll need `xkey` module as well.
 Clone modules repository into your home directory, position into it and checkout
@@ -102,7 +102,7 @@ cd varnish-modules
 git checkout 6.0-lts
 ```
 
-## 5 Compile and install Varnish modules
+## 6 Compile and install Varnish modules
 
 Execute the following to compile and install module binaries:
 
@@ -115,7 +115,7 @@ make
 sudo make install
 ```
 
-## 6 Start
+## 7 Start
 
 Now start the server in the foreground on the port 8081, replacing the example
 path to VCL with correct one for your project:
