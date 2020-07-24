@@ -60,6 +60,36 @@ brew install exolnet/deprecated/php@7.0
 brew install exolnet/deprecated/php@5.6
 ```
 
+### 1.3 If using Ubuntu
+
+On latest Ubuntu (20.04 in the time of writing), only the latest PHP version
+(PHP 7.4 in the time of writing) is available in the default repository. For
+older versions we need to use the `ondrej/php` PPA repository. 
+
+To add this repository, execute on the command line:
+
+```console
+sudo add-apt-repository ppa:ondrej/php
+```
+
+And then to install PHP 7.4, 7.3, 7.2, 7.1 and 5.6 execute on the command line:
+
+```console
+sudo apt-get install php7.4-fpm php7.4-imagick php7.4-gd php7.4-curl php7.4-opcache php7.4-mbstring php7.4-xsl php7.4-intl php7.4-sqlite php7.4-zip php7.4-iconv php7.4-mysql php7.4-bcmath
+
+sudo apt-get install php7.3 php7.3-fpm php7.3-imagick php7.3-gd php7.3-curl php7.3-opcache php7.3-mbstring php7.3-xsl php7.3-intl php7.3-sqlite php7.3-zip php7.3-iconv php7.3-mysql php7.3-bcmath
+
+sudo apt-get install php7.2 php7.2-fpm php7.2-imagick php7.2-gd php7.2-curl php7.2-opcache php7.2-mbstring php7.2-xsl php7.2-intl php7.2-sqlite php7.2-zip php7.2-iconv php7.2-mysql php7.2-bcmath
+
+sudo apt-get install php7.1 php7.1-fpm php7.1-imagick php7.1-gd php7.1-curl php7.1-opcache php7.1-mbstring php7.1-xsl php7.1-intl php7.1-sqlite php7.1-zip php7.1-iconv php7.1-mysql php7.1-bcmath
+
+sudo apt-get install php5.6-fpm php5.6-imagick php5.6-gd php5.6-curl php5.6-opcache php5.6-mbstring php5.6-xsl php5.6-intl php5.6-sqlite php5.6-zip php5.6-iconv php5.6-memcached php5.6-mysql php5.6-bcmath
+```
+
+**Note**: some PHP packages differ from MacOS instructions because eg. `php-openssl`
+is included in the main PHP package on Ubuntu and doesn't exist as a standalone
+package, while `php-bcmath` is needed but not included by default.
+
 ## 2 Configure
 
 ### 2.1 Configure PHP-FPM pool definitions
@@ -113,7 +143,7 @@ Find PHP-FPM pool definitions for your PHP versions in following files
 
 Update these pool definition files as described above.
 
-### 2.1 Configure PHP-FPM pool definitions if installed using MacPorts
+### 2.2 Configure PHP-FPM pool definitions if installed using MacPorts
 
 First create PHP-FPM configuration files by copying the default ones:
 
@@ -142,6 +172,22 @@ sudo cp /opt/local/etc/php70/php-fpm.d/www.conf.default /opt/local/etc/php70/php
 configuration file.
 
 Update the created pool definition files as described above.
+
+### 2.3 Configure PHP-FPM pool definitions on Ubuntu
+
+Find PHP-FPM pool definitions for your PHP versions in following files
+
+```text
+/etc/php/7.4/fpm/pool.d/www.conf
+/etc/php/7.3/fpm/pool.d/www.conf
+/etc/php/7.2/fpm/pool.d/www.conf
+/etc/php/7.1/fpm/pool.d/www.conf
+/etc/php/5.6/fpm/pool.d/www.conf
+```
+
+Update these pool definition files as described above.
+
+**Note:** don't forget to use `sudo` as these are editable only by the root user.
 
 ## 3 Configure PHP
 
@@ -186,6 +232,20 @@ sudo cp /opt/local/etc/php56/php.ini-development /opt/local/etc/php56/php.ini
 ```
 
 Update the created configuration files as described above.
+
+### 3.3 Configure PHP on Ubuntu
+
+Find the configuration for your PHP versions in the following files:
+
+```text
+/etc/php/7.4/fpm/php.ini
+/etc/php/7.3/fpm/php.ini
+/etc/php/7.2/fpm/php.ini
+/etc/php/7.1/fpm/php.ini
+/etc/php/5.6/fpm/php.ini
+```
+
+Update these configuration files as described above.
 
 ## 4 Symlink PHP binaries
 
@@ -272,6 +332,43 @@ To stop the server and prevent it from running after a reboot, execute:
 sudo port unload phpxx-fpm
 ```
 
+### 5.3 Start PHP-FPM services on Ubuntu
+
+```console
+sudo service php7.4-fpm start
+sudo service php7.3-fpm start
+sudo service php7.2-fpm start
+sudo service php7.1-fpm start
+sudo service php5.6-fpm start
+```
+
+Except `start`, you can also use commands such as:
+* `status` - to see if PHP-FPM service is running
+* `stop` - to stop the PHP-FPM service
+* `restart` - to restart the PHP-FPM service (does stop then start)
+
+Remember to restart the FPM server after changing the configuration.
+
+**Note:** by default all PHP-FPM services are set-up to automatically start
+after a reboot. To check if a service is enabled to automatically start on
+boot use:
+
+```console
+sudo systemctl is-enabled php7.4-fpm
+```
+
+And then you can enable it with:
+
+```console
+sudo systemctl enable php7.4-fpm
+```
+
+Or disable with:
+
+```console
+sudo systemctl disable php7.4-fpm
+```
+
 ## 6 Install PHP extensions
 
 Installed PHP will come with built-in extension, but if your project requires
@@ -295,3 +392,11 @@ sudo port install php56-memcached
 ### 6.2 If using Homebrew, compile the required PHP extensions manually
 
 todo
+
+### 6.3 Install PHP extensions on Ubuntu
+
+Simply install the PHP extension you need, for example:
+
+```console
+sudo apt-get install php5.6-memcached
+```
