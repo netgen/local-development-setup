@@ -88,7 +88,7 @@ sudo apt-get install php5.6-fpm php5.6-imagick php5.6-gd php5.6-curl php5.6-opca
 
 **Note**: some PHP packages differ from MacOS instructions because eg. `php-openssl`
 is included in the main PHP package on Ubuntu and doesn't exist as a standalone
-package, while `php-bcmath` is needed but not included by default.
+package, while `php-mysql` and `php-bcmath` are needed but not included by default.
 
 ## 2 Configure
 
