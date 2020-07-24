@@ -83,7 +83,7 @@ ps aux | grep memcached
 ```
 
 You should see it's process there, altogether with the port on which it
-listens to (defaul `11211`).
+listens to (default `11211`).
 
 Then you can `telnet` to it with:
 
