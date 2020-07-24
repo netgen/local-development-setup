@@ -249,6 +249,8 @@ Update these configuration files as described above.
 
 ## 4 Symlink PHP binaries
 
+### 4.1 Symlink PHP binaries on MacOS
+
 **Note**: as MacPorts already provides a PHP binary for each PHP version, this
 step is needed only if you installed using Homebrew.
 
@@ -276,6 +278,36 @@ php72 -v
 php72 -v
 php70 -v
 php56 -v
+```
+
+### 4.2 Symlink PHP binaries on Ubuntu
+
+After installing PHP on Ubuntu, they're already available with the
+following commands:
+
+```console
+php7.4 -v
+php7.3 -v
+php7.2 -v
+php7.2 -v
+php7.0 -v
+php5.6 -v
+```
+
+If you want to use the same command as on MacOS (without dot), you can
+add aliases for your favourite shell:
+
+* For default GNU Bash shell, use the `~/.bashrc` file
+* For OhMyZsh shell, use the `~/.zshrc` file
+
+Add the following configuration to the end of the file:
+
+```text
+alias php56="php5.6"
+alias php71="php7.1"
+alias php72="php7.2"
+alias php73="php7.3"
+alias php74="php7.4"
 ```
 
 ## 5 Start PHP-FPM services
