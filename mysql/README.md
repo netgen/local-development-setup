@@ -26,6 +26,14 @@ Execute on the command line:
 brew install mysql
 ```
 
+### 1.2 If using Ubuntu
+
+Execute on the command line:
+
+```console
+sudo apt-get install mysql-server
+```
+
 ## 2 Start
 
 Since MySQL is an essential part of our web apps, so we want it always running
@@ -56,7 +64,7 @@ To stop the server and prevent it from running after a reboot, execute:
 sudo port unload mysql8-server
 ```
 
-### 2.1 If using MacOS with Homebrew
+### 2.2 If using MacOS with Homebrew
 
 Execute on the command line:
 
@@ -70,6 +78,22 @@ To stop the server and prevent it from running after a reboot, execute:
 
 ```console
 brew services stop mysql
+```
+
+### 2.3 If using Ubuntu
+
+By default, MySQL server will be started and enabled to automatically
+start after reboot on Ubuntu. If you want to manually start/stop/enable/disable
+it, you can use following commands:
+
+```console
+sudo service mysql restart
+sudo service mysql start
+sudo service mysql stop
+sudo service mysql status
+sudo systemctl is-enabled mysql
+sudo systemctl enable mysql
+sudo systemctl disable mysql
 ```
 
 ## 3 Secure
@@ -88,6 +112,36 @@ initialization.
 Additionally, follow the instructions to skip setting up VALIDATE PASSWORD
 component, remove anonymous users and test databases and disallow the remote
 login for `root`. That will be sufficient for local development needs.
+
+### 3.1 Enable and configure `root` user (Ubuntu only)
+
+On Ubuntu by default the `root` user is set-up in a way that you can't login
+with credentials. In order to fix this, enter the MySQL shell as sudo:
+
+```console
+sudo mysql
+```
+
+And then inside MySQL shell execute the following commands:
+
+```mysql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+FLUSH PRIVILEGES;
+```
+
+**Note:** You can change `root` with another password that you want to use.
+
+At last, you need to restart the MySQL service:
+
+```console
+sudo service mysql restart
+```
+
+After that, you will be able to login with:
+
+```console
+mysql -u root -p
+```
 
 ## 4 Configure
 
@@ -170,7 +224,9 @@ FLUSH PRIVILEGES;
 
 You will probably want a graphical UI client to work with the database server.
 For MacOS, [TablePlus](https://tableplus.com/) is a good choice, offering
-unlimited free trial with reasonable limitations for light use.
+unlimited free trial with reasonable limitations for light use. For Ubuntu, you
+can use [DBeaver Community](https://dbeaver.io/) which is free and multi-platform
+tool with support for all popular databases and offers a lot of features.
 
 Install your preferred GUI client and configure the connection to the server
 with the `admin` user. If the connection works, you've finished installing and
