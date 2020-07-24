@@ -21,9 +21,17 @@ Execute on the command line:
 sudo port install rabbitmq-server
 ```
 
+### 1.3 If using Ubuntu
+
+Execute on the command line:
+
+```console
+sudo apt-get install rabbitmq-server
+```
+
 ## 2 Enable plugins
 
-**Note**: This step is needed only if you are using MacOS with MacPorts.
+**Note**: This step is needed only if you are using MacOS with MacPorts or Ubuntu.
 
 To enable web management UI, enable `rabbitmq_management` plugin by executing on
 the command line:
@@ -58,6 +66,31 @@ sudo rabbitmq-server
 The server will run in the foreground, and you can stop it when needed with
 `Control-C`.
 
+#### 3.1.3 If using Ubuntu
+
+Execute on the command line:
+
+```console
+sudo rabbitmq-server
+```
+
+The server will run in the foreground, and you can stop it when needed with
+`Control-C`.
+
+You can also start it as a service:
+
+```console
+sudo service rabbitmq-server start
+```
+
+Other service commands are also available:
+
+```console
+sudo service rabbitmq-server status
+sudo service rabbitmq-server stop
+sudo service rabbitmq-server restart
+```
+
 ### 3.2 Start automatically
 
 If wanted, you can also set it up to start automatically after a reboot.
@@ -88,6 +121,26 @@ To stop the server and prevent it from running after a reboot, execute:
 
 ```console
 sudo brew services stop rabbitmq
+```
+
+#### 3.2.3 If using Ubuntu
+
+Execute on the command line:
+
+```console
+sudo systemctl enable rabbitmq-server
+```
+
+To stop the server and prevent it from running after a reboot, execute:
+
+```console
+sudo systemctl disable rabbitmq-server
+```
+
+To check if the server is enabled to run after a reboot, execute:
+
+```console
+sudo systemctl is-enabled rabbitmq-server
 ```
 
 ## 4 Test
