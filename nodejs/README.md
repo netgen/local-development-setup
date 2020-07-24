@@ -25,6 +25,14 @@ Execute on the command line:
 brew install n
 ```
 
+### 1.3 If using Ubuntu
+
+Execute on the command line:
+
+```console
+sudo apt-get install n
+```
+
 ## 2 Install a package
 
 To install a package globally, for example `yarn`, execute on the command line:
