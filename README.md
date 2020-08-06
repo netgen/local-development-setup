@@ -1,7 +1,8 @@
 # Netgen's Local Development Setup
 
 For all chapters in this documentation, replace `Brale Rodijak` with your own
-name and `brale` user with you own username on your workstation.
+name, `brale` user with you own username on your workstation and if on Linux,
+`staff` group with your own group name (usually the same as the username).
 
 Follow the steps in this order:
 
