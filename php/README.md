@@ -443,5 +443,11 @@ todo
 Simply install the PHP extension you need, for example:
 
 ```console
-sudo apt install php5.6-memcached
+sudo apt install php5.6-mysql
+```
+
+**Note:** Some extensions do not have a PHP version in their name, eg.
+
+```console
+sudo apt install php-memcached
 ```
