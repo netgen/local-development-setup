@@ -65,7 +65,7 @@ brew install git
 Execute on the command line:
 
 ```console
-sudo apt-get install git
+sudo apt install git
 ```
 
 ## 3 Verify configuration

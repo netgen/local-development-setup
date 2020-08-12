@@ -57,7 +57,7 @@ brew install automake
 Execute the following:
 
 ```console
-sudo apt-get install automake libtool python-docutils python3-sphinx libpcre3-dev libedit-dev
+sudo apt install automake libtool python-docutils python3-sphinx libpcre3-dev libedit-dev
 ```
 
 ## 4 Compile and install Varnish

@@ -22,8 +22,8 @@ execute the following commands:
 
 ```console
 sudo service apache2 stop
-sudo apt-get purge apache2 apache2-utils apache2.2-bin
-sudo apt-get autoremove
+sudo apt purge apache2 apache2-utils apache2.2-bin
+sudo apt autoremove
 sudo rm -rf /etc/apache2
 ```
 
@@ -38,7 +38,7 @@ sudo systemctl disable apache2
 Then you can proceed to install Nginx:
 
 ```console
-sudo apt-get install nginx
+sudo apt install nginx
 ```
 
 ## 2 Configure

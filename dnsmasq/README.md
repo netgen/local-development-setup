@@ -29,7 +29,7 @@ steps will enable proper configuration so that `dnsmasq` gets started from
 First we need to install `dnsmasq`:
 
 ```bash
-sudo apt-get install dnsmasq
+sudo apt install dnsmasq
 ```
 
 After installation, you will get an error message that the process

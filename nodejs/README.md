@@ -30,7 +30,7 @@ brew install n
 Execute on the command line:
 
 ```console
-sudo apt-get install n
+sudo apt install n
 ```
 
 ## 2 Install a package

@@ -31,7 +31,7 @@ brew install mysql
 Execute on the command line:
 
 ```console
-sudo apt-get install mysql-server
+sudo apt install mysql-server
 ```
 
 ## 2 Start
