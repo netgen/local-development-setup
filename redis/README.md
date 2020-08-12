@@ -74,7 +74,7 @@ sudo brew services stop redis
 Execute on the command line:
 
 ```console
-sudo systemctl enable redis
+sudo systemctl enable redis-server
 ```
 
 This will start the server and set it up to start automatically after a reboot.
@@ -82,7 +82,7 @@ This will start the server and set it up to start automatically after a reboot.
 To stop the server and prevent it from running after a reboot, execute:
 
 ```console
-sudo systemctl disable redis
+sudo systemctl disable redis-server
 ```
 
 ### 2.2 Start manually when needed
