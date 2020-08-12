@@ -380,11 +380,11 @@ sudo port unload phpxx-fpm
 ### 5.3 Start PHP-FPM services on Ubuntu
 
 ```console
-sudo service php7.4-fpm start
-sudo service php7.3-fpm start
-sudo service php7.2-fpm start
-sudo service php7.1-fpm start
-sudo service php5.6-fpm start
+sudo systemctl start php7.4-fpm
+sudo systemctl start php7.3-fpm
+sudo systemctl start php7.2-fpm
+sudo systemctl start php7.1-fpm
+sudo systemctl start php5.6-fpm
 ```
 
 Except `start`, you can also use commands such as:
