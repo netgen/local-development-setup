@@ -24,10 +24,10 @@ sudo apt install memcached
 sudo apt install libmemcached-tools
 ```
 
-You also need to install PHP extensions for all PHP versions:
+You also need to install PHP extension:
 
 ```console
-sudo apt install php7.4-memcache php7.3-memcache php7.2-memcache php7.1-memcache php5.6-memcache
+sudo apt install php-memcached
 ```
 
 ## 2 Start
