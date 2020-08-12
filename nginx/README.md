@@ -16,29 +16,33 @@ brew install nginx
 
 ## 1.3 Install on Ubuntu
 
-Ubuntu comes with Apache preinstalled. Since we'll be using Nginx, the best
-is to remove Apache to prevent possible issues and save some space. To do that,
-execute the following commands:
+In order to install NGINX web server on Ubuntu, execute the following command:
+
+```console
+sudo apt install nginx
+```
+
+**Note**: depending on the type of your Ubuntu installation, your OS might have
+Apache web server preinstalled. In that case, you might have problems starting NGINX
+because Apache is already listening on the port where NGINX wants to listen to.
+
+In that case, you should stop Apache service and disable it from starting on boot:
+
+```console
+sudo systemctl stop apache2
+sudo systemctl disable apache2
+```
+
+In case you will need Apache, you need to stop NGINX first and then start Apache.
+
+**Optional**: if you don't need Apache at all, you can remove it to save some
+space:
 
 ```console
 sudo service apache2 stop
 sudo apt purge apache2 apache2-utils apache2.2-bin
 sudo apt autoremove
 sudo rm -rf /etc/apache2
-```
-
-If you rather want to leave it, you need to stop id and disable to start after
-reboot because you won't be able to start Nginx while Apache is running:
-
-```console
-sudo service apache2 stop
-sudo systemctl disable apache2
-```
-
-Then you can proceed to install Nginx:
-
-```console
-sudo apt install nginx
 ```
 
 ## 2 Configure
