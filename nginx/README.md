@@ -240,7 +240,7 @@ sudo mkdir /var/www
 Then we need to set the permissions on this directory:
 
 ```console
-sudo chown brale:staff /var/www
+sudo chown -R brale:staff /var/www
 ```
 
 Now you can copy the websites to the created directory:
