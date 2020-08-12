@@ -141,7 +141,7 @@ Ubuntu uses different directory for log files so we need to update these:
 
 ```console
 cd /etc/nginx
-find . -type f -exec sed -i 's/\/opt\/local\/var\/log/\/var\/log/g' {} +
+find . -type f -exec sudo sed -i 's/\/opt\/local\/var\/log/\/var\/log/g' {} +
 ```
 
 Then we need to set permissions for this repository:
