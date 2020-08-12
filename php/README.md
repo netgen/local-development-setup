@@ -75,15 +75,15 @@ sudo add-apt-repository ppa:ondrej/php
 And then to install PHP 7.4, 7.3, 7.2, 7.1 and 5.6 execute on the command line:
 
 ```console
-sudo apt install php7.4-fpm php7.4-imagick php7.4-gd php7.4-curl php7.4-opcache php7.4-mbstring php7.4-xsl php7.4-intl php7.4-sqlite php7.4-zip php7.4-iconv php7.4-mysql php7.4-bcmath
+sudo apt install php7.4 php7.4-fpm php-imagick php7.4-gd php7.4-curl php7.4-opcache php7.4-mbstring php7.4-xsl php7.4-intl php7.4-sqlite3 php7.4-zip php7.4-mysql php7.4-bcmath
 
-sudo apt install php7.3 php7.3-fpm php7.3-imagick php7.3-gd php7.3-curl php7.3-opcache php7.3-mbstring php7.3-xsl php7.3-intl php7.3-sqlite php7.3-zip php7.3-iconv php7.3-mysql php7.3-bcmath
+sudo apt install php7.3 php7.3-fpm php-imagick php7.3-gd php7.3-curl php7.3-opcache php7.3-mbstring php7.3-xsl php7.3-intl php7.3-sqlite3 php7.3-zip php7.3-mysql php7.3-bcmath
 
-sudo apt install php7.2 php7.2-fpm php7.2-imagick php7.2-gd php7.2-curl php7.2-opcache php7.2-mbstring php7.2-xsl php7.2-intl php7.2-sqlite php7.2-zip php7.2-iconv php7.2-mysql php7.2-bcmath
+sudo apt install php7.2 php7.2-fpm php-imagick php7.2-gd php7.2-curl php7.2-opcache php7.2-mbstring php7.2-xsl php7.2-intl php7.2-sqlite3 php7.2-zip php7.2-mysql php7.2-bcmath
 
-sudo apt install php7.1 php7.1-fpm php7.1-imagick php7.1-gd php7.1-curl php7.1-opcache php7.1-mbstring php7.1-xsl php7.1-intl php7.1-sqlite php7.1-zip php7.1-iconv php7.1-mysql php7.1-bcmath
+sudo apt install php7.1 php7.1-fpm php-imagick php7.1-gd php7.1-curl php7.1-opcache php7.1-mbstring php7.1-xsl php7.1-intl php7.1-sqlite3 php7.1-zip php7.1-mysql php7.1-bcmath
 
-sudo apt install php5.6-fpm php5.6-imagick php5.6-gd php5.6-curl php5.6-opcache php5.6-mbstring php5.6-xsl php5.6-intl php5.6-sqlite php5.6-zip php5.6-iconv php5.6-memcached php5.6-mysql php5.6-bcmath
+sudo apt install php5.6 php5.6-fpm php-imagick php5.6-gd php5.6-curl php5.6-opcache php5.6-mbstring php5.6-xsl php5.6-intl php5.6-sqlite3 php5.6-zip php5.6-mysql php5.6-bcmath
 ```
 
 **Note**: some PHP packages differ from MacOS instructions because eg. `php-openssl`
