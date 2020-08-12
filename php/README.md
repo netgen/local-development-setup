@@ -294,6 +294,19 @@ php7.0 -v
 php5.6 -v
 ```
 
+There's also a generic command available:
+
+```console
+php -v
+```
+
+which uses default PHP version. You can set any PHP version as default
+by using the following command:
+
+```console
+sudo update-alternatives --config php
+```
+
 If you want to use the same command as on MacOS (without dot), you can
 add aliases for your favourite shell:
 
