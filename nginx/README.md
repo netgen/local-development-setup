@@ -230,8 +230,8 @@ sudo systemctl enable nginx
 ## 5 Install websites
 
 Now you can install websites provided in `websites` directory in the root of the
-repository. Websites will be located in `/var/www` directory While Ubuntu has the
-it already, on MacOS you need to generate it first:
+repository. Websites will be located in `/var/www` directory. While this folder
+already exists on Ubuntu, on MacOS you need to generate it first:
 
 ```console
 sudo mkdir /var/www
