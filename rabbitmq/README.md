@@ -33,11 +33,22 @@ sudo apt install rabbitmq-server
 
 **Note**: This step is needed only if you are using MacOS with MacPorts or Ubuntu.
 
+### 2.1 If using MacOS with MacPorts
+
 To enable web management UI, enable `rabbitmq_management` plugin by executing on
 the command line:
 
 ```console
 rabbitmq-plugins enable rabbitmq_management
+```
+
+### 2.2 If using Ubuntu
+
+To enable web management UI, enable `rabbitmq_management` plugin by executing on
+the command line with sudo:
+
+```console
+sudo rabbitmq-plugins enable rabbitmq_management
 ```
 
 ## 3 Start
