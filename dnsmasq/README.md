@@ -82,7 +82,7 @@ sudo systemctl reload NetworkManager
 
 Edit configuration file `/opt/local/etc/dnsmasq.conf` (MacPorts) or
 `/usr/local/etc/dnsmasq.conf` (Homebrew) or
-`/etc/NetworkManager/dnsmasq.d/dnmasq.conf` (Ubuntu) and replace the
+`/etc/NetworkManager/dnsmasq.d/dnsmasq.conf` (Ubuntu) and replace the
 existing configuration with the following content:
 
 ```bash
