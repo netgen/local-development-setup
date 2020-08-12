@@ -162,6 +162,7 @@ and you will have to use this user to manage cores and data.
 In order to install Solr as a service, execute the following commands:
 
 ```console
+sudo apt install default-jre
 cd /opt
 sudo wget https://downloads.apache.org/lucene/solr/7.7.3/solr-7.7.3.tgz
 sudo tar -xvzf solr-7.7.3.tgz solr-7.7.3/bin/install_solr_service.sh --strip-components 2
@@ -174,10 +175,10 @@ sudo rm -rf install_solr_service.sh solr-7.7.3.tgz
 You can control the Solr service with following commands:
 
 ```console
-sudo service solr start
-sudo service solr stop
-sudo service solr restart
-sudo service solr status
+sudo systemcl start solr
+sudo systemcl stop solr
+sudo systemcl restart solr
+sudo systemcl status solr
 ```
 
 ### 3 Start automatically after reboot
