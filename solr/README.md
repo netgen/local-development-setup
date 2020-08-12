@@ -166,7 +166,7 @@ cd /opt
 sudo wget https://downloads.apache.org/lucene/solr/7.7.3/solr-7.7.3.tgz
 sudo tar -xvzf solr-7.7.3.tgz solr-7.7.3/bin/install_solr_service.sh --strip-components 2
 sudo ./install_solr_service.sh solr-7.7.3.tgz
-sudo rm -rf install_solr_service.sh solr-6.6.6.tgz
+sudo rm -rf install_solr_service.sh solr-7.7.3.tgz
 ```
 
 ### 2 Start
