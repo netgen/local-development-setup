@@ -26,7 +26,7 @@ sudo port install rabbitmq-server
 Execute on the command line:
 
 ```console
-sudo apt-get install rabbitmq-server
+sudo apt install rabbitmq-server
 ```
 
 ## 2 Enable plugins

@@ -27,7 +27,7 @@ brew install redis
 Execute on the command line:
 
 ```console
-sudo apt-get install redis
+sudo apt install redis
 ```
 
 ## 2 Start
