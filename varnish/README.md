@@ -153,12 +153,12 @@ The following packages have unmet dependencies:
 E: Unable to correct problems, you have held broken packages.
 ```
 
-So we need to manually install this missing library. To download this library, go
-to this link: https://packages.ubuntu.com/bionic/amd64/libjemalloc1/download and
-choose any mirror. Then navigate in terminal to the directory where you downloaded
-the .deb file and execute the following command:
+This library `libjemalloc1` doesn't exist in Ubuntu 20.xx (although it exists in older versions,
+up to 18.xx) so we need to install it manually. To do this, execute the following commands:
 
 ```console
+cd ~
+wget http://archive.ubuntu.com/ubuntu/pool/universe/j/jemalloc/libjemalloc1_3.6.0-11_amd64.deb
 sudo dpkg -i libjemalloc1_3.6.0-11_amd64.deb
 ```
 
