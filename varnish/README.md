@@ -234,9 +234,9 @@ make
 sudo make install
 ```
 
-### 3 Start
+## 3 Start
 
-#### 3.1 If using MacOS
+### 3.1 If using MacOS
 
 Now start the server in the foreground on the port 8081, replacing the example
 path to VCL with correct one for your project:
@@ -251,7 +251,7 @@ With these options, configure `purge_server` in your eZ Platform installation to
 If needed you can adjust the amount of memory given to the Varnish server
 (256M in the above example). Stop the server when needed with `Control-C`.
 
-#### 3.2 If using Ubuntu
+### 3.2 If using Ubuntu
 
 On Ubuntu, Varnish is installed as a service so you can use the following commands:
 
