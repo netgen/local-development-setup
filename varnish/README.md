@@ -279,13 +279,13 @@ sudo systemctl disable varnish
 sudo systemctl is-enabled varnish
 ```
 
-## 3 Configure VCL
+## 4 Configure VCL
 
-### 3.1 If using MacOS
+### 4.1 If using MacOS
 
 // TODO
 
-### 3.2 If using Ubuntu
+### 4.2 If using Ubuntu
 
 Varnish service uses the `/etc/varnish/default.vcl` VCL file for configuration. In order to
 use a different file, we would have to modify the Varnish service file so it's easier to keep
