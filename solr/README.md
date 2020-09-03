@@ -52,6 +52,8 @@ foreground with `-f` switch:
 ./bin/solr start -f
 ```
 
+`-Dsolr.disable.shardsWhitelist=true`
+
 In this case, stop the server when needed with `Control-C`.
 
 ### Add a new core
@@ -126,7 +128,34 @@ If you use MacOS, it will prevent you from executing an unverified binary, so
 make sure you register your terminal application as a Developer Tool in System
 Preferences > Security & Privacy > Privacy.
 
-### 2 Start
+### 2 Configure
+
+A big Solr query might fail because of request header size limitation set on the
+Jetty connector. If this happens, you will get an error like:
+
+```text
+11380 [qtp853119666-17] WARN  org.eclipse.jetty.http.HttpParser  – HttpParser Full for /0:0:0:0:0:0:0:1:8983 <--> /0:0:0:0:0:0:0:1:57176
+```
+
+To fix this problem, open `~/solr/solr-4.10.4/example/etc/jetty.xml` file and
+configure a bigger request query size:
+
+```diff
+<Call name="addConnector">
+    <Arg>
+        <New class="org.eclipse.jetty.server.bio.SocketConnector">
+            <Set name="host"><SystemProperty name="jetty.host" /></Set>
+            <Set name="port"><SystemProperty name="jetty.port" default="8983"/></Set>
+            <Set name="maxIdleTime">50000</Set>
+            <Set name="lowResourceMaxIdleTime">1500</Set>
+            <Set name="statsOn">false</Set>
++            <Set name="requestHeaderSize">10240000</Set>
+        </New>
+    </Arg>
+</Call>
+```
+
+### 3 Start
 
 To start Solr, prepare your cores in `~/solr/solr-4.10.4/example/multicore` and
 position into `~/solr/solr-4.10.4/example`. Then execute:
