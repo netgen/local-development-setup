@@ -141,10 +141,11 @@ cd /etc/nginx/sites-enabled
 sudo ln -s ../sites-available/* ./
 ```
 
-Ubuntu uses different directory for log files so we need to update these:
+Ubuntu uses different directories for enabled vhosts and log files so we need to update these:
 
 ```console
 cd /etc/nginx
+find . -type f -exec sudo sed -i 's/\/opt\/local\/etc\/nginx/\/etc\/nginx/g' {} +
 find . -type f -exec sudo sed -i 's/\/opt\/local\/var\/log/\/var\/log/g' {} +
 ```
 
