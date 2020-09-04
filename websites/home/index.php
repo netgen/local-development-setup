@@ -62,14 +62,6 @@ header("Cache-Control: no-cache, must-revalidate");
             <p>You can use this approach together with custom app/public directory setup described above</p>
         </blockquote>
     </details>
-    <details>
-        <summary>SSL and Varnish</summary>
-        <blockquote>
-            <p>All hosts are configured to automatically redirect from HTTP to HTTPS.</p>
-            <p>Varnish is configured on port 8080, for example <code>https://media-site.dev.php73.ez:8080</code></p>
-            <p>HTTP access to host is possible through port 8082, for example <code>http://media-site.dev.php73.ez:8082</code></p>
-        </blockquote>
-    </details>
     <h2>services</h2>
     <hr>
     <ol>
