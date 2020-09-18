@@ -436,7 +436,19 @@ sudo port install php56-memcached
 
 ### 6.2 If using Homebrew, compile the required PHP extensions manually
 
-todo
+Install extensions using pecl for the specific version of php, for example:
+
+```console
+/usr/local/Cellar/php@7.1/7.1.33/bin/pecl install imagick
+```
+
+Add the extension ini file to the conf.d folder for the specific version of php, for example:
+
+```console
+echo "extension=imagick.so" > /usr/local/etc/php/7.1/conf.d/ext-imagick.ini
+```
+
+Make sure to replace the path to the pecl binary, the extension and the extension ini file to match your version of php and the extension you want to install.
 
 ### 6.3 Install PHP extensions on Ubuntu
 
