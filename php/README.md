@@ -442,7 +442,7 @@ Install extensions using pecl for the specific version of php, for example:
 /usr/local/Cellar/php@7.1/7.1.33/bin/pecl install imagick
 ```
 
-Add the extension ini file to the conf.d folder for the specific version of php, for example:
+Add the extension ini file to the `conf.d` folder for the specific version of php, for example:
 
 ```console
 echo "extension=imagick.so" > /usr/local/etc/php/7.1/conf.d/ext-imagick.ini
