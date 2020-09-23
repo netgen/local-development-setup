@@ -58,10 +58,10 @@ todo note about repo path
 Copy the configuration files to the configuration directory:
 
 ```console
-sudo cp -r /part/to/repository/nginx/* /opt/local/etc/nginx
+sudo cp -r /path/to/repository/nginx/* /opt/local/etc/nginx
 ```
 
-Don't forget to edit file `/etc/nginx/nginx.conf` and change user and user group.
+Don't forget to edit file `/opt/local/etc/nginx/nginx.conf` and change user and user group.
 
 Create a directory where configuration for the enabled sites will be located:
 
