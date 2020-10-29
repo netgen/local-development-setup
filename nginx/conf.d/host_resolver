@@ -6,7 +6,8 @@ set $_environment dev;
 
 # Symfony <4
 set $_public_dir web;
-set $_front_controller app.php;
+set $_front_controller_name app;
+set $_front_controller ${_front_controller_name}.php;
 
 # Map values from host
 if ($host ~ "^(.*\.)?(.*)\.(.*)\.php([0-9]*)\..*$") {
@@ -28,7 +29,18 @@ if ($_install_dir ~ "^(.*)--(.*)$") {
 
 # Symfony >=4
 if (!-e $_base_path/$_install_dir/$_public_dir/$_front_controller) {
-    set $_front_controller index.php;
+    set $_front_controller_name index;
+    set $_front_controller ${_front_controller_name}.php;
+}
+
+# DEV environment
+if ($_environment = 'dev') {
+    set $_front_controller ${_front_controller_name}_dev.php;
+}
+
+# PROD environment
+if (!-e $_base_path/$_install_dir/$_public_dir/$_front_controller) {
+    set $_front_controller ${_front_controller_name}.php;
 }
 
 # Set _root variable
