@@ -16,7 +16,7 @@ server {
     rewrite "^/assets/(.*)" "/assets/$1" break;
     rewrite "^(.*)$" "/$_front_controller$1" last;
 
-    location ~ ^/(app|index)\.php(/|$) {
+    location ~ ^/(app|app_dev|index|index_dev)\.php(/|$) {
         include conf.d/fastcgi;
 
         fastcgi_pass $_php_socket;

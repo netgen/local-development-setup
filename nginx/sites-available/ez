@@ -25,7 +25,7 @@ server {
     include conf.d/ez/rewrite_rules_legacy;
     include conf.d/ez/rewrite_rules;
 
-    location ~ ^/(app|index)\.php(/|$) {
+    location ~ ^/(app|app_dev|index|index_dev)\.php(/|$) {
         include conf.d/fastcgi;
 
         fastcgi_pass $_php_socket;
