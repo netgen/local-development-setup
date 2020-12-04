@@ -1,10 +1,10 @@
 # Set up Node.js version management
 
 If your project requires a specific Node.js version that is not available from
-your package manager, you can use `n`, Node.js version manager. With it you can
+your package manager, you can use `n`, Node.js version manager. With it, you can
 maintain and switch between multiple versions of Node.js.
 
-## 1 Install n
+## 1 Install `n`
 
 First uninstall Node.js, as it will conflict with the versions installed through
 the version manager.
@@ -33,7 +33,26 @@ Execute on the command line:
 sudo apt install n
 ```
 
-## 2 Install a package
+## 2 Install Node.js through `n`
+
+You can now use `n` to install Node.js, for example latest and LTS versions:
+
+```console
+sudo n lts
+sudo n latest
+```
+
+To install exact version of Node.js, for example `10.16.0`, execute on the
+command line:
+
+```console
+sudo n 10.16.0
+```
+
+Note that each version on Node.js installed through `n` will come with its own
+version of `npm`.
+
+## 3 Install a package with `npm`
 
 To install a package globally, for example `yarn`, execute on the command line:
 
@@ -44,15 +63,6 @@ sudo npm install -g yarn
 Packages installed globally with `npm` will be installed independently of the
 version of Node.js that is currently active.
 
-## 3 Install another version of Node.js
-
-To install another version of Node.js, for example `10.16.0`, execute on the
-command line:
-
-```console
-sudo n 10.16.0
-```
-
 ## 4 Switch between different versions of Node.js
 
 To switch between different versions of Node.js, execute on the command line:
@@ -62,5 +72,8 @@ sudo n
 ```
 
 Then select between available versions of Node.js.
+
+Note that switching between different versions of Node.js will also switch the
+accompanied version of `npm`.
 
 For more details on how to use `n`, see https://github.com/tj/n.
