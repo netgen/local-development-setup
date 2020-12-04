@@ -93,14 +93,14 @@ Don't forget to edit file `/etc/nginx/nginx.conf` and change user and user group
 Create a directory where configuration for the enabled sites will be located:
 
 ```console
-cd /usr/local/etc/nginx/sites-enabled
+mkdir /usr/local/etc/nginx/sites-enabled
 ```
 
 Now position into the created directory and symlink all available site
 configurations:
 
 ```console
-mkdir /usr/local/etc/nginx/sites-enabled
+cd /usr/local/etc/nginx/sites-enabled
 ln -s ../sites-available/* ./
 ```
 
