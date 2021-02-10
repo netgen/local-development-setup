@@ -45,12 +45,12 @@ sudo port reload php74-fpm
     ```
     and it will give you the path to the needed file.
 
-    If everything is done correctly, PhpStorm should now list both your PHP version, XDebug as debugger and PHP configuration file, looking something like this:
+    If everything is done correctly, PhpStorm should now list your PHP version, XDebug as debugger and PHP configuration file, looking something like this:
     
     ![PhpStorm XDebug config](phpstorm-xdebug-config.png)
 
-1. Next, we need to adjust debug port to 9003 which is the default XDebug port. Do so by going to `System Preferences/Languages and Frameworks/PHP/Debug` and setting *Debug port* to 9003.
-1. In the end we just need to start listening to debug connections: enable `Run/Start Listening for PHP Debug Connections` in menu bar or use the shortcut button with the phone icon on the top right side of PhpStorm window.
+1. Next, we need to adjust debug port to 9003 which is the default XDebug port. Do so by going to `System Preferences/Languages and Frameworks/PHP/Debug` and setting *Debug port* under XDebug to 9003.
+1. In the end we just need to start listening to debug connections: enable `Run/Start Listening for PHP Debug Connections` in the menu bar or use the shortcut button with the phone icon on the top right side of PhpStorm window.
 
 ## Activating debugger
 To activate the debugger in your requests, you'll need to add a trigger to your requests. You can set it manually depending on what you need (value of `session_name` here is not important, you can set it to whatever you like):
