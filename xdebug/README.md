@@ -7,9 +7,9 @@ MacPorts provide multiple ports for installing XDebug, based on the PHP version 
 ```
 php -v
 ```
-and select the appropriate port from the list found [here](https://ports.macports.org/port/php-xdebug/summary?search=xdebug&search_by=name).
+and select the appropriate port from the list found [here](https://ports.macports.org/?search=xdebug&search_by=name).
 
-For example, if your php version is 7.4, you'll need to execute
+For example, if your PHP version is 7.4, you'll need to execute
 ```
 sudo port install php74-xdebug
 ```
@@ -21,15 +21,15 @@ php -v
 among other data, you should see XDebug in the output. Just by this setup you already have some XDebug benefits, such as that `var_dump()` function will now be upgraded to have a nicer output. But to fully benefit XDebug, it is wise to add few more adjustments to configure step debugging and connect it to PhpStorm.
 
 ## Configure PHP
-Next, we'll configure XDebug's step debugging by adding the following line to php.ini:
+Next, we'll configure XDebug's step debugging by adding the following line to `php.ini`:
 ```
 xdebug.mode=debug,develop
 ```
-If you're not sure which php.ini file to edit, you can check that by executing
+If you're not sure which `php.ini` file to edit, you can check that by executing
 ```
 php --ini
 ```
-Make sure you restart your web server after making these changes. If you followed this development setup, then reload commands should look something like this:
+Make sure you restart your web server and PHP-FPM server after making these changes. If you followed this development setup, then reload commands should look something like this:
 ```
 sudo port reload nginx
 sudo port reload php74-fpm
@@ -40,18 +40,17 @@ sudo port reload php74-fpm
 1. Open `System Preferences/Languages and Frameworks/PHP`.
 1. Add your CLI interpreter here by opening CLI Interpreters window: here click on plus sign and select *Other Local...*
 1. Now you'll need to adjust the PHP executable file path. If you're unsure where your current PHP version executable file is, simply execute:
-```
-which php
-```
-and it will give you the path to the needed file.
+    ```
+    which php
+    ```
+    and it will give you the path to the needed file.
 
-If everything is done correctly, PhpStorm should now list both your PHP version, XDebug as debugger and PHP configuration file, looking something like this:
+    If everything is done correctly, PhpStorm should now list both your PHP version, XDebug as debugger and PHP configuration file, looking something like this:
+    
+    ![PhpStorm XDebug config](phpstorm-xdebug-config.png)
 
-![PhpStorm XDebug config](phpstorm-xdebug-config.png)
-
-Next, we need to adjust debug port to 9003 which is the default XDebug port. Do so by going to `System Preferences/Languages and Frameworks/PHP/Debug` and setting *Debug port* to 9003.
-
-In the end we just need to start listening to debug connections: enable `Run/Start Listening for PHP Debug Connections` in menu bar or use the shortcut button with the phone icon on the top right side of PhpStorm window.
+1. Next, we need to adjust debug port to 9003 which is the default XDebug port. Do so by going to `System Preferences/Languages and Frameworks/PHP/Debug` and setting *Debug port* to 9003.
+1. In the end we just need to start listening to debug connections: enable `Run/Start Listening for PHP Debug Connections` in menu bar or use the shortcut button with the phone icon on the top right side of PhpStorm window.
 
 ## Activating debugger
 To activate the debugger in your requests, you'll need to add a trigger to your requests. You can set it manually depending on what you need (value of `session_name` here is not important, you can set it to whatever you like):
