@@ -121,6 +121,6 @@ Add the following lines to your .zshrc file:
 alias exd='sudo zsh /usr/local/bin/enable-xdebug.zsh'
 alias dxd='sudo zsh /usr/local/bin/disable-xdebug.zsh'
 ```
-`exd` and `dxd` here can be any other alias you like: feel free to use what suits you best.
+(`exd` and `dxd` here can be any other alias you like: feel free to use what suits you best)
 
 By doing this, you can now enable XDebug simply by executing `exd` and disable it by executing `dxd`.
