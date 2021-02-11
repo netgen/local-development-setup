@@ -68,3 +68,59 @@ Alternatively, if you want to activate the debugger manually, you'll need to add
 Finally, choose a request you want to debug, set a breakpoint in PhpStorm on the line in your code you're sure that your request will hit and fire away. If everything went well, PhpStorm should have opened debug window and now you have complete insight in what is happening in your code.
 
 ![PhpStorm debug window](phpstorm-debugging.png)
+
+## Easily enable and disable XDebug
+To prevent XDebug slowing down our requests when we are not debugging, it would be wise to disable it whenever we're not using it. That's why we'll guide you to write a few shell scripts and aliases with which XDebug enabling or disabling will be a matter of entering a three-letter command in terminal.
+
+What we'll want to do is rename `xdebug.ini` file so that it can't be found and hence won't be loaded, and after that reload PHP-FPM and web server.
+
+### MacOS configuration (ZSH shell)
+Execute the following in the console:
+```
+cd /usr/local/bin
+sudo vim disable-xdebug.zsh
+```
+In the Vim editor, paste the following code:
+```
+#!/bin/zsh
+
+mv /opt/local/var/db/php74/xdebug.ini /opt/local/var/db/php74/xdebug.ini.disabled
+port reload nginx
+port reload php74-fpm
+echo "xdebug is now disabled"
+```
+Save and exit Vim.
+
+We just created our script for disabling XDebug. Let's also create a one for enabling it. Execute:
+```
+sudo vim enable-xdebug.zsh
+```
+Here, paste:
+```
+#!/bin/zsh
+
+mv /opt/local/var/db/php74/xdebug.ini.disabled /opt/local/var/db/php74/xdebug.ini
+port reload nginx
+port reload php74-fpm
+echo "xdebug is now enabled"
+```
+and again, save and exit. After doing this, you should be able to enable and disable XDebug by executing one of the commands:
+```
+sudo zsh /usr/local/bin/enable-xdebug.zsh
+sudo zsh /usr/local/bin/disable-xdebug.zsh
+```
+
+To make this even more simple, you can also create aliases for these commands. To do this, execute:
+```
+cd ~
+vim .zshrc
+```
+
+Add the following lines to your .zshrc file:
+```
+alias exd='sudo zsh /usr/local/bin/enable-xdebug.zsh'
+alias dxd='sudo zsh /usr/local/bin/disable-xdebug.zsh'
+```
+`exd` and `dxd` here can be any other alias you like: feel free to use what suits you best.
+
+By doing this, you can now enable XDebug simply by executing `exd` and disable it by executing `dxd`.
