@@ -104,16 +104,10 @@ port reload nginx
 port reload php74-fpm
 echo "xdebug is now enabled"
 ```
-and again, save and exit. 
-Then set permissions for you user to execute these scripts:
+and again, save and exit. After doing this, you should be able to enable and disable XDebug by executing one of the commands:
 ```
-sudo chmod 744 disable-xdebug.zsh
-sudo chmod 744 enable-xdebug.zsh
-```
-After doing this, you should be able to enable and disable XDebug by executing one of the commands:
-```
-zsh /usr/local/bin/enable-xdebug.zsh
-zsh /usr/local/bin/disable-xdebug.zsh
+sudo zsh /usr/local/bin/enable-xdebug.zsh
+sudo zsh /usr/local/bin/disable-xdebug.zsh
 ```
 
 To make this even more simple, you can also create aliases for these commands. To do this, execute:
@@ -124,8 +118,8 @@ vim .zshrc
 
 Add the following lines to your .zshrc file:
 ```
-alias exd='zsh /usr/local/bin/enable-xdebug.zsh'
-alias dxd='zsh /usr/local/bin/disable-xdebug.zsh'
+alias exd='sudo zsh /usr/local/bin/enable-xdebug.zsh'
+alias dxd='sudo zsh /usr/local/bin/disable-xdebug.zsh'
 ```
 (`exd` and `dxd` here can be any other alias you like: feel free to use what suits you best)
 
