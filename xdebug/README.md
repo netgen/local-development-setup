@@ -25,13 +25,21 @@ Configure XDebug's step debugging by adding the following line to `php.ini`:
 ```
 xdebug.mode=debug,develop
 ```
+**Note**: If you are using XDebug 2 or under, instead of that, you need to add the following to `php.ini`:
+```
+xdebug.remote_enable=1
+xdebug.default_enable=0
+xdebug.profiler_enable=0
+xdebug.auto_trace=0
+xdebug.coverage_enable=0
+```
+
 If you're not sure which `php.ini` file to edit, you can check that by executing
 ```
 php --ini
 ```
 Make sure you restart your web server and PHP-FPM server after making these changes. If you followed this development setup, then reload commands should look something like this:
 ```
-sudo port reload nginx
 sudo port reload php74-fpm
 ```
 
@@ -49,7 +57,9 @@ sudo port reload php74-fpm
     
     ![PhpStorm XDebug config](phpstorm-xdebug-config.png)
 
-1. Next, we need to adjust debug port to 9003 which is the default XDebug port. Do so by going to `System Preferences/Languages and Frameworks/PHP/Debug` and setting *Debug port* under XDebug to 9003.
+1. *Skip this step if using XDebug version 2 or below (default port on these versions is 9000 so no adjustment is needed).*
+ 
+    Next, we need to adjust debug port to 9003 which is the default XDebug port. Do so by going to `System Preferences/Languages and Frameworks/PHP/Debug` and setting *Debug port* under XDebug to 9003.
 1. In the end we just need to start listening to debug connections: enable `Run/Start Listening for PHP Debug Connections` in the menu bar or use the shortcut button with the phone icon on the top right side of PhpStorm window.
 
 ## Activating debugger
@@ -72,20 +82,19 @@ Finally, choose a request you want to debug, set a breakpoint in PhpStorm on the
 ## Easily enable and disable XDebug
 To prevent XDebug slowing down our requests when we are not debugging, it would be wise to disable it whenever we're not using it. That's why we'll guide you to write a few shell scripts and aliases with which XDebug enabling or disabling will be a matter of entering a three-letter command in terminal.
 
-What we'll want to do is rename `xdebug.ini` file so that it can't be found and hence won't be loaded, and after that reload PHP-FPM and web server.
+What we'll want to do is rename `xdebug.ini` file so that it can't be found and hence won't be loaded, and after that reload PHP-FPM and web server. Again, as an example, everything will be done for PHP 7.4 so don't forget to adjust commands to your version.
 
-### MacOS configuration (ZSH shell)
+### MacOS configuration
 Execute the following in the console:
 ```
 cd /usr/local/bin
-sudo vim disable-xdebug.zsh
+sudo vim disable-xdebug-74.sh
 ```
 In the Vim editor, paste the following code:
 ```
-#!/bin/zsh
+#!/usr/bin/env bash
 
 mv /opt/local/var/db/php74/xdebug.ini /opt/local/var/db/php74/xdebug.ini.disabled
-port reload nginx
 port reload php74-fpm
 echo "xdebug is now disabled"
 ```
@@ -93,21 +102,20 @@ Save and exit Vim.
 
 We just created our script for disabling XDebug. Let's also create a one for enabling it. Execute:
 ```
-sudo vim enable-xdebug.zsh
+sudo vim enable-xdebug-74.sh
 ```
 Here, paste:
 ```
-#!/bin/zsh
+#!/usr/bin/env bash
 
 mv /opt/local/var/db/php74/xdebug.ini.disabled /opt/local/var/db/php74/xdebug.ini
-port reload nginx
 port reload php74-fpm
 echo "xdebug is now enabled"
 ```
 and again, save and exit. After doing this, you should be able to enable and disable XDebug by executing one of the commands:
 ```
-sudo zsh /usr/local/bin/enable-xdebug.zsh
-sudo zsh /usr/local/bin/disable-xdebug.zsh
+sudo sh /usr/local/bin/enable-xdebug-74.sh
+sudo sh /usr/local/bin/disable-xdebug-74.sh
 ```
 
 To make this even more simple, you can also create aliases for these commands. To do this, execute:
@@ -118,9 +126,9 @@ vim .zshrc
 
 Add the following lines to your .zshrc file:
 ```
-alias exd='sudo zsh /usr/local/bin/enable-xdebug.zsh'
-alias dxd='sudo zsh /usr/local/bin/disable-xdebug.zsh'
+alias exd74='sudo sh /usr/local/bin/enable-xdebug-74.sh'
+alias dxd74='sudo sh /usr/local/bin/disable-xdebug-74.sh'
 ```
-(`exd` and `dxd` here can be any other alias you like: feel free to use what suits you best)
+(`exd74` and `exd74` here can be any other alias you like: feel free to use what suits you best)
 
-By doing this, you can now enable XDebug simply by executing `exd` and disable it by executing `dxd`.
+By doing this, you can now enable XDebug simply by executing `exd74` and disable it by executing `dxd74`.
