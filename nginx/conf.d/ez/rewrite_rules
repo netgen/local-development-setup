@@ -18,6 +18,7 @@ rewrite "^/w3c/p3p\.xml" "/w3c/p3p.xml" break;
 rewrite "^/build(_dev)?/(.*)" "/build$1/$2" break;
 rewrite "^/bundles/(.*)" "/bundles/$1" break;
 rewrite "^/assets/(.*)" "/assets/$1" break;
+rewrite "^/images/(.*)" "/images/$1" break;
 
 # Prevent access to website with direct usage of front controller in URL
 if ($request_uri ~ "^/(.+/)?(app|index)\.php") {
