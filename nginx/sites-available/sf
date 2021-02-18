@@ -14,6 +14,7 @@ server {
     rewrite "^/build(_dev)?/(.*)" "/build$1/$2" break;
     rewrite "^/bundles/(.*)" "/bundles/$1" break;
     rewrite "^/assets/(.*)" "/assets/$1" break;
+    rewrite "^/images/(.*)" "/images/$1" break;
     rewrite "^(.*)$" "/$_front_controller$1" last;
 
     location ~ ^/(app|app_dev|index|index_dev)\.php(/|$) {
