@@ -21,11 +21,13 @@ php -v
 among other data, you should see XDebug in the output. Just by this setup you already have some XDebug benefits, such as that `var_dump()` function will now be upgraded to have a nicer output. But to fully benefit XDebug, it is wise to add few more adjustments to configure step debugging and connect it to PhpStorm.
 
 ## Configure PHP
-Configure XDebug's step debugging by adding the following line to `php.ini`:
+Depending on XDebug version you're configuring, add the following lines to `php.ini`:
+- XDebug3 and higher
 ```
 xdebug.mode=debug,develop
 ```
-**Note**: If you are using XDebug 2 or under, instead of that, you need to add the following to `php.ini`:
+
+- XDebug2 or under:
 ```
 xdebug.remote_enable=1
 xdebug.default_enable=0
