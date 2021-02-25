@@ -9,7 +9,7 @@ maintain and switch between multiple versions of Node.js.
 First uninstall Node.js, as it will conflict with the versions installed through
 the version manager.
 
-### 1.1 If using MacOS with MacPorts
+### 1.1 If using macOS with MacPorts
 
 Execute on the command line:
 
@@ -17,7 +17,7 @@ Execute on the command line:
 sudo port install n
 ```
 
-### 1.2 If using MacOS with Homebrew
+### 1.2 If using macOS with Homebrew
 
 Execute on the command line:
 
@@ -33,42 +33,72 @@ Execute on the command line:
 sudo apt install n
 ```
 
-## 2 Install Node.js through `n`
+## 2 Configure
+
+To avoid requiring `sudo` for `n` and `npm` global installs, configure
+environment variable `N_PREFIX`, which will point to the place where `n` will
+store Node.js binaries. With this you will also need to update the `PATH`
+environment variable, so that the system can find the active binaries. Execute
+on the command line:
+
+```console
+cd ~
+mkdir n
+```
+
+You can now update environment variables. In case of `zsh`, add to the
+`~/.zprofile` file:
+
+```shell
+export N_PREFIX=~/"n"
+export PATH=~/"n/bin:$PATH"
+```
+
+Make sure to preserve any existing modifications of the `PATH` variable.
+
+## 3 Install Node.js through `n`
 
 You can now use `n` to install Node.js, for example latest and LTS versions:
 
 ```console
-sudo n lts
-sudo n latest
+n latest
+n lts
 ```
 
 To install exact version of Node.js, for example `10.16.0`, execute on the
 command line:
 
 ```console
-sudo n 10.16.0
+n 10.16.0
+```
+
+You can also install the latest release of the specific major version, for
+example `12`, with:
+
+```console
+n 12
 ```
 
 Note that each version on Node.js installed through `n` will come with its own
 version of `npm`.
 
-## 3 Install a package with `npm`
+## 4 Install a package with `npm`
 
 To install a package globally, for example `yarn`, execute on the command line:
 
 ```console
-sudo npm install -g yarn
+npm install -g yarn
 ```
 
 Packages installed globally with `npm` will be installed independently of the
 version of Node.js that is currently active.
 
-## 4 Switch between different versions of Node.js
+## 5 Switch between different versions of Node.js
 
 To switch between different versions of Node.js, execute on the command line:
 
 ```console
-sudo n
+n
 ```
 
 Then select between available versions of Node.js.
