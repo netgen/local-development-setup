@@ -73,7 +73,7 @@ Finally, restart the NetworkManager:
 sudo systemctl reload NetworkManager
 ```
 
-**Note:** if you want to revert back to `systemd-resolved`,
+**Note:** if you want to revert to `systemd-resolved`,
 `/etc/resolv.conf` points to `/run/systemd/resolve/stub-resolv.conf` by default. 
 
 ## 2 Configure
