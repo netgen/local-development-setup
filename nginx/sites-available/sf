@@ -11,13 +11,12 @@ server {
     access_log /opt/local/var/log/nginx/access.sf.$_install_dir.log main;
     error_log /opt/local/var/log/nginx/error.sf.log error;
 
-    rewrite "^/build(_dev)?/(.*)" "/build$1/$2" break;
-    rewrite "^/bundles/(.*)" "/bundles/$1" break;
-    rewrite "^/assets/(.*)" "/assets/$1" break;
-    rewrite "^/images/(.*)" "/images/$1" break;
-    rewrite "^(.*)$" "/$_front_controller$1" last;
+    location / {
+        # try to serve file directly, fallback to the front controller
+        try_files $uri /$_front_controller$is_args$args;
+    }
 
-    location ~ ^/(app|app_dev|index|index_dev)\.php(/|$) {
+    location ~ ^/(app|index)\.php(/|$) {
         include conf.d/fastcgi;
 
         fastcgi_pass $_php_socket;
@@ -26,5 +25,18 @@ server {
         fastcgi_param SYMFONY_ENV $_environment;
         # SF >=4
         fastcgi_param APP_ENV $_environment;
+
+        # Prevents URIs that include the front controller. This will 404:
+        # http://domain.tld/index.php/some-path
+        # Remove the internal directive to allow URIs like this
+        internal;
     }
+
+    # return 404 for all other php files not matching the front controller
+    # this prevents access to other php files you don't want to be accessible.
+    location ~ \.php$ {
+      return 404;
+    }
+
+    client_max_body_size 6m;
 }
