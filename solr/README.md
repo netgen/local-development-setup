@@ -233,9 +233,9 @@ The server will run in the foreground, and you can stop it when needed with
 ## Set up recent version of Solr as a service on Ubuntu (optional)
 
 If you will be using only one version of Solr, then it makes sense to install
-it as a service. This setup is similar to the one on production servers and it
-makes it easier to start/stop Solr and it makes it possible to start Solr
-automatically after reboot.
+it as a service. This setup is similar to the one on production servers, and it
+makes it easier to start/stop Solr, and it makes it possible to start Solr
+automatically after the reboot.
 
 **Note:** this kind of setup will create `solr` user as well as `solr` user group,
 and you will have to use this user to manage cores and data.
@@ -266,8 +266,8 @@ sudo systemcl status solr
 
 ### 3 Start automatically after reboot
 
-To check if Solr service is set to automatically start after reboot, to enable
-or disable it, use the following commands:
+To check if Solr service is set to automatically start after the reboot, to
+enable or disable it, use the following commands:
 
 ```console
 sudo systemctl is-enabled solr
@@ -287,7 +287,7 @@ Prepare your configuration in a separate directory, then execute:
 solr create_core -c my_new_core -d /var/solr/data
 ```
 
-If you want to manually create cores (eg. if you have them in your project
+If you want to manually create cores (e.g. if you have them in your project
 repository), you need to use the `solr` user:
 
 ```console
@@ -296,7 +296,7 @@ sudo su solr
 
 ### 5 Uninstall Solr as a service
 
-If you want to uninstall Solr as a service (eg. if you decided to have multiple
+If you want to uninstall Solr as a service (e.g. if you decided to have multiple
 versions of Solr at the same time), you can do that by executing the following
 commands:
 
