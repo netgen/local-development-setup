@@ -299,7 +299,7 @@ commands:
 sudo service solr stop
 sudo rm -r /var/solr
 sudo rm -r /opt/solr-7.7.3
-sudo rm -r /opt/solr 
+sudo rm -r /opt/solr
 sudo rm /etc/init.d/solr
 sudo deluser --remove-home solr
 sudo deluser --group solr
