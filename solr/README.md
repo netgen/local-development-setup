@@ -117,6 +117,17 @@ defining `SOLR_JAVA_HOME` environment variable on the command line. For example:
 SOLR_JAVA_HOME=~/java/jre1.8.0_202.jre/Contents/Home ./bin/solr start -f
 ```
 
+### Move Java out of the quarantine on macOS
+
+For security reasons macOS will ask for user confirmation the first time the
+downloaded program is run. However, the option to allow the program to run will
+not be available for Java installed in the way documented above. To allow it to
+run, remove the quarantine flag from the downloaded Java version by executing:
+
+```console
+xattr -d com.apple.quarantine ~/java/jre1.8.0_202.jre
+```
+
 ## Set up Solr version 4.10.4
 
 ### 1 Install
@@ -159,15 +170,19 @@ cd ~/java
 tar xzf jre-7u51-macosx-x64.tar.gz && rm jre-7u51-macosx-x64.tar.gz
 ```
 
-You can use Java directly from the extracted directory, for example:
+If you use macOS, it will prevent you from executing an unverified binary, so
+make sure you remove the quarantine flag from the downloaded Java version by
+executing:
+
+```console
+xattr -d com.apple.quarantine ~/java/jre1.7.0_51.jre
+```
+
+You can now use Java directly from the extracted directory, for example:
 
 ```console
 ~/java/jre1.7.0_51.jre/Contents/Home/bin/java -version
 ```
-
-If you use MacOS, it will prevent you from executing an unverified binary, so
-make sure you register your terminal application as a Developer Tool in System
-Preferences > Security & Privacy > Privacy.
 
 ### 2 Configure
 
