@@ -15,6 +15,10 @@ Create `.gitconfig` file in your home directory with the following content:
     wsErrorHighlight = all
 [pull]
     ff = only
+[push]
+    default = simple
+[rerere]
+    enabled = true
 [log]
     follow = true
 ```
