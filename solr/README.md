@@ -61,9 +61,16 @@ foreground with `-f` switch:
 ./bin/solr start -f
 ```
 
-`-Dsolr.disable.shardsWhitelist=true`
-
 In this case, stop the server when needed with `Control-C`.
+
+If you run Solr version 7 or higher, you might need to disable the shard
+whitelisting if so required by your consumer code (for example eZ Platform Solr
+Search Engine). You can do that either in the `solrconfig.xml` file, or by
+adding a parameter to the start command documented above:
+
+```console
+./bin/solr start -f -Dsolr.disable.shardsWhitelist=true
+```
 
 ### Add a new core
 
