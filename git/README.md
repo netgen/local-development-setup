@@ -12,6 +12,7 @@ Create `.gitconfig` file in your home directory with the following content:
     excludesfile = /Users/brale/.gitignore
 [diff]
     indentheuristic = true
+    wsErrorHighlight = all
 [pull]
     ff = only
 [log]
