@@ -46,15 +46,16 @@ cd ~
 mkdir n
 ```
 
-You can now update environment variables. In case of `zsh`, add to the
-`~/.zprofile` file:
+You can now update environment variables. If you use `zsh` shell, add to the end
+of the `~/.zprofile` file:
 
 ```shell
 export N_PREFIX=~/"n"
 export PATH=~/"n/bin:$PATH"
 ```
 
-Make sure to preserve any existing modifications of the `PATH` variable.
+Before starting with the next step, restart your terminal app to make sure that
+the path changes are picked up by the shell.
 
 ## 3 Install Node.js through `n`
 
