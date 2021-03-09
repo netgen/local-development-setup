@@ -3,6 +3,7 @@
 ## Install
 
 ### MacPorts install
+
 MacPorts provide multiple ports for installing XDebug, based on the PHP version you're using. So, to check your version, execute on the command line:
 ```
 php -v
@@ -19,6 +20,14 @@ Now, when executing
 php -v
 ```
 among other data, you should see XDebug in the output. Just by this setup you already have some XDebug benefits, such as that `var_dump()` function will now be upgraded to have a nicer output. But to fully benefit XDebug, it is wise to add few more adjustments to configure step debugging and connect it to PhpStorm.
+
+### If using Ubuntu
+
+```
+sudo apt install php7.4-xdebug
+```
+
+
 
 ## Configure PHP
 Depending on XDebug version you're configuring, add the following lines to `php.ini`:
@@ -60,7 +69,7 @@ sudo port reload php74-fpm
     ![PhpStorm XDebug config](phpstorm-xdebug-config.png)
 
 1. *Skip this step if using XDebug version 2 or below (default port on these versions is 9000 so no adjustment is needed).*
- 
+
     Next, we need to adjust debug port to 9003 which is the default XDebug port. Do so by going to `System Preferences/Languages and Frameworks/PHP/Debug` and setting *Debug port* under XDebug to 9003.
 1. In the end we just need to start listening to debug connections: enable `Run/Start Listening for PHP Debug Connections` in the menu bar or use the shortcut button with the phone icon on the top right side of PhpStorm window.
 
@@ -87,6 +96,7 @@ To prevent XDebug slowing down our requests when we are not debugging, it would 
 What we'll want to do is rename `xdebug.ini` file so that it can't be found and hence won't be loaded, and after that reload PHP-FPM and web server. Again, as an example, everything will be done for PHP 7.4 so don't forget to adjust commands to your version.
 
 ### MacOS configuration
+
 Execute the following in the console:
 ```
 cd /usr/local/bin
@@ -134,3 +144,24 @@ alias dxd74='sudo sh /usr/local/bin/disable-xdebug-74.sh'
 (`exd74` and `exd74` here can be any other alias you like: feel free to use what suits you best)
 
 By doing this, you can now enable XDebug simply by executing `exd74` and disable it by executing `dxd74`.
+
+### Ubuntu configuration
+
+To enable xdebug:
+
+```
+sudo phpenmod xdebug
+```
+
+To disable xdebug:
+
+```
+sudo phpdismod xdebug
+```
+
+And reload fpm after that:
+
+```
+sudo systemctl reload php7.4-fpm
+```
+
