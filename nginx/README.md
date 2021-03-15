@@ -265,3 +265,22 @@ the particular PHP installation.
 
 You can change the top-level domain to choose which PHP version will be used to
 serve the website.
+
+# Testing your website on a different device
+
+This setup works with multiple custom local domains, which is not trivial to
+directly expose on a local network, since it would need to involve a DNS server.
+
+However, is possible to expose a specific website on your local IP, which you
+can then use to open the website on a different device connected to your local
+network, for example smartphone or a tablet. To do that, uncomment the
+configuration block found in:
+
+```
+/usr/local/etc/nginx/sites-enabled/local_network_proxy
+```
+
+Then adjust the IP and local website address as needed.
+
+After restarting nginx server, you should be able to use the IP to open the
+website on a different device which is also connected to your local network.
