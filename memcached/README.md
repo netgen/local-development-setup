@@ -9,7 +9,17 @@ It's used as a backend for persistent cache implementation on some older project
 
 ### 1.1 If using MacOS with MacPorts
 
-TODO
+Execute on the command line:
+```console
+sudo port install memcached
+sudo port install libmemcached
+```
+
+You'll also need to install PHP extension, which depends on your PHP version so modify the next command to suit your version:
+```console
+sudo port install php74-memcached
+```
+You can check the available ports [here](https://ports.macports.org/?search=memcached).
 
 ### 1.2 If using MacOS with Homebrew
 
@@ -36,7 +46,19 @@ sudo apt install php-memcached
 
 #### 2.1.1 If using MacOS with MacPorts
 
-TODO
+Execute on the command line:
+
+```console
+sudo port load memcached
+```
+
+This will start the server and set it up to start automatically after a reboot.
+
+To stop the server and prevent it from running after a reboot, execute:
+
+```console
+sudo port unload memcached
+```
 
 #### 2.1.2 If using MacOS with Homebrew
 
@@ -62,7 +84,12 @@ sudo systemctl disable memcached
 
 #### 2.2.1 If using MacOS with MacPorts
 
-TODO
+To start memcached manually, simply execute:
+
+```console
+memcached
+```
+It will run in the foreground, and you can stop it when needed with Control-C.
 
 #### 2.2.2 If using MacOS with Homebrew
 
@@ -88,7 +115,7 @@ To test if the `memcached` server is running, execute:
 ps aux | grep memcached
 ```
 
-You should see it's process there, altogether with the port on which it
+You should see its process there, altogether with the port on which it
 listens to (default `11211`).
 
 Then you can `telnet` to it with:
