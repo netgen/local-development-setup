@@ -77,10 +77,16 @@ cd /opt/local/etc/nginx/sites-enabled
 sudo ln -s ../sites-available/* ./
 ```
 
-Paths in the copied configuration files are already correct for MacOS using
-MacPorts, so you are done with this step.
+Paths in the copied configuration files are already correct for macOS using
+MacPorts, so no adjustments are needed.
 
-### 2.2 If using MacOS with Homebrew
+To finish this step set permissions on the log directory:
+
+```console
+sudo chown -R brale:staff /opt/local/var/log/nginx
+```
+
+### 2.2 If using macOS with Homebrew
 
 Copy the configuration files to the configuration directory:
 
