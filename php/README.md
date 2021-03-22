@@ -197,8 +197,8 @@ memory_limit = 256M
 error_log = /Users/brale/php73.log
 ```
 
-Don't forget to modify `brale` to your user and set the correct PHP version
-depending on the ini file you're modifying.
+Don't forget to modify error log path to your user's home directory, and set the
+correct PHP version depending on the ini file you're modifying.
 
 **Note**: Configuration files use `;` character as a comment, so make sure you
 remove it as needed.
