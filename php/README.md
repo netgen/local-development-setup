@@ -90,7 +90,7 @@ package, while `php-mysql` and `php-bcmath` are needed but not included by defau
 
 ### 2.1 Configure PHP-FPM pool definitions
 
-For each PHP version edit PHP-FPM pool definition files (decumented further below)
+For each PHP version edit PHP-FPM pool definition files (documented further below)
 and update it with the following configuration options:
 
 ```ini
