@@ -281,9 +281,11 @@ sudo systemctl is-enabled varnish
 
 ## 4 Configure VCL
 
-### 4.1 If using MacOS
+### 4.1 If using macOS
 
-// TODO
+In instructions for macOS (above) Varnish is started from the command line when
+needed, and the VCL configuration is provided as a parameter to the starting
+command, so there is no need to configure it separately.
 
 ### 4.2 If using Ubuntu
 
