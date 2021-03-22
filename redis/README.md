@@ -35,7 +35,7 @@ sudo apt install redis
 Since Redis is usually used in our web apps, we want it always running and
 started automatically after a reboot.
 
-### 2.1 Start automatically
+### 2.1 Start automatically (recommended)
 
 #### 2.1.1 If using MacOS with MacPorts
 
