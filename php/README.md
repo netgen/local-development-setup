@@ -313,7 +313,7 @@ add aliases for your favourite shell:
 
 Add the following configuration to the end of the file:
 
-```text
+```bash
 alias php56="php5.6"
 alias php71="php7.1"
 alias php72="php7.2"
