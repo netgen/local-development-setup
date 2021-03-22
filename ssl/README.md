@@ -194,7 +194,7 @@ sudo openssl x509 -sha256 -req -days 825 -in server.csr -CA root.crt -CAkey root
 
 ### 8.1 If using MacOS
 
-Register the created RCA with MacOS RCS (System Keychain), by executing on the
+Register the created RCA with MacOS RCS (System Keychain) by executing on the
 command line:
 
 ```console
@@ -204,8 +204,7 @@ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keyc
 
 ### 8.2 If using Ubuntu
 
-Register the created RCA with Ubuntu RCS (System Keychain), by executing on the
-command line:
+Register the created RCA with Ubuntu RCS by executing on the command line:
 
 ```console
 cd ~/ssl
