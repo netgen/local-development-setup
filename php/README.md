@@ -90,8 +90,8 @@ package, while `php-mysql` and `php-bcmath` are needed but not included by defau
 
 ### 2.1 Configure PHP-FPM pool definitions
 
-For each PHP version edit PHP-FPM pool definition filed and update it with the
-following configuration options:
+For each PHP version edit PHP-FPM pool definition files (decumented further below)
+and update it with the following configuration options:
 
 ```ini
 user = brale
@@ -108,9 +108,9 @@ ping.path = /ping
 ping.response = "pong"
 ```
 
-Make sure to use your own username instead of `brale`, and name the socket file
-corresponding to the PHP version. Use configuration already existing in the
-file and do not create duplicate entries.
+Make sure to use your own user and group instead of `brale` and `staff`, and
+name the socket file corresponding to the PHP version. Use configuration already
+existing in the file and do not create duplicate entries.
 
 **Note**: Configuration files use `;` character as a comment, so make sure you
 remove it as needed.
