@@ -187,9 +187,8 @@ Update these pool definition files as described above.
 
 ## 3 Configure PHP
 
-For each PHP version find its configuration file and update it with the
-following configuration options. Don't forget to modify `brale` to your user
-and set the correct PHP version depending on the ini file you're modifying.
+For each PHP version find its configuration file (documented further below) and
+update it with the following configuration options:
 
 ```ini
 date.timezone = Europe/Zagreb
@@ -197,6 +196,9 @@ session.gc_maxlifetime = 86400
 memory_limit = 256M
 error_log = /Users/brale/php73.log
 ```
+
+Don't forget to modify `brale` to your user and set the correct PHP version
+depending on the ini file you're modifying.
 
 **Note**: Configuration files use `;` character as a comment, so make sure you
 remove it as needed.
