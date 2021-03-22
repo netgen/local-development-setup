@@ -24,7 +24,7 @@ Using MacPorts is recommended, since it's better at isolating packages from OS
 changes and makes older (officially unsupported) versions of packages available.
 In particular, it makes installing older versions of PHP with some non-standard
 extensions trivial, while with Homebrew you will have to use 3rd party taps
-and manual building of the extension binaries.
+and build extension binaries manually.
 
 However, both MacPorts and Homebrew will do fine, and this documentation
 provides necessary instructions for both.
