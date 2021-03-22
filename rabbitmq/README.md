@@ -56,7 +56,7 @@ sudo rabbitmq-plugins enable rabbitmq_management
 Since it's not needed every project, and it takes up valuable system resources,
 it's preferred to start RabbitMQ manually when needed.
 
-### 3.1 Start manually
+### 3.1 Start manually (recommended)
 
 #### 3.1.1 If using MacOS with Homebrew
 
