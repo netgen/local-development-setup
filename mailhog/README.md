@@ -5,7 +5,7 @@ of emails.
 
 ## 1 Install
 
-### 1.1 If not using MacOS with Homebrew
+### 1.1 If using MacOS without Homebrew
 
 You can install it by downloading the appropriate binary from GitHub at
 https://github.com/mailhog/MailHog/releases (in case of MacOS, search for the
