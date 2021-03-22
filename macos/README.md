@@ -26,7 +26,7 @@ In particular, it makes installing older versions of PHP with some non-standard
 extensions trivial, while with Homebrew you will have to use 3rd party taps
 and build extension binaries manually.
 
-However, both MacPorts and Homebrew will do fine, and this documentation
+Aside from that, both MacPorts and Homebrew will do fine, and this documentation
 provides necessary instructions for both.
 
 ### Install MacPorts
