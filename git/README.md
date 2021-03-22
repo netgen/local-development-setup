@@ -1,6 +1,35 @@
 # Set up Git version control system
 
-## 1 Configure
+## 1 Install
+
+Even if you OS already comes with `Git` installed, you should install a newer
+version using a package manager.
+
+### 1.1 If using MacOS with MacPorts
+
+Execute on the command line:
+
+```console
+sudo port install git
+```
+
+### 1.2 If using MacOS with Homebrew
+
+Execute on the command line:
+
+```console
+brew install git
+```
+
+### 1.3 If using Ubuntu
+
+Execute on the command line:
+
+```console
+sudo apt install git
+```
+
+## 2 Configure
 
 Create `.gitconfig` file in your home directory with the following content:
 
@@ -42,35 +71,6 @@ Create `.gitignore` file in your home directory with the following content:
 ```dosini
 .DS_Store
 .idea
-```
-
-## 2 Install
-
-Even if you OS already comes with `Git` installed, you should install a newer
-version using a package manager.
-
-### 2.1 If using MacOS with MacPorts
-
-Execute on the command line:
-
-```console
-sudo port install git
-```
-
-### 2.2 If using MacOS with Homebrew
-
-Execute on the command line:
-
-```console
-brew install git
-```
-
-### 2.3 If using Ubuntu
-
-Execute on the command line:
-
-```console
-sudo apt install git
 ```
 
 ## 3 Verify configuration
