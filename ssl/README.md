@@ -242,7 +242,7 @@ error. The solution is to generate a new server certificate that respects the
 agreed maximum validity time.
 
 While this rule is valid in general, so far only Chrome has chosen to enforce
-this rule.
+it.
 
 ## Firefox
 
