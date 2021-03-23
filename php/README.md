@@ -272,7 +272,7 @@ Make sure you use correct paths to the PHP binary. This path will change when
 upgrading a PHP version, so you will need to maintain your symlinks through
 upgrades.
 
-#### 4.2 Symlink PHP binaries on macOS with MacPorts
+### 4.2 Symlink PHP binaries on macOS with MacPorts
 
 **Note**: while MacPorts already provides binaries for each PHP version, we want
 to add new symlinks to make it in line with Linux, which is used on production
@@ -290,12 +290,12 @@ ln -s /opt/local/bin/php70 ~/bin/php7.0
 ln -s /opt/local/bin/php56 ~/bin/php5.6
 ```
 
-#### 4.3 Symlink PHP binaries on Ubuntu
+### 4.3 Symlink PHP binaries on Ubuntu
 
 On Ubuntu this step is not needed as the binaries are already provided in the
 format we rely on.
 
-#### 4.4 Test
+### 4.4 Test
 
 Test you can access PHP binary aliases by executing:
 
