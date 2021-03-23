@@ -72,7 +72,7 @@ To add this repository, execute on the command line:
 sudo add-apt-repository ppa:ondrej/php
 ```
 
-And then to install PHP 7.4, 7.3, 7.2, 7.1 and 5.6 execute on the command line:
+Then, to install PHP 7.4, 7.3, 7.2, 7.1 and 5.6 execute on the command line:
 
 ```console
 sudo apt install php7.4 php7.4-fpm php-imagick php7.4-gd php7.4-curl php7.4-opcache php7.4-mbstring php7.4-xsl php7.4-intl php7.4-sqlite3 php7.4-zip php7.4-mysql php7.4-bcmath
@@ -82,9 +82,15 @@ sudo apt install php7.1 php7.1-fpm php-imagick php7.1-gd php7.1-curl php7.1-opca
 sudo apt install php5.6 php5.6-fpm php-imagick php5.6-gd php5.6-curl php5.6-opcache php5.6-mbstring php5.6-xsl php5.6-intl php5.6-sqlite3 php5.6-zip php5.6-mysql php5.6-bcmath
 ```
 
-**Note**: some PHP packages differ from MacOS instructions because eg. `php-openssl`
+**Note**: some PHP packages differ from macOS instructions because eg. `php-openssl`
 is included in the main PHP package on Ubuntu and doesn't exist as a standalone
 package, while `php-mysql` and `php-bcmath` are needed but not included by default.
+
+Now you can select desired default PHP version with:
+
+```console
+sudo update-alternatives --config php
+```
 
 ## 2 Configure
 
@@ -249,41 +255,49 @@ Update these configuration files as described above.
 
 ## 4 Symlink PHP binaries
 
-### 4.1 Symlink PHP binaries on MacOS
-
-**Note**: as MacPorts already provides a PHP binary for each PHP version, this
-step is needed only if you installed using Homebrew.
+### 4.1 Symlink PHP binaries on macOS with Homebrew
 
 Symlink each PHP binary to an easily accessible alias:
 
 ```console
-ln -s /usr/local/Cellar/php@7.4/7.4.xx/bin/php ~/bin/php74
-ln -s /usr/local/Cellar/php@7.3/7.3.xx/bin/php ~/bin/php73
-ln -s /usr/local/Cellar/php@7.2/7.2.xx/bin/php ~/bin/php72
-ln -s /usr/local/Cellar/php@7.1/7.1.xx/bin/php ~/bin/php71
-ln -s /usr/local/Cellar/php@7.0/7.0.xx/bin/php ~/bin/php70
-ln -s /usr/local/Cellar/php@5.6/5.6.xx/bin/php ~/bin/php56
+ln -s /usr/local/Cellar/php@7.4/7.4.xx/bin/php ~/bin/php7.4
+ln -s /usr/local/Cellar/php@7.3/7.3.xx/bin/php ~/bin/php7.3
+ln -s /usr/local/Cellar/php@7.2/7.2.xx/bin/php ~/bin/php7.2
+ln -s /usr/local/Cellar/php@7.1/7.1.xx/bin/php ~/bin/php7.1
+ln -s /usr/local/Cellar/php@7.0/7.0.xx/bin/php ~/bin/php7.0
+ln -s /usr/local/Cellar/php@5.6/5.6.xx/bin/php ~/bin/php5.6
 ```
 
 Make sure you use correct paths to the PHP binary. This path will change when
 upgrading a PHP version, so you will need to maintain your symlinks through
 upgrades.
 
-Test you can access binary aliases by executing:
+#### 4.2 Symlink PHP binaries on macOS with MacPorts
+
+**Note**: while MacPorts already provides binaries for each PHP version, we want
+to add new symlinks to make it in line with Linux, which is used on production
+servers. The only difference between them is in the dot placed between major and
+minor version numbers.
+
+Symlink each PHP binary to an easily accessible alias:
 
 ```console
-php74 -v
-php73 -v
-php72 -v
-php72 -v
-php70 -v
-php56 -v
+ln -s /opt/local/bin/php74 ~/bin/php7.4
+ln -s /opt/local/bin/php73 ~/bin/php7.3
+ln -s /opt/local/bin/php72 ~/bin/php7.2
+ln -s /opt/local/bin/php71 ~/bin/php7.1
+ln -s /opt/local/bin/php70 ~/bin/php7.0
+ln -s /opt/local/bin/php56 ~/bin/php5.6
 ```
 
-### 4.2 Symlink PHP binaries on Ubuntu
+#### 4.3 Symlink PHP binaries on Ubuntu
 
-After installing PHP on Ubuntu, they're already available with the
-following commands:
+On Ubuntu this step is not needed as the binaries are already provided in the
+format we rely on.
+
+#### 4.4 Test
+
+Test you can access PHP binary aliases by executing:
 
 ```console
 php7.4 -v
@@ -292,35 +306,6 @@ php7.2 -v
 php7.2 -v
 php7.0 -v
 php5.6 -v
-```
-
-There's also a generic command available:
-
-```console
-php -v
-```
-
-which uses default PHP version. You can set any PHP version as default
-by using the following command:
-
-```console
-sudo update-alternatives --config php
-```
-
-If you want to use the same command as on MacOS (without dot), you can
-add aliases for your favourite shell:
-
-* For default GNU Bash shell, use the `~/.bashrc` file
-* For OhMyZsh shell, use the `~/.zshrc` file
-
-Add the following configuration to the end of the file:
-
-```bash
-alias php56="php5.6"
-alias php71="php7.1"
-alias php72="php7.2"
-alias php73="php7.3"
-alias php74="php7.4"
 ```
 
 ## 5 Start PHP-FPM services
