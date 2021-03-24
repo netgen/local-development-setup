@@ -48,17 +48,23 @@ sudo rm -rf /etc/apache2
 ## 2 Configure
 
 Once NGINX is installed, use files given in this directory to configure the
-installation. First you will need to find the location of configuration files
-and logs, which depends on the OS and package manager.
+installation. First you will need to clone this repository in order to copy
+configuration files and websites:
 
-todo note about repo path
+```console
+cd ~/projects
+git clone git@github.com:netgen/local-development-setup.git
+```
+
+They you will also need to find the location of configuration files and logs,
+which depends on the OS and package manager.
 
 ### 2.1 If using MacOS with MacPorts
 
 Copy the configuration files to the configuration directory:
 
 ```console
-sudo cp -r /path/to/repository/nginx/* /opt/local/etc/nginx
+sudo cp -r ~/projects/local-development-setup/nginx/* /opt/local/etc/nginx
 ```
 
 Don't forget to edit file `/opt/local/etc/nginx/nginx.conf` and change user and user group.
@@ -91,7 +97,7 @@ sudo chown -R brale:staff /opt/local/var/log/nginx
 Copy the configuration files to the configuration directory:
 
 ```console
-cp -r /path/to/repository/nginx/* /usr/local/etc/nginx
+cp -r ~/projects/local-development-setup/nginx/* /usr/local/etc/nginx
 ```
 
 Don't forget to edit file `/etc/nginx/nginx.conf` and change user and user group.
@@ -134,7 +140,7 @@ LC_ALL=C find . -type f -exec sed -i '' 's/\/opt\/local/\/usr\/local/g' {} +
 Copy the configuration files to the configuration directory:
 
 ```console
-sudo cp -r /path/to/repository/nginx/* /etc/nginx
+sudo cp -r ~/projects/local-development-setup/nginx/* /etc/nginx
 ```
 
 Don't forget to edit file `/etc/nginx/nginx.conf` and change user and user group.
@@ -257,7 +263,7 @@ sudo chown -R brale:staff /var/www
 Now you can copy the websites to the created directory:
 
 ```console
-cp -r /path/to/repository/websites/* /var/www
+cp -r ~/projects/local-development-setup/websites/* /var/www
 ```
 
 Verify that everything works as expected by opening:
