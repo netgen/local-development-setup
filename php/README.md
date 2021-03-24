@@ -209,7 +209,7 @@ correct PHP version depending on the ini file you're modifying.
 **Note**: Configuration files use `;` character as a comment, so make sure you
 remove it as needed.
 
-### 3.1 Configure PHP if installed using Homebrew
+### 3.1 Configure PHP if using macOS and Homebrew
 
 Find the configuration for your PHP versions in the following files:
 
@@ -224,7 +224,7 @@ Find the configuration for your PHP versions in the following files:
 
 Update these configuration files as described above.
 
-### 3.2 Configure PHP if installed using MacPorts
+### 3.2 Configure PHP if using macOS and MacPorts
 
 First create PHP configuration files by copying the default ones:
 
@@ -237,7 +237,13 @@ sudo cp /opt/local/etc/php70/php.ini-development /opt/local/etc/php70/php.ini
 sudo cp /opt/local/etc/php56/php.ini-development /opt/local/etc/php56/php.ini
 ```
 
-Update the created configuration files as described above.
+Update the created configuration files as described above and additionally with:
+
+```ini
+pdo_mysql.default_socket=/opt/local/var/run/mysql8/mysqld.sock
+```
+
+This will enable using `localhost` as the database host from your application.
 
 ### 3.3 Configure PHP on Ubuntu
 
