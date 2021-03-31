@@ -243,6 +243,7 @@ Update the created configuration files as described above and additionally with:
 
 ```ini
 pdo_mysql.default_socket=/opt/local/var/run/mysql8/mysqld.sock
+mysqli.default_socket=/opt/local/var/run/mysql8/mysqld.sock
 ```
 
 This will enable using `localhost` as the database host from your application.
