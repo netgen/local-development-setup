@@ -3,7 +3,7 @@
 cURL (short for Client URL) is a library and command-line tool for transferring
 data using various network protocols. You should already have it installed as a
 dependency of PHP cURL extension, and this page only documents how to configure
-you certificates so that cURL can find and use them.
+your certificates so that cURL can find and use them.
 
 ## If using macOS, add the root certificate to the OpenSSL certificate bundle
 
