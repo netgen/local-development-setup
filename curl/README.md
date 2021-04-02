@@ -41,7 +41,7 @@ sudo bash -c "cat ~/ssl/root.crt  >> /opt/local/etc/openssl/cert.pem"
 
 With this, you should be able to use `curl` from the command line to access
 your local installation over HTTPS. Provided you have installed the websites in
-the NGiNX step, check that everything is correct with:
+the NGINX step, check that everything is correct with:
 
 ```console
 curl --head https://phpinfo.php74
