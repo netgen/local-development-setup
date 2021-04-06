@@ -109,9 +109,13 @@ Follow the instructions to configure `root` as password for the `root` user. If
 MySQL was installed using MacPorts, enter the password generated at the
 initialization.
 
-Additionally, follow the instructions to skip setting up VALIDATE PASSWORD
-component, remove anonymous users and test databases and disallow the remote
-login for `root`. That will be sufficient for local development needs.
+Additionally, follow the instructions to:
+
+- skip setting up VALIDATE PASSWORD component
+- remove anonymous users and test databases
+- disallow the remote login for `root`
+
+That will be sufficient for local development needs.
 
 ### 3.1 Enable and configure `root` user (Ubuntu only)
 
