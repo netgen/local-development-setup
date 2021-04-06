@@ -4,7 +4,7 @@ MySQL is an open-source relational database management system.
 
 ## 1 Install
 
-### 1.1 If using MacOS with MacPorts
+### 1.1 If using macOS with MacPorts
 
 Execute on the command line:
 
@@ -18,7 +18,7 @@ Select `mysql8` as your preferred version of MySQL with:
 sudo port select mysql mysql8
 ```
 
-### 1.2 If using MacOS with Homebrew
+### 1.2 If using macOS with Homebrew
 
 Execute on the command line:
 
@@ -39,7 +39,7 @@ sudo apt install mysql-server
 Since MySQL is an essential part of our web apps, so we want it always running
 and started automatically after a reboot.
 
-### 2.1 If using MacOS with MacPorts
+### 2.1 If using macOS with MacPorts
 
 First initialize the server by executing on the command line:
 
@@ -64,7 +64,7 @@ To stop the server and prevent it from running after a reboot, execute:
 sudo port unload mysql8-server
 ```
 
-### 2.2 If using MacOS with Homebrew
+### 2.2 If using macOS with Homebrew
 
 Execute on the command line:
 
@@ -115,14 +115,14 @@ login for `root`. That will be sufficient for local development needs.
 
 ### 3.1 Enable and configure `root` user (Ubuntu only)
 
-On Ubuntu by default the `root` user is set-up in a way that you can't login
+On Ubuntu by default the `root` user is set up in a way that you can't log in
 with credentials. In order to fix this, enter the MySQL shell as sudo:
 
 ```console
 sudo mysql
 ```
 
-And then inside MySQL shell execute the following commands:
+Then inside the MySQL command line execute the following commands:
 
 ```mysql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
@@ -145,12 +145,12 @@ mysql -u root -p
 
 ## 4 Configure
 
-### 4.1 If using MacOS with MacPorts
+### 4.1 If using macOS with MacPorts
 
-Edit file `/opt/local/etc/mysql8/my.cnf`, remove or comment out the line
-including the default MacPorts settings and add the following configuration.
+Edit file `/opt/local/etc/mysql8/my.cnf`, comment out the line including the
+default MacPorts settings and add the following configuration:
 
-```dosini
+```ini
 [mysqld]
 basedir="/opt/local"
 bind-address=127.0.0.1
@@ -163,12 +163,12 @@ Now reload the server with:
 sudo port reload mysql8-server
 ```
 
-### 4.2 If using MacOS with Homebrew
+### 4.2 If using macOS with Homebrew
 
 Edit file `/usr/local/etc/my.cnf` and add the following line in the `[mysqld]`
 section:
 
-```dosini
+```ini
 binlog_expire_logs_seconds=86400
 ```
 
@@ -178,16 +178,41 @@ Now reload the server by executing on the command line:
 sudo port reload mysql8-server
 ```
 
-## 4 Test
+## 4 Create admin user
 
-Log into the server by executing the following on the command line:
+To avoid MySQL upgrade borking the database access by resetting the password
+authentication method, we will create a new user `admin` with password `admin`
+which will be used to access the server.
+
+First, log into the server by executing the following on the command line:
 
 ```console
 mysql -uroot -p
 ```
 
 Enter the password `root` when asked. If you set up everything correctly, you
-should arrive at the MySQL command-line client:
+should arrive at the MySQL command-line client. Execute on the `mysql>` command
+line:
+
+```console
+CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY 'admin';
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+Now you can exit the MySQL command-line client by typing `exit`.
+
+## 5 Test
+
+Test that you can use your newly created `admin` user to access the command line
+by executing:
+
+```console
+mysql -uadmin -p
+```
+
+Enter the password `admin` when asked. You should again arrive at the MySQL
+command-line client:
 
 ```text
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -204,29 +229,14 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql>
 ```
 
-Do not exit the client as you will need it in the next step.
-
-## 5 Create admin user
-
-To avoid MySQL resetting the password authentication method after an upgrade,
-create a new user `admin` with password `admin` that will be used to access the
-server.
-
-Execute on the `mysql>` command line:
-
-```console
-CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY 'admin';
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
-FLUSH PRIVILEGES;
-```
-
 ## 6 Install a GUI client
 
-You will probably want a graphical UI client to work with the database server.
-For MacOS, [TablePlus](https://tableplus.com/) is a good choice, offering
-unlimited free trial with reasonable limitations for light use. For Ubuntu, you
-can use [DBeaver Community](https://dbeaver.io/) which is free and multi-platform
-tool with support for all popular databases and offers a lot of features.
+You will probably also want a graphical UI client to work with the database
+server.  For macOS, [TablePlus](https://tableplus.com/) is a good choice,
+offering unlimited free trial with reasonable limitations for light use. For
+Ubuntu, you can use [DBeaver Community](https://dbeaver.io/) which is free and
+multi-platform tool with support for all popular databases and offers a lot of
+features.
 
 Install your preferred GUI client and configure the connection to the server
 with the `admin` user. If the connection works, you've finished installing and
