@@ -10,10 +10,6 @@ for example `php@7.3`. Officially unsupported PHP packages are not available in
 official formula repository ("tap" in `brew` lingo). However, they are still
 provided in some 3rd party *taps*, and it's possible to install them from there.
 
-**Note**: You don't have to install all following PHP versions. Install only
-those you really need, and in case you need another one, return to this page
-and follow the instructions to install that one as well.
-
 ## 1 Install
 
 ### 1.1 If using MacOS with MacPorts
