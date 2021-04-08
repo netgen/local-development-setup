@@ -9,24 +9,19 @@ Installation procedure should be the same for MacOS and Linux. You can find deta
 
 Use the above instructions to download the composer to your machine.
 
-By default, the above instructions will install the **latest** composer version, so we will need to downgrade to version 1 before making it available globally:
+Next step is making sure version 2 is available globally under `composer2` command:
+```console
+cp composer.phar /usr/local/bin/composer2
+```
+
+We also need version 1, as not all projects support version 2 yet:
 ```console
 php composer.phar self-update --1
 ```
 
-Next step is making sure `composer` command is available globally:
+And now just make sure `composer` command is available globally:
 ```console
-cp composer.phar /usr/local/bin/composer
-```
-
-Now we should also install composer2, in case you will need to use it on some projects. First, get the local composer.phar to latest version:
-```console
-php composer.phar self-update --2
-```
-
-And now just make sure `composer2` command is available globally:
-```console
-mv composer.phar /usr/local/bin/composer2
+mv composer.phar /usr/local/bin/composer
 ```
 
 That is it!
