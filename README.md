@@ -1,5 +1,11 @@
 # Netgen's Local Development Setup
 
+This is a guide on setting up modern web development environment with PHP on
+your local Mac or Linux machine, without using any kind of virtualization. Web
+server configurations for Symfony and eZ Platform / Ibexa CMS are provided out
+of the box, but the setup is not limited to them, and new configurations for
+other PHP applications can be easily added.
+
 For all chapters in this documentation, replace `Brale Rodijak` with your own
 name, `brale` user with you own username on your workstation and if on Linux,
 `staff` group with your own group name (usually the same as the username).
