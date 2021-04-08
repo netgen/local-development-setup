@@ -21,7 +21,7 @@ cp composer.phar /usr/local/bin/composer
 
 Now we should also install composer2, in case you will need to use it on some projects. First, get the local composer.phar to latest version:
 ```console
-php composer.phar self-update --1
+php composer.phar self-update --2
 ```
 
 And now just make sure `composer2` command is available globally:
