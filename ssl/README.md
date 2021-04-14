@@ -192,9 +192,9 @@ sudo openssl x509 -sha256 -req -days 825 -in server.csr -CA root.crt -CAkey root
 
 ## 8 Register RCA certificate with the OS
 
-### 8.1 If using MacOS
+### 8.1 If using macOS
 
-Register the created RCA with MacOS RCS (System Keychain) by executing on the
+Register the created RCA with macOS RCS (System Keychain) by executing on the
 command line:
 
 ```console
@@ -229,7 +229,7 @@ aware of the new server certificate.
 
 You can also generate a new server certificate, using your own  configuration
 file. In this case you can optionally reuse the existing RCA certificate and
-execute only steps 2 and 3, adapting the commands to provide your own
+execute only steps 6 and 7, adapting the commands to provide your own
 configuration and output files.
 
 # Browser specifics
