@@ -222,12 +222,12 @@ make Firefox use OS Root Certificate Store instead of its own implementation.
 
 If you need a certificate for an additional domain that's not supported by the
 default configuration, edit `server.conf` file and add your domain to the bottom
-of it. Then repeat steps 2 and 3 to generate a new server certificate. You won't
+of it. Then repeat steps 6 and 7 to generate a new server certificate. You won't
 need to register it with the RCS, as the RCA certificate stays the same and is
 already registered there. Just make sure to restart NGINX so that it becomes
 aware of the new server certificate.
 
-You can also generate a new server certificate, using your own  configuration
+You can also generate a new server certificate, using your own configuration
 file. In this case you can optionally reuse the existing RCA certificate and
 execute only steps 6 and 7, adapting the commands to provide your own
 configuration and output files.
