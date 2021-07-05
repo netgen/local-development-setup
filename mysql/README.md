@@ -98,29 +98,12 @@ sudo systemctl disable mysql
 
 ## 3 Secure
 
-Improve the security of the installation by executing the following on the
-command line:
-
-```console
-mysql_secure_installation
-```
-
-Follow the instructions to configure `root` as password for the `root` user. If
-MySQL was installed using MacPorts, enter the password generated at the
-initialization.
-
-Additionally, follow the instructions to:
-
-- skip setting up VALIDATE PASSWORD component
-- remove anonymous users and test databases
-- disallow the remote login for `root`
-
-That will be sufficient for local development needs.
-
 ### 3.1 Enable and configure `root` user (Ubuntu only)
 
-On Ubuntu by default the `root` user is set up in a way that you can't log in
-with credentials. In order to fix this, enter the MySQL shell as sudo:
+On Ubuntu by default the `root` user may be set up in a way that you can't
+log in with credentials. If you're not able to login with `root:root`, you
+will have to enable root user and set it's password. In order to fix this, 
+enter the MySQL shell as sudo:
 
 ```console
 sudo mysql
@@ -146,6 +129,27 @@ After that, you will be able to login with:
 ```console
 mysql -u root -p
 ```
+
+### 3.2 Run MySQL secure installation
+
+Improve the security of the installation by executing the following on the
+command line (note: Ubuntu will ask for `root` user's password):
+
+```console
+mysql_secure_installation
+```
+
+Follow the instructions to configure `root` as password for the `root` user. If
+MySQL was installed using MacPorts, enter the password generated at the
+initialization.
+
+Additionally, follow the instructions to:
+
+- skip setting up VALIDATE PASSWORD component
+- remove anonymous users and test databases
+- disallow the remote login for `root`
+
+That will be sufficient for local development needs.
 
 ## 4 Configure
 
