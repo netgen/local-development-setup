@@ -312,7 +312,7 @@ Test you can access PHP binary aliases by executing:
 php7.4 -v
 php7.3 -v
 php7.2 -v
-php7.2 -v
+php7.1 -v
 php7.0 -v
 php5.6 -v
 ```
