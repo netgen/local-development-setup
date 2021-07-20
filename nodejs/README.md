@@ -30,10 +30,18 @@ brew install n
 Execute on the command line:
 
 ```console
-sudo apt install n
+curl -L https://git.io/n-install | bash
 ```
 
-## 2 Configure
+This will run [n-install](https://github.com/mklement0/n-install) to install
+`n`. The installer will notify you that it will automatically configure
+environment variables. When prompted, enter `y` to proceed with the
+installation.
+
+After the installation finishes, restart your terminal app to make sure that
+the path changes are picked up by the shell.
+
+## 2 Configure (macOS only)
 
 To avoid requiring `sudo` for `n` and `npm` global installs, configure
 environment variable `N_PREFIX`, which will point to the place where `n` will
