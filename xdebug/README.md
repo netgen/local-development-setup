@@ -58,9 +58,27 @@ If you're not sure which `php.ini` file to edit, you can check that by executing
 php --ini
 ```
 Make sure you restart PHP-FPM server after making these changes. If you followed this development setup,
-then reload commands should look something like this:
+then reload commands should look something like this on Mac:
 ```
 sudo port reload php74-fpm
+```
+or like this on Ubuntu:
+```
+sudo systemctl reload php7.4-fpm
+```
+
+### If using Ubuntu
+
+The congifuration to enable the debugger may not work on Ubuntu when added to `php.ini`.
+If debugging doesn't work and the XDebug section of `phpinfo` says that the Step Debugger is disabled,
+try adding the configuration to the XDebug-specific configuration file. The file will have a name similar
+to `20-xdebug.ini`. This file should appear in the printout of the command
+```
+php --ini
+```
+If there is no such configuration file, make sure that XDebug is enabled by running
+```
+sudo phpenmod xdebug
 ```
 
 ## Configure XDebug on PhpStorm
