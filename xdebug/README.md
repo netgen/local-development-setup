@@ -78,7 +78,7 @@ php --ini
 ```
 If there is no such configuration file, make sure that XDebug is enabled by running
 ```
-sudo phpenmod xdebug
+sudo phpenmod -v ALL -s ALL xdebug
 ```
 
 ## Configure XDebug on PhpStorm
@@ -192,16 +192,16 @@ By doing this, you can now enable XDebug simply by executing `exd74` and disable
 
 ### Ubuntu configuration
 
-To enable xdebug:
+To enable XDebug on all PHP versions and SAPIs:
 
 ```
-sudo phpenmod xdebug
+sudo phpenmod -v ALL -s ALL xdebug
 ```
 
-To disable xdebug:
+To disable XDebug on all PHP versions and SAPIs:
 
 ```
-sudo phpdismod xdebug
+sudo phpdismod -v ALL -s ALL xdebug
 ```
 
 And reload fpm after that:
