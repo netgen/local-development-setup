@@ -457,3 +457,20 @@ sudo apt install php5.6-mysql
 ```console
 sudo apt install php-memcached
 ```
+
+## 7 Install and symlink PHP CS Fixer
+
+In order for code to be in line with both, general PHP coding standards and company coding standards, PHP CS Fixer 
+is required on most of the projects.
+
+### 7.1 Install PHP CS Fixer
+
+Follow globally installation instructions on [official installation instructions page](https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/doc/installation.rst).
+
+### 7.2 Add correct symlink (Mac only)
+
+On Mac, if system doesn't allow you to move file to /usr/local/bin/php-cs-fixer (last step in installation instructions), you can add symlink instead:
+
+```console
+sudo ln -s [/path/to/original/php-cs-fixer] /usr/local/bin/php-cs-fixer
+```
