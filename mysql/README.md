@@ -163,6 +163,20 @@ default MacPorts settings and add the following configuration:
 basedir="/opt/local"
 bind-address=127.0.0.1
 binlog_expire_logs_seconds=86400
+socket=/var/run/mysqld/mysqld.sock
+
+[client]
+socket=/var/run/mysqld/mysqld.sock
+```
+
+Configuring path to the socket file explicitly will be useful if you need to
+use multiple versions of MySQL, as you will not need to update PHP configuration
+when changing between them. This will also require creating the directory where
+the socket file will be placed and setting up the correct permissions on it:
+
+```console
+sudo mkdir /var/run/mysqld
+sudo chown _mysql:_mysql /var/run/mysqld
 ```
 
 Now reload the server with:
