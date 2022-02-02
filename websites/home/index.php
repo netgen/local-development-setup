@@ -65,6 +65,8 @@ header("Cache-Control: no-cache, must-revalidate");
     <h2>services</h2>
     <hr>
     <ol>
+        <li>PHP 8.1 <a href="https://phpinfo.php81">info</a> | <a href="https://home.php81/status?full&html">status</a></li>
+        <li>PHP 8.0 <a href="https://phpinfo.php80">info</a> | <a href="https://home.php80/status?full&html">status</a></li>
         <li>PHP 7.4 <a href="https://phpinfo.php74">info</a> | <a href="https://home.php74/status?full&html">status</a></li>
         <li>PHP 7.3 <a href="https://phpinfo.php73">info</a> | <a href="https://home.php73/status?full&html">status</a></li>
         <li>PHP 7.2 <a href="https://phpinfo.php72">info</a> | <a href="https://home.php72/status?full&html">status</a></li>
