@@ -164,9 +164,16 @@ basedir="/opt/local"
 bind-address=127.0.0.1
 binlog_expire_logs_seconds=86400
 socket=/var/run/mysqld/mysqld.sock
+collation-server=utf8mb4_unicode_520_ci
+character-set-server=utf8mb4
+init-connect='SET NAMES utf8mb4'
 
 [client]
 socket=/var/run/mysqld/mysqld.sock
+default-character-set=utf8mb4
+
+[mysql]
+default-character-set=utf8mb4
 ```
 
 Configuring path to the socket file explicitly will be useful if you need to
