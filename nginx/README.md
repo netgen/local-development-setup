@@ -2,13 +2,13 @@
 
 ## 1 Install
 
-## 1.1 Install on MacOS using MacPorts
+## 1.1 Install on macOS using MacPorts
 
 ```console
 sudo port install nginx
 ```
 
-## 1.2 Install on MacOS using Homebrew
+## 1.2 Install on macOS using Homebrew
 
 ```console
 brew install nginx
@@ -59,7 +59,7 @@ git clone git@github.com:netgen/local-development-setup.git
 They you will also need to find the location of configuration files and logs,
 which depends on the OS and package manager.
 
-### 2.1 If using MacOS with MacPorts
+### 2.1 If using macOS with MacPorts
 
 Copy the configuration files to the configuration directory:
 
@@ -153,7 +153,7 @@ cd /etc/nginx/sites-enabled
 sudo ln -s ../sites-available/* ./
 ```
 
-Ubuntu uses different directories for enabled vhosts and log files so we need to update these:
+Ubuntu uses different directories for enabled vhosts and log files, so we need to update these:
 
 ```console
 cd /etc/nginx
@@ -173,7 +173,7 @@ sudo chmod -R u+X /var/log/nginx
 SSL certificates created in one of the previous steps need to be linked to the
 NGINX configuration directory.
 
-### 3.1 If using MacOS with MacPorts
+### 3.1 If using macOS with MacPorts
 
 Execute on the command line:
 
@@ -183,7 +183,7 @@ sudo ln -s ~/ssl/server.crt
 sudo ln -s ~/ssl/server.key
 ```
 
-### 3.2 If using MacOS with Homebrew
+### 3.2 If using macOS with Homebrew
 
 Execute on the command line:
 
@@ -205,7 +205,7 @@ sudo ln -s ~/ssl/server.key
 
 ## 4 Start the server
 
-### 4.1 If using MacOS with MacPorts
+### 4.1 If using macOS with MacPorts
 
 ```console
 sudo port load nginx
@@ -213,7 +213,7 @@ sudo port load nginx
 
 This will also start the server automatically after a reboot.
 
-### 4.2 If using MacOS with Homebrew
+### 4.2 If using macOS with Homebrew
 
 ```console
 sudo brew services start nginx
@@ -238,17 +238,17 @@ To check if Nginx service is enabled to start after reboot, try:
 sudo systemctl is-enabled nginx
 ```
 
-To enable it to automatically start after reboot:
+To enable it to automatically start after a reboot:
 
 ```console
 sudo systemctl enable nginx
 ```
 
-## 5 Install websites
+## 5 Installation of websites
 
 Now you can install websites provided in `websites` directory in the root of the
 repository. Websites will be located in `/var/www` directory. While this folder
-already exists on Ubuntu, on MacOS you need to generate it first:
+already exists on Ubuntu, on macOS you need to generate it first:
 
 ```console
 sudo mkdir /var/www
