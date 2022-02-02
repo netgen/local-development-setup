@@ -6,7 +6,7 @@ implementation.
 
 ## 1 Install
 
-### 1.1 If using MacOS with MacPorts
+### 1.1 If using macOS with MacPorts
 
 Execute on the command line:
 
@@ -14,7 +14,7 @@ Execute on the command line:
 sudo port install redis
 ```
 
-### 1.2 If using MacOS with Homebrew
+### 1.2 If using macOS with Homebrew
 
 Execute on the command line:
 
@@ -53,7 +53,7 @@ To stop the server and prevent it from running after a reboot, execute:
 sudo port unload redis
 ```
 
-#### 2.1.2 If using MacOS with Homebrew
+#### 2.1.2 If using macOS with Homebrew
 
 Execute on the command line:
 
