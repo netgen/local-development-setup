@@ -47,7 +47,8 @@ the NGINX step, check that everything is correct with:
 curl --head https://phpinfo.php74
 ```
 
-You should receive an output like below:
+Make sure that scheme part of the URL from the command above is `https`. You
+should receive an output like below:
 
 ```console
 HTTP/1.1 200 OK
