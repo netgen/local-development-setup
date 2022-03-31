@@ -16,7 +16,7 @@ server {
     # This is intended for Bedrock boilerplate folder structure, comment out if needed
     set $_root $_base_path/$_install_dir/web;
 
-    # This is intended for the default Wordpress install, uncomment if needed
+    # This is intended for the default WordPress install, uncomment if needed
     #set $_root $_base_path/$_install_dir;
 
     root $_root;
