@@ -7,13 +7,13 @@ dynamically resolved.
 
 ## 1 Install
 
-### 1.1 If using MacOS with Homebrew
+### 1.1 If using macOS with Homebrew
 
 ```bash
 brew install dnsmasq
 ```
 
-### 1.2 If using MacOS with MacPorts
+### 1.2 If using macOS with MacPorts
 
 ```bash
 sudo port install dnsmasq
@@ -100,13 +100,14 @@ address=/php82/127.0.0.1
 address=/php83/127.0.0.1
 address=/php84/127.0.0.1
 address=/sf/127.0.0.1
+address=/wp/127.0.0.1
 ```
 
 Default configuration will still be available for reference in
 `/opt/local/etc/dnsmasq.conf.example` (MacPorts) or
 `/usr/local/etc/dnsmasq.conf.default` (Homebrew).
 
-### 2.2 Add DNS resolver configuration (MacOS only)
+### 2.2 Add DNS resolver configuration (macOS only)
 
 Add DNS resolver configuration for your custom top-level domains by executing on
 the command line:
@@ -114,12 +115,12 @@ the command line:
 ```bash
 sudo mkdir -v /etc/resolver
 cd /etc/resolver
-echo "nameserver 127.0.0.1" | sudo tee ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 sf > /dev/null
+echo "nameserver 127.0.0.1" | sudo tee ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 sf wp > /dev/null
 ```
 
 ## 3 Start
 
-### 3.1 If using MacOS with MacPorts
+### 3.1 If using macOS with MacPorts
 
 ```bash
 sudo port load dnsmasq
@@ -127,7 +128,7 @@ sudo port load dnsmasq
 
 This will also start the server automatically after a reboot.
 
-### 3.2 If using MacOS with Homebrew
+### 3.2 If using macOS with Homebrew
 
 ```bash
 sudo brew services start dnsmasq
@@ -150,7 +151,7 @@ sudo systemctl enable NetworkManager
 sudo systemctl disable NetworkManager
 ```
 
-## 4 Update network connections (MacOS only)
+## 4 Update network connections (macOS only)
 
 Open Network configuration in System Preferences, click Advanced on your network
 connection, select DNS tab and add `127.0.0.1` as a DNS server.
