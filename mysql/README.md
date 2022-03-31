@@ -163,13 +163,13 @@ default MacPorts settings and add the following configuration:
 basedir="/opt/local"
 bind-address=127.0.0.1
 binlog_expire_logs_seconds=86400
-socket=/var/run/mysqld/mysqld.sock
+socket=/opt/local/var/run/mysql/mysqld.sock
 collation-server=utf8mb4_unicode_520_ci
 character-set-server=utf8mb4
 init-connect='SET NAMES utf8mb4'
 
 [client]
-socket=/var/run/mysqld/mysqld.sock
+socket=/opt/local/var/run/mysql/mysqld.sock
 default-character-set=utf8mb4
 
 [mysql]
@@ -182,8 +182,8 @@ when changing between them. This will also require creating the directory where
 the socket file will be placed and setting up the correct permissions on it:
 
 ```console
-sudo mkdir /var/run/mysqld
-sudo chown _mysql:_mysql /var/run/mysqld
+sudo mkdir /opt/local/var/run/mysql
+sudo chown _mysql:_mysql /opt/local/var/run/mysql
 ```
 
 Now reload the server with:

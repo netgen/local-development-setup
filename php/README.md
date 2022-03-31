@@ -250,8 +250,8 @@ sudo cp /opt/local/etc/php56/php.ini-development /opt/local/etc/php56/php.ini
 Update the created configuration files as described above and additionally with:
 
 ```ini
-pdo_mysql.default_socket=/var/run/mysqld/mysqld.sock
-mysqli.default_socket=/var/run/mysqld/mysqld.sock
+pdo_mysql.default_socket=/opt/local/var/run/mysql/mysqld.sock
+mysqli.default_socket=/opt/local/var/run/mysql/mysqld.sock
 ```
 
 This will enable using `localhost` as the database host from your application.
