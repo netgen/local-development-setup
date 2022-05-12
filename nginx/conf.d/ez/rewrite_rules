@@ -1,5 +1,6 @@
 rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" "/var/$1storage/images$2/$3" break;
 rewrite "^/var/([^/]+/)?storage/original/image/(.*)\.svg" "/var/$1storage/original/image/$2.svg" break;
+rewrite "^/var/([^/]+/)?storage/sitemap/(.*)" "/var/$1storage/sitemap/$2" break;
 
 # Makes it possible to place your favicon at the root of your
 # eZ Platform instance. It will then be served directly.
