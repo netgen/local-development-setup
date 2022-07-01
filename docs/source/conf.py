@@ -20,14 +20,12 @@ from sphinx.highlighting import lexers
 from pygments.lexers.web import PhpLexer
 from pygments.lexers.web import HtmlLexer
 from pygments.lexers.web import JsonLexer
-
+from datetime import datetime
 # -- Project information -----------------------------------------------------
 
 project = "Netgen's Local Development Setup"
 copyright = '2022, Netgen'
 author = 'Netgen'
-
-from datetime import datetime
 
 lexers['php'] = PhpLexer(startinline=True)
 lexers['php-annotations'] = PhpLexer(startinline=True)
@@ -69,21 +67,3 @@ html_context = {
     'copyright_url': 'https://netgen.io',
     'current_year': datetime.utcnow().year
 }
-
-def setup(app):
-    app.add_css_file("css/style.css")
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-You have no unread notifications
