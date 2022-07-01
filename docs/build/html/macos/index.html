@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Netgen’s Local Development Setup &#8212; Netgen&#39;s Local Development Setup  documentation</title>
+    <title>MAC OS &#8212; Netgen&#39;s Local Development Setup  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MAC OS" href="../macos/index.html" />
-    <link rel="prev" title="Netgen Netgen’s Local Development Setup" href="../index.html" />
+    <link rel="next" title="MacOS prerequisites" href="prerequisites.html" />
+    <link rel="prev" title="Netgen’s Local Development Setup" href="../overview/index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -34,39 +34,16 @@
 
           <div class="body" role="main">
             
-  <section id="netgens-local-development-setup">
-<h1>Netgen’s Local Development Setup<a class="headerlink" href="#netgens-local-development-setup" title="Permalink to this heading">¶</a></h1>
-<p>This is a guide on setting up modern web development environment with
-PHP on your local Mac or Linux machine, without using any kind of
-virtualization. Web server configurations for Symfony and eZ Platform /
-Ibexa CMS are provided out of the box, but the setup is not limited to
-them, and new configurations for other PHP applications can be easily
-added.</p>
-<p>For all chapters in this documentation, replace <code class="docutils literal notranslate"><span class="pre">Brale</span> <span class="pre">Rodijak</span></code> with
-your own name, <code class="docutils literal notranslate"><span class="pre">brale</span></code> user with you own username on your workstation
-and if on Linux, <code class="docutils literal notranslate"><span class="pre">staff</span></code> group with your own group name (usually the
-same as the username).</p>
-<p>Follow the steps in this order:</p>
-<ol class="arabic simple">
-<li><p>Git</p></li>
-<li><p>dnsmasq</p></li>
-<li><p>MySQL</p></li>
-<li><p>PHP</p></li>
-<li><p>Composer</p></li>
-<li><p>SSL</p></li>
-<li><p>NGINX</p></li>
-<li><p>cURL</p></li>
-<li><p>Redis</p></li>
-<li><p>Solr</p></li>
-<li><p>RabbitMQ</p></li>
-<li><p>MailHog</p></li>
-<li><p>Varnish</p></li>
-<li><p>Node.js</p></li>
-<li><p>Tika</p></li>
-<li><p>Memcached</p></li>
-<li><p>XDebug</p></li>
-<li><p>Exposing websites</p></li>
-</ol>
+  <section id="mac-os">
+<h1>MAC OS<a class="headerlink" href="#mac-os" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="prerequisites.html"><span class="doc">MacOS prerequisites</span></a></p></li>
+<li><p><a class="reference internal" href="git.html"><span class="doc">Set up Git version control system</span></a></p></li>
+<li><p><a class="reference internal" href="dnsmasq.html"><span class="doc">Set up DNS forwarding with dnsmasq</span></a></p></li>
+<li><p><a class="reference internal" href="mysql.html"><span class="doc">Set up MySQL database server</span></a></p></li>
+</ul>
 </section>
 
 
@@ -86,11 +63,18 @@ same as the username).</p>
 
 
 <h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Netgen’s Local Development Setup</a></li>
-</ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../macos/index.html">MAC OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Netgen’s Local Development Setup</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">MAC OS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html">MacOS prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html">Set up Git version control system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dnsmasq.html">Set up DNS forwarding with dnsmasq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mysql.html">Set up MySQL database server</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ubuntu/index.html">UBUNTU</a></li>
@@ -100,8 +84,8 @@ same as the username).</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../index.html" title="previous chapter">Netgen Netgen’s Local Development Setup</a></li>
-      <li>Next: <a href="../macos/index.html" title="next chapter">MAC OS</a></li>
+      <li>Previous: <a href="../overview/index.html" title="previous chapter">Netgen’s Local Development Setup</a></li>
+      <li>Next: <a href="prerequisites.html" title="next chapter">MacOS prerequisites</a></li>
   </ul></li>
 </ul>
 </div>
@@ -135,7 +119,7 @@ same as the username).</p>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../_sources/overview/index.rst.txt"
+      <a href="../_sources/macos/index.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

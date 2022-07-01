@@ -1,20 +1,32 @@
-.. Netgen's Local Development Setup documentation master file, created by
-   sphinx-quickstart on Wed Jun 15 19:25:51 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Netgen Netgen’s Local Development Setup
+=======================================
 
-Welcome to Netgen's Local Development Setup's documentation!
-============================================================
+:doc:`Overview </overview/index>`
+---------------------------------
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :hidden:
 
+    overview/index
 
+.. include:: /overview/map.rst.inc
 
-Indices and tables
-==================
+MAC OS
+---------------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+    :hidden:
+
+    macos/index
+
+.. include:: /macos/map.rst.inc
+
+UBUNTU
+--------
+
+.. toctree::
+    :hidden:
+
+    ubuntu/index
+
+.. include:: /ubuntu/map.rst.inc
