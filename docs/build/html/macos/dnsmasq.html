@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Set up DNS forwarding with dnsmasq &#8212; Netgen&#39;s Local Development Setup  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="set-up-dns-forwarding-with-dnsmasq">
+<h1>Set up DNS forwarding with dnsmasq<a class="headerlink" href="#set-up-dns-forwarding-with-dnsmasq" title="Permalink to this heading">¶</a></h1>
+<p>Here you will install and configure dnsmasq as a DNS forwarder, used to
+resolve all your custom top-level domains to <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>. With it, you
+won’t need to update <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code> file to add new host names as they
+will be dynamically resolved.</p>
+<section id="install">
+<h2>1 Install<a class="headerlink" href="#install" title="Permalink to this heading">¶</a></h2>
+<section id="if-using-macos-with-homebrew">
+<h3>1.1 If using macOS with Homebrew<a class="headerlink" href="#if-using-macos-with-homebrew" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install dnsmasq
+</pre></div>
+</div>
+</section>
+<section id="if-using-macos-with-macports">
+<h3>1.2 If using macOS with MacPorts<a class="headerlink" href="#if-using-macos-with-macports" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo port install dnsmasq
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configure">
+<h2>2 Configure<a class="headerlink" href="#configure" title="Permalink to this heading">¶</a></h2>
+<section id="update-configuration-file">
+<h3>2.1 Update configuration file<a class="headerlink" href="#update-configuration-file" title="Permalink to this heading">¶</a></h3>
+<p>Edit configuration file <code class="docutils literal notranslate"><span class="pre">/opt/local/etc/dnsmasq.conf</span></code> (MacPorts) or
+<code class="docutils literal notranslate"><span class="pre">/usr/local/etc/dnsmasq.conf</span></code> (Homebrew) and replace the
+existing configuration with the following content:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>no-resolv
+<span class="nv">address</span><span class="o">=</span>/ez/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php56/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php70/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php71/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php72/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php73/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php74/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php80/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php81/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php82/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php83/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/php84/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/sf/127.0.0.1
+<span class="nv">address</span><span class="o">=</span>/wp/127.0.0.1
+</pre></div>
+</div>
+<p>Default configuration will still be available for reference in
+<code class="docutils literal notranslate"><span class="pre">/opt/local/etc/dnsmasq.conf.example</span></code> (MacPorts) or
+<code class="docutils literal notranslate"><span class="pre">/usr/local/etc/dnsmasq.conf.default</span></code> (Homebrew).</p>
+</section>
+<section id="add-dns-resolver-configuration">
+<h3>2.2 Add DNS resolver configuration<a class="headerlink" href="#add-dns-resolver-configuration" title="Permalink to this heading">¶</a></h3>
+<p>Add DNS resolver configuration for your custom top-level domains by
+executing on the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo mkdir -v /etc/resolver
+<span class="nb">cd</span> /etc/resolver
+<span class="nb">echo</span> <span class="s2">&quot;nameserver 127.0.0.1&quot;</span> <span class="p">|</span> sudo tee ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 sf wp &gt; /dev/null
+</pre></div>
+</div>
+</section>
+</section>
+<section id="start">
+<h2>3 Start<a class="headerlink" href="#start" title="Permalink to this heading">¶</a></h2>
+<section id="if-using-macos-with-macports-1">
+<span id="id1"></span><h3>3.1 If using macOS with MacPorts<a class="headerlink" href="#if-using-macos-with-macports-1" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo port load dnsmasq
+</pre></div>
+</div>
+<p>This will also start the server automatically after a reboot.</p>
+</section>
+<section id="if-using-macos-with-homebrew-1">
+<span id="id2"></span><h3>3.2 If using macOS with Homebrew<a class="headerlink" href="#if-using-macos-with-homebrew-1" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo brew services start dnsmasq
+</pre></div>
+</div>
+<p>This will also start the server automatically after a reboot.</p>
+</section>
+</section>
+<section id="update-network-connections">
+<h2>4 Update network connections<a class="headerlink" href="#update-network-connections" title="Permalink to this heading">¶</a></h2>
+<p>Open Network configuration in System Preferences, click Advanced on your
+network connection, select DNS tab and add <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> as a DNS
+server.</p>
+<p>Repeat this with all network connections you are using to connect to the
+Internet, excluding VPN connections.</p>
+</section>
+<section id="test">
+<h2>5 Test<a class="headerlink" href="#test" title="Permalink to this heading">¶</a></h2>
+<p>Test resolving by pinging a bogus domain on your custom top-level
+domain.</p>
+<p>Execute on the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping asdfghjkl.sf
+</pre></div>
+</div>
+<p>You should get a response from <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PING asdfghjkl.sf <span class="o">(</span><span class="m">127</span>.0.0.1<span class="o">)</span>: <span class="m">56</span> data bytes
+<span class="m">64</span> bytes from <span class="m">127</span>.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">0</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.028 ms
+<span class="m">64</span> bytes from <span class="m">127</span>.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.045 ms
+<span class="m">64</span> bytes from <span class="m">127</span>.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.130 ms
+^C
+--- asdfghjkl.sf ping statistics ---
+<span class="m">3</span> packets transmitted, <span class="m">3</span> packets received, <span class="m">0</span>.0% packet loss
+round-trip min/avg/max/stddev <span class="o">=</span> <span class="m">0</span>.028/0.068/0.130/0.045 ms
+</pre></div>
+</div>
+<p>If you received output similar to the above, it means dnsmasq is
+correctly configured for the given domain. Successfully test all
+configured top-level domains, and you’re finished with this part of the
+setup.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Netgen's Local Development Setup</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Netgen.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/macos/dnsmasq.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
