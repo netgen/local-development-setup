@@ -1,5 +1,5 @@
-MAC OS
-======
+MacOS
+=====
 
 .. toctree::
     :hidden:

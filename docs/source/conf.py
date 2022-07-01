@@ -13,7 +13,13 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+import sys, os
+import sphinx_rtd_theme
 
+from sphinx.highlighting import lexers
+from pygments.lexers.web import PhpLexer
+from pygments.lexers.web import HtmlLexer
+from pygments.lexers.web import JsonLexer
 
 # -- Project information -----------------------------------------------------
 
@@ -21,32 +27,63 @@ project = "Netgen's Local Development Setup"
 copyright = '2022, Netgen'
 author = 'Netgen'
 
+from datetime import datetime
 
-# -- General configuration ---------------------------------------------------
+lexers['php'] = PhpLexer(startinline=True)
+lexers['php-annotations'] = PhpLexer(startinline=True)
+lexers['html'] = HtmlLexer(startinline=True)
+lexers['json'] = JsonLexer(startinline=True)
 
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
-extensions = [
-]
+extensions = ['sphinx.ext.autodoc',
+    'sphinx.ext.doctest',
+    'sphinx.ext.todo',
+    'sphinx.ext.coverage',
+    'sphinx.ext.imgmath',
+    'sphinx.ext.ifconfig',
+    'sensio.sphinx.configurationblock']
 
-# Add any paths that contain templates here, relative to this directory.
+source_suffix = '.rst'
+master_doc = 'index'
+
+project = 'Netgen Layouts'
+copyright = 'Netgen'
+author = 'Netgen'
+
+version = ''
+release = ''
+
+exclude_patterns = ['_build']
+
+html_theme = "sphinx_rtd_theme"
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+
+html_static_path = ['_static']
 templates_path = ['_templates']
 
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = []
+html_theme_options = {
+    'collapse_navigation': True,
+    'display_version': True,
+}
 
+html_context = {
+    'copyright_url': 'https://netgen.io',
+    'current_year': datetime.utcnow().year
+}
 
-# -- Options for HTML output -------------------------------------------------
-
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-html_theme = 'alabaster'
-
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+def setup(app):
+    app.add_css_file("css/style.css")
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+You have no unread notifications
