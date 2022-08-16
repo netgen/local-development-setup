@@ -91,9 +91,6 @@ Additionally, follow the instructions to:
 
 That will be sufficient for local development needs.
 
-4 Configure
------------
-
 4 Create admin user
 -------------------
 

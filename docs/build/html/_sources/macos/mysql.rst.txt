@@ -173,7 +173,7 @@ Now reload the server by executing on the command line:
 
    sudo port reload mysql8-server
 
-4 Create admin user
+5 Create admin user
 -------------------
 
 To avoid MySQL upgrade borking the database access by resetting the
@@ -199,7 +199,7 @@ on the ``mysql>`` command line:
 
 Now you can exit the MySQL command-line client by typing ``exit``.
 
-5 Test
+6 Test
 ------
 
 Test that you can use your newly created ``admin`` user to access the
@@ -227,7 +227,7 @@ MySQL command-line client:
 
    mysql>
 
-6 Install a GUI client
+7 Install a GUI client
 ----------------------
 
 You will probably also want a graphical UI client to work with the

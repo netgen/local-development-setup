@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Set up cURL &mdash; Netgen&#39;s Local Development Setup  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Set up Redis in-memory data store" href="redis.html" />
+    <link rel="prev" title="Set up NGINX web server" href="nginx.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Netgen's Local Development Setup
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Netgen’s Local Development Setup</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">MacOS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html">MacOS prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html">Set up Git version control system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dnsmasq.html">Set up DNS forwarding with dnsmasq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mysql.html">Set up MySQL database server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php.html">Set up PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">Set up composer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl.html">Set up SSL certificates with OpenSSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl.html#adding-new-domains">Adding new domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl.html#browser-specifics">Browser specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Set up NGINX web server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html#testing-your-website-on-a-different-device">Testing your website on a different device</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Set up cURL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#if-using-macos-add-the-root-certificate-to-the-openssl-certificate-bundle">If using macOS, add the root certificate to the OpenSSL certificate bundle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html">Set up Redis in-memory data store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solr.html">Set up Apache Solr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabbitmq.html">Set up RabbitMQ message-broker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailhog.html">Set up MailHog development SMTP server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varnish.html">Set up Varnish reverse HTTP proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs.html">Set up Node.js version management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tika.html">Set up Apache Tika server (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memcached.html">Set up Memcached distributed memory object caching system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xdebug.html">Set up XDebug</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ubuntu/index.html">Ubuntu</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Netgen's Local Development Setup</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">MacOS</a> &raquo;</li>
+      <li>Set up cURL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/macos/curl.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="set-up-curl">
+<h1>Set up cURL<a class="headerlink" href="#set-up-curl" title="Permalink to this heading">¶</a></h1>
+<p>cURL (short for Client URL) is a library and command-line tool for
+transferring data using various network protocols. You should already
+have it installed as a dependency of PHP cURL extension, and this page
+only documents how to configure your certificates so that cURL can find
+and use them.</p>
+<section id="if-using-macos-add-the-root-certificate-to-the-openssl-certificate-bundle">
+<h2>If using macOS, add the root certificate to the OpenSSL certificate bundle<a class="headerlink" href="#if-using-macos-add-the-root-certificate-to-the-openssl-certificate-bundle" title="Permalink to this heading">¶</a></h2>
+<p>Since <code class="docutils literal notranslate"><span class="pre">curl</span></code> on macOS will not check System Keychain to validate the
+certificate, you will need to add it to the <code class="docutils literal notranslate"><span class="pre">openssl</span></code> RCA certificates
+bundle. First, check where is the correct location of the bundle with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">php -r &quot;print_r(openssl_get_cert_locations());&quot;</span>
+</pre></div>
+</div>
+<p>You should receive an output similar to:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Array
+(
+    [default_cert_file] =&gt; /opt/local/etc/openssl/cert.pem
+    [default_cert_file_env] =&gt; SSL_CERT_FILE
+    [default_cert_dir] =&gt; /opt/local/etc/openssl/certs
+    [default_cert_dir_env] =&gt; SSL_CERT_DIR
+    [default_private_dir] =&gt; /opt/local/etc/openssl/private
+    [default_default_cert_area] =&gt; /opt/local/etc/openssl
+    [ini_cafile] =&gt;
+    [ini_capath] =&gt;
+)
+</pre></div>
+</div>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">default_cert_file</span></code> key from above is the location of the
+bundle where the RCA certificates are stored. Add your own RCA
+certificate to the bundle with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo bash -c &quot;cat ~/ssl/root.crt  &gt;&gt; /opt/local/etc/openssl/cert.pem&quot;</span>
+</pre></div>
+</div>
+<p>With this, you should be able to use <code class="docutils literal notranslate"><span class="pre">curl</span></code> from the command line to
+access your local installation over HTTPS. Provided you have installed
+the websites in the NGINX step, check that everything is correct with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl --head https://phpinfo.php74</span>
+</pre></div>
+</div>
+<p>Make sure that scheme part of the URL from the command above is
+<code class="docutils literal notranslate"><span class="pre">https</span></code>. You should receive an output like below:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">HTTP/1.1 200 OK</span>
+<span class="go">Server: nginx/1.19.8</span>
+<span class="go">Date: Wed, 31 Mar 2021 08:31:24 GMT</span>
+<span class="go">Content-Type: text/html; charset=UTF-8</span>
+<span class="go">Connection: keep-alive</span>
+<span class="go">X-Powered-By: PHP/7.4.16</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nginx.html" class="btn btn-neutral float-left" title="Set up NGINX web server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="redis.html" class="btn btn-neutral float-right" title="Set up Redis in-memory data store" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Netgen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

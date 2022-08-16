@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Set up PHP &mdash; Netgen&#39;s Local Development Setup  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Set up composer" href="composer.html" />
+    <link rel="prev" title="Set up MySQL database server" href="mysql.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Netgen's Local Development Setup
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Netgen’s Local Development Setup</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">MacOS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="prerequisites.html">MacOS prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html">Set up Git version control system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dnsmasq.html">Set up DNS forwarding with dnsmasq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mysql.html">Set up MySQL database server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Set up PHP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install">1 Install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#if-using-macos-with-macports">1.1 If using macOS with MacPorts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#if-using-macos-with-homebrew">1.2 If using macOS with Homebrew</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configure">2 Configure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-php-fpm-pool-definitions">2.1 Configure PHP-FPM pool definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-php-fpm-pool-definitions-if-installed-using-homebrew">2.1 Configure PHP-FPM pool definitions if installed using Homebrew</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-php-fpm-pool-definitions-if-installed-using-macports">2.2 Configure PHP-FPM pool definitions if installed using MacPorts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-php">3 Configure PHP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-php-if-using-macos-and-homebrew">3.1 Configure PHP if using macOS and Homebrew</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-php-if-using-macos-and-macports">3.2 Configure PHP if using macOS and MacPorts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#symlink-php-binaries">4 Symlink PHP binaries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#symlink-php-binaries-on-macos-with-homebrew">4.1 Symlink PHP binaries on macOS with Homebrew</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#symlink-php-binaries-on-macos-with-macports">4.2 Symlink PHP binaries on macOS with MacPorts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#test">4.4 Test</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#start-php-fpm-services">5 Start PHP-FPM services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#start-php-fpm-services-if-installed-using-homebrew">5.1 Start PHP-FPM services if installed using Homebrew</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-php-fpm-services-if-installed-using-macports">5.2 Start PHP-FPM services if installed using MacPorts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#install-php-extensions">6 Install PHP extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-php-extensions-using-macports">6.1 Install PHP extensions using MacPorts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#if-using-homebrew-compile-the-required-php-extensions-manually">6.2 If using Homebrew, compile the required PHP extensions manually</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#install-and-symlink-php-cs-fixer">7 Install and symlink PHP CS Fixer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-php-cs-fixer">7.1 Install PHP CS Fixer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-correct-symlink">7.2 Add correct symlink</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">Set up composer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl.html">Set up SSL certificates with OpenSSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl.html#adding-new-domains">Adding new domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl.html#browser-specifics">Browser specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Set up NGINX web server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html#testing-your-website-on-a-different-device">Testing your website on a different device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="curl.html">Set up cURL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html">Set up Redis in-memory data store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solr.html">Set up Apache Solr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabbitmq.html">Set up RabbitMQ message-broker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailhog.html">Set up MailHog development SMTP server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varnish.html">Set up Varnish reverse HTTP proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs.html">Set up Node.js version management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tika.html">Set up Apache Tika server (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memcached.html">Set up Memcached distributed memory object caching system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xdebug.html">Set up XDebug</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ubuntu/index.html">Ubuntu</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Netgen's Local Development Setup</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">MacOS</a> &raquo;</li>
+      <li>Set up PHP</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/macos/php.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="set-up-php">
+<h1>Set up PHP<a class="headerlink" href="#set-up-php" title="Permalink to this heading">¶</a></h1>
+<p>Here you will install multiple versions of PHP and configure them to run
+in FPM mode.</p>
+<p>If using macOS and Homebrew, out of the box it provides current PHP
+version in a package named <code class="docutils literal notranslate"><span class="pre">php</span></code> (version 7.4 at the time of writing),
+and other officially supported PHP versions in packages namespaced with
+version number, for example <code class="docutils literal notranslate"><span class="pre">php&#64;7.3</span></code>. Officially unsupported PHP
+packages are not available in official formula repository (“tap” in
+<code class="docutils literal notranslate"><span class="pre">brew</span></code> lingo). However, they are still provided in some 3rd party
+<em>taps</em>, and it’s possible to install them from there.</p>
+<section id="install">
+<h2>1 Install<a class="headerlink" href="#install" title="Permalink to this heading">¶</a></h2>
+<section id="if-using-macos-with-macports">
+<h3>1.1 If using macOS with MacPorts<a class="headerlink" href="#if-using-macos-with-macports" title="Permalink to this heading">¶</a></h3>
+<p>Execute on the command line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo port install php81-fpm php81-mysql php81-imagick php81-gd php81-curl php81-opcache php81-mbstring php81-xsl php81-intl php81-sqlite php81-zip php81-openssl php81-iconv php81-sockets php81-exif php81-memcached</span>
+<span class="go">sudo port install php80-fpm php80-mysql php80-imagick php80-gd php80-curl php80-opcache php80-mbstring php80-xsl php80-intl php80-sqlite php80-zip php80-openssl php80-iconv php80-sockets php80-exif php80-memcached</span>
+<span class="go">sudo port install php74-fpm php74-mysql php74-imagick php74-gd php74-curl php74-opcache php74-mbstring php74-xsl php74-intl php74-sqlite php74-zip php74-openssl php74-iconv php74-sockets php74-exif php74-memcached</span>
+<span class="go">sudo port install php73-fpm php73-mysql php73-imagick php73-gd php73-curl php73-opcache php73-mbstring php73-xsl php73-intl php73-sqlite php73-zip php73-openssl php73-iconv php73-sockets php73-exif php73-memcached</span>
+<span class="go">sudo port install php72-fpm php72-mysql php72-imagick php72-gd php72-curl php72-opcache php72-mbstring php72-xsl php72-intl php72-sqlite php72-zip php72-openssl php72-iconv php72-sockets php72-exif php72-memcached</span>
+<span class="go">sudo port install php71-fpm php71-mysql php71-imagick php71-gd php71-curl php71-opcache php71-mbstring php71-xsl php71-intl php71-sqlite php71-zip php71-openssl php71-iconv php71-sockets php71-exif php71-memcached</span>
+<span class="go">sudo port install php70-fpm php70-mysql php70-imagick php70-gd php70-curl php70-opcache php70-mbstring php70-xsl php70-intl php70-sqlite php70-zip php70-openssl php70-iconv php70-sockets php70-exif php70-memcached</span>
+<span class="go">sudo port install php56-fpm php56-mysql php56-imagick php56-gd php56-curl php56-opcache php56-mbstring php56-xsl php56-intl php56-sqlite php56-zip php56-openssl php56-iconv php56-sockets php56-exif php56-memcached</span>
+</pre></div>
+</div>
+<p>Select desired default PHP version:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo port select php php74</span>
+</pre></div>
+</div>
+<p>This PHP version will be available from the command line as <code class="docutils literal notranslate"><span class="pre">php</span></code>.</p>
+</section>
+<section id="if-using-macos-with-homebrew">
+<h3>1.2 If using macOS with Homebrew<a class="headerlink" href="#if-using-macos-with-homebrew" title="Permalink to this heading">¶</a></h3>
+<p>Install PHP 7.4, 7.3 and 7.2 using Homebrew from the official <em>tap</em>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">brew install php php@7.3 php@7.2</span>
+</pre></div>
+</div>
+<p>PHP versions 7.1, 7.0 and 5.6 are available in
+<code class="docutils literal notranslate"><span class="pre">exolnet/homebrew-deprecated</span></code> <em>tap</em>. First register this <em>tap</em> with
+your local Homebrew installation with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">brew tap exolnet/homebrew-deprecated</span>
+</pre></div>
+</div>
+<p>Now you can install PHP 7.1, 7.0 and 5.6 with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">brew install exolnet/deprecated/php@7.1</span>
+<span class="go">brew install exolnet/deprecated/php@7.0</span>
+<span class="go">brew install exolnet/deprecated/php@5.6</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configure">
+<h2>2 Configure<a class="headerlink" href="#configure" title="Permalink to this heading">¶</a></h2>
+<section id="configure-php-fpm-pool-definitions">
+<h3>2.1 Configure PHP-FPM pool definitions<a class="headerlink" href="#configure-php-fpm-pool-definitions" title="Permalink to this heading">¶</a></h3>
+<p>For each PHP version edit PHP-FPM pool definition files (documented
+further below) and update it with the following configuration options:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span><span class="w"></span>
+<span class="na">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span><span class="w"></span>
+<span class="na">listen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/run/php74-fpm.sock</span><span class="w"></span>
+<span class="na">listen.owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span><span class="w"></span>
+<span class="na">listen.group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span><span class="w"></span>
+<span class="na">pm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ondemand</span><span class="w"></span>
+<span class="na">pm.max_children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6</span><span class="w"></span>
+<span class="na">pm.process_idle_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">15m</span><span class="w"></span>
+<span class="na">pm.max_requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span><span class="w"></span>
+<span class="na">pm.status_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/status</span><span class="w"></span>
+<span class="na">ping.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/ping</span><span class="w"></span>
+<span class="na">ping.response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pong&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Make sure to use your own user and group instead of <code class="docutils literal notranslate"><span class="pre">brale</span></code> and
+<code class="docutils literal notranslate"><span class="pre">staff</span></code>, and name the socket file corresponding to the PHP version.
+Use configuration already existing in the file and do not create
+duplicate entries.</p>
+<p><strong>Note</strong>: Configuration files use <code class="docutils literal notranslate"><span class="pre">;</span></code> character as a comment, so make
+sure you remove it as needed.</p>
+<section id="php-fpm-resource-consumption">
+<h4>PHP-FPM resource consumption<a class="headerlink" href="#php-fpm-resource-consumption" title="Permalink to this heading">¶</a></h4>
+<p>Main PHP-FPM manager process takes up a small amount of memory, but
+spawned workers can take up to few hundred megabytes, depending on the
+application that was executed. To see how many worker processes are
+active and how much memory they use you can check the list of processes
+(<code class="docutils literal notranslate"><span class="pre">ps</span></code> or <code class="docutils literal notranslate"><span class="pre">pstree</span></code> on the command line), or open the PHP-FPM status
+page for the specific PHP version, for example
+<a class="reference external" href="https://home.php73/status?full&amp;html">https://home.php73/status?full&amp;html</a>.</p>
+</section>
+</section>
+<section id="configure-php-fpm-pool-definitions-if-installed-using-homebrew">
+<h3>2.1 Configure PHP-FPM pool definitions if installed using Homebrew<a class="headerlink" href="#configure-php-fpm-pool-definitions-if-installed-using-homebrew" title="Permalink to this heading">¶</a></h3>
+<p>Find PHP-FPM pool definitions for your PHP versions in following files</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/usr/local/etc/php/7.4/php-fpm.d/www.conf
+/usr/local/etc/php/7.3/php-fpm.d/www.conf
+/usr/local/etc/php/7.2/php-fpm.d/www.conf
+/usr/local/etc/php/7.1/php-fpm.d/www.conf
+/usr/local/etc/php/7.0/php-fpm.d/www.conf
+/usr/local/etc/php/5.6/php-fpm.conf
+</pre></div>
+</div>
+<p>Update these pool definition files as described above.</p>
+</section>
+<section id="configure-php-fpm-pool-definitions-if-installed-using-macports">
+<h3>2.2 Configure PHP-FPM pool definitions if installed using MacPorts<a class="headerlink" href="#configure-php-fpm-pool-definitions-if-installed-using-macports" title="Permalink to this heading">¶</a></h3>
+<p>First create PHP-FPM configuration files by copying the default ones:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo cp /opt/local/etc/php81/php-fpm.conf.default /opt/local/etc/php81/php-fpm.conf</span>
+<span class="go">sudo cp /opt/local/etc/php80/php-fpm.conf.default /opt/local/etc/php80/php-fpm.conf</span>
+<span class="go">sudo cp /opt/local/etc/php74/php-fpm.conf.default /opt/local/etc/php74/php-fpm.conf</span>
+<span class="go">sudo cp /opt/local/etc/php73/php-fpm.conf.default /opt/local/etc/php73/php-fpm.conf</span>
+<span class="go">sudo cp /opt/local/etc/php72/php-fpm.conf.default /opt/local/etc/php72/php-fpm.conf</span>
+<span class="go">sudo cp /opt/local/etc/php71/php-fpm.conf.default /opt/local/etc/php71/php-fpm.conf</span>
+<span class="go">sudo cp /opt/local/etc/php70/php-fpm.conf.default /opt/local/etc/php70/php-fpm.conf</span>
+<span class="go">sudo cp /opt/local/etc/php56/php-fpm.conf.default /opt/local/etc/php56/php-fpm.conf</span>
+</pre></div>
+</div>
+<p>You don’t need to change the default configuration values.</p>
+<p>Next, create PHP-FPM pool definitions by copying the default ones:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo cp /opt/local/etc/php81/php-fpm.d/www.conf.default /opt/local/etc/php81/php-fpm.d/www.conf</span>
+<span class="go">sudo cp /opt/local/etc/php80/php-fpm.d/www.conf.default /opt/local/etc/php80/php-fpm.d/www.conf</span>
+<span class="go">sudo cp /opt/local/etc/php74/php-fpm.d/www.conf.default /opt/local/etc/php74/php-fpm.d/www.conf</span>
+<span class="go">sudo cp /opt/local/etc/php73/php-fpm.d/www.conf.default /opt/local/etc/php73/php-fpm.d/www.conf</span>
+<span class="go">sudo cp /opt/local/etc/php72/php-fpm.d/www.conf.default /opt/local/etc/php72/php-fpm.d/www.conf</span>
+<span class="go">sudo cp /opt/local/etc/php71/php-fpm.d/www.conf.default /opt/local/etc/php71/php-fpm.d/www.conf</span>
+<span class="go">sudo cp /opt/local/etc/php70/php-fpm.d/www.conf.default /opt/local/etc/php70/php-fpm.d/www.conf</span>
+</pre></div>
+</div>
+<p><strong>Note</strong>: similar as with Homebrew, for PHP 5.6 pool definition in the
+main FPM configuration file.</p>
+<p>Update the created pool definition files as described above.</p>
+</section>
+</section>
+<section id="configure-php">
+<h2>3 Configure PHP<a class="headerlink" href="#configure-php" title="Permalink to this heading">¶</a></h2>
+<p>For each PHP version find its configuration file (documented further
+below) and update it with the following configuration options:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">date.timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Europe/Zagreb</span><span class="w"></span>
+<span class="na">session.gc_maxlifetime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">86400</span><span class="w"></span>
+<span class="na">memory_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256M</span><span class="w"></span>
+<span class="na">error_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/Users/brale/php73.log</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Don’t forget to modify error log path to your user’s home directory, and
+set the correct PHP version depending on the ini file you’re modifying.</p>
+<p><strong>Note</strong>: Configuration files use <code class="docutils literal notranslate"><span class="pre">;</span></code> character as a comment, so make
+sure you remove it as needed.</p>
+<section id="configure-php-if-using-macos-and-homebrew">
+<h3>3.1 Configure PHP if using macOS and Homebrew<a class="headerlink" href="#configure-php-if-using-macos-and-homebrew" title="Permalink to this heading">¶</a></h3>
+<p>Find the configuration for your PHP versions in the following files:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/usr/local/etc/php/7.4/php.ini
+/usr/local/etc/php/7.3/php.ini
+/usr/local/etc/php/7.2/php.ini
+/usr/local/etc/php/7.1/php.ini
+/usr/local/etc/php/7.0/php.ini
+/usr/local/etc/php/5.6/php.ini
+</pre></div>
+</div>
+<p>Update these configuration files as described above.</p>
+</section>
+<section id="configure-php-if-using-macos-and-macports">
+<h3>3.2 Configure PHP if using macOS and MacPorts<a class="headerlink" href="#configure-php-if-using-macos-and-macports" title="Permalink to this heading">¶</a></h3>
+<p>First create PHP configuration files by copying the default ones:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo cp /opt/local/etc/php81/php.ini-development /opt/local/etc/php81/php.ini</span>
+<span class="go">sudo cp /opt/local/etc/php80/php.ini-development /opt/local/etc/php80/php.ini</span>
+<span class="go">sudo cp /opt/local/etc/php74/php.ini-development /opt/local/etc/php74/php.ini</span>
+<span class="go">sudo cp /opt/local/etc/php73/php.ini-development /opt/local/etc/php73/php.ini</span>
+<span class="go">sudo cp /opt/local/etc/php72/php.ini-development /opt/local/etc/php72/php.ini</span>
+<span class="go">sudo cp /opt/local/etc/php71/php.ini-development /opt/local/etc/php71/php.ini</span>
+<span class="go">sudo cp /opt/local/etc/php70/php.ini-development /opt/local/etc/php70/php.ini</span>
+<span class="go">sudo cp /opt/local/etc/php56/php.ini-development /opt/local/etc/php56/php.ini</span>
+</pre></div>
+</div>
+<p>Update the created configuration files as described above and
+additionally with:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">pdo_mysql.default_socket</span><span class="o">=</span><span class="s">/opt/local/var/run/mysql/mysqld.sock</span><span class="w"></span>
+<span class="na">mysqli.default_socket</span><span class="o">=</span><span class="s">/opt/local/var/run/mysql/mysqld.sock</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This will enable using <code class="docutils literal notranslate"><span class="pre">localhost</span></code> as the database host from your
+application.</p>
+</section>
+</section>
+<section id="symlink-php-binaries">
+<h2>4 Symlink PHP binaries<a class="headerlink" href="#symlink-php-binaries" title="Permalink to this heading">¶</a></h2>
+<section id="symlink-php-binaries-on-macos-with-homebrew">
+<h3>4.1 Symlink PHP binaries on macOS with Homebrew<a class="headerlink" href="#symlink-php-binaries-on-macos-with-homebrew" title="Permalink to this heading">¶</a></h3>
+<p>Symlink each PHP binary to an easily accessible alias:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ln -s /usr/local/Cellar/php@7.4/7.4.xx/bin/php ~/bin/php7.4</span>
+<span class="go">ln -s /usr/local/Cellar/php@7.3/7.3.xx/bin/php ~/bin/php7.3</span>
+<span class="go">ln -s /usr/local/Cellar/php@7.2/7.2.xx/bin/php ~/bin/php7.2</span>
+<span class="go">ln -s /usr/local/Cellar/php@7.1/7.1.xx/bin/php ~/bin/php7.1</span>
+<span class="go">ln -s /usr/local/Cellar/php@7.0/7.0.xx/bin/php ~/bin/php7.0</span>
+<span class="go">ln -s /usr/local/Cellar/php@5.6/5.6.xx/bin/php ~/bin/php5.6</span>
+</pre></div>
+</div>
+<p>Make sure you use correct paths to the PHP binary. This path will change
+when upgrading a PHP version, so you will need to maintain your symlinks
+through upgrades.</p>
+</section>
+<section id="symlink-php-binaries-on-macos-with-macports">
+<h3>4.2 Symlink PHP binaries on macOS with MacPorts<a class="headerlink" href="#symlink-php-binaries-on-macos-with-macports" title="Permalink to this heading">¶</a></h3>
+<p><strong>Note</strong>: while MacPorts already provides binaries for each PHP version,
+we want to add new symlinks to make it in line with Linux, which is used
+on production servers. The only difference between them is in the dot
+placed between major and minor version numbers.</p>
+<p>Symlink each PHP binary to an easily accessible alias:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ln -s /opt/local/bin/php81 ~/bin/php8.1</span>
+<span class="go">ln -s /opt/local/bin/php80 ~/bin/php8.0</span>
+<span class="go">ln -s /opt/local/bin/php74 ~/bin/php7.4</span>
+<span class="go">ln -s /opt/local/bin/php73 ~/bin/php7.3</span>
+<span class="go">ln -s /opt/local/bin/php72 ~/bin/php7.2</span>
+<span class="go">ln -s /opt/local/bin/php71 ~/bin/php7.1</span>
+<span class="go">ln -s /opt/local/bin/php70 ~/bin/php7.0</span>
+<span class="go">ln -s /opt/local/bin/php56 ~/bin/php5.6</span>
+</pre></div>
+</div>
+</section>
+<section id="test">
+<h3>4.4 Test<a class="headerlink" href="#test" title="Permalink to this heading">¶</a></h3>
+<p>Test you can access PHP binary aliases by executing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">php7.4 -v</span>
+<span class="go">php7.3 -v</span>
+<span class="go">php7.2 -v</span>
+<span class="go">php7.1 -v</span>
+<span class="go">php7.0 -v</span>
+<span class="go">php5.6 -v</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="start-php-fpm-services">
+<h2>5 Start PHP-FPM services<a class="headerlink" href="#start-php-fpm-services" title="Permalink to this heading">¶</a></h2>
+<p>You can now start PHP services.</p>
+<section id="start-php-fpm-services-if-installed-using-homebrew">
+<h3>5.1 Start PHP-FPM services if installed using Homebrew<a class="headerlink" href="#start-php-fpm-services-if-installed-using-homebrew" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo brew services start php@7.4</span>
+<span class="go">sudo brew services start php@7.3</span>
+<span class="go">sudo brew services start php@7.2</span>
+<span class="go">sudo brew services start php@7.1</span>
+<span class="go">sudo brew services start php@7.0</span>
+<span class="go">sudo brew services start php@5.6</span>
+</pre></div>
+</div>
+<p>This will also ensure that PHP-FPM server starts automatically after a
+reboot.</p>
+<p>Remember to restart them after changing PHP configuration in the future
+with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo brew services restart php@x.x</span>
+</pre></div>
+</div>
+<p>To stop the server and prevent it from running after a reboot, execute:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo brew services stop phpxx-fpm</span>
+</pre></div>
+</div>
+</section>
+<section id="start-php-fpm-services-if-installed-using-macports">
+<h3>5.2 Start PHP-FPM services if installed using MacPorts<a class="headerlink" href="#start-php-fpm-services-if-installed-using-macports" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo port load php81-fpm</span>
+<span class="go">sudo port load php80-fpm</span>
+<span class="go">sudo port load php74-fpm</span>
+<span class="go">sudo port load php73-fpm</span>
+<span class="go">sudo port load php72-fpm</span>
+<span class="go">sudo port load php71-fpm</span>
+<span class="go">sudo port load php70-fpm</span>
+<span class="go">sudo port load php56-fpm</span>
+</pre></div>
+</div>
+<p>This will also ensure that PHP-FPM server starts automatically after a
+reboot.</p>
+<p>Remember to restart them after changing PHP configuration in the future
+with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo port reload phpxx-fpm</span>
+</pre></div>
+</div>
+<p>To stop the server and prevent it from running after a reboot, execute:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo port unload phpxx-fpm</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="install-php-extensions">
+<h2>6 Install PHP extensions<a class="headerlink" href="#install-php-extensions" title="Permalink to this heading">¶</a></h2>
+<p>Installed PHP will come with built-in extension, but if your project
+requires additional extensions, these have to be installed separately.</p>
+<section id="install-php-extensions-using-macports">
+<h3>6.1 Install PHP extensions using MacPorts<a class="headerlink" href="#install-php-extensions-using-macports" title="Permalink to this heading">¶</a></h3>
+<p>MacPorts already provides installable PHP extensions, find them for a
+particular PHP version by executing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">port list php56\*</span>
+</pre></div>
+</div>
+<p>Simply install the PHP extension you need, using MacPorts, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo port install php56-memcached</span>
+</pre></div>
+</div>
+</section>
+<section id="if-using-homebrew-compile-the-required-php-extensions-manually">
+<h3>6.2 If using Homebrew, compile the required PHP extensions manually<a class="headerlink" href="#if-using-homebrew-compile-the-required-php-extensions-manually" title="Permalink to this heading">¶</a></h3>
+<p>Install extensions using pecl for the specific version of php, for
+example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/usr/local/Cellar/php@7.1/7.1.33/bin/pecl install imagick</span>
+</pre></div>
+</div>
+<p>Add the extension ini file to the <code class="docutils literal notranslate"><span class="pre">conf.d</span></code> folder for the specific
+version of php, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo &quot;extension=imagick.so&quot; &gt; /usr/local/etc/php/7.1/conf.d/ext-imagick.ini</span>
+</pre></div>
+</div>
+<p>Make sure to replace the path to the pecl binary, the extension and the
+extension ini file to match your version of php and the extension you
+want to install.</p>
+</section>
+</section>
+<section id="install-and-symlink-php-cs-fixer">
+<h2>7 Install and symlink PHP CS Fixer<a class="headerlink" href="#install-and-symlink-php-cs-fixer" title="Permalink to this heading">¶</a></h2>
+<p>In order for code to be in line with both, general PHP coding standards
+and company coding standards, PHP CS Fixer is required on most of the
+projects.</p>
+<section id="install-php-cs-fixer">
+<h3>7.1 Install PHP CS Fixer<a class="headerlink" href="#install-php-cs-fixer" title="Permalink to this heading">¶</a></h3>
+<p>Follow globally installation instructions on <a class="reference external" href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/doc/installation.rst">official installation
+instructions
+page</a>.</p>
+</section>
+<section id="add-correct-symlink">
+<h3>7.2 Add correct symlink<a class="headerlink" href="#add-correct-symlink" title="Permalink to this heading">¶</a></h3>
+<p>On Mac, if system doesn’t allow you to move file to
+/usr/local/bin/php-cs-fixer (last step in installation instructions),
+you can add symlink instead:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo ln -s [/path/to/original/php-cs-fixer] /usr/local/bin/php-cs-fixer</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mysql.html" class="btn btn-neutral float-left" title="Set up MySQL database server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="composer.html" class="btn btn-neutral float-right" title="Set up composer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Netgen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Set up SSL certificates with OpenSSL &mdash; Netgen&#39;s Local Development Setup  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Set up NGINX web server" href="nginx.html" />
+    <link rel="prev" title="Set up composer" href="composer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Netgen's Local Development Setup
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Netgen’s Local Development Setup</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../macos/index.html">MacOS</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Ubuntu</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="git.html">Set up Git version control system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dnsmasq.html">Set up DNS forwarding with dnsmasq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mysql.html">Set up MySQL database server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php.html">Set up PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">Set up composer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Set up SSL certificates with OpenSSL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-installation-directory">1 Create installation directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#write-down-your-chosen-password">2 Write down your chosen password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-rca-configuration">3 Create RCA configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-server-certificate-configuration">4 Create server certificate configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-rca-certificate-and-private-key">5 Create RCA certificate and private key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-server-certificate-signing-request">6 Create server certificate signing request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-server-certificate-and-its-private-key">7 Create server certificate and its private key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#register-rca-certificate-with-the-os">8 Register RCA certificate with the OS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-firefox-to-use-os-rcs">9 Configure Firefox to use OS RCS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-new-domains">Adding new domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#browser-specifics">Browser specifics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chrome">Chrome</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#firefox">Firefox</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Set up NGINX web server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html#testing-your-website-on-a-different-device">Testing your website on a different device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html">Set up Redis in-memory data store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solr.html">Set up Apache Solr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabbitmq.html">Set up RabbitMQ message-broker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailhog.html">Set up MailHog development SMTP server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varnish.html">Set up Varnish reverse HTTP proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs.html">Set up Node.js version management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tika.html">Set up Apache Tika server (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memcached.html">Set up Memcached distributed memory object caching system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xdebug.html">Set up XDebug</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Netgen's Local Development Setup</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Ubuntu</a> &raquo;</li>
+      <li>Set up SSL certificates with OpenSSL</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/ubuntu/ssl.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="set-up-ssl-certificates-with-openssl">
+<h1>Set up SSL certificates with OpenSSL<a class="headerlink" href="#set-up-ssl-certificates-with-openssl" title="Permalink to this heading">¶</a></h1>
+<p>Here you will generate SLL certificates for your NGINX server. This is
+not about generating a self-signed certificate - you will generate both
+Root Certificate Authority (RCA) and end-entity (server) certificates.
+RCA certificate will be registered in the Operating System’s Root
+Certificate Store (RCS), so that any additionally generated server
+certificates get automatically validated by the browser without defining
+exceptions or importing them into Operating System’s RCS.</p>
+<section id="create-installation-directory">
+<h2>1 Create installation directory<a class="headerlink" href="#create-installation-directory" title="Permalink to this heading">¶</a></h2>
+<p>Execute on the command line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir ~/ssl</span>
+</pre></div>
+</div>
+</section>
+<section id="write-down-your-chosen-password">
+<h2>2 Write down your chosen password<a class="headerlink" href="#write-down-your-chosen-password" title="Permalink to this heading">¶</a></h2>
+<p>Write down your chosen password in <code class="docutils literal notranslate"><span class="pre">~/ssl/password.txt</span></code> file in case
+you need to generate new server certificate using the same RCA later on.</p>
+</section>
+<section id="create-rca-configuration">
+<h2>3 Create RCA configuration<a class="headerlink" href="#create-rca-configuration" title="Permalink to this heading">¶</a></h2>
+<p>Create <code class="docutils literal notranslate"><span class="pre">~/ssl/root.conf</span></code> file with the following content:</p>
+<div class="highlight-dosini notranslate"><div class="highlight"><pre><span></span><span class="k">[req]</span><span class="w"></span>
+<span class="na">prompt</span><span class="o">=</span><span class="s">no</span><span class="w"></span>
+<span class="na">string_mask</span><span class="o">=</span><span class="s">default</span><span class="w"></span>
+<span class="na">default_bits</span><span class="o">=</span><span class="s">2048</span><span class="w"></span>
+<span class="na">distinguished_name</span><span class="o">=</span><span class="s">req_distinguished_name</span><span class="w"></span>
+<span class="na">x509_extensions</span><span class="o">=</span><span class="s">x509_ext</span><span class="w"></span>
+
+<span class="k">[req_distinguished_name]</span><span class="w"></span>
+<span class="na">countryName</span><span class="o">=</span><span class="s">hr</span><span class="w"></span>
+<span class="na">organizationName</span><span class="o">=</span><span class="s">Local</span><span class="w"></span>
+<span class="na">commonName</span><span class="o">=</span><span class="s">Local Development Root CA</span><span class="w"></span>
+
+<span class="k">[x509_ext]</span><span class="w"></span>
+<span class="na">basicConstraints</span><span class="o">=</span><span class="s">critical,CA:true,pathlen:0</span><span class="w"></span>
+<span class="na">keyUsage</span><span class="o">=</span><span class="s">critical,keyCertSign,cRLSign</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="create-server-certificate-configuration">
+<h2>4 Create server certificate configuration<a class="headerlink" href="#create-server-certificate-configuration" title="Permalink to this heading">¶</a></h2>
+<p>Create <code class="docutils literal notranslate"><span class="pre">~/ssl/server.conf</span></code> file with the following content:</p>
+<div class="highlight-dosini notranslate"><div class="highlight"><pre><span></span><span class="k">[req]</span><span class="w"></span>
+<span class="na">prompt</span><span class="o">=</span><span class="s">no</span><span class="w"></span>
+<span class="na">string_mask</span><span class="o">=</span><span class="s">default</span><span class="w"></span>
+<span class="na">default_bits</span><span class="o">=</span><span class="s">2048</span><span class="w"></span>
+<span class="na">distinguished_name</span><span class="o">=</span><span class="s">req_distinguished_name</span><span class="w"></span>
+<span class="na">x509_extensions</span><span class="o">=</span><span class="s">x509_ext</span><span class="w"></span>
+
+<span class="k">[req_distinguished_name]</span><span class="w"></span>
+<span class="na">countryName</span><span class="o">=</span><span class="s">hr</span><span class="w"></span>
+<span class="na">organizationName</span><span class="o">=</span><span class="s">Local</span><span class="w"></span>
+<span class="na">commonName</span><span class="o">=</span><span class="s">Local Development</span><span class="w"></span>
+
+<span class="k">[x509_ext]</span><span class="w"></span>
+<span class="na">keyUsage</span><span class="o">=</span><span class="s">critical,digitalSignature,keyAgreement</span><span class="w"></span>
+<span class="na">subjectAltName</span><span class="o">=</span><span class="s">@alt_names</span><span class="w"></span>
+
+<span class="k">[alt_names]</span><span class="w"></span>
+<span class="na">DNS.1</span><span class="o">=</span><span class="s">home.php84</span><span class="w"></span>
+<span class="na">DNS.2</span><span class="o">=</span><span class="s">home.php83</span><span class="w"></span>
+<span class="na">DNS.3</span><span class="o">=</span><span class="s">home.php82</span><span class="w"></span>
+<span class="na">DNS.4</span><span class="o">=</span><span class="s">home.php81</span><span class="w"></span>
+<span class="na">DNS.5</span><span class="o">=</span><span class="s">home.php80</span><span class="w"></span>
+<span class="na">DNS.6</span><span class="o">=</span><span class="s">home.php74</span><span class="w"></span>
+<span class="na">DNS.7</span><span class="o">=</span><span class="s">home.php73</span><span class="w"></span>
+<span class="na">DNS.8</span><span class="o">=</span><span class="s">home.php72</span><span class="w"></span>
+<span class="na">DNS.9</span><span class="o">=</span><span class="s">home.php71</span><span class="w"></span>
+<span class="na">DNS.10</span><span class="o">=</span><span class="s">home.php70</span><span class="w"></span>
+<span class="na">DNS.11</span><span class="o">=</span><span class="s">home.php56</span><span class="w"></span>
+<span class="na">DNS.12</span><span class="o">=</span><span class="s">phpinfo.php84</span><span class="w"></span>
+<span class="na">DNS.13</span><span class="o">=</span><span class="s">phpinfo.php83</span><span class="w"></span>
+<span class="na">DNS.14</span><span class="o">=</span><span class="s">phpinfo.php82</span><span class="w"></span>
+<span class="na">DNS.15</span><span class="o">=</span><span class="s">phpinfo.php81</span><span class="w"></span>
+<span class="na">DNS.16</span><span class="o">=</span><span class="s">phpinfo.php80</span><span class="w"></span>
+<span class="na">DNS.17</span><span class="o">=</span><span class="s">phpinfo.php74</span><span class="w"></span>
+<span class="na">DNS.18</span><span class="o">=</span><span class="s">phpinfo.php73</span><span class="w"></span>
+<span class="na">DNS.19</span><span class="o">=</span><span class="s">phpinfo.php72</span><span class="w"></span>
+<span class="na">DNS.20</span><span class="o">=</span><span class="s">phpinfo.php71</span><span class="w"></span>
+<span class="na">DNS.21</span><span class="o">=</span><span class="s">phpinfo.php70</span><span class="w"></span>
+<span class="na">DNS.22</span><span class="o">=</span><span class="s">phpinfo.php56</span><span class="w"></span>
+<span class="na">DNS.23</span><span class="o">=</span><span class="s">*.dev.php84.ez</span><span class="w"></span>
+<span class="na">DNS.24</span><span class="o">=</span><span class="s">*.dev.php83.ez</span><span class="w"></span>
+<span class="na">DNS.25</span><span class="o">=</span><span class="s">*.dev.php82.ez</span><span class="w"></span>
+<span class="na">DNS.26</span><span class="o">=</span><span class="s">*.dev.php81.ez</span><span class="w"></span>
+<span class="na">DNS.27</span><span class="o">=</span><span class="s">*.dev.php80.ez</span><span class="w"></span>
+<span class="na">DNS.28</span><span class="o">=</span><span class="s">*.dev.php74.ez</span><span class="w"></span>
+<span class="na">DNS.29</span><span class="o">=</span><span class="s">*.dev.php73.ez</span><span class="w"></span>
+<span class="na">DNS.30</span><span class="o">=</span><span class="s">*.dev.php72.ez</span><span class="w"></span>
+<span class="na">DNS.31</span><span class="o">=</span><span class="s">*.dev.php71.ez</span><span class="w"></span>
+<span class="na">DNS.32</span><span class="o">=</span><span class="s">*.dev.php70.ez</span><span class="w"></span>
+<span class="na">DNS.33</span><span class="o">=</span><span class="s">*.dev.php56.ez</span><span class="w"></span>
+<span class="na">DNS.34</span><span class="o">=</span><span class="s">*.prod.php84.ez</span><span class="w"></span>
+<span class="na">DNS.35</span><span class="o">=</span><span class="s">*.prod.php83.ez</span><span class="w"></span>
+<span class="na">DNS.36</span><span class="o">=</span><span class="s">*.prod.php82.ez</span><span class="w"></span>
+<span class="na">DNS.37</span><span class="o">=</span><span class="s">*.prod.php81.ez</span><span class="w"></span>
+<span class="na">DNS.38</span><span class="o">=</span><span class="s">*.prod.php80.ez</span><span class="w"></span>
+<span class="na">DNS.39</span><span class="o">=</span><span class="s">*.prod.php74.ez</span><span class="w"></span>
+<span class="na">DNS.40</span><span class="o">=</span><span class="s">*.prod.php73.ez</span><span class="w"></span>
+<span class="na">DNS.41</span><span class="o">=</span><span class="s">*.prod.php72.ez</span><span class="w"></span>
+<span class="na">DNS.42</span><span class="o">=</span><span class="s">*.prod.php71.ez</span><span class="w"></span>
+<span class="na">DNS.43</span><span class="o">=</span><span class="s">*.prod.php70.ez</span><span class="w"></span>
+<span class="na">DNS.44</span><span class="o">=</span><span class="s">*.prod.php56.ez</span><span class="w"></span>
+<span class="na">DNS.45</span><span class="o">=</span><span class="s">*.test.php84.ez</span><span class="w"></span>
+<span class="na">DNS.46</span><span class="o">=</span><span class="s">*.test.php83.ez</span><span class="w"></span>
+<span class="na">DNS.47</span><span class="o">=</span><span class="s">*.test.php82.ez</span><span class="w"></span>
+<span class="na">DNS.48</span><span class="o">=</span><span class="s">*.test.php81.ez</span><span class="w"></span>
+<span class="na">DNS.49</span><span class="o">=</span><span class="s">*.test.php80.ez</span><span class="w"></span>
+<span class="na">DNS.50</span><span class="o">=</span><span class="s">*.test.php74.ez</span><span class="w"></span>
+<span class="na">DNS.51</span><span class="o">=</span><span class="s">*.test.php73.ez</span><span class="w"></span>
+<span class="na">DNS.52</span><span class="o">=</span><span class="s">*.test.php72.ez</span><span class="w"></span>
+<span class="na">DNS.53</span><span class="o">=</span><span class="s">*.test.php71.ez</span><span class="w"></span>
+<span class="na">DNS.54</span><span class="o">=</span><span class="s">*.test.php70.ez</span><span class="w"></span>
+<span class="na">DNS.55</span><span class="o">=</span><span class="s">*.test.php56.ez</span><span class="w"></span>
+<span class="na">DNS.56</span><span class="o">=</span><span class="s">*.dev.php84.sf</span><span class="w"></span>
+<span class="na">DNS.57</span><span class="o">=</span><span class="s">*.dev.php83.sf</span><span class="w"></span>
+<span class="na">DNS.58</span><span class="o">=</span><span class="s">*.dev.php82.sf</span><span class="w"></span>
+<span class="na">DNS.59</span><span class="o">=</span><span class="s">*.dev.php81.sf</span><span class="w"></span>
+<span class="na">DNS.60</span><span class="o">=</span><span class="s">*.dev.php80.sf</span><span class="w"></span>
+<span class="na">DNS.61</span><span class="o">=</span><span class="s">*.dev.php74.sf</span><span class="w"></span>
+<span class="na">DNS.62</span><span class="o">=</span><span class="s">*.dev.php73.sf</span><span class="w"></span>
+<span class="na">DNS.63</span><span class="o">=</span><span class="s">*.dev.php72.sf</span><span class="w"></span>
+<span class="na">DNS.64</span><span class="o">=</span><span class="s">*.dev.php71.sf</span><span class="w"></span>
+<span class="na">DNS.65</span><span class="o">=</span><span class="s">*.dev.php70.sf</span><span class="w"></span>
+<span class="na">DNS.66</span><span class="o">=</span><span class="s">*.dev.php56.sf</span><span class="w"></span>
+<span class="na">DNS.67</span><span class="o">=</span><span class="s">*.prod.php84.sf</span><span class="w"></span>
+<span class="na">DNS.68</span><span class="o">=</span><span class="s">*.prod.php83.sf</span><span class="w"></span>
+<span class="na">DNS.69</span><span class="o">=</span><span class="s">*.prod.php82.sf</span><span class="w"></span>
+<span class="na">DNS.70</span><span class="o">=</span><span class="s">*.prod.php81.sf</span><span class="w"></span>
+<span class="na">DNS.71</span><span class="o">=</span><span class="s">*.prod.php80.sf</span><span class="w"></span>
+<span class="na">DNS.72</span><span class="o">=</span><span class="s">*.prod.php74.sf</span><span class="w"></span>
+<span class="na">DNS.73</span><span class="o">=</span><span class="s">*.prod.php73.sf</span><span class="w"></span>
+<span class="na">DNS.74</span><span class="o">=</span><span class="s">*.prod.php72.sf</span><span class="w"></span>
+<span class="na">DNS.75</span><span class="o">=</span><span class="s">*.prod.php71.sf</span><span class="w"></span>
+<span class="na">DNS.76</span><span class="o">=</span><span class="s">*.prod.php70.sf</span><span class="w"></span>
+<span class="na">DNS.77</span><span class="o">=</span><span class="s">*.prod.php56.sf</span><span class="w"></span>
+<span class="na">DNS.78</span><span class="o">=</span><span class="s">*.test.php84.sf</span><span class="w"></span>
+<span class="na">DNS.79</span><span class="o">=</span><span class="s">*.test.php83.sf</span><span class="w"></span>
+<span class="na">DNS.80</span><span class="o">=</span><span class="s">*.test.php82.sf</span><span class="w"></span>
+<span class="na">DNS.81</span><span class="o">=</span><span class="s">*.test.php81.sf</span><span class="w"></span>
+<span class="na">DNS.82</span><span class="o">=</span><span class="s">*.test.php80.sf</span><span class="w"></span>
+<span class="na">DNS.83</span><span class="o">=</span><span class="s">*.test.php74.sf</span><span class="w"></span>
+<span class="na">DNS.84</span><span class="o">=</span><span class="s">*.test.php73.sf</span><span class="w"></span>
+<span class="na">DNS.85</span><span class="o">=</span><span class="s">*.test.php72.sf</span><span class="w"></span>
+<span class="na">DNS.86</span><span class="o">=</span><span class="s">*.test.php71.sf</span><span class="w"></span>
+<span class="na">DNS.87</span><span class="o">=</span><span class="s">*.test.php70.sf</span><span class="w"></span>
+<span class="na">DNS.88</span><span class="o">=</span><span class="s">*.test.php56.sf</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="create-rca-certificate-and-private-key">
+<h2>5 Create RCA certificate and private key<a class="headerlink" href="#create-rca-certificate-and-private-key" title="Permalink to this heading">¶</a></h2>
+<p><strong>Note</strong>: 3650 days means the certificate will be valid for 10 years.</p>
+<p>When prompted, use the password you chose previously.</p>
+<p>Execute on the command line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ssl</span>
+<span class="go">sudo openssl req -x509 -new -days 3650 -keyout root.key -out root.crt -config root.conf</span>
+</pre></div>
+</div>
+</section>
+<section id="create-server-certificate-signing-request">
+<h2>6 Create server certificate signing request<a class="headerlink" href="#create-server-certificate-signing-request" title="Permalink to this heading">¶</a></h2>
+<p>Execute on the command line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ssl</span>
+<span class="go">sudo openssl req -nodes -new -keyout server.key -out server.csr -config server.conf</span>
+</pre></div>
+</div>
+</section>
+<section id="create-server-certificate-and-its-private-key">
+<h2>7 Create server certificate and its private key<a class="headerlink" href="#create-server-certificate-and-its-private-key" title="Permalink to this heading">¶</a></h2>
+<p><strong>Note</strong>: 825 days is maximum allowed end-entity certificate validity.</p>
+<p>When prompted, use the password you chose previously.</p>
+<p>Execute on the command line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ssl</span>
+<span class="go">sudo openssl x509 -sha256 -req -days 825 -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext</span>
+</pre></div>
+</div>
+</section>
+<section id="register-rca-certificate-with-the-os">
+<h2>8 Register RCA certificate with the OS<a class="headerlink" href="#register-rca-certificate-with-the-os" title="Permalink to this heading">¶</a></h2>
+<p>Register the created RCA with Ubuntu RCS by executing on the command
+line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/ssl</span>
+<span class="go">sudo cp root.crt /usr/local/share/ca-certificates</span>
+<span class="go">sudo update-ca-certificates</span>
+</pre></div>
+</div>
+</section>
+<section id="configure-firefox-to-use-os-rcs">
+<h2>9 Configure Firefox to use OS RCS<a class="headerlink" href="#configure-firefox-to-use-os-rcs" title="Permalink to this heading">¶</a></h2>
+<p>If you are using Firefox, open <code class="docutils literal notranslate"><span class="pre">about:config</span></code> and set
+<code class="docutils literal notranslate"><span class="pre">security.enterprise_roots.enabled</span></code> configuration option to <code class="docutils literal notranslate"><span class="pre">true</span></code>.
+This will make Firefox use OS Root Certificate Store instead of its own
+implementation.</p>
+</section>
+</section>
+<section id="adding-new-domains">
+<h1>Adding new domains<a class="headerlink" href="#adding-new-domains" title="Permalink to this heading">¶</a></h1>
+<p>If you need a certificate for an additional domain that’s not supported
+by the default configuration, edit <code class="docutils literal notranslate"><span class="pre">server.conf</span></code> file and add your
+domain to the bottom of it. Then repeat steps 6 and 7 to generate a new
+server certificate. You won’t need to register it with the RCS, as the
+RCA certificate stays the same and is already registered there. Just
+make sure to restart NGINX so that it becomes aware of the new server
+certificate.</p>
+<p>You can also generate a new server certificate, using your own
+configuration file. In this case you can optionally reuse the existing
+RCA certificate and execute only steps 6 and 7, adapting the commands to
+provide your own configuration and output files.</p>
+</section>
+<section id="browser-specifics">
+<h1>Browser specifics<a class="headerlink" href="#browser-specifics" title="Permalink to this heading">¶</a></h1>
+<section id="chrome">
+<h2>Chrome<a class="headerlink" href="#chrome" title="Permalink to this heading">¶</a></h2>
+<p>If you generate a server certificate as valid for more than the agreed
+limitation of 825 days, Chrome will react with
+<code class="docutils literal notranslate"><span class="pre">NET::ERR_CERT_VALIDITY_TOO_LONG</span></code> error. The solution is to generate a
+new server certificate that respects the agreed maximum validity time.</p>
+<p>While this rule is valid in general, so far only Chrome has chosen to
+enforce it.</p>
+</section>
+<section id="firefox">
+<h2>Firefox<a class="headerlink" href="#firefox" title="Permalink to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Firefox maintains its own RCS and by default it won’t use Operating
+System’s RCS to validate a server certificate. In order to enable
+Operating System’s own RCS in Firefox, open <code class="docutils literal notranslate"><span class="pre">about:config</span></code> and set
+<code class="docutils literal notranslate"><span class="pre">security.enterprise_roots.enabled</span></code> configuration option to
+<code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p>If you regenerate both RCA and server certificates with the same
+configuration, Firefox will refuse the new certificate with
+<code class="docutils literal notranslate"><span class="pre">SEC_ERROR_BAD_SIGNATURE</span></code> error. This seems to be caused by caching
+and can be solved by deleting its certificate database file named
+<code class="docutils literal notranslate"><span class="pre">cert9.db</span></code>. The file is located in the Firefox profile directory,
+which you can find on <code class="docutils literal notranslate"><span class="pre">about:profiles</span></code> page. Make sure you restart
+Firefox after deleting it.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="composer.html" class="btn btn-neutral float-left" title="Set up composer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nginx.html" class="btn btn-neutral float-right" title="Set up NGINX web server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Netgen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

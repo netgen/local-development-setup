@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Set up PHP &mdash; Netgen&#39;s Local Development Setup  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Set up composer" href="composer.html" />
+    <link rel="prev" title="Set up MySQL database server" href="mysql.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Netgen's Local Development Setup
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Netgen’s Local Development Setup</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../macos/index.html">MacOS</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Ubuntu</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="git.html">Set up Git version control system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html#tips">Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dnsmasq.html">Set up DNS forwarding with dnsmasq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mysql.html">Set up MySQL database server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Set up PHP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install">1 Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure">2 Configure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-php-fpm-pool-definitions">2.1 Configure PHP-FPM pool definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-php">3 Configure PHP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-php-fpm-services">4 Start PHP-FPM services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-php-extensions">6 Install PHP extensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-php-cs-fixer">7 Install PHP CS Fixer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">Set up composer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl.html">Set up SSL certificates with OpenSSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl.html#adding-new-domains">Adding new domains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl.html#browser-specifics">Browser specifics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Set up NGINX web server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html#testing-your-website-on-a-different-device">Testing your website on a different device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="redis.html">Set up Redis in-memory data store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solr.html">Set up Apache Solr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rabbitmq.html">Set up RabbitMQ message-broker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mailhog.html">Set up MailHog development SMTP server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="varnish.html">Set up Varnish reverse HTTP proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs.html">Set up Node.js version management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tika.html">Set up Apache Tika server (optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memcached.html">Set up Memcached distributed memory object caching system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xdebug.html">Set up XDebug</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Netgen's Local Development Setup</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Ubuntu</a> &raquo;</li>
+      <li>Set up PHP</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/ubuntu/php.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="set-up-php">
+<h1>Set up PHP<a class="headerlink" href="#set-up-php" title="Permalink to this heading">¶</a></h1>
+<p>Here you will install multiple versions of PHP and configure them to run
+in FPM mode.</p>
+<section id="install">
+<h2>1 Install<a class="headerlink" href="#install" title="Permalink to this heading">¶</a></h2>
+<p>On latest Ubuntu (20.04 in the time of writing), only the latest PHP
+version (PHP 7.4 in the time of writing) is available in the default
+repository. For older versions we need to use the <code class="docutils literal notranslate"><span class="pre">ondrej/php</span></code> PPA
+repository.</p>
+<p>To add this repository, execute on the command line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo add-apt-repository ppa:ondrej/php</span>
+</pre></div>
+</div>
+<p>Then, install imagemagick:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install imagemagick</span>
+</pre></div>
+</div>
+<p>Then, to install PHP 7.4, 7.3, 7.2, 7.1 and 5.6 execute on the command
+line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install php7.4 php7.4-fpm php7.4-imagick php7.4-gd php7.4-curl php7.4-opcache php7.4-mbstring php7.4-xsl php7.4-intl php7.4-sqlite3 php7.4-zip php7.4-mysql php7.4-bcmath</span>
+<span class="go">sudo apt install php7.3 php7.3-fpm php7.3-imagick php7.3-gd php7.3-curl php7.3-opcache php7.3-mbstring php7.3-xsl php7.3-intl php7.3-sqlite3 php7.3-zip php7.3-mysql php7.3-bcmath</span>
+<span class="go">sudo apt install php7.2 php7.2-fpm php7.2-imagick php7.2-gd php7.2-curl php7.2-opcache php7.2-mbstring php7.2-xsl php7.2-intl php7.2-sqlite3 php7.2-zip php7.2-mysql php7.2-bcmath</span>
+<span class="go">sudo apt install php7.1 php7.1-fpm php7.1-imagick php7.1-gd php7.1-curl php7.1-opcache php7.1-mbstring php7.1-xsl php7.1-intl php7.1-sqlite3 php7.1-zip php7.1-mysql php7.1-bcmath</span>
+<span class="go">sudo apt install php5.6 php5.6-fpm php5.6-imagick php5.6-gd php5.6-curl php5.6-opcache php5.6-mbstring php5.6-xsl php5.6-intl php5.6-sqlite3 php5.6-zip php5.6-mysql php5.6-bcmath</span>
+</pre></div>
+</div>
+<p><strong>Note</strong>: some PHP packages differ from macOS instructions because eg.
+<code class="docutils literal notranslate"><span class="pre">php-openssl</span></code> is included in the main PHP package on Ubuntu and
+doesn’t exist as a standalone package, while <code class="docutils literal notranslate"><span class="pre">php-mysql</span></code> and
+<code class="docutils literal notranslate"><span class="pre">php-bcmath</span></code> are needed but not included by default.</p>
+<p>Now you can select desired default PHP version with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo update-alternatives --config php</span>
+</pre></div>
+</div>
+</section>
+<section id="configure">
+<h2>2 Configure<a class="headerlink" href="#configure" title="Permalink to this heading">¶</a></h2>
+<section id="configure-php-fpm-pool-definitions">
+<h3>2.1 Configure PHP-FPM pool definitions<a class="headerlink" href="#configure-php-fpm-pool-definitions" title="Permalink to this heading">¶</a></h3>
+<p>For each PHP version edit PHP-FPM pool definition files (documented
+further below) and update it with the following configuration options:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span><span class="w"></span>
+<span class="na">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span><span class="w"></span>
+<span class="na">listen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/run/php74-fpm.sock</span><span class="w"></span>
+<span class="na">listen.owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span><span class="w"></span>
+<span class="na">listen.group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span><span class="w"></span>
+<span class="na">pm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ondemand</span><span class="w"></span>
+<span class="na">pm.max_children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6</span><span class="w"></span>
+<span class="na">pm.process_idle_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">15m</span><span class="w"></span>
+<span class="na">pm.max_requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span><span class="w"></span>
+<span class="na">pm.status_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/status</span><span class="w"></span>
+<span class="na">ping.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/ping</span><span class="w"></span>
+<span class="na">ping.response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pong&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Make sure to use your own user and group instead of <code class="docutils literal notranslate"><span class="pre">brale</span></code> and
+<code class="docutils literal notranslate"><span class="pre">staff</span></code>, and name the socket file corresponding to the PHP version.
+Use configuration already existing in the file and do not create
+duplicate entries.</p>
+<p><strong>Note</strong>: Configuration files use <code class="docutils literal notranslate"><span class="pre">;</span></code> character as a comment, so make
+sure you remove it as needed.</p>
+<section id="php-fpm-resource-consumption">
+<h4>PHP-FPM resource consumption<a class="headerlink" href="#php-fpm-resource-consumption" title="Permalink to this heading">¶</a></h4>
+<p>Main PHP-FPM manager process takes up a small amount of memory, but
+spawned workers can take up to few hundred megabytes, depending on the
+application that was executed. To see how many worker processes are
+active and how much memory they use you can check the list of processes
+(<code class="docutils literal notranslate"><span class="pre">ps</span></code> or <code class="docutils literal notranslate"><span class="pre">pstree</span></code> on the command line), or open the PHP-FPM status
+page for the specific PHP version, for example
+<a class="reference external" href="https://home.php73/status?full&amp;html">https://home.php73/status?full&amp;html</a>.</p>
+<p>Find PHP-FPM pool definitions for your PHP versions in following files</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/etc/php/7.4/fpm/pool.d/www.conf
+/etc/php/7.3/fpm/pool.d/www.conf
+/etc/php/7.2/fpm/pool.d/www.conf
+/etc/php/7.1/fpm/pool.d/www.conf
+/etc/php/5.6/fpm/pool.d/www.conf
+</pre></div>
+</div>
+<p>Update these pool definition files as described above.</p>
+<p><strong>Note:</strong> don’t forget to use <code class="docutils literal notranslate"><span class="pre">sudo</span></code> as these are editable only by the
+root user.</p>
+</section>
+</section>
+</section>
+<section id="configure-php">
+<h2>3 Configure PHP<a class="headerlink" href="#configure-php" title="Permalink to this heading">¶</a></h2>
+<p>For each PHP version find its configuration file (documented further
+below) and update it with the following configuration options:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">date.timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Europe/Zagreb</span><span class="w"></span>
+<span class="na">session.gc_maxlifetime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">86400</span><span class="w"></span>
+<span class="na">memory_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256M</span><span class="w"></span>
+<span class="na">error_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/Users/brale/php73.log</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Don’t forget to modify error log path to your user’s home directory, and
+set the correct PHP version depending on the ini file you’re modifying.</p>
+<p><strong>Note</strong>: Configuration files use <code class="docutils literal notranslate"><span class="pre">;</span></code> character as a comment, so make
+sure you remove it as needed.</p>
+<p>Find the configuration for your PHP versions in the following files:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/etc/php/7.4/fpm/php.ini
+/etc/php/7.3/fpm/php.ini
+/etc/php/7.2/fpm/php.ini
+/etc/php/7.1/fpm/php.ini
+/etc/php/5.6/fpm/php.ini
+</pre></div>
+</div>
+<p>Update these configuration files as described above.</p>
+</section>
+<section id="start-php-fpm-services">
+<h2>4 Start PHP-FPM services<a class="headerlink" href="#start-php-fpm-services" title="Permalink to this heading">¶</a></h2>
+<p>You can now start PHP services.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl start php7.4-fpm</span>
+<span class="go">sudo systemctl start php7.3-fpm</span>
+<span class="go">sudo systemctl start php7.2-fpm</span>
+<span class="go">sudo systemctl start php7.1-fpm</span>
+<span class="go">sudo systemctl start php5.6-fpm</span>
+</pre></div>
+</div>
+<p>Except <code class="docutils literal notranslate"><span class="pre">start</span></code>, you can also use commands such as: * <code class="docutils literal notranslate"><span class="pre">status</span></code> - to
+see if PHP-FPM service is running * <code class="docutils literal notranslate"><span class="pre">stop</span></code> - to stop the PHP-FPM
+service * <code class="docutils literal notranslate"><span class="pre">restart</span></code> - to restart the PHP-FPM service (does stop then
+start)</p>
+<p>Remember to restart the FPM server after changing the configuration.</p>
+<p><strong>Note:</strong> by default all PHP-FPM services are set-up to automatically
+start after a reboot. To check if a service is enabled to automatically
+start on boot use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl is-enabled php7.4-fpm</span>
+</pre></div>
+</div>
+<p>And then you can enable it with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl enable php7.4-fpm</span>
+</pre></div>
+</div>
+<p>Or disable with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl disable php7.4-fpm</span>
+</pre></div>
+</div>
+</section>
+<section id="install-php-extensions">
+<h2>6 Install PHP extensions<a class="headerlink" href="#install-php-extensions" title="Permalink to this heading">¶</a></h2>
+<p>Installed PHP will come with built-in extension, but if your project
+requires additional extensions, these have to be installed separately.</p>
+<p>Simply install the PHP extension you need, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install php5.6-mysql</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> Some extensions do not have a PHP version in their name, eg.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install php-memcached</span>
+</pre></div>
+</div>
+</section>
+<section id="install-php-cs-fixer">
+<h2>7 Install PHP CS Fixer<a class="headerlink" href="#install-php-cs-fixer" title="Permalink to this heading">¶</a></h2>
+<p>In order for code to be in line with both, general PHP coding standards
+and company coding standards, PHP CS Fixer is required on most of the
+projects.</p>
+<p>Follow globally installation instructions on <a class="reference external" href="https://github.com/FriendsOfPHP/PHP-CS-Fixer/blob/master/doc/installation.rst">official installation
+instructions
+page</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mysql.html" class="btn btn-neutral float-left" title="Set up MySQL database server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="composer.html" class="btn btn-neutral float-right" title="Set up composer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Netgen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
