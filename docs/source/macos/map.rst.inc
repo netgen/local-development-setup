@@ -2,3 +2,17 @@
 * :doc:`/macos/git`
 * :doc:`/macos/dnsmasq`
 * :doc:`/macos/mysql`
+* :doc:`/macos/php`
+* :doc:`/macos/composer`
+* :doc:`/macos/ssl`
+* :doc:`/macos/nginx`
+* :doc:`/macos/curl`
+* :doc:`/macos/redis`
+* :doc:`/macos/solr`
+* :doc:`/macos/rabbitmq`
+* :doc:`/macos/mailhog`
+* :doc:`/macos/varnish`
+* :doc:`/macos/nodejs`
+* :doc:`/macos/tika`
+* :doc:`/macos/memcached`
+* :doc:`/macos/xdebug`

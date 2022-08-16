@@ -1,3 +1,16 @@
 * :doc:`/ubuntu/git`
 * :doc:`/ubuntu/dnsmasq`
 * :doc:`/ubuntu/mysql`
+* :doc:`/ubuntu/php`
+* :doc:`/ubuntu/composer`
+* :doc:`/ubuntu/ssl`
+* :doc:`/ubuntu/nginx`
+* :doc:`/ubuntu/redis`
+* :doc:`/ubuntu/solr`
+* :doc:`/ubuntu/rabbitmq`
+* :doc:`/ubuntu/mailhog`
+* :doc:`/ubuntu/varnish`
+* :doc:`/ubuntu/nodejs`
+* :doc:`/ubuntu/tika`
+* :doc:`/ubuntu/memcached`
+* :doc:`/ubuntu/xdebug`

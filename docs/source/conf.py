@@ -42,10 +42,6 @@ extensions = ['sphinx.ext.autodoc',
 source_suffix = '.rst'
 master_doc = 'index'
 
-project = 'Netgen Layouts'
-copyright = 'Netgen'
-author = 'Netgen'
-
 version = ''
 release = ''
 
