@@ -22,11 +22,11 @@ Execute on the command line:
 
 .. code:: console
 
-   sudo port install php81-fpm php81-mysql php81-imagick php81-gd php81-curl php81-opcache php81-mbstring php81-xsl php81-intl php81-sqlite php81-zip php81-openssl php81-iconv php81-sockets php81-exif php81-memcached
-   sudo port install php80-fpm php80-mysql php80-imagick php80-gd php80-curl php80-opcache php80-mbstring php80-xsl php80-intl php80-sqlite php80-zip php80-openssl php80-iconv php80-sockets php80-exif php80-memcached
-   sudo port install php74-fpm php74-mysql php74-imagick php74-gd php74-curl php74-opcache php74-mbstring php74-xsl php74-intl php74-sqlite php74-zip php74-openssl php74-iconv php74-sockets php74-exif php74-memcached
-   sudo port install php73-fpm php73-mysql php73-imagick php73-gd php73-curl php73-opcache php73-mbstring php73-xsl php73-intl php73-sqlite php73-zip php73-openssl php73-iconv php73-sockets php73-exif php73-memcached
-   sudo port install php72-fpm php72-mysql php72-imagick php72-gd php72-curl php72-opcache php72-mbstring php72-xsl php72-intl php72-sqlite php72-zip php72-openssl php72-iconv php72-sockets php72-exif php72-memcached
+   sudo port install php81-fpm php81-mysql php81-imagick php81-gd php81-curl php81-opcache php81-mbstring php81-xsl php81-intl php81-sqlite php81-zip php81-openssl php81-iconv php81-sockets php81-exif php81-memcached php81-sodium php81-redis
+   sudo port install php80-fpm php80-mysql php80-imagick php80-gd php80-curl php80-opcache php80-mbstring php80-xsl php80-intl php80-sqlite php80-zip php80-openssl php80-iconv php80-sockets php80-exif php80-memcached php80-sodium php80-redis
+   sudo port install php74-fpm php74-mysql php74-imagick php74-gd php74-curl php74-opcache php74-mbstring php74-xsl php74-intl php74-sqlite php74-zip php74-openssl php74-iconv php74-sockets php74-exif php74-memcached php74-sodium php74-redis
+   sudo port install php73-fpm php73-mysql php73-imagick php73-gd php73-curl php73-opcache php73-mbstring php73-xsl php73-intl php73-sqlite php73-zip php73-openssl php73-iconv php73-sockets php73-exif php73-memcached php73-sodium php73-redis
+   sudo port install php72-fpm php72-mysql php72-imagick php72-gd php72-curl php72-opcache php72-mbstring php72-xsl php72-intl php72-sqlite php72-zip php72-openssl php72-iconv php72-sockets php72-exif php72-memcached php72-sodium php72-redis
    sudo port install php71-fpm php71-mysql php71-imagick php71-gd php71-curl php71-opcache php71-mbstring php71-xsl php71-intl php71-sqlite php71-zip php71-openssl php71-iconv php71-sockets php71-exif php71-memcached
    sudo port install php70-fpm php70-mysql php70-imagick php70-gd php70-curl php70-opcache php70-mbstring php70-xsl php70-intl php70-sqlite php70-zip php70-openssl php70-iconv php70-sockets php70-exif php70-memcached
    sudo port install php56-fpm php56-mysql php56-imagick php56-gd php56-curl php56-opcache php56-mbstring php56-xsl php56-intl php56-sqlite php56-zip php56-openssl php56-iconv php56-sockets php56-exif php56-memcached
