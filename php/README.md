@@ -17,7 +17,7 @@ provided in some 3rd party *taps*, and it's possible to install them from there.
 Execute on the command line:
 
 ```console
-sudo port install php81-fpm php81-mysql php81-imagick php81-gd php81-curl php81-opcache php81-mbstring php81-xsl php81-intl php81-sqlite php81-zip php81-openssl php81-iconv php81-sockets php81-exif php81-memcached
+sudo port install php81-fpm php81-mysql php81-imagick php81-gd php81-curl php81-opcache php81-mbstring php81-xsl php81-intl php81-sqlite php81-zip php81-openssl php81-iconv php81-sockets php81-exif php81-memcached php81-sodium
 sudo port install php80-fpm php80-mysql php80-imagick php80-gd php80-curl php80-opcache php80-mbstring php80-xsl php80-intl php80-sqlite php80-zip php80-openssl php80-iconv php80-sockets php80-exif php80-memcached
 sudo port install php74-fpm php74-mysql php74-imagick php74-gd php74-curl php74-opcache php74-mbstring php74-xsl php74-intl php74-sqlite php74-zip php74-openssl php74-iconv php74-sockets php74-exif php74-memcached
 sudo port install php73-fpm php73-mysql php73-imagick php73-gd php73-curl php73-opcache php73-mbstring php73-xsl php73-intl php73-sqlite php73-zip php73-openssl php73-iconv php73-sockets php73-exif php73-memcached
