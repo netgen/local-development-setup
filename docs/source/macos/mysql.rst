@@ -90,7 +90,7 @@ To stop the server and prevent it from running after a reboot, execute:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Improve the security of the installation by executing the following on
-the command line (note: Ubuntu will ask for ``root`` user’s password):
+the command line:
 
 .. code:: console
 
