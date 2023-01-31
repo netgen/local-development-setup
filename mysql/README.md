@@ -207,7 +207,7 @@ Now reload the server by executing on the command line:
 sudo port reload mysql8-server
 ```
 
-## 4 Create admin user
+## 5 Create admin user
 
 To avoid MySQL upgrade borking the database access by resetting the password
 authentication method, we will create a new user `admin` with password `admin`
@@ -231,7 +231,7 @@ FLUSH PRIVILEGES;
 
 Now you can exit the MySQL command-line client by typing `exit`.
 
-## 5 Test
+## 6 Test
 
 Test that you can use your newly created `admin` user to access the command line
 by executing:
@@ -258,7 +258,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql>
 ```
 
-## 6 Install a GUI client
+## 7 Install a GUI client
 
 You will probably also want a graphical UI client to work with the database
 server.  For macOS, [TablePlus](https://tableplus.com/) is a good choice,
