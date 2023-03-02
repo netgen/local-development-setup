@@ -154,7 +154,7 @@ You can change the top-level domain to choose which PHP version will be
 used to serve the website.
 
 Testing your website on a different device
-==========================================
+------------------------------------------
 
 This setup works with multiple custom local domains, which is not
 trivial to directly expose on a local network, since it would need to

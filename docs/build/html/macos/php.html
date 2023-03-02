@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Set up PHP &mdash; Netgen&#39;s Local Development Setup  documentation</title>
@@ -12,10 +12,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Netgen's Local Development Setup
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Netgen's Local Development Setup
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -124,9 +126,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">MacOS</a> &raquo;</li>
-      <li>Set up PHP</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">MacOS</a></li>
+      <li class="breadcrumb-item active">Set up PHP</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/macos/php.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -152,14 +154,14 @@ packages are not available in official formula repository (“tap” in
 <section id="if-using-macos-with-macports">
 <h3>1.1 If using macOS with MacPorts<a class="headerlink" href="#if-using-macos-with-macports" title="Permalink to this heading">¶</a></h3>
 <p>Execute on the command line:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo port install php81-fpm php81-mysql php81-imagick php81-gd php81-curl php81-opcache php81-mbstring php81-xsl php81-intl php81-sqlite php81-zip php81-openssl php81-iconv php81-sockets php81-exif php81-memcached</span>
-<span class="go">sudo port install php80-fpm php80-mysql php80-imagick php80-gd php80-curl php80-opcache php80-mbstring php80-xsl php80-intl php80-sqlite php80-zip php80-openssl php80-iconv php80-sockets php80-exif php80-memcached</span>
-<span class="go">sudo port install php74-fpm php74-mysql php74-imagick php74-gd php74-curl php74-opcache php74-mbstring php74-xsl php74-intl php74-sqlite php74-zip php74-openssl php74-iconv php74-sockets php74-exif php74-memcached</span>
-<span class="go">sudo port install php73-fpm php73-mysql php73-imagick php73-gd php73-curl php73-opcache php73-mbstring php73-xsl php73-intl php73-sqlite php73-zip php73-openssl php73-iconv php73-sockets php73-exif php73-memcached</span>
-<span class="go">sudo port install php72-fpm php72-mysql php72-imagick php72-gd php72-curl php72-opcache php72-mbstring php72-xsl php72-intl php72-sqlite php72-zip php72-openssl php72-iconv php72-sockets php72-exif php72-memcached</span>
-<span class="go">sudo port install php71-fpm php71-mysql php71-imagick php71-gd php71-curl php71-opcache php71-mbstring php71-xsl php71-intl php71-sqlite php71-zip php71-openssl php71-iconv php71-sockets php71-exif php71-memcached</span>
-<span class="go">sudo port install php70-fpm php70-mysql php70-imagick php70-gd php70-curl php70-opcache php70-mbstring php70-xsl php70-intl php70-sqlite php70-zip php70-openssl php70-iconv php70-sockets php70-exif php70-memcached</span>
-<span class="go">sudo port install php56-fpm php56-mysql php56-imagick php56-gd php56-curl php56-opcache php56-mbstring php56-xsl php56-intl php56-sqlite php56-zip php56-openssl php56-iconv php56-sockets php56-exif php56-memcached</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo port install php81-fpm php81-mysql php81-imagick php81-gd php81-curl php81-opcache php81-mbstring php81-xsl php81-intl php81-sqlite php81-zip php81-openssl php81-iconv php81-sockets php81-exif php81-memcached php81-redis php81-sodium</span>
+<span class="go">sudo port install php80-fpm php80-mysql php80-imagick php80-gd php80-curl php80-opcache php80-mbstring php80-xsl php80-intl php80-sqlite php80-zip php80-openssl php80-iconv php80-sockets php80-exif php80-memcached php80-redis php80-sodium</span>
+<span class="go">sudo port install php74-fpm php74-mysql php74-imagick php74-gd php74-curl php74-opcache php74-mbstring php74-xsl php74-intl php74-sqlite php74-zip php74-openssl php74-iconv php74-sockets php74-exif php74-memcached php74-redis php74-sodium</span>
+<span class="go">sudo port install php73-fpm php73-mysql php73-imagick php73-gd php73-curl php73-opcache php73-mbstring php73-xsl php73-intl php73-sqlite php73-zip php73-openssl php73-iconv php73-sockets php73-exif php73-memcached php73-redis php73-sodium</span>
+<span class="go">sudo port install php72-fpm php72-mysql php72-imagick php72-gd php72-curl php72-opcache php72-mbstring php72-xsl php72-intl php72-sqlite php72-zip php72-openssl php72-iconv php72-sockets php72-exif php72-memcached php72-redis php72-sodium</span>
+<span class="go">sudo port install php71-fpm php71-mysql php71-imagick php71-gd php71-curl php71-opcache php71-mbstring php71-xsl php71-intl php71-sqlite php71-zip php71-openssl php71-iconv php71-sockets php71-exif php71-memcached php71-redis</span>
+<span class="go">sudo port install php70-fpm php70-mysql php70-imagick php70-gd php70-curl php70-opcache php70-mbstring php70-xsl php70-intl php70-sqlite php70-zip php70-openssl php70-iconv php70-sockets php70-exif php70-memcached php70-redis</span>
+<span class="go">sudo port install php56-fpm php56-mysql php56-imagick php56-gd php56-curl php56-opcache php56-mbstring php56-xsl php56-intl php56-sqlite php56-zip php56-openssl php56-iconv php56-sockets php56-exif php56-memcached php56-redis</span>
 </pre></div>
 </div>
 <p>Select desired default PHP version:</p>
@@ -194,18 +196,18 @@ your local Homebrew installation with:</p>
 <h3>2.1 Configure PHP-FPM pool definitions<a class="headerlink" href="#configure-php-fpm-pool-definitions" title="Permalink to this heading">¶</a></h3>
 <p>For each PHP version edit PHP-FPM pool definition files (documented
 further below) and update it with the following configuration options:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span><span class="w"></span>
-<span class="na">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span><span class="w"></span>
-<span class="na">listen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/run/php74-fpm.sock</span><span class="w"></span>
-<span class="na">listen.owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span><span class="w"></span>
-<span class="na">listen.group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span><span class="w"></span>
-<span class="na">pm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ondemand</span><span class="w"></span>
-<span class="na">pm.max_children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6</span><span class="w"></span>
-<span class="na">pm.process_idle_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">15m</span><span class="w"></span>
-<span class="na">pm.max_requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span><span class="w"></span>
-<span class="na">pm.status_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/status</span><span class="w"></span>
-<span class="na">ping.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/ping</span><span class="w"></span>
-<span class="na">ping.response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pong&quot;</span><span class="w"></span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span>
+<span class="na">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span>
+<span class="na">listen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/run/php74-fpm.sock</span>
+<span class="na">listen.owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span>
+<span class="na">listen.group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span>
+<span class="na">pm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ondemand</span>
+<span class="na">pm.max_children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6</span>
+<span class="na">pm.process_idle_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">15m</span>
+<span class="na">pm.max_requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span>
+<span class="na">pm.status_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/status</span>
+<span class="na">ping.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/ping</span>
+<span class="na">ping.response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pong&quot;</span>
 </pre></div>
 </div>
 <p>Make sure to use your own user and group instead of <code class="docutils literal notranslate"><span class="pre">brale</span></code> and
@@ -271,10 +273,10 @@ main FPM configuration file.</p>
 <h2>3 Configure PHP<a class="headerlink" href="#configure-php" title="Permalink to this heading">¶</a></h2>
 <p>For each PHP version find its configuration file (documented further
 below) and update it with the following configuration options:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">date.timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Europe/Zagreb</span><span class="w"></span>
-<span class="na">session.gc_maxlifetime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">86400</span><span class="w"></span>
-<span class="na">memory_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256M</span><span class="w"></span>
-<span class="na">error_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/Users/brale/php73.log</span><span class="w"></span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">date.timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Europe/Zagreb</span>
+<span class="na">session.gc_maxlifetime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">86400</span>
+<span class="na">memory_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256M</span>
+<span class="na">error_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/Users/brale/php73.log</span>
 </pre></div>
 </div>
 <p>Don’t forget to modify error log path to your user’s home directory, and
@@ -309,8 +311,8 @@ sure you remove it as needed.</p>
 </div>
 <p>Update the created configuration files as described above and
 additionally with:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">pdo_mysql.default_socket</span><span class="o">=</span><span class="s">/opt/local/var/run/mysql/mysqld.sock</span><span class="w"></span>
-<span class="na">mysqli.default_socket</span><span class="o">=</span><span class="s">/opt/local/var/run/mysql/mysqld.sock</span><span class="w"></span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">pdo_mysql.default_socket</span><span class="o">=</span><span class="s">/opt/local/var/run/mysql/mysqld.sock</span>
+<span class="na">mysqli.default_socket</span><span class="o">=</span><span class="s">/opt/local/var/run/mysql/mysqld.sock</span>
 </pre></div>
 </div>
 <p>This will enable using <code class="docutils literal notranslate"><span class="pre">localhost</span></code> as the database host from your

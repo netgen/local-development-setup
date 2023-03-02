@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Set up Apache Solr &mdash; Netgen&#39;s Local Development Setup  documentation</title>
@@ -12,10 +12,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Netgen's Local Development Setup
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Netgen's Local Development Setup
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -108,9 +110,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">MacOS</a> &raquo;</li>
-      <li>Set up Apache Solr</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">MacOS</a></li>
+      <li class="breadcrumb-item active">Set up Apache Solr</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/macos/solr.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -289,16 +291,16 @@ set on the Jetty connector. If this happens, you will get an error like:</p>
 <p>To fix this problem, open <code class="docutils literal notranslate"><span class="pre">~/solr/solr-4.10.4/example/etc/jetty.xml</span></code>
 file and configure a bigger request query size:</p>
 <div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="w">&lt;Call name=&quot;addConnector&quot;&gt;</span>
-<span class="w"> </span>   &lt;Arg&gt;<span class="w"></span>
-<span class="w"> </span>       &lt;New class=&quot;org.eclipse.jetty.server.bio.SocketConnector&quot;&gt;<span class="w"></span>
-<span class="w"> </span>           &lt;Set name=&quot;host&quot;&gt;&lt;SystemProperty name=&quot;jetty.host&quot; /&gt;&lt;/Set&gt;<span class="w"></span>
-<span class="w"> </span>           &lt;Set name=&quot;port&quot;&gt;&lt;SystemProperty name=&quot;jetty.port&quot; default=&quot;8983&quot;/&gt;&lt;/Set&gt;<span class="w"></span>
-<span class="w"> </span>           &lt;Set name=&quot;maxIdleTime&quot;&gt;50000&lt;/Set&gt;<span class="w"></span>
-<span class="w"> </span>           &lt;Set name=&quot;lowResourceMaxIdleTime&quot;&gt;1500&lt;/Set&gt;<span class="w"></span>
-<span class="w"> </span>           &lt;Set name=&quot;statsOn&quot;&gt;false&lt;/Set&gt;<span class="w"></span>
-<span class="gi">+            &lt;Set name=&quot;requestHeaderSize&quot;&gt;10240000&lt;/Set&gt;</span><span class="w"></span>
-<span class="w"> </span>       &lt;/New&gt;<span class="w"></span>
-<span class="w"> </span>   &lt;/Arg&gt;<span class="w"></span>
+<span class="w"> </span>   &lt;Arg&gt;
+<span class="w"> </span>       &lt;New class=&quot;org.eclipse.jetty.server.bio.SocketConnector&quot;&gt;
+<span class="w"> </span>           &lt;Set name=&quot;host&quot;&gt;&lt;SystemProperty name=&quot;jetty.host&quot; /&gt;&lt;/Set&gt;
+<span class="w"> </span>           &lt;Set name=&quot;port&quot;&gt;&lt;SystemProperty name=&quot;jetty.port&quot; default=&quot;8983&quot;/&gt;&lt;/Set&gt;
+<span class="w"> </span>           &lt;Set name=&quot;maxIdleTime&quot;&gt;50000&lt;/Set&gt;
+<span class="w"> </span>           &lt;Set name=&quot;lowResourceMaxIdleTime&quot;&gt;1500&lt;/Set&gt;
+<span class="w"> </span>           &lt;Set name=&quot;statsOn&quot;&gt;false&lt;/Set&gt;
+<span class="gi">+            &lt;Set name=&quot;requestHeaderSize&quot;&gt;10240000&lt;/Set&gt;</span>
+<span class="w"> </span>       &lt;/New&gt;
+<span class="w"> </span>   &lt;/Arg&gt;
 <span class="w">&lt;/Call&gt;</span>
 </pre></div>
 </div>

@@ -219,7 +219,7 @@ This will make Firefox use OS Root Certificate Store instead of its own
 implementation.
 
 Adding new domains
-==================
+------------------
 
 If you need a certificate for an additional domain that’s not supported
 by the default configuration, edit ``server.conf`` file and add your
@@ -235,10 +235,10 @@ RCA certificate and execute only steps 6 and 7, adapting the commands to
 provide your own configuration and output files.
 
 Browser specifics
-=================
+-----------------
 
 Chrome
-------
+~~~~~~
 
 If you generate a server certificate as valid for more than the agreed
 limitation of 825 days, Chrome will react with
@@ -249,7 +249,7 @@ While this rule is valid in general, so far only Chrome has chosen to
 enforce it.
 
 Firefox
--------
+~~~~~~~
 
 1. Firefox maintains its own RCS and by default it won’t use Operating
    System’s RCS to validate a server certificate. In order to enable

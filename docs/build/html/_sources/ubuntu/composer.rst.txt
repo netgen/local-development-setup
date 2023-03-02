@@ -58,7 +58,7 @@ Copy the following into the alias file:
     alias composer712="/usr/bin/php7.1 /usr/local/bin/composer2"
     alias composer721="/usr/bin/php7.2 /usr/local/bin/composer1"
     alias composer722="/usr/bin/php7.2 /usr/local/bin/composer2"
-    alias composer721="/usr/bin/php7.3 /usr/local/bin/composer1"
+    alias composer731="/usr/bin/php7.3 /usr/local/bin/composer1"
     alias composer732="/usr/bin/php7.3 /usr/local/bin/composer2"
     alias composer741="/usr/bin/php7.4 /usr/local/bin/composer1"
     alias composer742="/usr/bin/php7.4 /usr/local/bin/composer2"
