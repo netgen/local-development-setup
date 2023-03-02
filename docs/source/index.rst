@@ -1,5 +1,5 @@
-Netgen Netgen’s Local Development Setup
-=======================================
+Netgen's Local Development Setup
+================================
 
 Overview
 ---------------------------------
