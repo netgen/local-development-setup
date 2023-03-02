@@ -1,10 +1,10 @@
 Set up Node.js version management
 =================================
 
-Different project often require different Node.js versions. For switching
-between multiple versions you can use Node.js version manager - `nvm`.
-While other Node.js version managers are available, `nvm` is suggested one
-as `Netgen Media Site` Makefile is configured to be used with that one as well.
+Different projects often require different Node.js versions. For switching
+between multiple versions, you can the use Node.js version manager - `nvm`.
+While other Node.js version managers are available, `nvm` is recommended
+since the `Netgen Media Site` Makefile is configured to be used with that one.
 
 
 1 Install ``nvm``
@@ -13,15 +13,20 @@ as `Netgen Media Site` Makefile is configured to be used with that one as well.
 First uninstall Node.js, as it will conflict with the versions installed
 through the version manager.
 
-Installation should be fairly straightforward if you follow instructions at
+The installation should be fairly straightforward if you follow the instructions at
 `Github <https://github.com/nvm-sh/nvm#install--update-script>`_:
 
 .. code:: console
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
+Alternatively, you can install through one of the package managers:
+
+* MacPorts: https://ports.macports.org/port/nvm/
+* Brew: https://formulae.brew.sh/formula/nvm
+
 Make sure to check the correct version, please do not just copy the link above as
-it might be old/deprecated version.
+it could be an old/deprecated version.
 
 This will install the `nvm` to `~/.nvm` folder, and attempt to modify your profile file
 (it will attempt to go through the following: `~/.bash_profile`, `~/.zshrc`, `~/.profile`, or `~/.bashrc`).
@@ -36,15 +41,15 @@ Troubleshooting
 ~~~~~~~~~~~~~~~
 
 If you are getting `nvm: command not found` after the installation, it is
-probably related to the shell you are using. First step would be to restart
-your terminal, or run ``. ~/.nvm/nvm.sh``.
+probably related to the shell you are using. The first step would be to restart
+your terminal or run ``. ~/.nvm/nvm.sh``.
 If this does not help, go through the steps at https://github.com/nvm-sh/nvm#troubleshooting-on-macos.
 
 
 2 Install Node.js through ``nvm``
 ---------------------------------
 
-You can now use ``nvm`` to install Node.js, for example latest and LTS
+You can now use ``nvm`` to install Node.js, for example the latest and LTS
 versions:
 
 .. code:: console
@@ -52,21 +57,21 @@ versions:
    nvm install node # "node" is an alias for the latest version
    nvm install --lts
 
-To install exact version of Node.js, for example ``19.7.0``, execute on
+To install a specific version of Node.js, for example ``19.7.0``, execute on
 the command line:
 
 .. code:: console
 
    nvm install 19.7.0
 
-You can also install the latest release of the specific major version,
+You can also install the latest release of a specific major version,
 for example ``12``, with:
 
 .. code:: console
 
    nvm install 12
 
-Note that each version on Node.js installed through ``nvm`` will come with
+Note that each version of Node.js installed through ``nvm`` will come with
 its own version of ``npm``.
 
 
@@ -80,7 +85,7 @@ line:
 
    nvm list
 
-This will show you currently installed versions of Node.js on your system.
+This will show you the currently installed versions of Node.js on your system.
 You can select one of those, or install another one, and then execute the
 following:
 
@@ -88,15 +93,15 @@ following:
 
    nvm use 19.7.0
 
-However, you will rarely need to do that - usually your project should have
-``.nvmrc`` file which already has Node.js version defined. In that case, all
-you need to do is run:
+However, you will rarely need to do that - usually, your project should have
+a ``.nvmrc`` file, which already has the required Node.js version defined.
+In that case, all you need to do is run:
 
 .. code:: console
 
    nvm use
 
-This command, however, will fail if requested version of Node.js is not
+This command, however, will fail if the requested version of Node.js is not
 already installed, and will require you to install it first.
 To get around this, you can run:
 
@@ -111,8 +116,8 @@ for example).
 4 Switch between different versions of Node.js automatically
 ------------------------------------------------------------
 
-If you wish to have ``nvm`` automatically switch to different Node.js version
-upon navigating inside the directory which contains ``.nvmrc`` file, you can
+If you want to have ``nvm`` automatically switch to a different Node.js version
+upon navigating inside a directory which contains a ``.nvmrc`` file, you can
 configure the function for this in the ``~/.cdnvm`` file:
 
 .. code:: console
@@ -162,7 +167,8 @@ configure the function for this in the ``~/.cdnvm`` file:
     alias cd='cdnvm'
     cd "$PWD"
 
-and add this to your ``~/.bashrc`` file:
+and add this to your ``~/.bashrc`` (or whichever other profile file you are
+using):
 
 .. code:: console
 
