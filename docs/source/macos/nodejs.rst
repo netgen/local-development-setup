@@ -20,16 +20,11 @@ The installation should be fairly straightforward if you follow the instructions
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-Alternatively, you can install through one of the package managers:
-
-* MacPorts: https://ports.macports.org/port/nvm/
-* Brew: https://formulae.brew.sh/formula/nvm
-
 Make sure to check the correct version, please do not just copy the link above as
 it could be an old/deprecated version.
 
-This will install the `nvm` to `~/.nvm` folder, and attempt to modify your profile file
-(it will attempt to go through the following: `~/.bash_profile`, `~/.zshrc`, `~/.profile`, or `~/.bashrc`).
+This will install the ``nvm`` to ``~/.nvm`` folder, and attempt to modify your profile file
+(it will attempt to go through the following: ``~/.bash_profile``, ``~/.zshrc``, ``~/.profile``, or ``~/.bashrc``).
 If you have any other profile file, please add the following to the file your self:
 
 .. code:: console
@@ -37,10 +32,34 @@ If you have any other profile file, please add the following to the file your se
     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+Alternatively, you can install ``nvm`` through one of the package managers:
+
+* Brew: https://formulae.brew.sh/formula/nvm
+* MacPorts: https://ports.macports.org/port/nvm/
+
+MacPorts needs some additional steps:
+
+.. code:: console
+
+  nvm has the following notes:
+    Please source the init file in '.bashrc' or '.zshrc':
+
+        source /opt/local/share/nvm/init-nvm.sh
+
+In this ``init-nvm.sh`` there should be:
+
+.. code:: console
+
+    # "nvm exec" and certain 3rd party scripts expect "nvm.sh" and "nvm-exec" to exist under $NVM_DIR
+    [ -e "$NVM_DIR" ] || mkdir -p "$NVM_DIR"
+    [ -e "$NVM_DIR/nvm.sh" ] || ln -s /opt/local/share/nvm/nvm.sh "$NVM_DIR/nvm.sh"
+    [ -e "$NVM_DIR/nvm-exec" ] || ln -s /opt/local/share/nvm/nvm-exec "$NVM_DIR/nvm-exec"
+
+
 Troubleshooting
 ~~~~~~~~~~~~~~~
 
-If you are getting `nvm: command not found` after the installation, it is
+If you are getting ``nvm: command not found`` after the installation, it is
 probably related to the shell you are using. The first step would be to restart
 your terminal or run ``. ~/.nvm/nvm.sh``.
 If this does not help, go through the steps at https://github.com/nvm-sh/nvm#troubleshooting-on-macos.
