@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Set up PHP &mdash; Netgen&#39;s Local Development Setup  documentation</title>
@@ -12,10 +12,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Netgen's Local Development Setup
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Netgen's Local Development Setup
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -94,9 +96,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Ubuntu</a> &raquo;</li>
-      <li>Set up PHP</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Ubuntu</a></li>
+      <li class="breadcrumb-item active">Set up PHP</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/ubuntu/php.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -148,18 +150,18 @@ doesn’t exist as a standalone package, while <code class="docutils literal not
 <h3>2.1 Configure PHP-FPM pool definitions<a class="headerlink" href="#configure-php-fpm-pool-definitions" title="Permalink to this heading">¶</a></h3>
 <p>For each PHP version edit PHP-FPM pool definition files (documented
 further below) and update it with the following configuration options:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span><span class="w"></span>
-<span class="na">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span><span class="w"></span>
-<span class="na">listen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/run/php74-fpm.sock</span><span class="w"></span>
-<span class="na">listen.owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span><span class="w"></span>
-<span class="na">listen.group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span><span class="w"></span>
-<span class="na">pm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ondemand</span><span class="w"></span>
-<span class="na">pm.max_children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6</span><span class="w"></span>
-<span class="na">pm.process_idle_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">15m</span><span class="w"></span>
-<span class="na">pm.max_requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span><span class="w"></span>
-<span class="na">pm.status_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/status</span><span class="w"></span>
-<span class="na">ping.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/ping</span><span class="w"></span>
-<span class="na">ping.response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pong&quot;</span><span class="w"></span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span>
+<span class="na">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span>
+<span class="na">listen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/run/php74-fpm.sock</span>
+<span class="na">listen.owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale</span>
+<span class="na">listen.group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">staff</span>
+<span class="na">pm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ondemand</span>
+<span class="na">pm.max_children</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6</span>
+<span class="na">pm.process_idle_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">15m</span>
+<span class="na">pm.max_requests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">128</span>
+<span class="na">pm.status_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/status</span>
+<span class="na">ping.path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/ping</span>
+<span class="na">ping.response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pong&quot;</span>
 </pre></div>
 </div>
 <p>Make sure to use your own user and group instead of <code class="docutils literal notranslate"><span class="pre">brale</span></code> and
@@ -195,10 +197,10 @@ root user.</p>
 <h2>3 Configure PHP<a class="headerlink" href="#configure-php" title="Permalink to this heading">¶</a></h2>
 <p>For each PHP version find its configuration file (documented further
 below) and update it with the following configuration options:</p>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">date.timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Europe/Zagreb</span><span class="w"></span>
-<span class="na">session.gc_maxlifetime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">86400</span><span class="w"></span>
-<span class="na">memory_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256M</span><span class="w"></span>
-<span class="na">error_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/Users/brale/php73.log</span><span class="w"></span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">date.timezone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Europe/Zagreb</span>
+<span class="na">session.gc_maxlifetime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">86400</span>
+<span class="na">memory_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">256M</span>
+<span class="na">error_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/Users/brale/php73.log</span>
 </pre></div>
 </div>
 <p>Don’t forget to modify error log path to your user’s home directory, and

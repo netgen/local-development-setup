@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Set up Git version control system &mdash; Netgen&#39;s Local Development Setup  documentation</title>
@@ -12,10 +12,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,20 +26,21 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Netgen's Local Development Setup
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Netgen's Local Development Setup
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../overview/index.html">Netgen’s Local Development Setup</a></li>
-</ul>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">MacOS</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="prerequisites.html">MacOS prerequisites</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Set up Git version control system</a><ul>
@@ -52,9 +51,9 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#configure">2 Configure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#verify-configuration">3 Verify configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips">Tips</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dnsmasq.html">Set up DNS forwarding with dnsmasq</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mysql.html">Set up MySQL database server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="php.html">Set up PHP</a></li>
@@ -94,9 +93,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">MacOS</a> &raquo;</li>
-      <li>Set up Git version control system</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">MacOS</a></li>
+      <li class="breadcrumb-item active">Set up Git version control system</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/macos/git.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -131,40 +130,40 @@ a newer version using a package manager.</p>
 <h2>2 Configure<a class="headerlink" href="#configure" title="Permalink to this heading">¶</a></h2>
 <p>Create <code class="docutils literal notranslate"><span class="pre">.gitconfig</span></code> file in your home directory with the following
 content:</p>
-<div class="highlight-dosini notranslate"><div class="highlight"><pre><span></span><span class="k">[user]</span><span class="w"></span>
-<span class="w">    </span><span class="na">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale@netgen.io</span><span class="w"></span>
-<span class="w">    </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Brale Rodijak</span><span class="w"></span>
-<span class="k">[core]</span><span class="w"></span>
-<span class="w">    </span><span class="na">excludesfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/Users/brale/.gitignore</span><span class="w"></span>
-<span class="k">[diff]</span><span class="w"></span>
-<span class="w">    </span><span class="na">indentheuristic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"></span>
-<span class="w">    </span><span class="na">wsErrorHighlight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">all</span><span class="w"></span>
-<span class="k">[pull]</span><span class="w"></span>
-<span class="w">    </span><span class="na">ff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">only</span><span class="w"></span>
-<span class="k">[push]</span><span class="w"></span>
-<span class="w">    </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">simple</span><span class="w"></span>
-<span class="k">[rerere]</span><span class="w"></span>
-<span class="w">    </span><span class="na">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"></span>
-<span class="k">[log]</span><span class="w"></span>
-<span class="w">    </span><span class="na">follow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w"></span>
+<div class="highlight-dosini notranslate"><div class="highlight"><pre><span></span><span class="k">[user]</span>
+<span class="w">    </span><span class="na">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">brale@netgen.io</span>
+<span class="w">    </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Brale Rodijak</span>
+<span class="k">[core]</span>
+<span class="w">    </span><span class="na">excludesfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/Users/brale/.gitignore</span>
+<span class="k">[diff]</span>
+<span class="w">    </span><span class="na">indentheuristic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="w">    </span><span class="na">wsErrorHighlight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">all</span>
+<span class="k">[pull]</span>
+<span class="w">    </span><span class="na">ff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">only</span>
+<span class="k">[push]</span>
+<span class="w">    </span><span class="na">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">simple</span>
+<span class="k">[rerere]</span>
+<span class="w">    </span><span class="na">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="k">[log]</span>
+<span class="w">    </span><span class="na">follow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
 </pre></div>
 </div>
 <p>Optionally add the alias section with some useful aliases:</p>
-<div class="highlight-dosini notranslate"><div class="highlight"><pre><span></span><span class="k">[alias]</span><span class="w"></span>
-<span class="w">    </span><span class="na">tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">log --graph --decorate --pretty=oneline --abbrev-commit</span><span class="w"></span>
-<span class="w">    </span><span class="na">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">log --decorate --graph --date=short --pretty=\&quot;format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C()%s %C(black) [%an]%Creset\&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="na">ls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">log --pretty=format:&quot;%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]&quot; --decorate</span><span class="w"></span>
-<span class="w">    </span><span class="na">lg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">log --color --graph --abbrev-commit --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)&lt;%an&gt;%Creset&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="na">ll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">log --pretty=format:&quot;%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]&quot; --decorate --numstat</span><span class="w"></span>
-<span class="w">    </span><span class="na">branch-name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!git rev-parse --abbrev-ref HEAD&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="na">update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!f() { git fetch origin --prune &amp;&amp; (git merge --ff-only origin/$(git branch-name) || git rebase --preserve-merges origin/$(git branch-name)); }; f&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="na">whatis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">show -s --pretty=&#39;tformat:%h (%s, %ad)&#39; --date=short</span><span class="w"></span>
+<div class="highlight-dosini notranslate"><div class="highlight"><pre><span></span><span class="k">[alias]</span>
+<span class="w">    </span><span class="na">tree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">log --graph --decorate --pretty=oneline --abbrev-commit</span>
+<span class="w">    </span><span class="na">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">log --decorate --graph --date=short --pretty=\&quot;format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C()%s %C(black) [%an]%Creset\&quot;</span>
+<span class="w">    </span><span class="na">ls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">log --pretty=format:&quot;%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\</span>\<span class="w"> </span><span class="s">[%cn]&quot; --decorate</span>
+<span class="w">    </span><span class="na">lg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">log --color --graph --abbrev-commit --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)&lt;%an&gt;%Creset&#39;</span>
+<span class="w">    </span><span class="na">ll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">log --pretty=format:&quot;%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\</span>\<span class="w"> </span><span class="s">[%cn]&quot; --decorate --numstat</span>
+<span class="w">    </span><span class="na">branch-name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!git rev-parse --abbrev-ref HEAD&quot;</span>
+<span class="w">    </span><span class="na">update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;!f() { git fetch origin --prune &amp;&amp; (git merge --ff-only origin/$(git branch-name) || git rebase --preserve-merges origin/$(git branch-name))</span><span class="c1">; }; f&quot;</span>
+<span class="w">    </span><span class="na">whatis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">show -s --pretty=&#39;tformat:%h (%s, %ad)&#39; --date=short</span>
 </pre></div>
 </div>
 <p>Create <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> file in your home directory with the following
 content:</p>
-<div class="highlight-dosini notranslate"><div class="highlight"><pre><span></span><span class="na">.DS_Store</span><span class="w"></span>
-<span class="na">.idea</span><span class="w"></span>
+<div class="highlight-dosini notranslate"><div class="highlight"><pre><span></span><span class="na">.DS_Store</span>
+<span class="na">.idea</span>
 </pre></div>
 </div>
 </section>
@@ -176,13 +175,13 @@ content:</p>
 </div>
 <p>In the command output you should see your configuration data.</p>
 </section>
-</section>
 <section id="tips">
-<h1>Tips<a class="headerlink" href="#tips" title="Permalink to this heading">¶</a></h1>
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>You can maintain your own private ignore file through
 <code class="docutils literal notranslate"><span class="pre">.git/info/exclude</span></code> file found in your project directory.</p></li>
 </ul>
+</section>
 </section>
 
 

@@ -72,7 +72,7 @@ Check your configuration is active by executing on the command line:
 In the command output you should see your configuration data.
 
 Tips
-====
+----
 
 -  You can maintain your own private ignore file through
    ``.git/info/exclude`` file found in your project directory.

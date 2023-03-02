@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Set up DNS forwarding with dnsmasq &mdash; Netgen&#39;s Local Development Setup  documentation</title>
@@ -12,10 +12,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Netgen's Local Development Setup
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Netgen's Local Development Setup
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -104,9 +106,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">MacOS</a> &raquo;</li>
-      <li>Set up DNS forwarding with dnsmasq</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">MacOS</a></li>
+      <li class="breadcrumb-item active">Set up DNS forwarding with dnsmasq</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/macos/dnsmasq.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -126,13 +128,13 @@ will be dynamically resolved.</p>
 <h2>1 Install<a class="headerlink" href="#install" title="Permalink to this heading">¶</a></h2>
 <section id="if-using-macos-with-homebrew">
 <h3>1.1 If using macOS with Homebrew<a class="headerlink" href="#if-using-macos-with-homebrew" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew install dnsmasq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>dnsmasq
 </pre></div>
 </div>
 </section>
 <section id="if-using-macos-with-macports">
 <h3>1.2 If using macOS with MacPorts<a class="headerlink" href="#if-using-macos-with-macports" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo port install dnsmasq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>port<span class="w"> </span>install<span class="w"> </span>dnsmasq
 </pre></div>
 </div>
 </section>
@@ -169,9 +171,9 @@ existing configuration with the following content:</p>
 <h3>2.2 Add DNS resolver configuration<a class="headerlink" href="#add-dns-resolver-configuration" title="Permalink to this heading">¶</a></h3>
 <p>Add DNS resolver configuration for your custom top-level domains by
 executing on the command line:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo mkdir -v /etc/resolver
-<span class="nb">cd</span> /etc/resolver
-<span class="nb">echo</span> <span class="s2">&quot;nameserver 127.0.0.1&quot;</span> <span class="p">|</span> sudo tee ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 sf wp &gt; /dev/null
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-v<span class="w"> </span>/etc/resolver
+<span class="nb">cd</span><span class="w"> </span>/etc/resolver
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;nameserver 127.0.0.1&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>ez<span class="w"> </span>php56<span class="w"> </span>php70<span class="w"> </span>php71<span class="w"> </span>php72<span class="w"> </span>php73<span class="w"> </span>php74<span class="w"> </span>php80<span class="w"> </span>php81<span class="w"> </span>php82<span class="w"> </span>php83<span class="w"> </span>php84<span class="w"> </span>sf<span class="w"> </span>wp<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
 </pre></div>
 </div>
 </section>
@@ -180,14 +182,14 @@ executing on the command line:</p>
 <h2>3 Start<a class="headerlink" href="#start" title="Permalink to this heading">¶</a></h2>
 <section id="if-using-macos-with-macports-1">
 <span id="id1"></span><h3>3.1 If using macOS with MacPorts<a class="headerlink" href="#if-using-macos-with-macports-1" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo port load dnsmasq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>port<span class="w"> </span>load<span class="w"> </span>dnsmasq
 </pre></div>
 </div>
 <p>This will also start the server automatically after a reboot.</p>
 </section>
 <section id="if-using-macos-with-homebrew-1">
 <span id="id2"></span><h3>3.2 If using macOS with Homebrew<a class="headerlink" href="#if-using-macos-with-homebrew-1" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo brew services start dnsmasq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>dnsmasq
 </pre></div>
 </div>
 <p>This will also start the server automatically after a reboot.</p>
@@ -206,18 +208,18 @@ Internet, excluding VPN connections.</p>
 <p>Test resolving by pinging a bogus domain on your custom top-level
 domain.</p>
 <p>Execute on the command line:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping asdfghjkl.sf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span>asdfghjkl.sf
 </pre></div>
 </div>
 <p>You should get a response from <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PING asdfghjkl.sf <span class="o">(</span><span class="m">127</span>.0.0.1<span class="o">)</span>: <span class="m">56</span> data bytes
-<span class="m">64</span> bytes from <span class="m">127</span>.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">0</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.028 ms
-<span class="m">64</span> bytes from <span class="m">127</span>.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.045 ms
-<span class="m">64</span> bytes from <span class="m">127</span>.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.130 ms
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PING<span class="w"> </span>asdfghjkl.sf<span class="w"> </span><span class="o">(</span><span class="m">127</span>.0.0.1<span class="o">)</span>:<span class="w"> </span><span class="m">56</span><span class="w"> </span>data<span class="w"> </span>bytes
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">0</span>.028<span class="w"> </span>ms
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">0</span>.045<span class="w"> </span>ms
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">0</span>.130<span class="w"> </span>ms
 ^C
---- asdfghjkl.sf ping statistics ---
-<span class="m">3</span> packets transmitted, <span class="m">3</span> packets received, <span class="m">0</span>.0% packet loss
-round-trip min/avg/max/stddev <span class="o">=</span> <span class="m">0</span>.028/0.068/0.130/0.045 ms
+---<span class="w"> </span>asdfghjkl.sf<span class="w"> </span>ping<span class="w"> </span>statistics<span class="w"> </span>---
+<span class="m">3</span><span class="w"> </span>packets<span class="w"> </span>transmitted,<span class="w"> </span><span class="m">3</span><span class="w"> </span>packets<span class="w"> </span>received,<span class="w"> </span><span class="m">0</span>.0%<span class="w"> </span>packet<span class="w"> </span>loss
+round-trip<span class="w"> </span>min/avg/max/stddev<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.028/0.068/0.130/0.045<span class="w"> </span>ms
 </pre></div>
 </div>
 <p>If you received output similar to the above, it means dnsmasq is

@@ -1,1 +1,0 @@
-rewrite "^/var/([^/]+/)?storage/images(-versioned)?/(.*)" /$fastcgi_script_name break;

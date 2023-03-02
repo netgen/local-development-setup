@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Set up DNS forwarding with dnsmasq &mdash; Netgen&#39;s Local Development Setup  documentation</title>
@@ -12,10 +12,8 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Netgen's Local Development Setup
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Netgen's Local Development Setup
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -92,9 +94,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="index.html">Ubuntu</a> &raquo;</li>
-      <li>Set up DNS forwarding with dnsmasq</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Ubuntu</a></li>
+      <li class="breadcrumb-item active">Set up DNS forwarding with dnsmasq</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/ubuntu/dnsmasq.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -118,7 +120,7 @@ when configured with <code class="docutils literal notranslate"><span class="pre
 configuration so that <code class="docutils literal notranslate"><span class="pre">dnsmasq</span></code> gets started from <code class="docutils literal notranslate"><span class="pre">NetworkManager</span></code>
 and that network connectivity changes are handled transparently.</p>
 <p>First we need to install <code class="docutils literal notranslate"><span class="pre">dnsmasq</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install dnsmasq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>dnsmasq
 </pre></div>
 </div>
 <p>After installation, you will get an error message that the process
@@ -130,7 +132,7 @@ See &quot;systemctl status dnsmasq.service&quot; and &quot;journalctl -xe&quot; 
 <p>This is happening because <code class="docutils literal notranslate"><span class="pre">systemd-resolved</span></code> is already listening on
 that port. Ignore this for now. Next, enable <code class="docutils literal notranslate"><span class="pre">dnsmasq</span></code> in
 <code class="docutils literal notranslate"><span class="pre">NetworkManager</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo vi /etc/NetworkManager/NetworkManager.conf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/NetworkManager/NetworkManager.conf
 </pre></div>
 </div>
 <p>Change <code class="docutils literal notranslate"><span class="pre">dns</span></code> to <code class="docutils literal notranslate"><span class="pre">dnsmasq</span></code> in the <code class="docutils literal notranslate"><span class="pre">[main]</span></code> section so that it looks
@@ -148,11 +150,11 @@ wifi.scan-rand-mac-address=no
 </div>
 <p>And then execute the following command to let <code class="docutils literal notranslate"><span class="pre">NetworkManager</span></code> manage
 <code class="docutils literal notranslate"><span class="pre">/etc/resolv.conf</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo rm /etc/resolv.conf <span class="p">;</span> sudo ln -s /var/run/NetworkManager/resolv.conf /etc/resolv.conf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/resolv.conf<span class="w"> </span><span class="p">;</span><span class="w"> </span>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/var/run/NetworkManager/resolv.conf<span class="w"> </span>/etc/resolv.conf
 </pre></div>
 </div>
 <p>Finally, restart the NetworkManager:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo systemctl reload NetworkManager
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>NetworkManager
 </pre></div>
 </div>
 <p><strong>Note:</strong> if you want to revert to <code class="docutils literal notranslate"><span class="pre">systemd-resolved</span></code>,
@@ -192,11 +194,11 @@ existing configuration with the following content:</p>
 <p>On Ubuntu this process will be started automatically and it’s enabled to
 start after a reboot by default.</p>
 <p>If you need to start/stop or enable/disable it, use <code class="docutils literal notranslate"><span class="pre">systemctl</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo systemctl start NetworkManager
-sudo systemctl stop NetworkManager
-sudo systemctl is-enabled NetworkManager
-sudo systemctl <span class="nb">enable</span> NetworkManager
-sudo systemctl disable NetworkManager
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>NetworkManager
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>NetworkManager
+sudo<span class="w"> </span>systemctl<span class="w"> </span>is-enabled<span class="w"> </span>NetworkManager
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>NetworkManager
+sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>NetworkManager
 </pre></div>
 </div>
 </section>
@@ -205,18 +207,18 @@ sudo systemctl disable NetworkManager
 <p>Test resolving by pinging a bogus domain on your custom top-level
 domain.</p>
 <p>Execute on the command line:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping asdfghjkl.sf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping<span class="w"> </span>asdfghjkl.sf
 </pre></div>
 </div>
 <p>You should get a response from <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PING asdfghjkl.sf <span class="o">(</span><span class="m">127</span>.0.0.1<span class="o">)</span>: <span class="m">56</span> data bytes
-<span class="m">64</span> bytes from <span class="m">127</span>.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">0</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.028 ms
-<span class="m">64</span> bytes from <span class="m">127</span>.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.045 ms
-<span class="m">64</span> bytes from <span class="m">127</span>.0.0.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.130 ms
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PING<span class="w"> </span>asdfghjkl.sf<span class="w"> </span><span class="o">(</span><span class="m">127</span>.0.0.1<span class="o">)</span>:<span class="w"> </span><span class="m">56</span><span class="w"> </span>data<span class="w"> </span>bytes
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">0</span>.028<span class="w"> </span>ms
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">0</span>.045<span class="w"> </span>ms
+<span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">64</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">0</span>.130<span class="w"> </span>ms
 ^C
---- asdfghjkl.sf ping statistics ---
-<span class="m">3</span> packets transmitted, <span class="m">3</span> packets received, <span class="m">0</span>.0% packet loss
-round-trip min/avg/max/stddev <span class="o">=</span> <span class="m">0</span>.028/0.068/0.130/0.045 ms
+---<span class="w"> </span>asdfghjkl.sf<span class="w"> </span>ping<span class="w"> </span>statistics<span class="w"> </span>---
+<span class="m">3</span><span class="w"> </span>packets<span class="w"> </span>transmitted,<span class="w"> </span><span class="m">3</span><span class="w"> </span>packets<span class="w"> </span>received,<span class="w"> </span><span class="m">0</span>.0%<span class="w"> </span>packet<span class="w"> </span>loss
+round-trip<span class="w"> </span>min/avg/max/stddev<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.028/0.068/0.130/0.045<span class="w"> </span>ms
 </pre></div>
 </div>
 <p>If you received output similar to the above, it means dnsmasq is
