@@ -126,7 +126,7 @@ To get around this, you can run:
 
 .. code:: console
 
-   nvm use || nvm install $(cat .nvmrc)
+   nvm use || nvm install
 
 You can also add this to your alias list, so it is simpler to use (``nvmuse``
 for example).
