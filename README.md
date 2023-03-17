@@ -7,4 +7,4 @@ Ibexa CMS are provided out of the box, but the setup is not limited to
 them, and new configurations for other PHP applications can be easily
 added.
 
-Follow the instructions at [https://local-development-setup.readthedocs.io/en/latest/index.html](https://local-development-setup.readthedocs.io/en/latest/index.html).
+Follow the instructions at [https://docs.netgen.io/projects/lds/en/latest/](https://docs.netgen.io/projects/lds/en/latest/).
