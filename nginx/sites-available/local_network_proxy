@@ -1,0 +1,10 @@
+#server {
+#    # replace with your IP on the local network
+#    listen 192.168.10.137:443 ssl;
+#    server_name 192.168.10.137;
+#
+#    location / {
+#        # replace with local URL of the installation you want to test
+#        proxy_pass https://example.dev.php74.sf;
+#    }
+#}

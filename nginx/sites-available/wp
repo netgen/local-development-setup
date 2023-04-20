@@ -1,0 +1,57 @@
+server {
+    listen 127.0.0.1:443 ssl;
+    listen 127.0.0.1:80;
+
+    server_name .wp;
+
+    set $_install_dir _invalid_host_format;
+    set $_base_path /var/www;
+    set $_php_socket unix:/var/run/php74-fpm.sock;
+
+    if ($host ~ "^(.*)\.(.*)\.php([0-9]*)\..*$") {
+        set $_install_dir $2;
+        set $_php_socket unix:/var/run/php$3-fpm.sock;
+    }
+
+    # This is intended for Bedrock boilerplate folder structure, comment out if needed
+    set $_root $_base_path/$_install_dir/web;
+
+    # This is intended for the default WordPress install, uncomment if needed
+    #set $_root $_base_path/$_install_dir;
+
+    root $_root;
+
+    access_log /opt/local/var/log/nginx/access.wp.$_install_dir.log main;
+    error_log /opt/local/var/log/nginx/error.wp.log notice;
+
+    index index.php;
+
+    location = /favicon.ico {
+        log_not_found off;
+        access_log off;
+    }
+
+    location = /robots.txt {
+        allow all;
+        log_not_found off;
+        access_log off;
+    }
+
+    location / {
+        # This is cool because no php is touched for static content.
+        # include the "?$args" part so non-default permalinks doesn't break when using query string
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    location ~ \.php$ {
+        #NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+        include fastcgi.conf;
+        fastcgi_intercept_errors on;
+        fastcgi_pass $_php_socket;
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+        expires max;
+        log_not_found off;
+    }
+}

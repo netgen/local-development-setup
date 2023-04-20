@@ -1,0 +1,42 @@
+server {
+    listen 127.0.0.1:443 ssl;
+    listen 127.0.0.1:80;
+
+    server_name .sf;
+
+    include conf.d/host_resolver;
+
+    root $_root;
+
+    access_log /opt/local/var/log/nginx/access.sf.$_install_dir.log main;
+    error_log /opt/local/var/log/nginx/error.sf.log error;
+
+    location / {
+        # try to serve file directly, fallback to the front controller
+        try_files $uri /$_front_controller$is_args$args;
+    }
+
+    location ~ ^/(app|index)\.php(/|$) {
+        include conf.d/fastcgi;
+
+        fastcgi_pass $_php_socket;
+
+        # SF <4
+        fastcgi_param SYMFONY_ENV $_environment;
+        # SF >=4
+        fastcgi_param APP_ENV $_environment;
+
+        # Prevents URIs that include the front controller. This will 404:
+        # http://domain.tld/index.php/some-path
+        # Remove the internal directive to allow URIs like this
+        internal;
+    }
+
+    # return 404 for all other php files not matching the front controller
+    # this prevents access to other php files you don't want to be accessible.
+    location ~ \.php$ {
+      return 404;
+    }
+
+    client_max_body_size 6m;
+}
