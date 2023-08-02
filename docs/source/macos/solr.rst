@@ -34,7 +34,7 @@ archive and position into the extracted directory:
 
 .. code:: console
 
-   wget https://downloads.apache.org/lucene/solr/7.7.3/solr-7.7.3.tgz
+   wget https://archive.apache.org/dist/lucene/solr/7.7.3/solr-7.7.3.tgz
    tar xzf solr-7.7.3.tgz && rm solr-7.7.3.tgz
    cd solr-7.7.3
 
@@ -262,7 +262,7 @@ In order to install Solr as a service, execute the following commands:
 
    sudo apt install default-jre
    cd /opt
-   sudo wget https://downloads.apache.org/lucene/solr/7.7.3/solr-7.7.3.tgz
+   sudo wget https://archive.apache.org/dist/lucene/solr/7.7.3/solr-7.7.3.tgz
    sudo tar -xvzf solr-7.7.3.tgz solr-7.7.3/bin/install_solr_service.sh --strip-components 2
    sudo ./install_solr_service.sh solr-7.7.3.tgz
    sudo rm -rf install_solr_service.sh solr-7.7.3.tgz
@@ -276,10 +276,10 @@ You can control the Solr service with following commands:
 
 .. code:: console
 
-   sudo systemcl start solr
-   sudo systemcl stop solr
-   sudo systemcl restart solr
-   sudo systemcl status solr
+   sudo systemctl start solr
+   sudo systemctl stop solr
+   sudo systemctl restart solr
+   sudo systemctl status solr
 
 3 Start automatically after reboot
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

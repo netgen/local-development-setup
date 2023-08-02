@@ -80,8 +80,7 @@ the command line (note: Ubuntu will ask for ``root`` user’s password):
    mysql_secure_installation
 
 Follow the instructions to configure ``root`` as password for the
-``root`` user. If MySQL was installed using MacPorts, enter the password
-generated at the initialization.
+``root`` user.
 
 Additionally, follow the instructions to:
 

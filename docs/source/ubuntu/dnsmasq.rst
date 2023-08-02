@@ -97,14 +97,18 @@ existing configuration with the following content:
    address=/wp/127.0.0.1
 
 Default configuration will still be available for reference in
-``/opt/local/etc/dnsmasq.conf.example`` (MacPorts) or
-``/usr/local/etc/dnsmasq.conf.default`` (Homebrew).
+``/etc/dnsmasq.conf``
 
 3 Start
 -------
 
-On Ubuntu this process will be started automatically and it’s enabled to
+On Ubuntu this process will be started automatically in the future and it’s enabled to
 start after a reboot by default.
+
+But for now you need to restart NetworkManager for config to be loaded
+
+.. code:: bash
+   sudo systemctl restart NetworkManager
 
 If you need to start/stop or enable/disable it, use ``systemctl``:
 

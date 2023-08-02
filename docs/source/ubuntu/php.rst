@@ -24,21 +24,18 @@ Then, install imagemagick:
 
    sudo apt install imagemagick
 
-Then, to install PHP 7.4, 7.3, 7.2, 7.1 and 5.6 execute on the command
+Then, to install PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1 and 5.6 execute on the command
 line:
 
 .. code:: console
-
+   sudo apt install php8.2 php8.2-fpm php8.2-imagick php8.2-gd php8.2-curl php8.2-opcache php8.2-mbstring php8.2-xsl php8.2-intl php8.2-sqlite3 php8.2-zip php8.2-mysql php8.2-bcmath
+   sudo apt install php8.1 php8.1-fpm php8.1-imagick php8.1-gd php8.1-curl php8.1-opcache php8.1-mbstring php8.1-xsl php8.1-intl php8.1-sqlite3 php8.1-zip php8.1-mysql php8.1-bcmath
+   sudo apt install php8.0 php8.0-fpm php8.0-imagick php8.0-gd php8.0-curl php8.0-opcache php8.0-mbstring php8.0-xsl php8.0-intl php8.0-sqlite3 php8.0-zip php8.0-mysql php8.0-bcmath
    sudo apt install php7.4 php7.4-fpm php7.4-imagick php7.4-gd php7.4-curl php7.4-opcache php7.4-mbstring php7.4-xsl php7.4-intl php7.4-sqlite3 php7.4-zip php7.4-mysql php7.4-bcmath
    sudo apt install php7.3 php7.3-fpm php7.3-imagick php7.3-gd php7.3-curl php7.3-opcache php7.3-mbstring php7.3-xsl php7.3-intl php7.3-sqlite3 php7.3-zip php7.3-mysql php7.3-bcmath
    sudo apt install php7.2 php7.2-fpm php7.2-imagick php7.2-gd php7.2-curl php7.2-opcache php7.2-mbstring php7.2-xsl php7.2-intl php7.2-sqlite3 php7.2-zip php7.2-mysql php7.2-bcmath
    sudo apt install php7.1 php7.1-fpm php7.1-imagick php7.1-gd php7.1-curl php7.1-opcache php7.1-mbstring php7.1-xsl php7.1-intl php7.1-sqlite3 php7.1-zip php7.1-mysql php7.1-bcmath
    sudo apt install php5.6 php5.6-fpm php5.6-imagick php5.6-gd php5.6-curl php5.6-opcache php5.6-mbstring php5.6-xsl php5.6-intl php5.6-sqlite3 php5.6-zip php5.6-mysql php5.6-bcmath
-
-**Note**: some PHP packages differ from macOS instructions because eg.
-``php-openssl`` is included in the main PHP package on Ubuntu and
-doesn’t exist as a standalone package, while ``php-mysql`` and
-``php-bcmath`` are needed but not included by default.
 
 Now you can select desired default PHP version with:
 
@@ -72,6 +69,7 @@ further below) and update it with the following configuration options:
 
 Make sure to use your own user and group instead of ``brale`` and
 ``staff``, and name the socket file corresponding to the PHP version.
+By default you will have www-data as user and group. Put your own user and group there (by default same as user).
 Use configuration already existing in the file and do not create
 duplicate entries.
 
@@ -93,6 +91,9 @@ Find PHP-FPM pool definitions for your PHP versions in following files
 
 .. code:: text
 
+   /etc/php/8.2/fpm/pool.d/www.conf
+   /etc/php/8.1/fpm/pool.d/www.conf
+   /etc/php/8.0/fpm/pool.d/www.conf
    /etc/php/7.4/fpm/pool.d/www.conf
    /etc/php/7.3/fpm/pool.d/www.conf
    /etc/php/7.2/fpm/pool.d/www.conf
@@ -115,7 +116,6 @@ below) and update it with the following configuration options:
    date.timezone = Europe/Zagreb
    session.gc_maxlifetime = 86400
    memory_limit = 256M
-   error_log = /Users/brale/php73.log
 
 Don’t forget to modify error log path to your user’s home directory, and
 set the correct PHP version depending on the ini file you’re modifying.
@@ -127,6 +127,9 @@ Find the configuration for your PHP versions in the following files:
 
 .. code:: text
 
+   /etc/php/8.2/fpm/php.ini
+   /etc/php/8.1/fpm/php.ini
+   /etc/php/8.0/fpm/php.ini
    /etc/php/7.4/fpm/php.ini
    /etc/php/7.3/fpm/php.ini
    /etc/php/7.2/fpm/php.ini
@@ -142,6 +145,9 @@ You can now start PHP services.
 
 .. code:: console
 
+   sudo systemctl start php8.2-fpm 
+   sudo systemctl start php8.1-fpm
+   sudo systemctl start php8.0-fpm
    sudo systemctl start php7.4-fpm
    sudo systemctl start php7.3-fpm
    sudo systemctl start php7.2-fpm
