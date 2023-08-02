@@ -18,7 +18,7 @@ The installation should be fairly straightforward if you follow the instructions
 
 .. code:: console
 
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 
 Make sure to check the correct version, please do not just copy the link above as
 it could be an old/deprecated version.

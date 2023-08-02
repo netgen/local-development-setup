@@ -49,7 +49,7 @@ to copy configuration files and websites:
    cd ~/projects
    git clone git@github.com:netgen/local-development-setup.git
 
-They you will also need to find the location of configuration files and
+Then you will also need to find the location of configuration files and
 logs, which depends on the OS and package manager.
 
 Copy the configuration files to the configuration directory:

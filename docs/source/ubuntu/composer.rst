@@ -66,6 +66,8 @@ Copy the following into the alias file:
     alias composer802="/usr/bin/php8.0 /usr/local/bin/composer2"
     alias composer811="/usr/bin/php8.1 /usr/local/bin/composer"
     alias composer812="/usr/bin/php8.1 /usr/local/bin/composer2"
+    alias composer821="/usr/bin/php8.2 /usr/local/bin/composer1"
+    alias composer822="/usr/bin/php8.2 /usr/local/bin/composer2"
 
 3 Manual upgrade/downgrade
 --------------------------
