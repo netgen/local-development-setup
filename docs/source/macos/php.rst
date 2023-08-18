@@ -230,12 +230,12 @@ Symlink each PHP binary to an easily accessible alias:
 
 .. code:: console
 
-   ln -s /usr/local/Cellar/php@7.4/7.4.xx/bin/php ~/bin/php7.4
-   ln -s /usr/local/Cellar/php@7.3/7.3.xx/bin/php ~/bin/php7.3
-   ln -s /usr/local/Cellar/php@7.2/7.2.xx/bin/php ~/bin/php7.2
-   ln -s /usr/local/Cellar/php@7.1/7.1.xx/bin/php ~/bin/php7.1
-   ln -s /usr/local/Cellar/php@7.0/7.0.xx/bin/php ~/bin/php7.0
-   ln -s /usr/local/Cellar/php@5.6/5.6.xx/bin/php ~/bin/php5.6
+   sudo ln -s /usr/local/Cellar/php@7.4/7.4.xx/bin/php /usr/local/bin/php74
+   sudo ln -s /usr/local/Cellar/php@7.3/7.3.xx/bin/php /usr/local/bin/php73
+   sudo ln -s /usr/local/Cellar/php@7.2/7.2.xx/bin/php /usr/local/bin/php72
+   sudo ln -s /usr/local/Cellar/php@7.1/7.1.xx/bin/php /usr/local/bin/php71
+   sudo ln -s /usr/local/Cellar/php@7.0/7.0.xx/bin/php /usr/local/bin/php70
+   sudo ln -s /usr/local/Cellar/php@5.6/5.6.xx/bin/php /usr/local/bin/php56
 
 Make sure you use correct paths to the PHP binary. This path will change
 when upgrading a PHP version, so you will need to maintain your symlinks
@@ -253,14 +253,14 @@ Symlink each PHP binary to an easily accessible alias:
 
 .. code:: console
 
-   ln -s /opt/local/bin/php81 ~/bin/php8.1
-   ln -s /opt/local/bin/php80 ~/bin/php8.0
-   ln -s /opt/local/bin/php74 ~/bin/php7.4
-   ln -s /opt/local/bin/php73 ~/bin/php7.3
-   ln -s /opt/local/bin/php72 ~/bin/php7.2
-   ln -s /opt/local/bin/php71 ~/bin/php7.1
-   ln -s /opt/local/bin/php70 ~/bin/php7.0
-   ln -s /opt/local/bin/php56 ~/bin/php5.6
+   sudo ln -s /opt/local/bin/php81 /usr/local/bin/php81
+   sudo ln -s /opt/local/bin/php80 /usr/local/bin/php80
+   sudo ln -s /opt/local/bin/php74 /usr/local/bin/php74
+   sudo ln -s /opt/local/bin/php73 /usr/local/bin/php73
+   sudo ln -s /opt/local/bin/php72 /usr/local/bin/php72
+   sudo ln -s /opt/local/bin/php71 /usr/local/bin/php71
+   sudo ln -s /opt/local/bin/php70 /usr/local/bin/php70
+   sudo ln -s /opt/local/bin/php56 /usr/local/bin/php56
 
 4.4 Test
 ~~~~~~~~

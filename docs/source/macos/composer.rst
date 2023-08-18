@@ -49,22 +49,22 @@ Copy the following into the alias file:
 
 ::
 
-    alias composer561="/usr/bin/php5.6 /usr/local/bin/composer1"
-    alias composer562="/usr/bin/php5.6 /usr/local/bin/composer2"
-    alias composer701="/usr/bin/php7.0 /usr/local/bin/composer1"
-    alias composer702="/usr/bin/php7.0 /usr/local/bin/composer2"
-    alias composer711="/usr/bin/php7.1 /usr/local/bin/composer1"
-    alias composer712="/usr/bin/php7.1 /usr/local/bin/composer2"
-    alias composer721="/usr/bin/php7.2 /usr/local/bin/composer1"
-    alias composer722="/usr/bin/php7.2 /usr/local/bin/composer2"
-    alias composer731="/usr/bin/php7.3 /usr/local/bin/composer1"
-    alias composer732="/usr/bin/php7.3 /usr/local/bin/composer2"
-    alias composer741="/usr/bin/php7.4 /usr/local/bin/composer1"
-    alias composer742="/usr/bin/php7.4 /usr/local/bin/composer2"
-    alias composer801="/usr/bin/php8.0 /usr/local/bin/composer1"
-    alias composer802="/usr/bin/php8.0 /usr/local/bin/composer2"
-    alias composer811="/usr/bin/php8.1 /usr/local/bin/composer1"
-    alias composer812="/usr/bin/php8.1 /usr/local/bin/composer2"
+    alias composer561="/usr/local/bin/php56 /usr/local/bin/composer"
+    alias composer562="/usr/local/bin/php56 /usr/local/bin/composer2"
+    alias composer701="/usr/local/bin/php70 /usr/local/bin/composer"
+    alias composer702="/usr/local/bin/php70 /usr/local/bin/composer2"
+    alias composer711="/usr/local/bin/php71 /usr/local/bin/composer"
+    alias composer712="/usr/local/bin/php71 /usr/local/bin/composer2"
+    alias composer721="/usr/local/bin/php72 /usr/local/bin/composer"
+    alias composer722="/usr/local/bin/php72 /usr/local/bin/composer2"
+    alias composer731="/usr/local/bin/php73 /usr/local/bin/composer"
+    alias composer732="/usr/local/bin/php73 /usr/local/bin/composer2"
+    alias composer741="/usr/local/bin/php74 /usr/local/bin/composer"
+    alias composer742="/usr/local/bin/php74 /usr/local/bin/composer2"
+    alias composer801="/usr/local/bin/php80 /usr/local/bin/composer"
+    alias composer802="/usr/local/bin/php80 /usr/local/bin/composer2"
+    alias composer811="/usr/local/bin/php81 /usr/local/bin/composer"
+    alias composer812="/usr/local/bin/php81 /usr/local/bin/composer2"
 
 3 Manual upgrade/downgrade
 --------------------------
