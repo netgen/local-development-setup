@@ -96,6 +96,8 @@ existing configuration with the following content:
    address=/sf/127.0.0.1
    address=/wp/127.0.0.1
 
+If the file does not exist in the directory you need to create it.
+
 Default configuration will still be available for reference in
 ``/etc/dnsmasq.conf``
 

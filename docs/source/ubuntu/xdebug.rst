@@ -8,8 +8,14 @@ inspect the variables in scope and evaluate code in the Console.
 
 Install
 -------
-
+   sudo apt install php5.6-xdebug
+   sudo apt install php7.1-xdebug
+   sudo apt install php7.2-xdebug
+   sudo apt install php7.3-xdebug
    sudo apt install php7.4-xdebug
+   sudo apt install php8.0-xdebug
+   sudo apt install php8.1-xdebug
+   sudo apt install php8.2-xdebug
 
 Configure PHP
 -------------

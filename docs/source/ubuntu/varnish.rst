@@ -97,6 +97,7 @@ Now you can install Varnish (and varnish-dev) simply with
 
 .. code:: console
 
+   sudo apt update
    sudo apt install varnish varnish-dev
 
 2 Install Varnish modules
