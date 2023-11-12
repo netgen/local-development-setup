@@ -1,5 +1,7 @@
 # Netgen's Local Development Setup
 
+[![Read the Docs](https://img.shields.io/readthedocs/local-development-setup)](https://docs.netgen.io/projects/lds)
+
 This is a guide on setting up modern web development environment with
 PHP on your local Mac or Linux machine, without using any kind of
 virtualization. Web server configurations for Symfony and eZ Platform /
