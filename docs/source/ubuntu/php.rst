@@ -28,6 +28,7 @@ Then, to install PHP 8.2, 8.1, 8.0, 7.4, 7.3, 7.2, 7.1 and 5.6 execute on the co
 line:
 
 .. code:: console
+
    sudo apt install php8.2 php8.2-fpm php8.2-imagick php8.2-gd php8.2-curl php8.2-opcache php8.2-mbstring php8.2-xsl php8.2-intl php8.2-sqlite3 php8.2-zip php8.2-mysql php8.2-bcmath
    sudo apt install php8.1 php8.1-fpm php8.1-imagick php8.1-gd php8.1-curl php8.1-opcache php8.1-mbstring php8.1-xsl php8.1-intl php8.1-sqlite3 php8.1-zip php8.1-mysql php8.1-bcmath
    sudo apt install php8.0 php8.0-fpm php8.0-imagick php8.0-gd php8.0-curl php8.0-opcache php8.0-mbstring php8.0-xsl php8.0-intl php8.0-sqlite3 php8.0-zip php8.0-mysql php8.0-bcmath
