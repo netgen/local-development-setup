@@ -8,7 +8,7 @@
 * :doc:`/ubuntu/redis`
 * :doc:`/ubuntu/solr`
 * :doc:`/ubuntu/rabbitmq`
-* :doc:`/ubuntu/mailhog`
+* :doc:`/ubuntu/mailpit`
 * :doc:`/ubuntu/varnish`
 * :doc:`/ubuntu/nodejs`
 * :doc:`/ubuntu/tika`

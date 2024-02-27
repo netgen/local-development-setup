@@ -10,7 +10,7 @@
 * :doc:`/macos/redis`
 * :doc:`/macos/solr`
 * :doc:`/macos/rabbitmq`
-* :doc:`/macos/mailhog`
+* :doc:`/macos/mailpit`
 * :doc:`/macos/varnish`
 * :doc:`/macos/nodejs`
 * :doc:`/macos/tika`
