@@ -16,7 +16,7 @@ MacOS
     redis
     solr
     rabbitmq
-    mailhog
+    mailpit
     varnish
     nodejs
     tika
