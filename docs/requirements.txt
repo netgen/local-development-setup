@@ -4,3 +4,4 @@ sphinx-copybutton==0.2.11
 pathlib
 git+https://github.com/fabpot/sphinx-php.git
 jinja2<3.1.0
+alabaster<0.7.14
