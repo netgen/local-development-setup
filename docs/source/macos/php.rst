@@ -253,14 +253,14 @@ Symlink each PHP binary to an easily accessible alias:
 
 .. code:: console
 
-   sudo ln -s /opt/local/bin/php81 /usr/local/bin/php81
-   sudo ln -s /opt/local/bin/php80 /usr/local/bin/php80
-   sudo ln -s /opt/local/bin/php74 /usr/local/bin/php74
-   sudo ln -s /opt/local/bin/php73 /usr/local/bin/php73
-   sudo ln -s /opt/local/bin/php72 /usr/local/bin/php72
-   sudo ln -s /opt/local/bin/php71 /usr/local/bin/php71
-   sudo ln -s /opt/local/bin/php70 /usr/local/bin/php70
-   sudo ln -s /opt/local/bin/php56 /usr/local/bin/php56
+   sudo ln -s /opt/local/bin/php81 /usr/local/bin/php8.1
+   sudo ln -s /opt/local/bin/php80 /usr/local/bin/php8.0
+   sudo ln -s /opt/local/bin/php74 /usr/local/bin/php7.4
+   sudo ln -s /opt/local/bin/php73 /usr/local/bin/php7.3
+   sudo ln -s /opt/local/bin/php72 /usr/local/bin/php7.2
+   sudo ln -s /opt/local/bin/php71 /usr/local/bin/php7.1
+   sudo ln -s /opt/local/bin/php70 /usr/local/bin/php7.0
+   sudo ln -s /opt/local/bin/php56 /usr/local/bin/php5.6
 
 4.4 Test
 ~~~~~~~~
