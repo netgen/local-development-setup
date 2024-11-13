@@ -26,7 +26,7 @@ Follow the steps in this order:
 9.  Redis
 10. Solr
 11. RabbitMQ
-12. MailHog
+12. Mailpit
 13. Varnish
 14. Node.js
 15. Tika
