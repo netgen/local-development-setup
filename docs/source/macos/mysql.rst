@@ -130,6 +130,7 @@ configuration:
    collation-server=utf8mb4_unicode_520_ci
    character-set-server=utf8mb4
    init-connect='SET NAMES utf8mb4'
+   mysql_native_password=ON
 
    [client]
    socket=/opt/local/var/run/mysql/mysqld.sock
