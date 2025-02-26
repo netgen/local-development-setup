@@ -2,7 +2,7 @@ server {
     listen 127.0.0.1:443 ssl;
     listen 127.0.0.1:80;
 
-    server_name .ez;
+    server_name ~.*\.ez;
 
     include conf.d/host_resolver;
 
