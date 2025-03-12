@@ -198,8 +198,8 @@ Now you can copy the websites to the created directory:
 
 Verify that everything works as expected by opening:
 
--  https://home.php74
--  https://phpinfo.php74
+-  https://home.php74:8443
+-  https://phpinfo.php74:8443
 
 The first website is your homepage, which you can freely customize as
 you find fit. Second website will give you PHP info page, useful to see
@@ -207,6 +207,13 @@ the details of the particular PHP installation.
 
 You can change the top-level domain to choose which PHP version will be
 used to serve the website.
+
+.. caution::
+
+   Before configuring HAProxy (in the next section) you will be able to
+   access the websites only through ports ``8080`` (HTTP) and ``443``
+   (HTTPS). After configuring HAProxy, you will be able to access them
+   though default ports ``80`` and ``443``.
 
 Testing your website on a different device
 ------------------------------------------
