@@ -35,8 +35,6 @@ and started automatically after a reboot.
 2.1 Start automatically (recommended)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _if-using-macos-with-macports-1:
-
 2.1.1 If using MacOS with MacPorts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -54,8 +52,6 @@ To stop the server and prevent it from running after a reboot, execute:
 .. code:: console
 
    sudo port unload redis
-
-.. _if-using-macos-with-homebrew-1:
 
 2.1.2 If using macOS with Homebrew
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

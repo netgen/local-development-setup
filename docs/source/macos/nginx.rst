@@ -121,8 +121,6 @@ Otherwise, execute:
 SSL certificates created in one of the previous steps need to be linked
 to the NGINX configuration directory.
 
-.. _if-using-macos-with-macports-1:
-
 3.1 If using macOS with MacPorts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -133,8 +131,6 @@ Execute on the command line:
    cd /opt/local/etc/nginx
    sudo ln -s ~/ssl/server.crt
    sudo ln -s ~/ssl/server.key
-
-.. _if-using-macos-with-homebrew-1:
 
 3.2 If using macOS with Homebrew
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -150,8 +146,6 @@ Execute on the command line:
 4 Start the server
 ------------------
 
-.. _if-using-macos-with-macports-2:
-
 4.1 If using macOS with MacPorts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -160,8 +154,6 @@ Execute on the command line:
    sudo port load nginx
 
 This will also start the server automatically after a reboot.
-
-.. _if-using-macos-with-homebrew-2:
 
 4.2 If using macOS with Homebrew
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

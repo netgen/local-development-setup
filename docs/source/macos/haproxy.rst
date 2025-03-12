@@ -61,8 +61,6 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
 3 Start
 -------
 
-.. _if-using-macos-with-macports-1:
-
 3.1 If using macOS with MacPorts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
