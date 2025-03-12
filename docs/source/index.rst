@@ -25,17 +25,18 @@ Follow the steps in this order:
 5.  Composer
 6.  SSL
 7.  NGINX
-8.  cURL
-9.  Redis
-10. Solr
-11. RabbitMQ
-12. Mailpit
-13. Varnish
-14. Node.js
-15. Tika
-16. Memcached
-17. XDebug
-18. Exposing websites
+8.  HAProxy
+9.  cURL
+10. Redis
+11. Solr
+12. RabbitMQ
+13. Mailpit
+14. Varnish
+15. Node.js
+16. Tika
+17. Memcached
+18. XDebug
+19. Exposing websites
 
 MAC OS
 ---------------
