@@ -62,3 +62,8 @@ Make sure that scheme part of the URL from the command above is
    Content-Type: text/html; charset=UTF-8
    Connection: keep-alive
    X-Powered-By: PHP/7.4.16
+
+.. caution::
+
+   You will need to repeat this process each time after installing
+   a new version of ``curl``.
