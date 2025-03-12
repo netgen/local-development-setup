@@ -203,7 +203,7 @@ used to serve the website.
 .. caution::
 
    Before configuring HAProxy (in the next section) you will be able to
-   access the websites only through ports ``8080`` (HTTP) and ``443``
+   access the websites only through ports ``8080`` (HTTP) and ``8443``
    (HTTPS). After configuring HAProxy, you will be able to access them
    though default ports ``80`` and ``443``.
 
