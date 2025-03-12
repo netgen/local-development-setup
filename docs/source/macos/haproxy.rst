@@ -38,8 +38,8 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
 
        bind *:80
        bind *:6080
-       bind *:443   ssl crt /Users/petar/.petar/etc/ssl/chain.pem
-       bind *:6443  ssl crt /Users/petar/.petar/etc/ssl/chain.pem
+       bind *:443   ssl crt /Users/brodijak/ssl/chain.pem
+       bind *:6443  ssl crt /Users/brodijak/ssl/chain.pem
 
        http-response set-header x-haproxy-frontend local
 
@@ -57,6 +57,8 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
    backend varnish
        http-response set-header x-haproxy-backend varnish
        server varnish  127.0.0.1:6081 maxconn 32
+
+Make sure to adapt the paths to certificate chain file on your system.
 
 3 Start
 -------
