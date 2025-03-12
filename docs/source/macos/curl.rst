@@ -40,7 +40,7 @@ certificate to the bundle with:
 
 .. code:: console
 
-   sudo bash -c "cat ~/ssl/root.crt  >> /opt/local/etc/openssl/cert.pem"
+   sudo bash -c "cat ~/ssl/root.crt >> /opt/local/etc/openssl/cert.pem"
 
 With this, you should be able to use ``curl`` from the command line to
 access your local installation over HTTPS. Provided you have installed
