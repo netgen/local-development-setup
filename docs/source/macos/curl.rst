@@ -44,7 +44,8 @@ certificate to the bundle with:
 
 With this, you should be able to use ``curl`` from the command line to
 access your local installation over HTTPS. Provided you have installed
-the websites in the NGINX step, check that everything is correct with:
+the websites in the NGINX step and HAProxy, check that everything is
+correct with:
 
 .. code:: console
 
