@@ -48,6 +48,12 @@ existing configuration with the following content:
    address=/php82/127.0.0.1
    address=/php83/127.0.0.1
    address=/php84/127.0.0.1
+   address=/php85/127.0.0.1
+   address=/php90/127.0.0.1
+   address=/php91/127.0.0.1
+   address=/php92/127.0.0.1
+   address=/php93/127.0.0.1
+   address=/php94/127.0.0.1
    address=/sf/127.0.0.1
    address=/wp/127.0.0.1
 
