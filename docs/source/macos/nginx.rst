@@ -147,7 +147,6 @@ Execute on the command line:
    sudo ln -s ~/ssl/server.crt
    sudo ln -s ~/ssl/server.key
 
-
 4 Start the server
 ------------------
 
@@ -172,8 +171,6 @@ This will also start the server automatically after a reboot.
    sudo brew services start nginx
 
 This will also start the server automatically after a reboot.
-
-
 
 5 Installation of websites
 --------------------------
