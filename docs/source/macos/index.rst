@@ -12,6 +12,7 @@ MacOS
     composer
     ssl
     nginx
+    haproxy
     curl
     redis
     solr
