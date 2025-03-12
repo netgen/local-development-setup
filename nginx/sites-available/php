@@ -1,14 +1,14 @@
 server {
-    listen 127.0.0.1:443 ssl;
-    listen 127.0.0.1:80;
+    listen 127.0.0.1:8080;
+    listen 127.0.0.1:8443 ssl;
 
-    server_name .php84 .php83 .php82 .php81 .php80 .php74 .php73 .php72 .php71 .php70 .php56;
+    server_name .php94 .php93 .php92 .php91 .php90 .php85 .php84 .php83 .php82 .php81 .php80 .php74 .php73 .php72 .php71 .php70 .php56;
 
     set $_install_dir $host;
     set $_php_socket unix:/var/run/php74-fpm.sock;
     set $_php_version 74;
 
-    if ($host ~ "^(.*)\.php(84|83|82|81|80|74|73|72|71|70|56)$") {
+    if ($host ~ "^(.*)\.php(94|93|92|91|90|85|84|83|82|81|80|74|73|72|71|70|56)$") {
         set $_install_dir $1;
         set $_php_version $2;
     }
