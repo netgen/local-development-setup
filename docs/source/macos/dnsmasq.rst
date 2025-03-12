@@ -90,7 +90,7 @@ This will also start the server automatically after a reboot.
 
    sudo brew services start dnsmasq
 
-This will also start the server automatically after a reboot.
+This will also start the service automatically after a reboot.
 
 4 Update network connections
 ----------------------------
