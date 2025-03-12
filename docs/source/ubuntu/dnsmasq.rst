@@ -116,6 +116,7 @@ start after a reboot by default.
 But for now you need to restart NetworkManager for config to be loaded
 
 .. code:: bash
+
    sudo systemctl restart NetworkManager
 
 If you need to start/stop or enable/disable it, use ``systemctl``:
