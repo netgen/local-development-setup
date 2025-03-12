@@ -41,8 +41,6 @@ TODO
 2.1 Start automatically
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _if-using-macos-with-macports-1:
-
 2.1.1 If using MacOS with MacPorts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -61,8 +59,6 @@ To stop the server and prevent it from running after a reboot, execute:
 
    sudo port unload memcached
 
-.. _if-using-macos-with-homebrew-1:
-
 2.1.2 If using MacOS with Homebrew
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -70,8 +66,6 @@ TODO
 
 2.2 Start manually when needed
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. _if-using-macos-with-macports-2:
 
 2.2.1 If using MacOS with MacPorts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -85,14 +79,10 @@ To start memcached manually, simply execute:
 It will run in the foreground, and you can stop it when needed with
 Control-C.
 
-.. _if-using-macos-with-homebrew-2:
-
 2.2.2 If using MacOS with Homebrew
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TODO
-
-.. _if-using-ubuntu-2:
 
 3 Test
 ------

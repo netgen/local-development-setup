@@ -36,8 +36,6 @@ Execute on the command line:
 Since MySQL is an essential part of our web apps, so we want it always
 running and started automatically after a reboot.
 
-.. _if-using-macos-with-macports-1:
-
 2.1 If using macOS with MacPorts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -63,8 +61,6 @@ To stop the server and prevent it from running after a reboot, execute:
 .. code:: console
 
    sudo port unload mysql8-server
-
-.. _if-using-macos-with-homebrew-1:
 
 2.2 If using macOS with Homebrew
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,8 +107,6 @@ That will be sufficient for local development needs.
 4 Configure
 -----------
 
-.. _if-using-macos-with-macports-2:
-
 4.1 If using macOS with MacPorts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -155,8 +149,6 @@ Now reload the server with:
 .. code:: console
 
    sudo port reload mysql8-server
-
-.. _if-using-macos-with-homebrew-2:
 
 4.2 If using macOS with Homebrew
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

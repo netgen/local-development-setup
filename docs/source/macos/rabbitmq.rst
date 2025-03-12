@@ -31,8 +31,6 @@ Execute on the command line:
 
 **Note**: This step is needed only if you are using MacOS with MacPorts
 
-.. _if-using-macos-with-macports-1:
-
 2.1 If using MacOS with MacPorts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -53,8 +51,6 @@ resources, it’s preferred to start RabbitMQ manually when needed.
 3.1 Start manually (recommended)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _if-using-macos-with-homebrew-1:
-
 3.1.1 If using MacOS with Homebrew
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -63,8 +59,6 @@ Execute on the command line:
 .. code:: console
 
    rabbitmq-server
-
-.. _if-using-macos-with-macports-2:
 
 3.1.2 If using MacOS with MacPorts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,8 +78,6 @@ with ``Control-C``.
 
 If wanted, you can also set it up to start automatically after a reboot.
 
-.. _if-using-macos-with-macports-3:
-
 3.2.1 If using MacOS with MacPorts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -100,8 +92,6 @@ To stop the server and prevent it from running after a reboot, execute:
 .. code:: console
 
    sudo port unload rabbitmq-server
-
-.. _if-using-macos-with-homebrew-2:
 
 3.2.2 If using MacOS with Homebrew
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

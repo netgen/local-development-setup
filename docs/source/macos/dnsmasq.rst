@@ -76,8 +76,6 @@ executing on the command line:
 3 Start
 -------
 
-.. _if-using-macos-with-macports-1:
-
 3.1 If using macOS with MacPorts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -86,8 +84,6 @@ executing on the command line:
    sudo port load dnsmasq
 
 This will also start the server automatically after a reboot.
-
-.. _if-using-macos-with-homebrew-1:
 
 3.2 If using macOS with Homebrew
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
