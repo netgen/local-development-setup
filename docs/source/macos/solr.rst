@@ -150,8 +150,6 @@ downloaded Java version by executing:
 Set up Solr version 4.10.4
 --------------------------
 
-.. _install-1:
-
 1 Install
 ~~~~~~~~~
 
@@ -235,8 +233,6 @@ file and configure a bigger request query size:
        </Arg>
    </Call>
 
-.. _start-1:
-
 3 Start
 ~~~~~~~
 
@@ -251,8 +247,6 @@ To start Solr, prepare your cores in
 The server will run in the foreground, and you can stop it when needed
 with ``Control-C``.
 
-.. _install-2:
-
 1 Install
 ~~~~~~~~~
 
@@ -266,8 +260,6 @@ In order to install Solr as a service, execute the following commands:
    sudo tar -xvzf solr-7.7.3.tgz solr-7.7.3/bin/install_solr_service.sh --strip-components 2
    sudo ./install_solr_service.sh solr-7.7.3.tgz
    sudo rm -rf install_solr_service.sh solr-7.7.3.tgz
-
-.. _start-2:
 
 2 Start
 ~~~~~~~
@@ -292,8 +284,6 @@ to enable or disable it, use the following commands:
    sudo systemctl is-enabled solr
    sudo systemctl enable solr
    sudo systemctl disable solr
-
-.. _add-a-new-core-1:
 
 4 Add a new core
 ~~~~~~~~~~~~~~~~
