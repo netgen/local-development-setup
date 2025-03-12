@@ -6,6 +6,7 @@
 * :doc:`/macos/composer`
 * :doc:`/macos/ssl`
 * :doc:`/macos/nginx`
+* :doc:`/macos/haproxy`
 * :doc:`/macos/curl`
 * :doc:`/macos/redis`
 * :doc:`/macos/solr`
