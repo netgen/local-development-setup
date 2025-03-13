@@ -42,7 +42,23 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
        bind *:443   ssl crt /Users/brodijak/ssl/chain.pem
        bind *:6443  ssl crt /Users/brodijak/ssl/chain.pem
 
+       acl is_node req.fhdr(Host),map_str(/opt/local/etc/haproxy/node_domains.map) -m found
+       acl is_node_pass_through path_reg -i -f /opt/local/etc/haproxy/node_pass_through.patterns
+
+       http-request capture req.hdr(Host) len 128
+       http-request capture req.fhdr(Referer) len 128
+
        http-response set-header x-haproxy-frontend local
+       http-request set-header x-forwarded-proto https if { ssl_fc }
+
+       option forwardfor
+
+       use_backend nginx   if { path -m beg /.well-known/ } { dst_port 80 }
+       use_backend nginx   if { path -m beg /.well-known/ } { dst_port 443 }
+       use_backend varnish if { path -m beg /.well-known/ } { dst_port 6080 }
+       use_backend varnish if { path -m beg /.well-known/ } { dst_port 6443 }
+
+       use_backend node    if is_node !is_node_pass_through
 
        use_backend nginx   if { dst_port 80 }
        use_backend nginx   if { dst_port 443 }
@@ -51,15 +67,65 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
 
        default_backend nginx
 
+   backend node
+       http-request set-dst-port req.fhdr(Host),map(/opt/local/etc/haproxy/node_ports.map)
+       http-response set-header x-haproxy-backend node
+       server node 127.0.0.1:0 maxconn 32
+
    backend nginx
        http-response set-header x-haproxy-backend nginx
-       server nginx    127.0.0.1:8080 maxconn 32
+       server nginx 127.0.0.1:8080 maxconn 32
 
    backend varnish
        http-response set-header x-haproxy-backend varnish
-       server varnish  127.0.0.1:6081 maxconn 32
+       server varnish 127.0.0.1:6081 maxconn 32
 
 Make sure to adapt the paths to certificate chain file on your system.
+
+Create domain map file ``/opt/local/etc/haproxy/node_domains.map`` with the following content:
+
+.. code:: console
+
+   # Contains a list of domains handled by Node.js, mapped to a corresponding domain
+   # handled by Varnish/PHP:
+
+   node.pro.dev.php82.ez       pro.dev.php82.ez
+   us.node.pro.dev.php82.ez    us.pro.dev.php82.ez
+
+Create port map file ``/opt/local/etc/haproxy/node_domains.map`` with the following content:
+
+.. code:: console
+
+   # Contains a list of domains handled by Node.js, mapped to a corresponding port
+   # on which Node.js app is running:
+
+   node.pro.dev.php82.ez       3000
+   us.node.pro.dev.php82.ez    3000
+
+Create file containing pass-through patterns ``/opt/local/etc/haproxy/node_pass_through.patterns``
+with the following content:
+
+.. code:: console
+
+   # Contains regular expression patterns to match URLs that are found on Node.js domains,
+   # but should be handled by Varnish/PHP instead of Node.js (passed through to PHP)
+
+   # API endpoints
+   ^/(en/|fr/|de/|hr/)?(api|ngopenapi)
+
+   # Admin
+   ^/adminui
+
+   # Assets
+   ^/bundles
+   ^/assets
+
+   # Debug
+   ^/_wdt
+
+   # Sitemaps and robots.txt
+   ^/sitemap/.*
+   ^/robots.txt
 
 3 Start
 -------
