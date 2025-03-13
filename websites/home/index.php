@@ -73,7 +73,6 @@ header("Cache-Control: no-cache, must-revalidate");
         <li>PHP 7.1 <a href="https://phpinfo.php71">info</a> | <a href="https://home.php71/status?full&html">status</a></li>
         <li>PHP 7.0 <a href="https://phpinfo.php71">info</a> | <a href="https://home.php70/status?full&html">status</a></li>
         <li>PHP 5.6 <a href="https://phpinfo.php56">info</a> | <a href="https://home.php56/status?full&html">status</a></li>
-        <li>Memcached <span class="hint">start it when needed with <code>memcached</code></span></li>
         <li>Varnish <span class="hint">start it when needed with <code>varnishd -f /path/to/configuration.vcl -a :6081 -s malloc,256M -F</code></span></li>
         <li><a href="http://0.0.0.0:8025">MailHog</a> <span class="hint">start it when needed with <code>mailhog</code></span></li>
         <li><a href="http://localhost:15672">RabbitMQ</a> <span class="hint">start it when needed with <code>sudo rabbitmq-server</code></span></li>
