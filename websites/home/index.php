@@ -82,7 +82,7 @@ header("Cache-Control: no-cache, must-revalidate");
     <h2>resources</h2>
     <hr>
     <ol>
-        <li><a href="https://docs.netgen.io/">Netgen Docs</a></li>
+        <li><a href="https://docs.netgen.io/projects/lds/en/latest/">Local Development Setup documentation</a></li>
     </ol>
     <p class="text-right">PHP <?php echo PHP_VERSION;?></p>
 </body>
