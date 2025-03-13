@@ -74,7 +74,7 @@ header("Cache-Control: no-cache, must-revalidate");
         <li>PHP 7.0 <a href="https://phpinfo.php71">info</a> | <a href="https://home.php70/status?full&html">status</a></li>
         <li>PHP 5.6 <a href="https://phpinfo.php56">info</a> | <a href="https://home.php56/status?full&html">status</a></li>
         <li>Varnish <span class="hint">start it when needed with <code>varnishd -f /path/to/configuration.vcl -a :6081 -s malloc,256M -F</code></span></li>
-        <li><a href="http://0.0.0.0:8025">MailHog</a> <span class="hint">start it when needed with <code>mailhog</code></span></li>
+        <li><a href="http://0.0.0.0:8025">Mailpit</a> <span class="hint">start it when needed with <code>mailpit</code></span></li>
         <li><a href="http://localhost:15672">RabbitMQ</a> <span class="hint">start it when needed with <code>sudo rabbitmq-server</code></span></li>
         <li><a href="http://localhost:8983/solr">Solr</a> <span class="hint">start it when needed from its installation dir with <code>~/solr/solr-x/bin/solr start -f</code></span></li>
         <li><a href="http://localhost:9998/">Tika</a> <span class="hint">start it when needed with <code>java -jar ~/jars/tika-server-x.jar</code></span></li>
