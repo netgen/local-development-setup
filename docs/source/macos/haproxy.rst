@@ -2,7 +2,8 @@ Set up HAProxy reverse proxy and load balancer
 ==============================================
 
 Here you will install and configure HAProxy as a reverse proxy for your applications. With the provided configuration,
-it will only proxy requests from the client to NGINX. Any further customization depends on a project.
+it will only proxy requests from the client to NGINX. An example configuration for handling Node.js applications is also
+provided, but any further customization depends on the specific project.
 
 1 Install
 ---------
@@ -70,12 +71,12 @@ Make sure to adapt the paths to certificate chain file on your system.
 
    sudo port load haproxy
 
-This will also start the service automatically after a reboot.
+That will also configure the service to start automatically after a reboot.
 
 5 Test
 ------
 
-After setting up NGINX server, come back here and execute:
+Execute on the command line:
 
 .. code:: bash
 
@@ -107,7 +108,9 @@ Make sure the following lines are present:
 6.1 If using macOS with MacPorts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you want to see HAProxy logs, you will have to stop the HAProxy service and run it in foreground debug mode:
+To see HAProxy logs on macOS, you need to stop the HAProxy service and run it
+in the foreground with debug mode enabled. This way, logs will be displayed
+directly in the terminal:
 
 .. code:: bash
 
