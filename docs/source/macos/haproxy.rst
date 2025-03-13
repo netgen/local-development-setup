@@ -87,20 +87,20 @@ Create domain map file ``/opt/local/etc/haproxy/node_domains.map`` with the foll
 .. code:: console
 
    # Contains a list of domains handled by Node.js, mapped to a corresponding domain
-   # handled by Varnish/PHP:
+   # handled by Varnish/PHP
 
-   node.pro.dev.php82.ez       pro.dev.php82.ez
-   us.node.pro.dev.php82.ez    us.pro.dev.php82.ez
+   node.example.dev.php82.ez       example.dev.php82.ez
+   us.node.example.dev.php82.ez    us.example.dev.php82.ez
 
 Create port map file ``/opt/local/etc/haproxy/node_domains.map`` with the following content:
 
 .. code:: console
 
    # Contains a list of domains handled by Node.js, mapped to a corresponding port
-   # on which Node.js app is running:
+   # on which Node.js app is running
 
-   node.pro.dev.php82.ez       3000
-   us.node.pro.dev.php82.ez    3000
+   node.example.dev.php82.ez       3000
+   us.node.example.dev.php82.ez    3000
 
 Create file containing pass-through patterns ``/opt/local/etc/haproxy/node_pass_through.patterns``
 with the following content:
