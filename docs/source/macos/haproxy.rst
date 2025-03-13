@@ -23,7 +23,7 @@ provided, but any further customization depends on the specific project.
 
 Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the following content:
 
-.. code:: bash
+.. code:: cfg
 
    defaults
        mode http
