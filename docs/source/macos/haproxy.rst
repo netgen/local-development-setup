@@ -42,7 +42,7 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
        bind *:443   ssl crt /Users/brodijak/ssl/chain.pem
        bind *:6443  ssl crt /Users/brodijak/ssl/chain.pem
 
-       acl is_node req.fhdr(Host),map_str(/opt/local/etc/haproxy/node_domains.map) -m found
+       acl is_node req.fhdr(Host),map_str(/opt/local/etc/haproxy/node_domains_ports.map) -m found
        acl is_node_pass_through path_reg -i -f /opt/local/etc/haproxy/node_pass_through.patterns
 
        http-request capture req.hdr(Host) len 128
@@ -68,7 +68,7 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
        default_backend nginx
 
    backend node
-       http-request set-dst-port req.fhdr(Host),map(/opt/local/etc/haproxy/node_ports.map)
+       http-request set-dst-port req.fhdr(Host),map(/opt/local/etc/haproxy/node_domains_ports.map)
        http-response set-header x-haproxy-backend node
        server node 127.0.0.1:0 maxconn 32
 
@@ -83,25 +83,15 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
 
 Make sure to adapt the paths to certificate chain file on your system.
 
-Create domain map file ``/opt/local/etc/haproxy/node_domains.map`` with the following content:
-
-.. code:: console
-
-   # Contains a list of domains handled by Node.js, mapped to a corresponding domain
-   # handled by Varnish/PHP
-
-   node.example.dev.php82.ez       example.dev.php82.ez
-   us.node.example.dev.php82.ez    us.example.dev.php82.ez
-
-Create port map file ``/opt/local/etc/haproxy/node_domains.map`` with the following content:
+Create port map file ``/opt/local/etc/haproxy/node_domains_ports.map`` with the following content:
 
 .. code:: console
 
    # Contains a list of domains handled by Node.js, mapped to a corresponding port
    # on which Node.js app is running
 
-   node.example.dev.php82.ez       3000
-   us.node.example.dev.php82.ez    3000
+   example.dev.php82.ez    3000
+   us.example.dev.php82.ez 3000
 
 Create file containing pass-through patterns ``/opt/local/etc/haproxy/node_pass_through.patterns``
 with the following content:
