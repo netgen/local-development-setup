@@ -121,6 +121,7 @@ with the following content:
    # Assets
    ^/bundles
    ^/assets
+   ^/var
 
    # Debug
    ^/_wdt
