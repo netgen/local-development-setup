@@ -73,7 +73,8 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
        server node 127.0.0.1:0 maxconn 32
 
    backend nginx
-       http-request set-path %[path,regsub(^/ngcontentapi,,)]
+       http-request set-path %[path,regsub(^/ngcontentapi$,/,)]
+       http-request set-path %[path,regsub(^/ngcontentapi/,/,)]
        http-response set-header x-haproxy-backend nginx
        server nginx 127.0.0.1:8080 maxconn 32
 
