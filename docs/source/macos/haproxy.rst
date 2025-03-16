@@ -107,6 +107,7 @@ with the following content:
 
    # Admin
    ^/adminui
+   ^/graphql
 
    # Assets
    ^/bundles
