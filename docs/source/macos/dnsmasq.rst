@@ -71,7 +71,7 @@ executing on the command line:
 
    sudo mkdir -v /etc/resolver
    cd /etc/resolver
-   echo "nameserver 127.0.0.1" | sudo tee ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 sf wp > /dev/null
+   echo "nameserver 127.0.0.1" | sudo tee ez php56 php70 php71 php72 php73 php74 php80 php81 php82 php83 php84 php85 php90 php91 php92 php93 php94 sf wp > /dev/null
 
 3 Start
 -------
