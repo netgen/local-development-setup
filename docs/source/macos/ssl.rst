@@ -247,7 +247,7 @@ Create ``~/ssl/regenerate.sh`` file with the following content:
    echo -e "Done.\n"
 
    echo "Creating certificate chain file..."
-   cat server.crt server.key root.crt > chain.pem
+   sudo cat server.crt server.key root.crt > chain.pem
    echo -e "Done.\n"
 
    echo "Finished."
