@@ -116,6 +116,7 @@ with the following content:
 
    # Debug
    ^/_wdt
+   ^/_profiler
 
    # Sitemaps and robots.txt
    ^/sitemap/.*
