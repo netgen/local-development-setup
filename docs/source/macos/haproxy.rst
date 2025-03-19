@@ -43,7 +43,7 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
        bind *:6443  ssl crt /Users/brodijak/ssl/chain.pem
 
        acl is_node req.fhdr(Host),map_str(/opt/local/etc/haproxy/node_domains_ports.map) -m found
-       acl is_node_pass_through path_reg -i -f /opt/local/etc/haproxy/node_pass_through.patterns
+       acl is_node_pass_through path,map_beg(/opt/local/etc/haproxy/node_pass_through_paths.txt) -m found
 
        http-request capture req.hdr(Host) len 128
        http-request capture req.fhdr(Referer) len 128
@@ -93,34 +93,41 @@ Create port map file ``/opt/local/etc/haproxy/node_domains_ports.map`` with the 
    example.dev.php82.ez    3000
    us.example.dev.php82.ez 3000
 
-Create file containing pass-through patterns ``/opt/local/etc/haproxy/node_pass_through.patterns``
+Create file containing pass-through patterns ``/opt/local/etc/haproxy/node_pass_through_paths.txt``
 with the following content:
 
 .. code:: console
 
-   # Contains regular expression patterns to match URLs that are found on Node.js domains,
-   # but should be handled by Varnish/PHP instead of Node.js (passed through to PHP)
+   # Contains URL path prefixes match URLs that are found on Node.js domains,
+   # but should be "passed through" to PHP instead
 
    # API endpoints
-   ^/(en/|fr/|de/|hr/)?(api|ngopenapi)
-   ^/ngcontentapi
+   /api
+   /en/api
+   /fr/api
+   /hr/api
+   /ngopenapi
+   /en/ngopenapi
+   /fr/ngopenapi
+   /hr/ngopenapi
+   /ngcontentapi
 
    # Admin
-   ^/adminui
-   ^/graphql
+   /adminui
+   /graphql
 
    # Assets
-   ^/bundles
-   ^/assets
-   ^/var
+   /bundles/
+   /assets/
+   /var/
 
    # Debug
-   ^/_wdt
-   ^/_profiler
+   /_wdt
+   /_profiler
 
    # Sitemaps and robots.txt
-   ^/sitemap/.*
-   ^/robots.txt
+   /sitemap/
+   /robots.txt
 
 3 Start
 -------
