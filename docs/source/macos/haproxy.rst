@@ -50,8 +50,7 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
 
        http-response set-header x-haproxy-frontend local
        http-request set-header x-forwarded-proto https if { ssl_fc }
-
-       option forwardfor
+       http-request set-header x-forwarded-port %[dst_port]
 
        use_backend nginx   if { path -m beg /.well-known/ } { dst_port 80 }
        use_backend nginx   if { path -m beg /.well-known/ } { dst_port 443 }
