@@ -44,6 +44,7 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
 
        acl is_node req.fhdr(Host),map_str(/opt/local/etc/haproxy/node_domains_ports.map) -m found
        acl is_node_pass_through path,map_beg(/opt/local/etc/haproxy/node_pass_through_paths.txt) -m found
+       acl is_admin_sa req.fhdr(X-Siteaccess) -i adminui
 
        http-request capture req.hdr(Host) len 128
        http-request capture req.fhdr(Referer) len 128
@@ -57,7 +58,7 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
        use_backend varnish if { path -m beg /.well-known/ } { dst_port 6080 }
        use_backend varnish if { path -m beg /.well-known/ } { dst_port 6443 }
 
-       use_backend node    if is_node !is_node_pass_through
+       use_backend node    if is_node !is_node_pass_through !is_admin_sa
 
        use_backend nginx   if { dst_port 80 }
        use_backend nginx   if { dst_port 443 }
