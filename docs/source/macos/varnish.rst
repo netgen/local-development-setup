@@ -129,7 +129,7 @@ example path to VCL with correct one for your project:
 
 .. code:: console
 
-   varnishd -f /path/to/configuration.vcl -a :6081 -s malloc,256M -F
+   varnishd -f /path/to/configuration.vcl -a :6081 -T :6082 -s malloc,256M -F
 
 With these options, configure ``purge_server`` in your eZ Platform
 installation to ``http://localhost:6081``.
