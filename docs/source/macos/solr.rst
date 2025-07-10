@@ -49,7 +49,7 @@ provided ``solr`` command:
    ./bin/solr start
 
 After the server has started, verify that you can access its web
-interface on http://localhost:8983/solr.
+interface on http://localhost:8983.
 
 The command above will start the server in the background, and you can
 stop it with:
@@ -247,82 +247,16 @@ To start Solr, prepare your cores in
 The server will run in the foreground, and you can stop it when needed
 with ``Control-C``.
 
-1 Install
-~~~~~~~~~
+Tips
+----
 
-In order to install Solr as a service, execute the following commands:
-
-.. code:: console
-
-   sudo apt install default-jre
-   cd /opt
-   sudo wget https://archive.apache.org/dist/lucene/solr/7.7.3/solr-7.7.3.tgz
-   sudo tar -xvzf solr-7.7.3.tgz solr-7.7.3/bin/install_solr_service.sh --strip-components 2
-   sudo ./install_solr_service.sh solr-7.7.3.tgz
-   sudo rm -rf install_solr_service.sh solr-7.7.3.tgz
-
-2 Start
-~~~~~~~
-
-You can control the Solr service with following commands:
+If you need to access Solr Admin UI of a Solr instance on a remote server,
+which is not exposed to the outside access, you can forward the port to
+your host with an SSH client:
 
 .. code:: console
 
-   sudo systemctl start solr
-   sudo systemctl stop solr
-   sudo systemctl restart solr
-   sudo systemctl status solr
+   ssh -L 8983:localhost:8983 remote_server
 
-3 Start automatically after reboot
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To check if Solr service is set to automatically start after the reboot,
-to enable or disable it, use the following commands:
-
-.. code:: console
-
-   sudo systemctl is-enabled solr
-   sudo systemctl enable solr
-   sudo systemctl disable solr
-
-4 Add a new core
-~~~~~~~~~~~~~~~~
-
-When using Solr as a service, cores are located in the
-``/var/solr/data`` directory.
-
-You can use ``solr`` command to create a new core using a specific
-configuration. Prepare your configuration in a separate directory, then
-execute:
-
-.. code:: console
-
-   solr create_core -c my_new_core -d /var/solr/data
-
-If you want to manually create cores (e.g. if you have them in your
-project repository), you need to use the ``solr`` user:
-
-.. code:: console
-
-   sudo su solr
-
-5 Uninstall Solr as a service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-If you want to uninstall Solr as a service (e.g. if you decided to have
-multiple versions of Solr at the same time), you can do that by
-executing the following commands:
-
-**Warning:** This will delete all your cores and data in them!
-
-.. code:: console
-
-   sudo service solr stop
-   sudo rm -r /var/solr
-   sudo rm -r /opt/solr-7.7.3
-   sudo rm -r /opt/solr
-   sudo rm /etc/init.d/solr
-   sudo deluser --remove-home solr
-   sudo deluser --group solr
-   sudo update-rc.d -f solr remove
-   sudo rm -rf /etc/default/solr.in.sh
+After executing the above and logging into the remote server, just open the
+Solr Admin UI in your browser on http://localhost:8983.

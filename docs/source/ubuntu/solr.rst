@@ -49,7 +49,7 @@ provided ``solr`` command:
    ./bin/solr start
 
 After the server has started, verify that you can access its web
-interface on http://localhost:8983/solr.
+interface on http://localhost:8983.
 
 The command above will start the server in the background, and you can
 stop it with:
@@ -325,3 +325,17 @@ executing the following commands:
    sudo deluser --group solr
    sudo update-rc.d -f solr remove
    sudo rm -rf /etc/default/solr.in.sh
+
+Tips
+----
+
+If you need to access Solr Admin UI of a Solr instance on a remote server,
+which is not exposed to the outside access, you can forward the port to
+your host with an SSH client:
+
+.. code:: console
+
+   ssh -L 8983:localhost:8983 remote_server
+
+After executing the above and logging into the remote server, just open the
+Solr Admin UI in your browser on http://localhost:8983.
