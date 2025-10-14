@@ -39,8 +39,8 @@ Create configuration file ``/etc/haproxy/haproxy.cfg`` with the following conten
 
        bind *:80
        bind *:6080
-       bind *:443   ssl crt /Users/brodijak/ssl/chain.pem
-       bind *:6443  ssl crt /Users/brodijak/ssl/chain.pem
+       bind *:443   ssl crt /home/brodijak/ssl/chain.pem
+       bind *:6443  ssl crt /home/brodijak/ssl/chain.pem
 
        acl is_node req.fhdr(Host),map_str(/etc/haproxy/node_domains_ports.map) -m found
        acl is_node_pass_through path,map_beg(/etc/haproxy/node_pass_through_paths.txt) -m found
