@@ -199,7 +199,7 @@ Make sure the following lines are present:
 5 Logging
 ---------
 
-5.1 If using macOS with MacPorts
+5.1 On Ubuntu or Linux systems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To monitor HAProxy service logs directly in the terminal, use the following command:
