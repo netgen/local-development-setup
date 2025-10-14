@@ -5,6 +5,7 @@
 * :doc:`/ubuntu/composer`
 * :doc:`/ubuntu/ssl`
 * :doc:`/ubuntu/nginx`
+* :doc:`/ubuntu/haproxy`
 * :doc:`/ubuntu/redis`
 * :doc:`/ubuntu/solr`
 * :doc:`/ubuntu/rabbitmq`

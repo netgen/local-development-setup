@@ -11,6 +11,7 @@ Ubuntu
     composer
     ssl
     nginx
+    haproxy
     redis
     solr
     rabbitmq

@@ -8,12 +8,12 @@ provided, but any further customization depends on the specific project.
 1 Install
 ---------
 
-1.1 If using macOS with MacPorts
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.1 Install via APT package manager
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
-   sudo port install haproxy
+   sudo apt install haproxy
 
 2 Configure
 -----------
@@ -21,7 +21,7 @@ provided, but any further customization depends on the specific project.
 2.1 Create configuration file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the following content:
+Create configuration file ``/etc/haproxy/haproxy.cfg`` with the following content:
 
 .. code:: cfg
 
@@ -42,8 +42,8 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
        bind *:443   ssl crt /Users/brodijak/ssl/chain.pem
        bind *:6443  ssl crt /Users/brodijak/ssl/chain.pem
 
-       acl is_node req.fhdr(Host),map_str(/opt/local/etc/haproxy/node_domains_ports.map) -m found
-       acl is_node_pass_through path,map_beg(/opt/local/etc/haproxy/node_pass_through_paths.txt) -m found
+       acl is_node req.fhdr(Host),map_str(/etc/haproxy/node_domains_ports.map) -m found
+       acl is_node_pass_through path,map_beg(/etc/haproxy/node_pass_through_paths.txt) -m found
        acl is_admin_sa req.fhdr(X-Siteaccess) -i adminui
 
        http-request capture req.hdr(Host) len 128
@@ -68,7 +68,7 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
        default_backend nginx
 
    backend node
-       http-request set-dst-port req.fhdr(Host),map(/opt/local/etc/haproxy/node_domains_ports.map)
+       http-request set-dst-port req.fhdr(Host),map(/etc/haproxy/node_domains_ports.map)
        http-response set-header x-haproxy-backend node
        server node 127.0.0.1:0 maxconn 32
 
@@ -83,7 +83,7 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
 
 Make sure to adapt the paths to certificate chain file on your system.
 
-Create port map file ``/opt/local/etc/haproxy/node_domains_ports.map`` with the following content:
+Create port map file ``/etc/haproxy/node_domains_ports.map`` with the following content:
 
 .. code:: console
 
@@ -93,7 +93,7 @@ Create port map file ``/opt/local/etc/haproxy/node_domains_ports.map`` with the 
    example.dev.php82.ez    3000
    us.example.dev.php82.ez 3000
 
-Create file containing pass-through patterns ``/opt/local/etc/haproxy/node_pass_through_paths.txt``
+Create file containing pass-through patterns ``/etc/haproxy/node_pass_through_paths.txt``
 with the following content:
 
 .. code:: console
@@ -131,15 +131,41 @@ with the following content:
 
 3 Start
 -------
-
-3.1 If using macOS with MacPorts
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.1 Activate HAProxy Service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
-   sudo port load haproxy
+   sudo systemctl enable --now haproxy
 
 That will also configure the service to start automatically after a reboot.
+
+.. caution::
+
+   If you encounter an error stating that port 80 is already in use, you can check which process is using the port with:
+
+   .. code:: bash
+
+       sudo ss -tulpen | grep ':80'
+
+   If the output shows that **nginx** is using port 80, remove the default site configuration:
+
+   .. code:: bash
+
+       sudo rm /etc/nginx/sites-enabled/default
+
+   Then restart the nginx service to apply changes:
+
+   .. code:: bash
+
+       sudo systemctl restart nginx
+
+   Finally, retry enabling HAProxy:
+
+   .. code:: bash
+
+       sudo systemctl enable --now haproxy
+
 
 4 Test
 ------
@@ -183,4 +209,4 @@ directly in the terminal:
 .. code:: bash
 
    sudo port unload haproxy
-   haproxy -f /opt/local/etc/haproxy/haproxy.cfg -d -V
+   haproxy -f /etc/haproxy/haproxy.cfg -d -V
