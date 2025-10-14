@@ -131,14 +131,22 @@ with the following content:
 
 3 Start
 -------
-3.1 Activate HAProxy Service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.1 Enable and Start HAProxy Service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
    sudo systemctl enable --now haproxy
 
 That will also configure the service to start automatically after a reboot.
+
+To verify that the HAProxy service is running, check its status with:
+
+.. code:: bash
+
+   sudo systemctl status haproxy
+
+You should see the service listed as active (running).
 
 .. caution::
 
