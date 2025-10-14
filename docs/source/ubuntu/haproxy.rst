@@ -202,11 +202,8 @@ Make sure the following lines are present:
 5.1 If using macOS with MacPorts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To see HAProxy logs on macOS, you need to stop the HAProxy service and run it
-in the foreground with debug mode enabled. This way, logs will be displayed
-directly in the terminal:
+To monitor HAProxy service logs directly in the terminal, use the following command:
 
 .. code:: bash
 
-   sudo port unload haproxy
-   haproxy -f /etc/haproxy/haproxy.cfg -d -V
+   sudo journalctl -u haproxy -f
