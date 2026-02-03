@@ -94,17 +94,7 @@ This will also start the server automatically after a reboot.
 
 This will also start the service automatically after a reboot.
 
-4 Update network connections
-----------------------------
-
-Open Network configuration in System Preferences, click Advanced on your
-network connection, select DNS tab and add ``127.0.0.1`` as a DNS
-server.
-
-Repeat this with all network connections you are using to connect to the
-Internet, excluding VPN connections.
-
-5 Test
+4 Test
 ------
 
 Test resolving by pinging a bogus domain on your custom top-level
