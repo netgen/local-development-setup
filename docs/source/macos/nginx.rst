@@ -63,7 +63,7 @@ configurations:
 Paths in the copied configuration files are already correct for macOS
 using MacPorts, so no adjustments are needed.
 
-To finish this step set permissions on the log directory:
+To finish this step set permissions on the log directory (don't forget to change the user):
 
 .. code:: console
 
@@ -176,7 +176,7 @@ to generate it first:
 
    sudo mkdir /var/www
 
-Then we need to set the permissions on this directory:
+Then we need to set the permissions on this directory  (don't forget to change the user):
 
 .. code:: console
 
@@ -205,7 +205,7 @@ used to serve the website.
    Before configuring HAProxy (in the next section) you will be able to
    access the websites only through ports ``8080`` (HTTP) and ``8443``
    (HTTPS). After configuring HAProxy, you will be able to access them
-   though default ports ``80`` and ``443``.
+   through default ports ``80`` and ``443``.
 
 Testing your website on a different device
 ------------------------------------------
@@ -214,14 +214,14 @@ This setup works with multiple custom local domains, which is not
 trivial to directly expose on a local network, since it would need to
 involve a DNS server.
 
-However, is possible to expose a specific website on your local IP,
+However, it is possible to expose a specific website on your local IP,
 which you can then use to open the website on a different device
 connected to your local network, for example smartphone or a tablet. To
 do that, uncomment the configuration block found in:
 
 ::
 
-   /usr/local/etc/nginx/sites-enabled/local_network_proxy
+   /opt/local/etc/nginx/sites-enabled/local_network_proxy
 
 Then adjust the IP and local website address as needed.
 

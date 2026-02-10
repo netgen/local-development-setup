@@ -1,5 +1,5 @@
-Set up XDebug
-=============
+Set up XDebug (optional)
+========================
 
 XDebug is an extension for PHP that will help us with code debugging.
 We’ll use it combined with PHP Storm, which will provide us the step

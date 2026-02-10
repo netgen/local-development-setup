@@ -13,6 +13,9 @@ since the `Netgen Media Site` Makefile is configured to be used with that one.
 First uninstall Node.js, as it will conflict with the versions installed
 through the version manager.
 
+1.1 Install via github
+^^^^^^^^^^^^^^^^^^^^^^
+
 The installation should be fairly straightforward if you follow the instructions at
 `Github <https://github.com/nvm-sh/nvm#install--update-script>`_:
 
@@ -20,7 +23,7 @@ The installation should be fairly straightforward if you follow the instructions
 
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-Make sure to check the correct version, please do not just copy the link above as
+Make sure to **check the correct version**, please do not just copy the link above as
 it could be an old/deprecated version.
 
 This will install the ``nvm`` to ``~/.nvm`` folder, and attempt to modify your profile file
@@ -32,10 +35,9 @@ If you have any other profile file, please add the following to the file your se
     export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-Alternatively, you can install ``nvm`` through one of the package managers:
-
-* Brew: https://formulae.brew.sh/formula/nvm
-* MacPorts: https://ports.macports.org/port/nvm/
+1.2 Install via MacPorts
+^^^^^^^^^^^^^^^^^^^^^^^^
+Find the port here: https://ports.macports.org/port/nvm/.
 
 MacPorts needs some additional steps:
 
@@ -55,6 +57,9 @@ In this ``init-nvm.sh`` there should be:
     [ -e "$NVM_DIR/nvm.sh" ] || ln -s /opt/local/share/nvm/nvm.sh "$NVM_DIR/nvm.sh"
     [ -e "$NVM_DIR/nvm-exec" ] || ln -s /opt/local/share/nvm/nvm-exec "$NVM_DIR/nvm-exec"
 
+1.3 Install via Homebrew
+^^^^^^^^^^^^^^^^^^^^^^^^
+Follow the instructions here: https://formulae.brew.sh/formula/nvm.
 
 Troubleshooting
 ~~~~~~~~~~~~~~~

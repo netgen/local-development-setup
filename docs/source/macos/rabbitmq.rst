@@ -51,16 +51,7 @@ resources, it’s preferred to start RabbitMQ manually when needed.
 3.1 Start manually (recommended)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-3.1.1 If using MacOS with Homebrew
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Execute on the command line:
-
-.. code:: console
-
-   rabbitmq-server
-
-3.1.2 If using MacOS with MacPorts
+3.1.1 If using MacOS with MacPorts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Execute on the command line:
@@ -72,6 +63,14 @@ Execute on the command line:
 The server will run in the foreground, and you can stop it when needed
 with ``Control-C``.
 
+3.1.2 If using MacOS with Homebrew
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Execute on the command line:
+
+.. code:: console
+
+   rabbitmq-server
 
 3.2 Start automatically
 ~~~~~~~~~~~~~~~~~~~~~~~

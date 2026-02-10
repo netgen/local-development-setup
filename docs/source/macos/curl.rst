@@ -35,8 +35,12 @@ You should receive an output similar to:
    )
 
 The value of ``default_cert_file`` key from above is the location of the
-bundle where the RCA certificates are stored. Add your own RCA
-certificate to the bundle with:
+bundle where the RCA certificates are stored.
+
+**Note**: The ``default_cert_file path`` on your system may differ from the example above.
+Make sure to use the ``default_cert_file`` value from your output in the command below.
+
+Add your own RCA certificate to the bundle with:
 
 .. code:: console
 

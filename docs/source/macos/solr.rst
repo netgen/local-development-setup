@@ -1,5 +1,5 @@
-Set up Apache Solr
-==================
+Set up Apache Solr (optional)
+=============================
 
 Here you will install Apache Solr. Open
 https://downloads.apache.org/lucene/solr in your browser and find the
