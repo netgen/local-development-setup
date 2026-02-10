@@ -171,16 +171,16 @@ Create ``~/ssl/server.conf`` file with the following content:
 5 Create RCA certificate and private key
 ----------------------------------------
 
-**Note**: 3650 days means the certificate will be valid for 10 years.
-
-When prompted, use the password you chose previously.
-
 Execute on the command line:
 
 .. code:: console
 
    cd ~/ssl
    sudo openssl req -x509 -new -days 3650 -keyout root.key -out root.crt -config root.conf
+
+When prompted, use the password you chose previously.
+
+**Note**: 3650 days means the certificate will be valid for 10 years.
 
 6 Create server certificate signing request
 -------------------------------------------
@@ -195,16 +195,17 @@ Execute on the command line:
 7 Create server certificate and its private key
 -----------------------------------------------
 
-**Note**: 825 days is maximum allowed end-entity certificate validity.
-
-When prompted, use the password you chose previously.
-
 Execute on the command line:
 
 .. code:: console
 
    cd ~/ssl
    sudo openssl x509 -sha256 -req -days 825 -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -extfile server.conf -extensions x509_ext
+
+When prompted, use the password you chose previously.
+
+**Note**: 825 days is maximum allowed end-entity certificate validity.
+
 
 8 Create certificate chain file
 -------------------------------
@@ -214,7 +215,7 @@ Execute on the command line:
 .. code:: console
 
    cd ~/ssl
-   cat server.crt server.key root.crt > chain.pem
+   sudo cat server.crt server.key root.crt > chain.pem
 
 9 Register RCA certificate with the OS
 --------------------------------------

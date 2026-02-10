@@ -83,6 +83,8 @@ Create configuration file ``/opt/local/etc/haproxy/haproxy.cfg`` with the follow
 
 Make sure to adapt the paths to certificate chain file on your system.
 
+Also, ensure the file ends with a trailing newline (LF), otherwise HAProxy may fail to start.
+
 Create port map file ``/opt/local/etc/haproxy/node_domains_ports.map`` with the following content:
 
 .. code:: console

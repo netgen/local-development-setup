@@ -1,5 +1,5 @@
-Set up Varnish reverse HTTP proxy
-=================================
+Set up Varnish reverse HTTP proxy (optional)
+============================================
 
 1 Install Varnish
 -----------------
