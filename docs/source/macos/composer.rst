@@ -17,7 +17,7 @@ Use the above instructions to download the composer to your machine.
 Don't forget adding composer into a directory on PATH
 .. code:: console
 
-   sudo mv composer.phar /opt/local/bin/composer
+   sudo mv composer.phar /usr/local/bin/composer
 
 That is it!
 
@@ -34,9 +34,9 @@ Copy the following into the alias file:
 
 ::
 
-    alias composer74="/opt/local/bin/php74 /opt/local/bin/composer"
-    alias composer80="/opt/local/bin/php80 /opt/local/bin/composer"
-    alias composer81="/opt/local/bin/php81 /opt/local/bin/composer"
-    alias composer82="/opt/local/bin/php81 /opt/local/bin/composer"
-    alias composer83="/opt/local/bin/php81 /opt/local/bin/composer"
-    alias composer84="/opt/local/bin/php81 /opt/local/bin/composer"
+    alias composer74="/usr/local/bin/php74 /usr/local/bin/composer"
+    alias composer80="/usr/local/bin/php80 /usr/local/bin/composer"
+    alias composer81="/usr/local/bin/php81 /usr/local/bin/composer"
+    alias composer82="/usr/local/bin/php81 /usr/local/bin/composer"
+    alias composer83="/usr/local/bin/php81 /usr/local/bin/composer"
+    alias composer84="/usr/local/bin/php81 /usr/local/bin/composer"
